@@ -1,48 +1,26 @@
-# Requirements
+# Souls
 
-PHP7
+Laravel church management system.
 
-Database
+## Welcome colaborators
 
- - mysql
- - mongodb
+We, Owner, Harvest Culture JB known as HCCJB, initiator of this project like to extend the idea and welcome developer who interested to collaborate in this project.
 
-Service
+## Our values
 
- - elastic search
- - 
+In context of ministry:
 
-# Installations
-
-cp .env.example .env
-vim .env
-
-composer selfupdate
-composer install
-composer dump -o
-
-chmod -R 777 storage
-chmod -R 777 public/sizeds
-
-php artisan key:generate
-
-### DB & Seed
-
-php artisan migrate:refresh --seed
-php artisan db:seed --class=DemoDatabaseSeeder
-
-// Mongo index
-http://xxx.xxx/power_admin/install/mongo_index
+We're toward lean but we spent time in details to achive excellence result.
+We encourage to have fun in teamwork.
+We're straight but with good intention in coversation.
+We respect and honor the original.
 
 
-### Build Frontend
+## Development road map
 
-npm install bower -g
-npm install gulp -g
-npm install
-bower install
+ - Members management
+ - Attendance and forecast in services
+ - Attendance report
+ - Offering record
+ - Financial report
 
-cd resource/assets/semantic-ui
-npm install
-
-gulp
