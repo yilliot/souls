@@ -2,18 +2,18 @@
 
 Laravel church management system.
 
-## Welcome colaborators
+## Welcome Collaborators
 
-We, Owner, Harvest Culture JB known as HCCJB, initiator of this project like to extend the idea and welcome developer who interested to collaborate in this project.
+We as owner of Harvest Culture JB known as HCCJB, as well as initiator of this project, would like to extend the idea of the community and also welcome developers who are interested in collaborative in this project.
 
 ## Our values
 
 In context of ministry:
 
-We're toward lean but we spent time in details to achive excellence result.
-We encourage to have fun in teamwork.
-We're straight but with good intention in coversation.
-We respect and honor the original.
+We are a lean team that spend time and pay attention in every single details to achieve the excellent result. 
+We encourage you to have fun in teamwork. 
+We express straightforwardly yet with good intention in every conversations. 
+Lastly/however, we respect and honour the original.
 
 
 ## Development road map
