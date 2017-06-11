@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
+        $this->call(CoreSeeder::class);
         $this->call(UsersSeeder::class);
-        $this->call(JobsSeeder::class);
+        $this->call(CgSeeder::class);
 
         // FOREIGN_KEY_CHECKS is supposed to only apply to a single
         // connection and reset itself but I like to explicitly

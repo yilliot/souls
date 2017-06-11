@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -20,6 +21,15 @@
                 height: 100vh;
                 margin: 0;
             }
+
+            body{
+                animation: trans_bg 2s ease-in-out 1;
+                background-color: black;
+            }
+            @keyframes trans_bg {
+              0% {background-color: white;}
+              100% {background-color: black;}
+            } 
 
             .full-height {
                 height: 100vh;
@@ -70,20 +80,6 @@
             <div class="content">
                 <div class="title m-b-md">
                     {{config('app.name')}}
-                </div>
-                <div class="links">
-                @foreach (App\Enums\CategoryGroups::getObj(App\Enums\CategoryGroups::random())->getCategories() as $id)
-                    <a>{{App\Enums\Categories::getObj($id)->getName()}}</a>
-                @endforeach
-                </div>
-                <br>
-                <div class="links">
-                    <a href="#">iOS</a>
-                    <a href="#">Android</a>
-                    <a href="#">Web</a>
-                    <a href="#">Back-office</a>
-                    <a href="#">News</a>
-                    <a href="#">Contact us</a>
                 </div>
             </div>
         </div>

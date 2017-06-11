@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobTables extends Migration
+class CreateCoreTables extends Migration
 {
     /**
      * Run the migrations.
@@ -17,16 +17,13 @@ class CreateJobTables extends Migration
 
             // relation
             $table->increments('id');
-            $table->string('title');
+            $table->string('name');
             $table->integer('leader')->unsigned()->index()->nullable();
             $table->integer('colead1')->unsigned()->index()->nullable();
             $table->integer('colead2')->unsigned()->index()->nullable();
 
             // status
             $table->boolean('is_active')->default(true)->index();
-
-            // Enums/Days
-            $table->tinyInteger('gather_day')->unsigned()->nullable();
             $table->timestamps();
 
         });
@@ -50,28 +47,34 @@ class CreateJobTables extends Migration
 
             // relation
             $table->increments('id');
-            $table->integer('leader')->unsigned()->index();
-
-            // status
-            $table->boolean('is_active')->default(true)->index();
-
-            // content
-            $table->string('name');            
-        });
-
-        Schema::create('ministries', function(Blueprint $table){
-
-            // relation
-            $table->increments('id');
-            $table->integer('leader')->unsigned()->index();
-
-            $table->integer('ministry_group_id')->nullable()->unsigned()->index();
+            $table->integer('leader')->nullable()->unsigned()->index();
 
             // status
             $table->boolean('is_active')->default(true)->index();
 
             // content
             $table->string('name');
+        });
+
+        Schema::create('ministry_ministry_groups', function(Blueprint $table) {
+
+            $table->increments('id');
+            $table->integer('ministry_group_id')->unsigned()->index();
+            $table->integer('ministry_id')->unsigned()->index();
+        });
+
+        Schema::create('ministries', function(Blueprint $table) {
+
+            // relation
+            $table->increments('id');
+            $table->integer('leader')->nullable()->unsigned()->index();
+
+            // status
+            $table->boolean('is_active')->default(true)->index();
+
+            // content
+            $table->string('shortname');
+            $table->string('fullname');
 
             $table->timestamps();
         });
@@ -121,8 +124,9 @@ class CreateJobTables extends Migration
      */
     public function down()
     {
-        Schema::drop('baptism');
+        Schema::drop('baptisms');
         Schema::drop('ministries');
+        Schema::drop('ministry_ministry_groups');
         Schema::drop('ministry_groups');
         Schema::drop('souls');
         Schema::drop('ministry_souls');

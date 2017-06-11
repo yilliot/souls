@@ -19,9 +19,6 @@ class CreateAuthTables extends Migration
             $table->string('password', 60)->nullable();
             $table->string('first_name', 30)->nullable();
             $table->string('last_name', 30)->nullable();
-            $table->boolean('is_email_verified')->default(false);
-            $table->string('phone')->unique();
-            $table->boolean('is_fbauth_only')->default(false);
             $table->rememberToken();
             $table->integer('soul_id')->nullable();
             $table->timestamps();

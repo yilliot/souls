@@ -25,45 +25,41 @@ class UsersSeeder extends Seeder
         ]);
 
         $role = new Role();
-        $roleAppUser = $role->create([
-            'name' => 'App User',
-            'slug' => 'app_user',
-            'description' => 'app user'
+        $roleCgl = $role->create([
+            'name' => 'Cellgroup Leader',
+            'slug' => 'cgl',
+            'description' => 'Cellgroup Leader'
         ]);
 
-
-        // create user
-        $root_admin_user = factory(User::class)->create([
-            'email' => 'admin@timev.co'
-            ]);
-        $app_user01 = factory(User::class)->create();
-        $app_user02 = factory(User::class)->create();
-        $app_user03 = factory(User::class)->create([
-            'email' => 'demoseller@timev.co'
-            ]);
-        $app_user04 = factory(User::class)->create([
-            'email' => 'demoseller_pending@timev.co'
-            ]);
-        $app_user05 = factory(User::class)->create([
-            'email' => 'demoseller_rejected@timev.co'
-            ]);
-
-        $root_admin_user->assignRole($roleRootAdmin);
-        $app_user01->assignRole($roleAppUser);
-        $app_user02->assignRole($roleAppUser);
-
-        factory(App\Models\UserSeller::class)->create([
-            'id' => 4,
-            'approval_code' => 1,
+        $role = new Role();
+        $roleMl = $role->create([
+            'name' => 'Ministry Leader',
+            'slug' => 'ml',
+            'description' => 'Ministry Leader'
         ]);
-        factory(App\Models\UserSeller::class)->create([
-            'id' => 5,
-            'approval_code' => 0,
-        ]);
-        factory(App\Models\UserSeller::class)->create([
-            'id' => 6,
-            'approval_code' => 2,
-        ]);
+
+        $default = [
+            'password' => bcrypt('secret'),
+            'remember_token' => str_random(10),
+            'created_at'=> \Carbon\Carbon::now(),
+        ];
+
+        DB::table('users')->insert($default + ['first_name' => 'Elliot', 'last_name' => 'Yap', 'email' => 'yilliot@gmail.com']);
+        DB::table('users')->insert($default + ['first_name' => 'Chin Pheng', 'last_name' => 'Tan', 'email' => 'tcpheng92@gmail.com']);
+        DB::table('users')->insert($default + ['first_name' => 'Woei Jye', 'last_name' => 'Lian', 'email' => 'ryanlian1992@gmail.com']);
+        DB::table('users')->insert($default + ['first_name' => 'Ruan Ching', 'last_name' => 'Yeo', 'email' => 'rcyang1006@gmail.com']);
+        DB::table('users')->insert($default + ['first_name' => 'Joshua', 'last_name' => 'Lew', 'email' => 'joshualew1.618@gmail.com']);
+
+        $default = [
+            'created_at'=> \Carbon\Carbon::now(),
+        ];
+        DB::table('role_user')->insert($default + ['role_id' => 1, 'user_id' => 1]);
+        DB::table('role_user')->insert($default + ['role_id' => 3, 'user_id' => 1]);
+        DB::table('role_user')->insert($default + ['role_id' => 2, 'user_id' => 2]);
+        DB::table('role_user')->insert($default + ['role_id' => 2, 'user_id' => 3]);
+        DB::table('role_user')->insert($default + ['role_id' => 2, 'user_id' => 4]);
+        DB::table('role_user')->insert($default + ['role_id' => 2, 'user_id' => 5]);
+
 
     }
 }

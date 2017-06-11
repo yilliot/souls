@@ -1,12 +1,8 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome');
 
-Route::get('/home', 'HomeController@index');
-Route::get('/applink', function(){ return view('welcome'); });
-
+## AUTH
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
@@ -20,20 +16,15 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::get('verify_email/{code}', 'VerifyEmailController@verifyEmail')
         ->name('auth.verify_email');
 });
+
+## CGL
 Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
     'middleware' => 'cgl.admin'
     ], function () {
-    Route::get('/', 'DashboardController@index');
-    Route::group(['prefix' => 'job'], function(){
-        Route::get('/', 'JobsController@index');
-        Route::get('/{id}', 'JobsController@get');
-        Route::post('/approve/{id}', 'JobsController@postApprove');
-        Route::get('/reject/{id}', 'JobsController@reject');
-        Route::post('/reject/{id}', 'JobsController@postReject');
-    });
-    Route::group(['prefix' => 'seller'], function(){
-        Route::get('/', 'SellersController@index');
-        Route::get('verify/{id}', 'SellersController@verify');
-        Route::post('verify/{id}', 'SellersController@postVerify');
-    });
+});
+
+## USHER
+Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
+    'middleware' => 'usher.admin'
+    ], function () {
 });
