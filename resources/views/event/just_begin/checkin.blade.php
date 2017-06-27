@@ -15,12 +15,16 @@
         <img id="logo" src="/images/hcc-logo-black320.png" alt="HCCJB">
       </div>
       <div class="neon-green content">
-          <span class="glow">3KM {{trans('event.just_begin.checkin')}}</span>
+          <span class="glow">3KM</span>
           <div class="sub neon-green header">
             {{trans('event.just_begin.just_begin')}}
           </div>
         </div>
     </h1>
+    <h2 class="header">
+      {{trans('event.just_begin.checkin')}}
+    </h2>
+
     @include('event.just_begin.part.flash')
     {{ Form::open(['url' => '/event/3km/checkin', 'method' => 'post', 'class' => 'ui inverted form', 'id' => 'just-begin-checkin', 'files' => true]) }}
 

@@ -154,7 +154,7 @@ jQuery(function($) {
       'dateFormat' : 'yy-mm-dd',
       'changeMonth': true,
       'changeYear': true,
-      'defaultDate' : '-20y'
+      'defaultDate' : '-25y'
     });
 });
 </script>
