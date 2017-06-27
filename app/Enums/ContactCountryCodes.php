@@ -10,8 +10,8 @@ final class ContactCountryCodes extends Enum
     static function map()
     {
         return [
-            self::MY => 'Malaysia +60',
-            self::SG => 'Singapore +65',
+            self::MY => 'MY +60',
+            self::SG => 'SG +65',
         ];
     }
 }

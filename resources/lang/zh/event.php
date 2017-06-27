@@ -2,7 +2,7 @@
 
 return [
     'just_begin' => [
-        'just_begin' => '才刚刚开始',
+        'just_begin' => '这才开始',
         'nickname' => '平时称呼你的名字',
         'nric' => 'IC 身份证 / 护照编号',
         'nric_fullname' => 'IC 身份证 / 护照编号 的 全名',
