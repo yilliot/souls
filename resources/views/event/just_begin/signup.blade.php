@@ -15,12 +15,15 @@
         <img id="logo" src="/images/hcc-logo-black320.png" alt="HCCJB">
       </div>
       <div class="neon-green content">
-          <span class="glow">3KM {{trans('event.just_begin.signup')}}</span>
+          <span class="glow">3KM</span>
           <div class="sub neon-green header">
             {{trans('event.just_begin.just_begin')}}
           </div>
         </div>
     </h1>
+    <h2 class="header">
+      {{trans('event.just_begin.signup')}}
+    </h2>
     @include('event.just_begin.part.flash')
 
     {{ Form::open(['url' => '/event/3km/signup', 'method' => 'post', 'class' => 'ui inverted form', 'id' => 'just-begin-signup']) }}
@@ -103,7 +106,7 @@
 
         <label>{{ trans('event.just_begin.birthday') }}</label>
         <div class="ui left icon input">
-          <input type="date" name="birthday" value="{{old('birthday')}}" placeholder="birthday">
+          <input type="date" name="birthday" value="{{old('birthday')}}" placeholder="yyyy-mm-dd">
           <i class="birthday icon"></i>
         </div>
         @if ($errors->has('birthday'))
@@ -127,4 +130,31 @@
       </div>
     {{ Form::close() }}
   </div>
+@endsection
+
+@section('script')
+<link rel="stylesheet" href="/css/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+<script src='/css/jquery-ui-1.12.1.custom/jquery-ui.min.js'></script>
+<script>
+jQuery(function($) {
+    var $inputs = $('input[type="date"]');
+
+    if (!$inputs.length) return;
+
+    /*
+     * The browser does not support the HTML5 date type.
+     *
+     * We add the datepicker as a fallback.
+     */
+    if ('date' !== $inputs.get(0).type) {
+        $inputs.addClass('datepicker');
+    }
+
+    $( ".datepicker" ).datepicker({
+      'dateFormat' : 'yy-mm-dd',
+      'changeMonth': true,
+      'changeYear': true
+    });
+});
+</script>
 @endsection
