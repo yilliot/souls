@@ -13,12 +13,11 @@
   <div class="ui fixed inverted menu">
     <div class="ui container">
       <a href="/office" class="header item">
-        <i class="wait icon"></i>
-        BackOffice
+        HCCJB
       </a>
 
-      <a class="{{Request::is('office/job*')?'active':''}} item" href="/office/job">Services</a>
-      <a class="{{Request::is('office/seller*')?'active':''}} item" href="/office/seller">Sellers</a>
+      <a class="{{Request::is('admin/service*')?'active':''}} item" href="/admin/service">Services</a>
+      <a class="{{Request::is('a/souls*')?'active':''}} item" href="/a/souls">Souls</a>
 
       <div class="right menu">
         <div class="ui simple dropdown item">

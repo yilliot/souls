@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeeder::class);
         $this->call(CgSeeder::class);
 
+        // $this->call(ServiceSeeder::class);
+
         // FOREIGN_KEY_CHECKS is supposed to only apply to a single
         // connection and reset itself but I like to explicitly
         // undo what I've done for clarity

@@ -8,6 +8,11 @@ class Cellgroup extends Model
 {
     protected $table = 'cellgroups';
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     // REL
     public function leader()
     {

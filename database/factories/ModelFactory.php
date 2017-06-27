@@ -12,6 +12,17 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Service::class, function (Faker\Generator $faker) {
+
+    return [
+        'topic' => $faker->name,
+        'at' => $faker->dateTimeBetween('now', '+2 months'),
+        'speaker_id' => 1,
+        'venue_id' => 1,
+        'type_id' => 1,
+    ];
+});
+
 $factory->define(App\Models\Soul::class, function (Faker\Generator $faker) {
 
     return [
@@ -24,7 +35,7 @@ $factory->define(App\Models\Soul::class, function (Faker\Generator $faker) {
         'birthday' => $faker->dateTime('now'),
         'nickname' => $faker->firstName,
         'email' => $faker->email,
-        'contact1' => $faker->phoneNumber,
+        'contact' => $faker->phoneNumber,
         'contact2' => $faker->phoneNumber,
         'address1' => $faker->streetName,
         'address2' => $faker->streetAddress,

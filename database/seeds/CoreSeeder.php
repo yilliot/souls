@@ -19,6 +19,18 @@ class CoreSeeder extends Seeder
             'created_at'=> \Carbon\Carbon::now()
         ];
 
+        DB::table('service_speakers')->insert(['id' => 1, 'name' => 'Pastor Joshua']);
+        DB::table('service_speakers')->insert(['id' => 2, 'name' => 'Xuxu']);
+        DB::table('service_speakers')->insert(['id' => 3, 'name' => 'Pastor Kevin']);
+        DB::table('service_speakers')->insert(['id' => 4, 'name' => 'Pastor Keith']);
+        DB::table('service_speakers')->insert(['id' => 5, 'name' => 'Pastor Garrick']);
+        DB::table('service_speakers')->insert(['id' => 6, 'name' => 'Pastor Daniel']);
+
+        DB::table('service_types')->insert(['id' => 1, 'name' => 'normal']);
+
+        DB::table('service_venues')->insert(['id' => 1, 'name' => 'hccjb']);
+
+
         // ministries
         DB::table('ministries')->insert($default + ['id' => 1,  'shortname' => 'Hospitality', 'fullname' => 'Hospitality']);
         DB::table('ministries')->insert($default + ['id' => 2,  'shortname' => 'ICT', 'fullname' => 'Info Comm Tech']);

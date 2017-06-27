@@ -1,0 +1,139 @@
+/**
+ * VAR
+ */
+
+$neon-green : #83f52c;
+$neon-cyan : #70fff7;
+$neon-pink : #ff0099;
+$text-glow-small : 0px 0px 3px rgba(33, 255, 0, 0.5);
+$text-glow : 0px 0px 30px rgba(33, 255, 0, 1);
+
+/**
+ * THEME RESET
+ */
+body { background-color: #1F1F11; color: white; }
+a { color: #BBB !important; }
+.sub.header.neon-green,
+.neon-green {
+  color: $neon-green !important;
+  // color: #84db64 !important;
+}
+
+.text-centered {
+  text-align: center !important;
+}
+
+.ui.piled.segment:after, .ui.piled.segment:before, .ui.piled.segments:after, .ui.piled.segments:before {
+  background-color: $neon-green !important;
+}
+.glow{
+  text-shadow: $text-glow;
+}
+#logo{width: 200px;}
+/** 
+#77ffbf
+#7afff8
+#ff32e0
+#70fff7
+*/
+/**
+ * ERROR COLORS
+ */
+.alert-danger {
+  background-color: $neon-pink;
+  border-color: #77ffbf;
+  color: white;
+}
+.field.error label {
+  color: $neon-pink !important;
+}
+
+.ui.positive.message
+{
+  background-color: black;
+  .header{
+    color: $neon-green !important;
+    text-shadow: $text-glow;
+  }
+  p {
+    color: $neon-green !important;
+    text-shadow: $text-glow;
+  }
+}
+
+/**
+ * LAYOUT
+ */
+#signup-container{
+  margin: 15px auto 5px auto;
+}
+
+@media only screen and (min-width: 1200px) {
+  #signup-container{
+    max-width: 550px !important;
+    margin: 100px auto 20px auto;
+    .ui.form{
+      margin:1em;
+    }
+  }
+}
+
+
+/**
+ * FORMS
+ */
+#just-begin-checkin,
+#just-begin-signup{
+  .field .ui.dropdown .item {
+    font-size: 1.05em !important;
+    background-color: #333 !important;
+    color: $neon-cyan !important;
+
+  }
+
+  .field i.icon {
+    color: white !important;
+  }
+
+  .field .labeled.input .ui.label {
+    color: white !important;
+  }
+
+  .field .labeled.input .ui.label,
+  .field .ui.dropdown.selection,
+  .field input[type=file],
+  .field input[type=text],
+  .field input[type=number],
+  .field input[type=email],
+  .field input[type=date],
+  .field input[type=password]
+  {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    font-size: 1.3em !important;
+    background-color: #333 !important;
+    color: $neon-cyan !important;
+    text-shadow: $text-glow-small;
+
+    &.active.dropdown,
+    .menu {
+      border-color: #000 !important;
+      .item {
+        border-top-color: #000 !important;
+      }
+    }
+    .dropdown.icon {
+      line-height: 2.3em;
+    }
+  }
+  .field.error .ui.dropdown.selection, 
+  .field.error .ui.dropdown .text, 
+  .field.error input
+  {
+    color:white !important;
+    background-color: $neon-pink !important;
+  }
+}
+
+
+@import 'zz';

@@ -28,7 +28,7 @@ class CgSeeder extends Seeder
         DB::table('cellgroups')->insert($default + ['id' => 4, 'leader' => 5, 'name' => 'E2']);
 
 
-        factory(Soul::class, 10)->create();
+        // factory(Soul::class, 10)->create();
 
     }
 }

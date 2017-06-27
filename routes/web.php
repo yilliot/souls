@@ -2,6 +2,21 @@
 
 Route::get('/', 'HomeController@welcome');
 
+Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
+    Route::get('/3km', 'JustBeginController@signup');
+    Route::get('/3km/signup', 'JustBeginController@signup');
+    Route::post('/3km/signup', 'JustBeginController@postSignup');
+    Route::get('/3km/checkin', 'JustBeginController@checkin');
+    Route::post('/3km/checkin', 'JustBeginController@postCheckin');
+    Route::get('/3km/recorded/{id}', 'JustBeginController@recorded');
+});
+
+## SESSION
+Route::group(['prefix' => 'session', 'namespace' => 'Session'], function () {
+    Route::get('/lang/zh', 'LocaleController@zh');
+    Route::get('/lang/en', 'LocaleController@en');
+});
+
 ## AUTH
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
@@ -18,13 +33,16 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 });
 
 ## CGL
-Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
-    'middleware' => 'cgl.admin'
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
+    // 'middleware' => 'cgl.admin'
     ], function () {
+        Route::resource('service', 'ServiceController');
+        // Route::group(['prefix' => 'service', 'namespace' => 'Service'], function(){
+        // });
 });
 
 ## USHER
 Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
-    'middleware' => 'usher.admin'
+    'middleware' => 'usher.cgl'
     ], function () {
 });

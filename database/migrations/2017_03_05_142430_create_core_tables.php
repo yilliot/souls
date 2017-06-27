@@ -101,16 +101,16 @@ class CreateCoreTables extends Migration
             $table->boolean('is_active')->default(true)->index();
 
             // content
-            $table->string('nric');
-            $table->string('nric_fullname');
-            $table->date('birthday');
+            $table->string('nric')->nullable();
+            $table->string('nric_fullname')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('nickname');
-            $table->string('email');
-            $table->string('contact1');
-            $table->string('contact2');
-            $table->string('address1');
-            $table->string('address2');
-            $table->string('postal_code');
+            $table->string('email')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('contact2')->nullable();
+            $table->string('address1')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('postal_code')->nullable();
 
             // cache
             $table->timestamps();
