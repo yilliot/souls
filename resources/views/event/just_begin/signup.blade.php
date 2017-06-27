@@ -85,7 +85,13 @@
 
       <div class="field {{$errors->has('contact') ? 'error' : ''}}">
         <label>{{ trans('event.just_begin.contact') }}</label>
-        <div class="ui left labeled input"> 
+        <div class="mobile-only field">
+          {{ Form::select('contact_code', \App\Enums\ContactCountryCodes::all(), null, ['class' => 'ui compact dropdown label'] )}}
+        </div>
+        <div class="mobile-only field">
+          {{ Form::text('contact', null, ['placeholder' => 'e.g : 0167654321'])}}
+        </div>
+        <div class="mobile-hidden ui left labeled input">
           {{ Form::select('contact_code', \App\Enums\ContactCountryCodes::all(), null, ['class' => 'ui compact dropdown label'] )}}
           {{ Form::text('contact', null, ['placeholder' => 'e.g : 0167654321'])}}
         </div>
@@ -105,7 +111,7 @@
         @endif
       </div>
       <div class="field {{$errors->has('cellgroup_id') ? 'error' : ''}}">
-        {{ Form::select('cellgroup_id', \App\Models\Cellgroup::get()->pluck('name', 'id'), null, ['class'=>'ui search dropdown', 'placeholder' => 'Cellgroup'] ) }}
+        {{ Form::select('cellgroup_id', \App\Models\Cellgroup::get()->pluck('name', 'id'), null, ['class'=>'ui compact search dropdown', 'placeholder' => 'Cellgroup'] ) }}
         @if ($errors->has('cellgroup_id'))
           <label > * {{ $errors->first('cellgroup_id') }}</label>
         @endif

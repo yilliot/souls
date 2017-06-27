@@ -19,7 +19,7 @@ return [
         'record' => '记录',
         'meters' => '今天功绩',
         'in_km' => '以KM为单位',
-        'signup_already' => '已经注册，现在就开始！',
+        'signup_already' => '已注册，奔跑吧！',
         'signup_now' => '还没有注册吗? 点这里注册吧！',
     ],
 ];
