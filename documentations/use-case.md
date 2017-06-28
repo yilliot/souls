@@ -6,7 +6,7 @@
  - update service
 
 
-## Ushers
+## Ushers (Let ministry leader login do)
 
  - new souls
 
@@ -17,7 +17,7 @@
  - update soul profile
 
 
-## Cellgroup Leader
+## Cellgroup Leader ( Pastoral )
 
  - service forecast
  - service attendance
