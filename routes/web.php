@@ -3,7 +3,7 @@
 Route::get('/', 'HomeController@welcome');
 
 Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
-    Route::get('/3km', 'JustBeginController@signup');
+    Route::get('/3km', 'JustBeginController@home');
     Route::get('/3km/signup', 'JustBeginController@signup');
     Route::post('/3km/signup', 'JustBeginController@postSignup');
     Route::get('/3km/checkin', 'JustBeginController@checkin');

@@ -9,6 +9,20 @@ use App\Models\Events\JustBeginRecord;
 
 class JustBeginController extends Controller
 {
+    public function home()
+    {
+        $totals = \DB::table('e01_just_begin_records')
+            ->select('cellgroup_id', \DB::raw('SUM(meters) as total'))
+            ->groupBy('cellgroup_id')
+            ->get()
+            ->pluck('total', 'cellgroup_id');
+
+        $records = JustBeginRecord::whereDate('created_at', \Carbon\Carbon::now()->format('Y-m-j'))
+            ->get();
+
+        return view('event.just_begin.home', compact('records', 'totals'));
+    }
+
     public function postSignup(Request $request)
     {
         $this->validate($request, [
