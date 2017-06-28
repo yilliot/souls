@@ -26,7 +26,7 @@
     @include('event.just_begin.part.flash')
 
     <h2 class="header">{{trans('event.just_begin.result')}}</h2>
-    <table class="ui inverted table">
+    <table class="ui inverted unstackable table">
       <thead>
         <tr class="center aligned">
           <th class="one wide">W1</th>
