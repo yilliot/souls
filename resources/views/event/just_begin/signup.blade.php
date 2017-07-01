@@ -88,10 +88,10 @@
 
       <div class="field {{$errors->has('contact') ? 'error' : ''}}">
         <label>{{ trans('event.just_begin.contact') }}</label>
-        <div class="mobile-only field">
+        <div class="field">
           {{ Form::select('contact_code', \App\Enums\ContactCountryCodes::all(), null, ['class' => 'ui compact dropdown label'] )}}
         </div>
-        <div class="mobile-only field">
+        <div class="field">
           {{ Form::text('contact', null, ['placeholder' => 'e.g : 0167654321'])}}
         </div>
         @if ($errors->has('contact'))
