@@ -7,11 +7,12 @@ $neon-cyan : #70fff7;
 $neon-pink : #ff0099;
 $text-glow-small : 0px 0px 3px rgba(33, 255, 0, 0.5);
 $text-glow : 0px 0px 30px rgba(33, 255, 0, 1);
+$hcc-black : #1F1F11;
 
 /**
  * THEME RESET
  */
-body { background-color: #1F1F11; color: white; }
+body { background-color: $hcc-black; color: white; }
 a { color: #BBB !important; }
 .sub.header.neon-green,
 .neon-green {
@@ -19,6 +20,9 @@ a { color: #BBB !important; }
   // color: #84db64 !important;
 }
 
+.ui.inverted.segment, .ui.primary.inverted.segment {
+  background-color: $hcc-black;
+}
 .text-centered {
   text-align: center !important;
 }
