@@ -94,10 +94,6 @@
         <div class="mobile-only field">
           {{ Form::text('contact', null, ['placeholder' => 'e.g : 0167654321'])}}
         </div>
-        <div class="mobile-hidden ui left labeled input">
-          {{ Form::select('contact_code', \App\Enums\ContactCountryCodes::all(), null, ['class' => 'ui compact dropdown label'] )}}
-          {{ Form::text('contact', null, ['placeholder' => 'e.g : 0167654321'])}}
-        </div>
         @if ($errors->has('contact'))
           <label > * {{ $errors->first('contact') }}</label>
         @endif
