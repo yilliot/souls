@@ -41,7 +41,7 @@
 
       <div class="field {{$errors->has('km') ? 'error' : ''}}">
         <label>{{ trans('event.just_begin.meters') }} ({{ trans('event.just_begin.in_km') }} )</label>
-        <div class="ui right labeled left icon input">
+        <div class="ui right labeled left icon fluid input">
           <i class="road icon"></i>
           <input type="number" name="km" step="0.001" class="text-centered" value="{{old('km')}}" placeholder="e.g : 3.52">
           <div class="ui label">KM</div>
