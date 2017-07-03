@@ -61,7 +61,7 @@
           <span class="ui {{$record->cellgroup->color}} label">
             {{$record->cellgroup}}
           </span>
-          {{$record->soul->nickname}} : {{$record->meters}} Meters
+          {{$record->soul->nickname}} : <a href="#" data-featherlight="/storage/{{$record->screenshot_path}}">{{$record->meters}}M</a>
         </div>
       </div>
     @empty
