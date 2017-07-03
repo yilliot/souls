@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+  <style>
+    .ui.ordered.list .list>.item:before, .ui.ordered.list>.item:before, ol.ui.list li:before {
+      margin-left: -1.75rem !important;
+      color: white !important;
+    }
+  </style>
   <div id="signup-container" class="ui piled inverted segment text container">
 
     <a href="/session/lang/zh">中文</a> |
@@ -48,12 +54,14 @@
     <div class="ui divider"></div>
 
     <h2 class="header">{{trans('event.just_begin.today_records')}}</h2>
-    <div class="ui list">
+    <div class="ui ordered list">
     @forelse ($records as $record)
       <div class="item">
-        <i class="square outline icon"></i>
         <div class="content">
-          [{{$record->cellgroup}}] {{$record->soul->nickname}} : {{$record->meters}} Meters
+          <span class="ui {{$record->cellgroup->color}} label">
+            {{$record->cellgroup}}
+          </span>
+          {{$record->soul->nickname}} : {{$record->meters}} Meters
         </div>
       </div>
     @empty

@@ -18,6 +18,7 @@ class JustBeginController extends Controller
             ->pluck('total', 'cellgroup_id');
 
         $records = JustBeginRecord::whereDate('created_at', \Carbon\Carbon::now()->format('Y-m-j'))
+            ->orderBy('meters', 'desc')
             ->get();
 
         return view('event.just_begin.home', compact('records', 'totals'));

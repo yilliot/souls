@@ -13,6 +13,18 @@ class Cellgroup extends Model
         return $this->name;
     }
 
+    // GET
+    public function getColorAttribute()
+    {
+        switch ($this->id) {
+            case 1: $color = 'red'; break;
+            case 2: $color = 'green'; break;
+            case 3: $color = 'blue'; break;
+            case 4: $color = 'yellow'; break;
+        }
+        return $color;
+    }
+
     // REL
     public function leader()
     {
