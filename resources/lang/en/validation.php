@@ -126,6 +126,7 @@ return [
         'contact' => 'Phone number',
         'cellgroup_id' => 'Cellgroup',
         'meters' => 'KM',
+        'minutes' => 'Minutes',
         'screenshot_path' => 'Photo / Screenshot',
     ],
 ];

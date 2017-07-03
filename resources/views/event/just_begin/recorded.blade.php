@@ -27,11 +27,15 @@
       <table class="ui inverted table">
         <tr>
           <td>{{ trans('attribute.name') }}</td>
-          <td> {{ $record->soul->nickname}} </td>
+          <td> {{ $record->soul->nickname }} </td>
         </tr>
         <tr>
           <td> {{ trans('event.just_begin.meters') }} </td>
-          <td> {{ $record->meters}} Meters </td>
+          <td> {{ $record->meters}}m </td>
+        </tr>
+        <tr>
+          <td> {{ trans('event.just_begin.minutes') }} </td>
+          <td> {{ $record->minutes}}{{trans('event.just_begin.minutes')}} </td>
         </tr>
         <tr>
           <td> CG </td>
@@ -39,7 +43,7 @@
         </tr>
         <tr>
           <td> {{ trans('attribute.date') }} </td>
-          <td> {{ $record->created_at->format('j M Y') }} </td>
+          <td> {{ $record->created_at->format('jS h:iA') }} </td>
         </tr>
       </table>
 

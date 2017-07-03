@@ -52,6 +52,18 @@
         @endif
       </div>
 
+      <div class="field {{$errors->has('minutes') ? 'error' : ''}}">
+        <label>{{ trans('event.just_begin.in_minutes') }} ( {{ trans('event.just_begin.minutes') }} )</label>
+        <div class="ui right labeled left icon fluid input">
+          <i class="hourglass end icon"></i>
+          <input type="number" name="minutes" step="1" class="text-centered" value="{{old('minutes')}}" placeholder="e.g : 71">
+          <div class="ui label"> {{trans('event.just_begin.minutes')}} </div>
+        </div>
+        @if ($errors->has('minutes'))
+          <label > * {{ $errors->first('minutes') }}</label>
+        @endif
+      </div>
+
       <div class="field {{$errors->has('screenshot_path') ? 'error' : ''}}">
         <label>{{ trans('event.just_begin.screenshot_path') }}</label>
         <div class="ui left icon input">

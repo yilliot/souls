@@ -126,6 +126,7 @@ return [
         'contact' => '联络电话号码',
         'cellgroup_id' => '小组',
         'meters' => 'KM',
+        'minutes' => '分钟',
         'screenshot_path' => '照片 / 截图',
     ],
 

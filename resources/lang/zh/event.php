@@ -22,6 +22,8 @@ return [
         'result' => '累积成绩',
         'no_result' => '今天还没有记录，开始跑，成为第一个吧！',
         'meters' => '今天功绩',
+        'minutes' => '分钟',
+        'in_minutes' => '你跑了多久?',
         'in_km' => '以KM为单位',
         'signup_already' => '已注册，奔跑吧！',
         'signup_now' => '还没有注册吗? 点这里注册吧！',

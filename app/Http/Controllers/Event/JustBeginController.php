@@ -76,7 +76,8 @@ class JustBeginController extends Controller
                 'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/',
                 'exists:souls,nric',
             ],
-            'km' => 'required|numeric|min:0|max:50',
+            'minutes' => 'required|numeric|min:8|max:300',
+            'km' => 'required|numeric|min:1|max:50',
             'screenshot_path' => 'required|image',
         ]);
 
@@ -84,12 +85,26 @@ class JustBeginController extends Controller
 
         session()->put('nric', $request->nric);
 
+        // check last record timing
+        $lastRecord = JustBeginRecord::where('soul_id', $soul->id)
+            ->orderBy('created_at', 'desc')
+            ->first();
+
+
+        $message = 'Your last check in was just '.$lastRecord->created_at->diffForHumans(\Carbon\Carbon::now()) .', try again after ' . $lastRecord->created_at->addHours(8)->format('jS h:iA');
+
+        if($lastRecord->created_at->diffInHours(\Carbon\Carbon::now()) < 8) {
+            return back()->with('error', 'rejected')->with('message', $message);
+        }
+
+
         $meters = $request->km * 1000;
 
         $record = new JustBeginRecord();
         $record->soul_id = $soul->id;
         $record->cellgroup_id = $soul->cellgroup_id;
         $record->meters = $meters;
+        $record->minutes = $request->minutes;
         $record->screenshot_path = $request->screenshot_path->store('events.just_begin', 'public');
         $record->save();
 

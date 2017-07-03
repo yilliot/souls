@@ -61,7 +61,7 @@
           <span class="ui {{$record->cellgroup->color}} label">
             {{$record->cellgroup}}
           </span>
-          {{$record->soul->nickname}} : <a href="#" data-featherlight="/storage/{{$record->screenshot_path}}">{{$record->meters}}M</a>
+          {{$record->soul->nickname}} : <a href="#" data-featherlight="/storage/{{$record->screenshot_path}}">{{$record->meters}}m ({{($record->meters/1000) / ($record->minutes/60)}}km/h)</a>
         </div>
       </div>
     @empty

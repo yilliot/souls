@@ -22,6 +22,8 @@ return [
         'result' => 'Result',
         'no_result' => 'No record yet, run and be the first one!',
         'meters' => 'Today achievement',
+        'minutes' => 'Minute',
+        'in_minutes' => 'How long did you run?',
         'in_km' => 'in KM',
         'signup_already' => 'Already signup, let\'s run!',
         'signup_now' => 'Don\'t have account yet? Sign up now!',
