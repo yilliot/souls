@@ -27,5 +27,6 @@ return [
         'in_km' => 'in KM',
         'signup_already' => 'Already signup, let\'s run!',
         'signup_now' => 'Don\'t have account yet? Sign up now!',
+        'message_please_wait' => 'Your last check in was just :t1, try again after :t2',
     ],
 ];

@@ -91,7 +91,10 @@ class JustBeginController extends Controller
             ->first();
 
 
-        $message = 'Your last check in was just '.$lastRecord->created_at->diffForHumans(\Carbon\Carbon::now()) .', try again after ' . $lastRecord->created_at->addHours(8)->format('jS h:iA');
+        $message = trans('event.just_begin.message_please_wait', [
+                't1' => $lastRecord->created_at->diffForHumans(\Carbon\Carbon::now()),
+                't2' => $lastRecord->created_at->addHours(8)->format('jS h:iA'),
+            ]);
 
         if($lastRecord->created_at->diffInHours(\Carbon\Carbon::now()) < 8) {
             return back()->with('error', 'rejected')->with('message', $message);

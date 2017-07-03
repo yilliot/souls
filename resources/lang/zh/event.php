@@ -27,5 +27,7 @@ return [
         'in_km' => '以KM为单位',
         'signup_already' => '已注册，奔跑吧！',
         'signup_now' => '还没有注册吗? 点这里注册吧！',
+        'message_please_wait' => '你:t1才打卡， 你可以在:t2后再打卡。',
+
     ],
 ];
