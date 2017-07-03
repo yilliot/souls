@@ -7,6 +7,7 @@
 @section('content')
   <div id="signup-container" class="ui piled inverted segment text container">
 
+    <a href="/event/3km"> <i class="home icon"></i> </a> |
     <a href="/session/lang/zh">中文</a> |
     <a href="/session/lang/en">English</a>
 
