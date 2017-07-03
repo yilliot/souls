@@ -98,13 +98,6 @@ class JustBeginController extends Controller
 
     public function checkin()
     {
-        if (session()->has('nric')) {
-            $nric = session()->get('nric');
-            $soul = Soul::where('nric', $nric)->first();
-            $record = JustBeginRecord::where('soul_id', $soul->id)->whereDate('created_at', \Carbon\Carbon::now()->format('Y-m-j'))->first();
-            if ($record) 
-               return redirect('/event/3km/recorded/'.$record->id)->with('success', 'success')->with('message', 'Your record is tracked'); 
-        }
         return view('event.just_begin.checkin');
     }
     public function recorded(Request $request)
