@@ -49,7 +49,7 @@
       </div>
       <div class="field {{$errors->has('nric_fullname') ? 'error' : ''}}">
         <label>{{ trans('event.just_begin.nric_fullname') }}</label>
-        {{ Form::text('nric_fullname', null, ['placeholder' => 'Your NRIC / Passport full name'])}}
+        {{ Form::text('nric_fullname', null, ['placeholder' => trans('event.just_begin.nric_fullname_placeholder')])}}
         @if ($errors->has('nric_fullname'))
           <label > * {{ $errors->first('nric_fullname') }}</label>
         @endif

@@ -6,6 +6,7 @@ return [
         'nickname' => 'Name that we usually call you',
         'nric' => 'IC / Passport number',
         'nric_fullname' => 'IC / Passport\'s full name',
+        'nric_fullname_placeholder' => 'Your full name (follow NRIC / Passport)',
         'email' => 'Email address',
         'address' => 'Address',
         'address1' => 'Jalan / Street',
