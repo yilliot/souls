@@ -21,11 +21,12 @@
     <h1 class="ui center aligned icon header">
       <div>
         <img id="logo" src="/images/hcc-logo-black320.png" alt="HCCJB">
+        <div> Total {{ number_format($totals->sum()) }} Meters </div>
       </div>
       <div class="neon-green content">
           <span class="glow">3KM</span>
           <div class="sub neon-green header">
-            {{trans('event.just_begin.just_begin')}}
+            <div>{{trans('event.just_begin.just_begin')}}</div>
           </div>
         </div>
     </h1>
@@ -61,7 +62,7 @@
           <span class="ui {{$record->cellgroup->color}} label">
             {{$record->cellgroup}}
           </span>
-          {{$record->soul->nickname}} : <a href="#" data-featherlight="/storage/{{$record->screenshot_path}}">{{number_format($record->meters/1000, 2)}}km ({{number_format(($record->meters/1000) / ($record->minutes/60), 2)}}km/h)</a>
+          {{$record->soul->nickname}} : <a href="#" data-featherlight="/storage/{{$record->screenshot_path}}">{{number_format($record->meters/1000, 2)}}km ({{number_format( $record->minutes / ($record->meters/1000), 2)}}m/km)</a>
           <div style="width: 100%;">
             <div class="ui tiny progress" data-percent="{{$record->meters/$topscore*100}}">
               <div class="bar">
