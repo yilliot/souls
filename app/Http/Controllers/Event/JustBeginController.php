@@ -21,7 +21,9 @@ class JustBeginController extends Controller
             ->orderBy('meters', 'desc')
             ->get();
 
-        $topscore = $records->first()->meters;
+        if ($records->count()) {
+            $topscore = $records->first()->meters;
+        }
 
         return view('event.just_begin.home', compact('records', 'totals', 'topscore'));
     }
