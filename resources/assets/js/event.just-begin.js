@@ -26,6 +26,8 @@ $(function(){
     .dropdown()
   ;
 
+  $('.ui.progress').progress();
+
   $('.modalcaller').click( function() {
 
     // get the right modal init

@@ -22,6 +22,8 @@ $(function () {
   $('.ui.checkbox').checkbox();
   $('.dropdown').dropdown();
 
+  $('.ui.progress').progress();
+
   $('.modalcaller').click(function () {
 
     // get the right modal init

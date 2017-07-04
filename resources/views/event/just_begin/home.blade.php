@@ -32,7 +32,7 @@
     @include('event.just_begin.part.flash')
 
     <h2 class="header">{{trans('event.just_begin.result')}}</h2>
-    <table class="ui inverted unstackable table">
+    <table class="ui inverted unstackable compact table">
       <thead>
         <tr class="center aligned">
           <th class="one wide">W1</th>
@@ -62,6 +62,12 @@
             {{$record->cellgroup}}
           </span>
           {{$record->soul->nickname}} : <a href="#" data-featherlight="/storage/{{$record->screenshot_path}}">{{number_format($record->meters/1000, 2)}}km ({{number_format(($record->meters/1000) / ($record->minutes/60), 2)}}km/h)</a>
+          <div style="width: 100%;">
+            <div class="ui tiny progress" data-percent="{{$record->meters/$topscore*100}}">
+              <div class="bar">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     @empty

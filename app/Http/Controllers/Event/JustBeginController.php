@@ -21,7 +21,9 @@ class JustBeginController extends Controller
             ->orderBy('meters', 'desc')
             ->get();
 
-        return view('event.just_begin.home', compact('records', 'totals'));
+        $topscore = $records->first()->meters;
+
+        return view('event.just_begin.home', compact('records', 'totals', 'topscore'));
     }
 
     public function postSignup(Request $request)
