@@ -90,15 +90,14 @@ class JustBeginController extends Controller
             ->orderBy('created_at', 'desc')
             ->first();
 
-
-        $message = trans('event.just_begin.message_please_wait', [
-                't1' => $lastRecord->created_at->diffForHumans(\Carbon\Carbon::now()),
-                't2' => $lastRecord->created_at->addHours(8)->format('jS h:iA'),
-            ]);
-
-        if($lastRecord && $lastRecord->created_at->diffInHours(\Carbon\Carbon::now()) < 8) {
+        if ($lastRecord && $lastRecord->created_at->diffInHours(\Carbon\Carbon::now()) < 8) {
+            $message = trans('event.just_begin.message_please_wait', [
+                    't1' => $lastRecord->created_at->diffForHumans(\Carbon\Carbon::now()),
+                    't2' => $lastRecord->created_at->addHours(8)->format('jS h:iA'),
+                ]);
             return back()->with('error', 'rejected')->with('message', $message);
         }
+
 
 
         $meters = $request->km * 1000;
