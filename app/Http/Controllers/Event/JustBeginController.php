@@ -96,7 +96,7 @@ class JustBeginController extends Controller
                 't2' => $lastRecord->created_at->addHours(8)->format('jS h:iA'),
             ]);
 
-        if($lastRecord->created_at->diffInHours(\Carbon\Carbon::now()) < 8) {
+        if($lastRecord && $lastRecord->created_at->diffInHours(\Carbon\Carbon::now()) < 8) {
             return back()->with('error', 'rejected')->with('message', $message);
         }
 
