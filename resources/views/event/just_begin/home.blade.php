@@ -33,7 +33,25 @@
     @include('event.just_begin.part.flash')
 
     <h2 class="header">{{trans('event.just_begin.result')}}</h2>
-    <table class="ui inverted unstackable compact table">
+    <table class="ui inverted unstackable compact table mobile-only">
+      <tr>
+        <th>W1</th>
+        <td>{{number_format($totals->get(1, 0))}}</td>
+      </tr>
+      <tr>
+        <th>S1</th>
+        <td>{{number_format($totals->get(2, 0))}}</td>
+      </tr>
+      <tr>
+        <th>E1</th>
+        <td>{{number_format($totals->get(3, 0))}}</td>
+      </tr>
+      <tr>
+        <th>E1</th>
+        <td>{{number_format($totals->get(4, 0))}}</td>
+      </tr>
+    </table>
+    <table class="ui inverted unstackable compact table mobile-hidden">
       <thead>
         <tr class="center aligned">
           <th class="one wide">W1</th>
