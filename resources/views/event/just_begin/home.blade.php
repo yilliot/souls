@@ -47,7 +47,7 @@
         <td>{{number_format($totals->get(3, 0))}}</td>
       </tr>
       <tr>
-        <th>E1</th>
+        <th>E2</th>
         <td>{{number_format($totals->get(4, 0))}}</td>
       </tr>
     </table>
