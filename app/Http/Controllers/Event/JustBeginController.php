@@ -12,20 +12,29 @@ class JustBeginController extends Controller
     public function home()
     {
         $totals = \DB::table('e01_just_begin_records')
-            ->select('cellgroup_id', \DB::raw('SUM(meters) as total'))
+            ->select('cellgroup_id',
+                \DB::raw('SUM(meters) as total'),
+                \DB::raw('count(id) as count')
+                )
             ->groupBy('cellgroup_id')
-            ->get()
-            ->pluck('total', 'cellgroup_id');
+            ->orderBy('total', 'desc')
+            ->get();
 
-        $records = JustBeginRecord::whereDate('created_at', \Carbon\Carbon::now()->format('Y-m-j'))
+
+        $records = JustBeginRecord::with('cellgroup')->whereDate('created_at', \Carbon\Carbon::now()->format('Y-m-j'))
             ->orderBy('meters', 'desc')
             ->get();
 
-        if ($records->count()) {
-            $topscore = $records->first()->meters;
-        }
+        $topscore = $totals->first()->total;
 
-        return view('event.just_begin.home', compact('records', 'totals', 'topscore'));
+        $cgs = [
+            1 => ['name'=>'W1', 'color'=>'red'],
+            2 => ['name'=>'S1', 'color'=>'green'],
+            3 => ['name'=>'E1', 'color'=>'blue'],
+            4 => ['name'=>'E2', 'color'=>'yellow'],
+        ];
+
+        return view('event.just_begin.home', compact('records', 'totals', 'topscore', 'cgs'));
     }
 
     public function postSignup(Request $request)

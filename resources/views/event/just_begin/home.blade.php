@@ -21,7 +21,7 @@
     <h1 class="ui center aligned icon header">
       <div>
         <img id="logo" src="/images/hcc-logo-black320.png" alt="HCCJB">
-        <div> Total {{ number_format($totals->sum()) }} Meters </div>
+        <div> Total {{ number_format($totals->sum('total')/1000) }} KM </div>
       </div>
       <div class="neon-green content">
           <span class="glow">3KM</span>
@@ -33,72 +33,65 @@
     @include('event.just_begin.part.flash')
 
     <h2 class="header">{{trans('event.just_begin.result')}}</h2>
-    <table class="ui inverted unstackable compact table mobile-only">
-      <tr>
-        <th>W1</th>
-        <td>{{number_format($totals->get(1, 0))}}</td>
-      </tr>
-      <tr>
-        <th>S1</th>
-        <td>{{number_format($totals->get(2, 0))}}</td>
-      </tr>
-      <tr>
-        <th>E1</th>
-        <td>{{number_format($totals->get(3, 0))}}</td>
-      </tr>
-      <tr>
-        <th>E2</th>
-        <td>{{number_format($totals->get(4, 0))}}</td>
-      </tr>
-    </table>
-    <table class="ui inverted unstackable compact table mobile-hidden">
-      <thead>
-        <tr class="center aligned">
-          <th class="one wide">W1</th>
-          <th class="one wide">S1</th>
-          <th class="one wide">E1</th>
-          <th class="one wide">E2</th>
-        </tr>
-      </thead>
-      <tr class="center aligned">
-        <td>{{number_format($totals->get(1, 0))}}</td>
-        <td>{{number_format($totals->get(2, 0))}}</td>
-        <td>{{number_format($totals->get(3, 0))}}</td>
-        <td>{{number_format($totals->get(4, 0))}}</td>
-      </tr>
-    </table>
-
-    <div>* unit in meter</div>
-
-    <div class="ui divider"></div>
-
-    <h2 class="header">{{trans('event.just_begin.today_records')}}</h2>
     <div class="ui ordered list">
-    @forelse ($records as $record)
+    @foreach ($totals as $total)
       <div class="item">
         <div class="content">
-          <span class="ui {{$record->cellgroup->color}} label">
-            {{$record->cellgroup}}
+          <span class="ui large {{$cgs[$total->cellgroup_id]['color']}} label">
+            {{$cgs[$total->cellgroup_id]['name']}}
           </span>
-          {{$record->soul->nickname}} : <a href="#" data-featherlight="/storage/{{$record->screenshot_path}}">{{number_format($record->meters/1000, 2)}}km ({{number_format( $record->minutes / ($record->meters/1000), 2)}}m/km)</a>
-          <div style="width: 100%;">
-            <div class="ui tiny progress" data-percent="{{$record->meters/$topscore*100}}">
-              <div class="bar">
-              </div>
+          {{number_format($total->total/1000)}} KM
+          ( {{$total->count}} runs )
+        </div>
+        <div style="width: 100%;">
+          <div class="ui tiny progress" data-percent="{{$total->total/$topscore*100}}">
+            <div class="bar">
             </div>
           </div>
         </div>
       </div>
+    @endforeach
+    </div>
+
+    <div class="ui divider"></div>
+
+    <h2 class="header">{{trans('event.just_begin.today_records')}}</h2>
+    <table class="ui inverted unstackable small compact basic table">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th class="mobile-hidden">Paces</th>
+          <th class="mobile-hidden">Speed</th>
+        </tr>
+      </thead>
+    @forelse ($records as $id => $record)
+      <tr data-featherlight="/storage/{{$record->screenshot_path}}">
+        <td>
+          <div class="ui {{$record->cellgroup->color}} small label">
+            {{$record->cellgroup}}
+            <div class="detail">{{number_format($record->meters/1000, 2)}}km</div>
+          </div>
+        </td>
+        <td>
+          {{$record->soul->nickname}}
+        </td>
+        <td class="mobile-hidden">
+          {{number_format( $record->pace, 2)}} mins/km
+        </td>
+        <td class="mobile-hidden">
+          {{number_format( $record->speed , 2)}} km/h
+        </td>
+      </tr>
     @empty
-      <div class="item">
-        <div class="content">
+      <tr>
+        <td colspan="4">
           <div class="ui inverted red basic segment">
             {{trans('event.just_begin.no_result')}}
           </div>
-        </div>
-      </div>
+        </td>
+      </tr>
     @endforelse
-    </div>
-
+    </table>
   </div>
 @endsection
