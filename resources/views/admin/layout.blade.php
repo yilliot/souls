@@ -7,18 +7,17 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title> @yield('title') : {{ config('app.name', 'Laravel') }}</title>
   <link href="{{ asset('semantic/semantic.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/office.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
 <body>
   <div class="ui fixed inverted menu">
     <div class="ui container">
-      <a href="/office" class="header item">
-        <i class="wait icon"></i>
-        BackOffice
+      <a href="/admin" class="header item">
+        HCCJB
       </a>
 
-      <a class="{{Request::is('office/job*')?'active':''}} item" href="/office/job">Services</a>
-      <a class="{{Request::is('office/seller*')?'active':''}} item" href="/office/seller">Sellers</a>
+      <a class="{{Request::is('admin/service*')?'active':''}} item" href="/admin/service">Services</a>
+      <a class="{{Request::is('admin/soul*')?'active':''}} item" href="/admin/soul">Souls</a>
 
       <div class="right menu">
         <div class="ui simple dropdown item">
@@ -37,7 +36,7 @@
     </div>
   </div>
   <div id="maincontent" class="ui main container">
-  @include('office.parts.flash')
+  @include('parts.flash')
   @yield('content')
 
   <div class="marginated ui fluid container engraved footer">
@@ -50,6 +49,6 @@
   </div>
   <script src="/js/manifest.js"></script>
   <script src="/js/vendor.js"></script>
-  <script src="/js/office.js"></script>
+  <script src="/js/admin.js"></script>
 </body>
 </html>

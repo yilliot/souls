@@ -32,17 +32,24 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
         ->name('auth.verify_email');
 });
 
-## CGL
+
+## Admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
-    // 'middleware' => 'cgl.admin'
+    // 'middleware' => 'admin'
     ], function () {
         Route::resource('service', 'ServiceController');
+        Route::group(['prefix' => 'soul'], function(){
+            Route::get('/', 'SoulController@index');
+            Route::get('/{id}', 'SoulController@show');
+        });
         // Route::group(['prefix' => 'service', 'namespace' => 'Service'], function(){
         // });
 });
 
-## USHER
+## CGL
 Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
-    'middleware' => 'usher.cgl'
+    // 'middleware' => 'cgl'
     ], function () {
+        Route::resource('soul', 'SoulController');
 });
+

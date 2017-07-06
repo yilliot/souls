@@ -17,7 +17,11 @@ const { mix } = require('laravel-mix');
 //   .copy('resources/assets/semantic/dist', 'public/semantic', false);
 
 mix
+.sass('resources/assets/sass/admin.scss', 'public/css')
 .sass('resources/assets/sass/event.just-begin.scss', 'public/css')
+.js([
+      'resources/assets/js/admin.js',
+  ], 'public/js/admin.js')
 .js([
       'resources/assets/js/event.just-begin.js',
   ], 'public/js/event.just-begin.js')

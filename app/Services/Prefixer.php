@@ -10,8 +10,8 @@ class Prefixer
     {
         $this->prefixes = [
             'App\Models\User' => 'U',
-            'App\Models\UserSeller' => 'U',
-            'App\Models\Job' => 'J',
+            'App\Models\Service' => 'S',
+            'App\Models\Soul' => 'P',
         ];
         $this->length = 5;
     }
