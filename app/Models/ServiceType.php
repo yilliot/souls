@@ -8,6 +8,12 @@ class ServiceType extends Model
 {
     protected $table = 'service_types';
 
+    // GET
+    public function __tostring()
+    {
+        return $this->name;
+    }
+
     // REL
     public function services()
     {

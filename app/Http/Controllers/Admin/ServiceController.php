@@ -13,10 +13,18 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filter = $request->only(['sortBy', 'order', 'onward']);
+        $filter = array_default($filter, [
+            'sortBy' => 'id',
+            'order' => 'asc',
+            'onward' => \Carbon\Carbon::now()->format('Y-m-d'),
+        ]);
+
         $services = Service::paginate();
-        return view('admin.service.index', compact('services'));
+
+        return view('admin.service.index', compact('services', 'filter'));
     }
 
     /**
@@ -37,7 +45,17 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = new Service;
+        $service->at = $request->at;
+        $service->topic = $request->topic;
+        $service->type_id = $request->type;
+        $service->speaker_id = $request->speaker;
+        $service->venue_id = $request->venue;
+        $service->forecast_size = 0;
+        $service->attendance_size = 0;
+        $service->save();
+
+        return back()->with('success', 'success')->with('message', 'created!');
     }
 
     /**
@@ -48,7 +66,9 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        //
+        $service = Service::find($id);
+
+        return view('admin.service.show', compact('service'));
     }
 
     /**
@@ -59,7 +79,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::find($id);
+        return view('admin.service.edit', compact('service'));
     }
 
     /**
@@ -71,7 +92,15 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $service = Service::find($id);
+        $service->at = $request->at;
+        $service->topic = $request->topic;
+        $service->type_id = $request->type;
+        $service->speaker_id = $request->speaker;
+        $service->venue_id = $request->venue;
+        $service->save();
+
+        return back()->with('success', 'success')->with('message', 'updated!');
     }
 
     /**
@@ -82,6 +111,9 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::find($id);
+        $service->delete();
+
+        return back()->with('success', 'success')->with('message', 'deleted!');
     }
 }

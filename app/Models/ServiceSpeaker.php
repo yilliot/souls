@@ -8,6 +8,11 @@ class ServiceSpeaker extends Model
 {
     protected $table = 'service_speakers';
 
+    public function __tostring()
+    {
+        return $this->name;
+    }
+
     // REL
     public function services()
     {

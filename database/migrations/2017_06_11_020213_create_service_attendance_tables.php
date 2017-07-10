@@ -30,12 +30,13 @@ class CreateServiceAttendanceTables extends Migration
 
         Schema::create('services', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('topic')->index();
+            $table->string('topic')->nullable()->index();
             $table->integer('speaker_id')->nullable()->unsigned()->index();
             $table->integer('venue_id')->nullable()->unsigned()->index();
             $table->integer('type_id')->nullable()->unsigned()->index();
 
             $table->datetime('at')->index();
+            $table->integer('created_by')->index();
 
             $table->integer('forecast_size');
             $table->integer('attendance_size');

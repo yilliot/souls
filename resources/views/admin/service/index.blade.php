@@ -1,4 +1,4 @@
-@extends('admin.layout.base')
+@extends('admin.layout')
 @section('title')
 Services
 @endsection
@@ -7,7 +7,11 @@ Services
 <h1 class="ui header">Services</h1>
 <div class="ui segment">
   {!! Form::open(['url' => url()->current(), 'class' => 'ui form', 'method' => 'GET']) !!}
-    {!! Form::select('type', [], null, ['class' => 'ui dropdown']) !!}
+    <div class="inline field">
+      <label for="">From</label>
+      <input type="date" name="onward" value="{{$filter['onward']}}">
+      <label for="">Onward</label>
+    </div>
     <div class="clearfix field">
       <a href="{{ url()->current() }}" class="ui basic right floated right labeled icon tiny button">
         Reset <i class="undo icon"></i>
@@ -15,8 +19,9 @@ Services
       <button class="ui teal right floated right labeled icon tiny button">
         Filter <i class="filter icon"></i>
       </button>
+      <div class="ui hidden divider"></div>
+      <div class="ui hidden divider"></div>
     </div>
-    <div class="ui hidden divider"></div>
   {!! Form::close() !!}
 </div>
 <table class="ui table">
@@ -34,14 +39,17 @@ Services
     @forelse ($services as $service)
       <tr>
         <td> {{prefix()->wrap($service)}} </td>
-        <td> {{$service->title}} </td>
-        <td> {{$service->pastor}} </td>
+        <td> {{$service->topic}} </td>
+        <td> {{$service->speaker}} </td>
         <td> {{$service->at->format('M d')}} </td>
         <td>  {{$service->at->format('h:i a')}} </td>
         <td>
           <div class="ui small icon buttons">
-            <a href="/office/service/{{$service->id}}" class="ui teal button">
+            <a href="/admin/service/{{$service->id}}" class="ui button">
               <i class="eye icon"></i>
+            </a>
+            <a href="/admin/service/{{$service->id}}/edit" class="ui teal button">
+              <i class="edit icon"></i>
             </a>
           </div>
         </td>
