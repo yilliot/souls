@@ -46,9 +46,10 @@ class CreateServiceAttendanceTables extends Migration
 
         Schema::create('service_attendances', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('service_id')->index();
-            $table->integer('soul_id')->index();
-            $table->boolean('is_attended');
+            $table->integer('service_id')->unsigned()->index();
+            $table->integer('cellgroup_id')->unsigned()->index();
+            $table->integer('soul_id')->unsigned()->index();
+            $table->boolean('is_attended')->default(false);
 
             $table->timestamps();
         });

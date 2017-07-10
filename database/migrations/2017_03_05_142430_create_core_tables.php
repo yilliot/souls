@@ -43,26 +43,6 @@ class CreateCoreTables extends Migration
 
         });
 
-        Schema::create('ministry_groups', function(Blueprint $table){
-
-            // relation
-            $table->increments('id');
-            $table->integer('leader')->nullable()->unsigned()->index();
-
-            // status
-            $table->boolean('is_active')->default(true)->index();
-
-            // content
-            $table->string('name');
-        });
-
-        Schema::create('ministry_ministry_groups', function(Blueprint $table) {
-
-            $table->increments('id');
-            $table->integer('ministry_group_id')->unsigned()->index();
-            $table->integer('ministry_id')->unsigned()->index();
-        });
-
         Schema::create('ministries', function(Blueprint $table) {
 
             // relation
@@ -126,8 +106,6 @@ class CreateCoreTables extends Migration
     {
         Schema::drop('baptisms');
         Schema::drop('ministries');
-        Schema::drop('ministry_ministry_groups');
-        Schema::drop('ministry_groups');
         Schema::drop('souls');
         Schema::drop('ministry_souls');
         Schema::drop('cellgroups');
