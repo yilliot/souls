@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Soul;
+use App\Http\Requests\NewSoulRequest;
+use App\Http\Requests\UpdateSoulRequest;
 
 class SoulController extends Controller
 {
@@ -42,18 +44,18 @@ class SoulController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewSoulRequest $request)
     {
         $soul = new Soul;
         $soul->cellgroup_id = $request->cellgroup;
         $soul->baptism_id = $request->baptism;
-        $soul->baptism_serial = $request->baptism_serial;
+        $soul->baptism_serial = strtoupper($request->baptism_serial);
         $soul->is_active = $request->is_active;
-        $soul->nric = $request->nric;
-        $soul->nric_fullname = $request->nric_fullname;
+        $soul->nric = strtoupper($request->nric);
+        $soul->nric_fullname = strtoupper($request->nric_fullname);
         $soul->birthday = $request->birthday;
         $soul->nickname = $request->nickname;
-        $soul->email = $request->email;
+        $soul->email = strtolower($request->email);
         $soul->contact = $request->contact;
         $soul->contact2 = $request->contact2;
         $soul->address1 = $request->address1;
@@ -97,18 +99,18 @@ class SoulController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSoulRequest $request, $id)
     {
-        $soul = new Soul;
+        $soul = Soul::find($id);
         $soul->cellgroup_id = $request->cellgroup;
         $soul->baptism_id = $request->baptism;
-        $soul->baptism_serial = $request->baptism_serial;
+        $soul->baptism_serial = strtoupper($request->baptism_serial);
         $soul->is_active = $request->is_active;
-        $soul->nric = $request->nric;
-        $soul->nric_fullname = $request->nric_fullname;
+        $soul->nric = strtoupper($request->nric);
+        $soul->nric_fullname = strtoupper($request->nric_fullname);
         $soul->birthday = $request->birthday;
         $soul->nickname = $request->nickname;
-        $soul->email = $request->email;
+        $soul->email = strtolower($request->email);
         $soul->contact = $request->contact;
         $soul->contact2 = $request->contact2;
         $soul->address1 = $request->address1;

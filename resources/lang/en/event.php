@@ -3,6 +3,8 @@
 return [
     'just_begin' => [
         'just_begin' => 'Just Begin',
+
+        // soul field
         'nickname' => 'Name that we usually call you',
         'nric' => 'IC / Passport number',
         'nric_fullname' => 'IC / Passport\'s full name',
@@ -14,6 +16,7 @@ return [
         'postal_code' => 'Postal Code',
         'contact' => 'Phone number',
         'birthday' => 'Birthday',
+
         'screenshot_path' => 'Screenshot / Photo',
         'signup' => 'Sign up',
         'checkin' => 'Check in',

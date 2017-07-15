@@ -3,6 +3,8 @@
 return [
     'just_begin' => [
         'just_begin' => '这才开始',
+
+        // soul field
         'nickname' => '平时称呼你的名字',
         'nric' => 'IC 身份证 / 护照编号',
         'nric_fullname' => 'IC 身份证 / 护照编号 的 全名',
@@ -14,6 +16,7 @@ return [
         'postal_code' => '邮区编号',
         'contact' => '电话号码',
         'birthday' => '生日日期',
+
         'screenshot_path' => '照片 / 截图',
         'signup' => '注册',
         'checkin' => '打卡',
