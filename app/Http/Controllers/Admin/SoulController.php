@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Soul;
+use App\Http\Requests\NewSoulRequest;
+use App\Http\Requests\UpdateSoulRequest;
 
 class SoulController extends Controller
 {
@@ -13,8 +15,15 @@ class SoulController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filter = $request->only(['sortBy', 'order', 'cellgroup']);
+        $filter = array_default($filter, [
+            'sortBy' => 'id',
+            'order' => 'asc',
+            'cellgroup' => 'all',
+        ]);
+
         $souls = Soul::paginate();
         return view('admin.soul.index', compact('souls'));
     }
@@ -26,7 +35,7 @@ class SoulController extends Controller
      */
     public function create()
     {
-        return view('admin.service.create');
+        return view('admin.soul.create');
     }
 
     /**
@@ -35,9 +44,26 @@ class SoulController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewSoulRequest $request)
     {
-        //
+        $soul = new Soul;
+        $soul->cellgroup_id = $request->cellgroup;
+        $soul->baptism_id = $request->baptism;
+        $soul->baptism_serial = strtoupper($request->baptism_serial);
+        $soul->is_active = $request->is_active;
+        $soul->nric = strtoupper($request->nric);
+        $soul->nric_fullname = strtoupper($request->nric_fullname);
+        $soul->birthday = $request->birthday;
+        $soul->nickname = $request->nickname;
+        $soul->email = strtolower($request->email);
+        $soul->contact = $request->contact;
+        $soul->contact2 = $request->contact2;
+        $soul->address1 = $request->address1;
+        $soul->address2 = $request->address2;
+        $soul->postal_code = $request->postal_code;
+        $soul->save();
+
+        return back()->with('success', 'success')->with('message', 'created!');
     }
 
     /**
@@ -49,6 +75,7 @@ class SoulController extends Controller
     public function show($id)
     {
         $soul = Soul::find($id);
+
         return view('admin.soul.show', compact('soul'));
     }
 
@@ -60,7 +87,9 @@ class SoulController extends Controller
      */
     public function edit($id)
     {
-        //
+        $soul = Soul::find($id);
+
+        return view('admin.soul.edit', compact('soul'));
     }
 
     /**
@@ -70,9 +99,26 @@ class SoulController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSoulRequest $request, $id)
     {
-        //
+        $soul = Soul::find($id);
+        $soul->cellgroup_id = $request->cellgroup;
+        $soul->baptism_id = $request->baptism;
+        $soul->baptism_serial = strtoupper($request->baptism_serial);
+        $soul->is_active = $request->is_active;
+        $soul->nric = strtoupper($request->nric);
+        $soul->nric_fullname = strtoupper($request->nric_fullname);
+        $soul->birthday = $request->birthday;
+        $soul->nickname = $request->nickname;
+        $soul->email = strtolower($request->email);
+        $soul->contact = $request->contact;
+        $soul->contact2 = $request->contact2;
+        $soul->address1 = $request->address1;
+        $soul->address2 = $request->address2;
+        $soul->postal_code = $request->postal_code;
+        $soul->save();
+
+        return back()->with('success', 'success')->with('message', 'updated!');
     }
 
     /**
@@ -83,6 +129,9 @@ class SoulController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $soul = Soul::find($id);
+        $soul->delete();
+
+        return back()->with('success', 'success')->with('message', 'deleted!');
     }
 }

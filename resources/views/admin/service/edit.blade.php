@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('title')
-Edit service
+Update service
 @endsection
 @section('content')
 <div class="ui text container">
-  <h1 class="ui header">Edit service</h1>
+  <h1 class="ui header">Update service</h1>
   {!! Form::open(['url' => 'admin/service/'.$service->id, 'method' => 'POST', 'class' => 'ui form']) !!}
   {{ method_field('PUT') }}
   <table class="ui structured table">

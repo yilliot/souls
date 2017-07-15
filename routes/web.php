@@ -38,10 +38,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
     // 'middleware' => 'admin'
     ], function () {
         Route::resource('service', 'ServiceController');
-        Route::group(['prefix' => 'soul'], function(){
-            Route::get('/', 'SoulController@index');
-            Route::get('/{id}', 'SoulController@show');
-        });
+        Route::resource('soul', 'SoulController');
         // Route::group(['prefix' => 'service', 'namespace' => 'Service'], function(){
         // });
 });
