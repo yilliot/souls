@@ -37,6 +37,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
     // 'middleware' => 'admin'
     ], function () {
+        Route::get('service/{service}/attendance', 'AttendanceController@index');
         Route::resource('service', 'ServiceController');
         Route::resource('soul', 'SoulController');
         // Route::group(['prefix' => 'service', 'namespace' => 'Service'], function(){

@@ -68,7 +68,9 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
 
-        return view('admin.service.show', compact('service'));
+        $cellgroups = \App\Models\Cellgroup::all();
+
+        return view('admin.service.show', compact('service', 'cellgroups'));
     }
 
     /**

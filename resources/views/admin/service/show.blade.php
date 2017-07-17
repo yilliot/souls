@@ -13,21 +13,48 @@ Service details
 
 <div class="ui stackable column grid">
   <div class="five wide column">
-    <div class="ui fluid card">
-      <div class="content">
-        <div>{{ $service->at->toDateString() }}</div>
-
-        <div> <i class="eye icon"></i> {{ $service->forecast_size }}</div>
-        <div> <i class="user group icon"></i> {{ $service->attendance_size }}</div>
-
-        <div>{{ prefix()->wrap($service) }}</div>
-        <div>{{ $service->speaker }}</div>
-        <div>{{ $service->venue }}</div>
-        <div>{{ $service->type }}</div>
-      </div>
-    </div>
+    @include('admin.service.partial.service-card', ['service' => $service])
   </div>
   <div class="eleven wide column">
+    <table class="ui basic table">
+      <thead>
+        <tr>
+          <th>
+            Cellgroup
+          </th>
+          <th>
+            Forecast
+          </th>
+          <th>
+            Attendance
+          </th>
+          <th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach ($cellgroups as $cellgroup)
+          <tr>
+            <td> {{$cellgroup}} </td>
+            <td> 0 </td>
+            <td> 0 </td>
+            <td>
+              <a href="/admin/service/{{$service->id}}/attendance?cellgroup={{$cellgroup->id}}" class="ui tiny icon button">
+                <i class="edit icon"></i>
+              </a>
+            </td>
+          </tr>
+        @endforeach
+      </tbody>
+      <tfoot>
+        <tr>
+          <th> Total </th>
+          <th> {{ $service->forecast_size }} </th>
+          <th> {{ $service->attendance_size }} </th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 </div>
 @endsection
