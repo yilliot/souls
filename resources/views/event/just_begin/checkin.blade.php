@@ -75,6 +75,14 @@
         @endif
       </div>
 
+      <div class="field {{$errors->has('cellgroup_id') ? 'error' : ''}}">
+        <label>{{ trans('event.just_begin.be_helper') }}</label>
+        {{ Form::select('cellgroup_id', \App\Models\Cellgroup::get()->pluck('name', 'id'), null, ['class'=>'ui compact search dropdown', 'placeholder' => trans('event.just_begin.be_helper_placeholder')] ) }}
+        @if ($errors->has('cellgroup_id'))
+          <label > * {{ $errors->first('cellgroup_id') }}</label>
+        @endif
+      </div>
+
       <div class="ui hidden divider"></div>
 
       <div class="field">

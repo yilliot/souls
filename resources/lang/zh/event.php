@@ -2,6 +2,8 @@
 
 return [
     'just_begin' => [
+        'be_helper' => '想要帮助其他小组？',
+        'be_helper_placeholder' => '放空，使用原身小组',
         'just_begin' => '这才开始',
         'nickname' => '平时称呼你的名字',
         'nric' => 'IC 身份证 / 护照编号',

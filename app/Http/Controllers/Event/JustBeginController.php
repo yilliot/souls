@@ -99,17 +99,17 @@ class JustBeginController extends Controller
         session()->put('nric', $request->nric);
 
         // check last record timing
-        $lastRecord = JustBeginRecord::where('soul_id', $soul->id)
-            ->orderBy('created_at', 'desc')
-            ->first();
+        // $lastRecord = JustBeginRecord::where('soul_id', $soul->id)
+        //     ->orderBy('created_at', 'desc')
+        //     ->first();
 
-        if ($lastRecord && $lastRecord->created_at->diffInHours(\Carbon\Carbon::now()) < 8) {
-            $message = trans('event.just_begin.message_please_wait', [
-                    't1' => $lastRecord->created_at->diffForHumans(\Carbon\Carbon::now()),
-                    't2' => $lastRecord->created_at->addHours(8)->format('jS h:iA'),
-                ]);
-            return back()->with('error', 'rejected')->with('message', $message);
-        }
+        // if ($lastRecord && $lastRecord->created_at->diffInHours(\Carbon\Carbon::now()) < 8) {
+        //     $message = trans('event.just_begin.message_please_wait', [
+        //             't1' => $lastRecord->created_at->diffForHumans(\Carbon\Carbon::now()),
+        //             't2' => $lastRecord->created_at->addHours(8)->format('jS h:iA'),
+        //         ]);
+        //     return back()->with('error', 'rejected')->with('message', $message);
+        // }
 
 
 
@@ -117,7 +117,7 @@ class JustBeginController extends Controller
 
         $record = new JustBeginRecord();
         $record->soul_id = $soul->id;
-        $record->cellgroup_id = $soul->cellgroup_id;
+        $record->cellgroup_id = $request->has('cellgroup_id') ? $request->cellgroup_id : $soul->cellgroup_id;
         $record->meters = $meters;
         $record->minutes = $request->minutes;
         $record->screenshot_path = $request->screenshot_path->store('events.just_begin', 'public');
