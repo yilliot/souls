@@ -111,6 +111,12 @@ class JustBeginController extends Controller
         //     return back()->with('error', 'rejected')->with('message', $message);
         // }
 
+        $count = JustBeginRecord::whereDate('created_at', \Carbon\Carbon::now()->format('Y-m-j'))
+            ->where('soul_id', $soul->id)
+            ->count();
+        if ($count >= 3) {
+            return back()->with('error', 'rejected')->with('message', '为了健康着想，你一天还是不要跑太多次了！😝');
+        }
 
 
         $meters = $request->km * 1000;
