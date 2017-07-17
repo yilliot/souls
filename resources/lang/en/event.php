@@ -2,6 +2,8 @@
 
 return [
     'just_begin' => [
+        'be_helper' => 'Be helpful to other\'s cellgroup?',
+        'be_helper_placeholder' => 'Leave blank do use default CG',
         'just_begin' => 'Just Begin',
 
         // soul field
