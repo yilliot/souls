@@ -18,19 +18,19 @@ Service forecast
       <h3 class="ui header">
         Coming members
         <div class="sub header">
-          forecast total : {{$attendances->count()}}
+          forecast total : {{$attendances->count()}} + {{$visitors->count()}}
         </div>
       </h3>
-      <table class="ui basic compact unstackable table">
+      <table class="ui unstackable compact small table">
         <thead>
           <tr>
-            <th></th>
+            <th>No. </th>
             <th>Name</th>
             <th>Visitors</th>
-            <th></th>
+            <th>Action</th>
           </tr>
         </thead>
-      @foreach ($attendances as $index => $attendance)
+      @forelse ($attendances as $index => $attendance)
         <tr>
           <td> {{$index+1}} </td>
           <td>
@@ -55,24 +55,28 @@ Service forecast
 
           </td>
         </tr>
-      @endforeach
+      @empty
+        <tr>
+          <td colspan="4">No one yet?</td>
+        </tr>
+      @endforelse
       </table>
     </div>
   </div>
   <div class="eleven wide column">
     <h2 class="ui header">
-      {{ $cellgroup }}, Who else is coming?
+      {{ $cellgroup }}, who else is coming?
     </h2>
     {!! Form::open(['url' => 'admin/attendance/add', 'class' => 'ui form']) !!}
     {!! Form::hidden('service_id', $service->id) !!}
     {!! Form::hidden('cellgroup_id', $cellgroup->id) !!}
-    <table class="ui unstackable table">
-      @foreach ($remaining_souls as $soul)
+    <table id='remaining_souls_table' class="ui unstackable selectable table">
+      @forelse ($remaining_souls as $soul)
       <tr>
         <td>
           <h4 class="ui header">
             {{$soul}}
-            <span class="sub inline header">
+            <span class="sub inline uppercased header">
               ({{$soul->nric_fullname}})
             </span>
           </h4>
@@ -85,17 +89,27 @@ Service forecast
           </div>
         </td>
       </tr>
-      @endforeach
+      @empty
+      <thead>
+        <tr>
+          <th colspan="3" class="center aligned">
+            Hoorray!
+          </th>
+        </tr>
+      </thead>
+      @endforelse
+      @if ($remaining_souls->count() > 0)
       <tfoot>
         <tr>
           <th colspan="3">
-            <button class="ui right floated green icon button">
+            <button class="ui fluid green icon button">
               <i class="add icon"></i>
               Add them to coming members
             </button>
           </th>
         </tr>
       </tfoot>
+      @endif
     </table>
     {!! Form::close() !!}
   </div>
@@ -128,5 +142,14 @@ Service forecast
     $('#soul-nickname').text($(this).data('soul'));
     $('input#attendance_id').val($(this).data('attendance-id'));
   });
+  $('#remaining_souls_table tr').click(function() {
+    if ($(this).hasClass('positive')) {
+      $(this).removeClass('positive');
+      $(this).find('input[type=checkbox]').prop('checked', false);
+    } else {
+      $(this).addClass('positive');
+      $(this).find('input[type=checkbox]').prop('checked', true);
+    }
+  })
 </script>
 @endsection

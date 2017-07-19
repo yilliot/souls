@@ -21,7 +21,14 @@ Service visitor
           visitor total : {{$attendance->visitors->count()}}
         </div>
       </h3>
-      <table class="ui basic compact table">
+      <table class="ui unstackable compact small table">
+        <thead>
+          <tr>
+            <th>No. </th>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
         @forelse($attendance->visitors as $index => $visitor)
         <tr>
           <td>{{$index+1}}</td>
@@ -33,6 +40,9 @@ Service visitor
           </td>
         </tr>
         @empty
+          <tr>
+            <td colspan="3" class="center aligned">No one yet?</td>
+          </tr>
         @endforelse
       </table>
     </div>
@@ -58,9 +68,9 @@ Service visitor
       <tfoot>
         <tr>
           <th colspan="3">
-            <button class="ui right floated green icon button">
+            <button class="ui fluid green icon button">
               <i class="add icon"></i>
-              Add them to coming members
+              Add them to coming visitors
             </button>
           </th>
         </tr>

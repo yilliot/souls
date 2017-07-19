@@ -38,9 +38,13 @@ class AttendanceController extends Controller
 
         $attendance_souls = $attendances->pluck('soul');
         $remaining_souls = $souls->diff($attendance_souls);
+        $visitors = ServiceVisitor::where('cellgroup_id', $cellgroup->id)
+            ->where('service_id', $service->id)
+            ->get();
 
         return view('admin.service.forecast', compact([
             'service',
+            'visitors',
             'cellgroup',
             'souls',
             'remaining_souls',
@@ -59,17 +63,17 @@ class AttendanceController extends Controller
 
     public function add(Request $request)
     {
-        foreach ($request->get('souls') as $soul_id) {
-            $serviceAttendance = new ServiceAttendance;
-            $serviceAttendance->service_id = $request->service_id;
-            $serviceAttendance->soul_id = $soul_id;
-            $serviceAttendance->cellgroup_id = $request->cellgroup_id;
-            $serviceAttendance->is_attended = null;
-            $serviceAttendance->save();
+        if ($request->has('souls')) {
+            foreach ($request->get('souls') as $soul_id) {
+                $serviceAttendance = new ServiceAttendance;
+                $serviceAttendance->service_id = $request->service_id;
+                $serviceAttendance->soul_id = $soul_id;
+                $serviceAttendance->cellgroup_id = $request->cellgroup_id;
+                $serviceAttendance->is_attended = null;
+                $serviceAttendance->save();
+            }
         }
-
         Service::find($request->service_id)->cacheAttendance()->save();
-
         return back()->with('success', 'success')->with('message', 'added');
     }
     public function delete(Request $request)
