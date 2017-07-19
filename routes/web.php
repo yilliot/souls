@@ -36,7 +36,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
 ## Admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
-    // 'middleware' => 'admin'
+     'middleware' => 'admin'
     ], function () {
         Route::resource('service', 'ServiceController');
         Route::group(['prefix' => 'soul'], function(){
