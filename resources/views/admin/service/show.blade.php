@@ -36,8 +36,8 @@ Service details
         @foreach ($cellgroups as $cellgroup)
           <tr>
             <td> {{$cellgroup}} </td>
-            <td> 0 </td>
-            <td> 0 </td>
+            <td> {{$report->has($cellgroup->id) ? $report->get($cellgroup->id)->forecast : 0 }} </td>
+            <td> {{$report->has($cellgroup->id) ? $report->get($cellgroup->id)->attended : 0 }} </td>
             <td>
               <a href="/admin/service/{{$service->id}}/attendance?cellgroup={{$cellgroup->id}}" class="ui tiny icon button">
                 <i class="edit icon"></i>

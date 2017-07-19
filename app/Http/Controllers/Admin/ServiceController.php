@@ -70,7 +70,19 @@ class ServiceController extends Controller
 
         $cellgroups = \App\Models\Cellgroup::all();
 
-        return view('admin.service.show', compact('service', 'cellgroups'));
+        // REPORT
+        // \DB::enableQueryLog();
+        $report = \DB::table('service_attendances')
+            ->select(
+                \DB::raw('IFNULL(SUM(is_attended), 0) as attended, COUNT(id) as forecast, cellgroup_id')
+            )
+            ->where('service_id', $id)
+            ->groupBy('cellgroup_id')
+            ->get()
+            ->keyBy('cellgroup_id');
+        // dd(\DB::getQueryLog());
+
+        return view('admin.service.show', compact('service', 'cellgroups', 'report'));
     }
 
     /**
