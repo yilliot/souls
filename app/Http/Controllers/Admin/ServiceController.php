@@ -22,9 +22,14 @@ class ServiceController extends Controller
             'onward' => \Carbon\Carbon::now()->format('Y-m-d'),
         ]);
 
-        $services = Service::paginate();
-
-        return view('admin.service.index', compact('services', 'filter'));
+        $page_services = Service::with('type', 'venue', 'speaker')
+            ->where('at', '>', $filter['onward'])
+            ->orderBy('at', 'asc')
+            ->paginate(6);
+        $chunk_services = $page_services->groupBy(function($item, $key){
+            return $item->at->format('Y F');
+        });
+        return view('admin.service.index', compact('chunk_services', 'page_services', 'filter'));
     }
 
     /**

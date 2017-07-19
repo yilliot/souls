@@ -26,9 +26,10 @@ class CoreSeeder extends Seeder
         DB::table('service_speakers')->insert(['id' => 5, 'name' => 'Pastor Garrick']);
         DB::table('service_speakers')->insert(['id' => 6, 'name' => 'Pastor Daniel']);
 
-        DB::table('service_types')->insert(['id' => 1, 'name' => 'normal']);
+        DB::table('service_types')->insert(['id' => 1, 'name' => 'Saturday']);
+        DB::table('service_types')->insert(['id' => 2, 'name' => 'Supreme']);
 
-        DB::table('service_venues')->insert(['id' => 1, 'name' => 'hccjb']);
+        DB::table('service_venues')->insert(['id' => 1, 'name' => 'HCCJB']);
 
 
         // ministries

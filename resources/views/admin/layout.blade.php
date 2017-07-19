@@ -12,7 +12,7 @@
 <body>
   <div class="ui fixed inverted menu">
     <div class="ui container">
-      <a href="/admin" class="header item">
+      <a href="/admin/service" class="header item">
         HCCJB
       </a>
 
