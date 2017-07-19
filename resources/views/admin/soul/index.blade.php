@@ -67,13 +67,11 @@ Souls
         </td>
         <td>
           <div class="ui small icon buttons">
-            <a href="/admin/soul/{{$soul->id}}" class="ui button">
-              <i class="eye icon"></i>
-            </a>
-          </div>
-          <div class="ui small icon buttons">
             <a href="/admin/soul/{{$soul->id}}/edit" class="ui teal button">
               <i class="edit icon"></i>
+            </a>
+            <a href="/admin/soul/{{$soul->id}}" class="ui button">
+              <i class="eye icon"></i>
             </a>
           </div>
         </td>

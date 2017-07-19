@@ -12,7 +12,7 @@
 <body>
   <div class="ui fixed inverted menu">
     <div class="ui container">
-      <a href="/admin" class="header item">
+      <a href="/admin/service" class="header item">
         HCCJB
       </a>
 
@@ -50,5 +50,6 @@
   <script src="/js/manifest.js"></script>
   <script src="/js/vendor.js"></script>
   <script src="/js/admin.js"></script>
+  @yield('script')
 </body>
 </html>

@@ -13,6 +13,15 @@ class Service extends Model
         'at'
     ];
 
+    // SET
+    public function cacheAttendance()
+    {
+        $this->forecast_size = $this->forecast_attendances()->count();
+        $this->attendance_size = $this->forecast_attendances()
+            ->where('is_attended', 1)->count();
+        return $this;
+    }
+
     // REL
     public function forecast_attendances()
     {

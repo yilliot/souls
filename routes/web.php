@@ -39,10 +39,21 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
     // 'middleware' => 'admin'
     ], function () {
         Route::get('service/{service}/attendance', 'AttendanceController@index');
+        Route::group(['prefix' => 'attendance'], function() {
+            // forecast
+            Route::post('add', 'AttendanceController@add');
+            Route::post('delete', 'AttendanceController@delete');
+            // attendance
+            Route::post('attended', 'AttendanceController@attended');
+            Route::post('absent', 'AttendanceController@absent');
+
+            Route::get('/{attendance_id}/visitor', 'AttendanceController@visitor');
+            Route::post('visitor', 'AttendanceController@postVisitor');
+            Route::delete('visitor', 'AttendanceController@destroyVisitor');
+        });
+
         Route::resource('service', 'ServiceController');
         Route::resource('soul', 'SoulController');
-        // Route::group(['prefix' => 'service', 'namespace' => 'Service'], function(){
-        // });
 });
 
 ## CGL

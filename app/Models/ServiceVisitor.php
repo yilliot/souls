@@ -4,13 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceAttendance extends Model
+class ServiceVisitor extends Model
 {
-    protected $table = 'service_attendances';
+    protected $table = 'service_visitors';
 
-    public function visitors()
+    // GET
+    public function __toString()
     {
-        return $this->hasMany(ServiceVisitor::class, 'attendance_id');
+        return $this->name;
+    }
+
+    // REL
+    public function attendance()
+    {
+        return $this->belongsTo(ServiceAttendance::class, 'attendance_id');
     }
     public function cellgroup()
     {
