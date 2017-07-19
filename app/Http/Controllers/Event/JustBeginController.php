@@ -141,4 +141,10 @@ class JustBeginController extends Controller
         $record = JustBeginRecord::find($request->id);
         return view('event.just_begin.recorded', compact('record'));
     }
+
+    public function validation()
+    {
+        $records = JustBeginRecord::orderBy('created_at', 'desc')->get();
+        return view('event.just_begin.validation', compact('records'));
+    }
 }

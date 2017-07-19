@@ -9,6 +9,7 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
     Route::get('/3km/checkin', 'JustBeginController@checkin');
     Route::post('/3km/checkin', 'JustBeginController@postCheckin');
     Route::get('/3km/recorded/{id}', 'JustBeginController@recorded');
+    Route::get('/3km/validation', 'JustBeginController@validation');
 });
 
 ## SESSION
