@@ -56,7 +56,7 @@ class CreateServiceAttendanceTables extends Migration
 
         Schema::create('service_visitors', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('service_attendance_id')->unsigned()->index();
+            $table->integer('attendance_id')->unsigned()->index();
             $table->integer('service_id')->unsigned()->index();
             $table->integer('cellgroup_id')->unsigned()->index();
             $table->integer('soul_id')->unsigned()->index();
@@ -74,6 +74,7 @@ class CreateServiceAttendanceTables extends Migration
      */
     public function down()
     {
+        Schema::drop('service_visitors');
         Schema::drop('service_attendances');
         Schema::drop('services');
         Schema::drop('service_venues');

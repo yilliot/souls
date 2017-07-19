@@ -21,15 +21,38 @@ Service forecast
           forecast total : {{$attendances->count()}}
         </div>
       </h3>
-      <table class="ui basic compact table">
+      <table class="ui basic compact unstackable table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Visitors</th>
+            <th></th>
+          </tr>
+        </thead>
       @foreach ($attendances as $index => $attendance)
         <tr>
           <td> {{$index+1}} </td>
-          <td> {{$attendance->soul}} </td>
-          <td class="right aligned">
+          <td>
+            <h4 class="ui header">
+              {{$attendance->soul}}
+              @forelse ($attendance->visitors as $visitor)
+                <div class="sub header">{{$visitor}}</div>
+              @empty
+              @endforelse
+            </h4>
+          </td>
+          <td class="centered aligned">
+            <a href="/admin/attendance/{{$attendance->id}}/visitor/" class="ui mini icon pink basic button">
+              {{$attendance->visitors->count()}}
+              <i class="heartbeat icon"></i>
+            </a>
+          </td>
+          <td>
             <button class="ui mini red icon button del modalcaller" data-modal-id="delete_attendance" data-attendance-id="{{$attendance->id}}" data-soul="{{$attendance->soul->nickname}}">
               <i class="remove icon"></i>
             </button>
+
           </td>
         </tr>
       @endforeach
@@ -43,7 +66,7 @@ Service forecast
     {!! Form::open(['url' => 'admin/attendance/add', 'class' => 'ui form']) !!}
     {!! Form::hidden('service_id', $service->id) !!}
     {!! Form::hidden('cellgroup_id', $cellgroup->id) !!}
-    <table class="ui table">
+    <table class="ui unstackable table">
       @foreach ($remaining_souls as $soul)
       <tr>
         <td>
