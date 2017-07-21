@@ -14,6 +14,12 @@ Add service
       </td>
     </tr>
     <tr>
+      <td><b>Service Time</b></td>
+      <td>
+        <input type="time" name="at_time" value="17:00">
+      </td>
+    </tr>
+    <tr>
       <td><b>Type</b></td>
       <td>
         {{ Form::select('type', \App\Models\ServiceType::all()->pluck('name', 'id'), null, ['class' => 'ui fluid dropdown']) }}

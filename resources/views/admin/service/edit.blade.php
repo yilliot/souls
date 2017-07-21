@@ -15,6 +15,12 @@ Update service
       </td>
     </tr>
     <tr>
+      <td><b>Service Time</b></td>
+      <td>
+        <input type="time" name="at_time" value="{{ $service->at->toTimeString() }}">
+      </td>
+    </tr>
+    <tr>
       <td><b>Type</b></td>
       <td>
         {{ Form::select('type', \App\Models\ServiceType::all()->pluck('name', 'id'), $service->type_id, ['class' => 'ui fluid dropdown']) }}

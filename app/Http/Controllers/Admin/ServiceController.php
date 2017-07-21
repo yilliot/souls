@@ -51,7 +51,7 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $service = new Service;
-        $service->at = $request->at;
+        $service->at = $request->at . ' ' . $request->at_time . ':00';
         $service->topic = $request->topic;
         $service->type_id = $request->type;
         $service->speaker_id = $request->speaker;
@@ -112,7 +112,7 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $service = Service::find($id);
-        $service->at = $request->at;
+        $service->at = $request->at . ' ' . $request->at_time . ':00';
         $service->topic = $request->topic;
         $service->type_id = $request->type;
         $service->speaker_id = $request->speaker;
