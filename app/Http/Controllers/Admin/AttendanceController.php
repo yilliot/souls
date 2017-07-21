@@ -24,23 +24,26 @@ class AttendanceController extends Controller
 
         $is_attendance = \Carbon\Carbon::now()->gte($service->at);
 
+        $visitors = ServiceVisitor::where('cellgroup_id', $cellgroup->id)
+            ->where('service_id', $service->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         if ($is_attendance) {
-            return $this->doAttendance($request, $service, $cellgroup, $attendances);
+            return $this->doAttendance($request, $service, $cellgroup, $attendances, $visitors);
         } else {
-            return $this->doForecast($request, $service, $cellgroup, $attendances);
+            return $this->doForecast($request, $service, $cellgroup, $attendances, $visitors);
         }
     }
 
-    public function doForecast(Request $request, Service $service, Cellgroup $cellgroup, $attendances)
+    public function doForecast(Request $request, Service $service, Cellgroup $cellgroup, $attendances, $visitors)
     {
         $souls = Soul::where('cellgroup_id', $request->get('cellgroup'))
+            ->orderBy('created_at', 'desc')
             ->get();
 
         $attendance_souls = $attendances->pluck('soul');
         $remaining_souls = $souls->diff($attendance_souls);
-        $visitors = ServiceVisitor::where('cellgroup_id', $cellgroup->id)
-            ->where('service_id', $service->id)
-            ->get();
 
         return view('admin.service.forecast', compact([
             'service',
@@ -52,12 +55,13 @@ class AttendanceController extends Controller
         ]));
     }
 
-    public function doAttendance(Request $request, Service $service, Cellgroup $cellgroup, $attendances)
+    public function doAttendance(Request $request, Service $service, Cellgroup $cellgroup, $attendances, $visitors)
     {
         return view('admin.service.attendance', compact([
             'service',
+            'visitors',
             'cellgroup',
-            'souls',
+            'attendances',
         ]));
     }
 
@@ -88,24 +92,33 @@ class AttendanceController extends Controller
     }
     public function attended(Request $request)
     {
-        $serviceAttendance = ServiceAttendance::find($request->id);
-        $serviceAttendance->is_attended = true;
-        $serviceAttendance->save();
+        if (collect($request->get('visitor'))->count()) {
+            ServiceVisitor::whereIn('id', $request->get('visitor'))
+                ->update(['is_attended' => true]);
+        }
+        if (collect($request->get('attendance'))->count()) {
+            ServiceAttendance::whereIn('id', $request->get('attendance'))
+                ->update(['is_attended' => true]);
+        }
 
         Service::find($request->service_id)->cacheAttendance()->save();
 
         return back()->with('success', 'success')->with('message', 'flag attended');
     }
 
-    public function absent(Request $request)
+    public function reset(Request $request)
     {
-        $serviceAttendance = ServiceAttendance::find($request->id);
-        $serviceAttendance->is_attended = false;
-        $serviceAttendance->save();
+        if ($request->type == 'visitor') {
+            $obj = ServiceVisitor::find($request->id);
+        } else {
+            $obj = ServiceAttendance::find($request->id);
+        }
+        $obj->is_attended = false;
+        $obj->save();
 
         Service::find($request->service_id)->cacheAttendance()->save();
 
-        return back()->with('success', 'success')->with('message', 'flag absent');
+        return back()->with('success', 'success')->with('message', 'flag reset');
     }
 
     public function visitor(Request $request, $id)

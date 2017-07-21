@@ -46,6 +46,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
             // attendance
             Route::post('attended', 'AttendanceController@attended');
             Route::post('absent', 'AttendanceController@absent');
+            Route::post('reset', 'AttendanceController@reset');
 
             Route::get('/{attendance_id}/visitor', 'AttendanceController@visitor');
             Route::post('visitor', 'AttendanceController@postVisitor');
