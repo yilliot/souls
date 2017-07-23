@@ -55,3 +55,15 @@ Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
         Route::resource('soul', 'SoulController');
 });
 
+##Member
+Route::group(['prefix' => 'member', 'namespace' => 'Member'],function(){
+    Route::get('/forecast', 'MemberController@forecast');
+    Route::post('/forecast', 'MemberController@postForecast');
+});
+
+##Usher/Register Souls
+Route::group(['prefix' => 'usher', 'namespace' => 'Usher'],function(){
+    Route::get('/newfriend', 'UsherController@newFriend');
+    Route::post('/newfriend', 'UsherController@postNewFriend');
+});
+
