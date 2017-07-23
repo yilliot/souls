@@ -38,6 +38,13 @@ class UsersSeeder extends Seeder
             'description' => 'Ministry Leader'
         ]);
 
+        $role = new Role();
+        $roleMl = $role->create([
+            'name' => 'Pastoral',
+            'slug' => 'pastoral',
+            'description' => 'Pastoral'
+        ]);
+
         $default = [
             'password' => bcrypt('secret'),
             'remember_token' => str_random(10),
