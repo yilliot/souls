@@ -17,6 +17,8 @@ Service attendance
     <h3 class="ui icon heading">
       <i class="checkmark icon"></i>
       Attended
+      ({{$attendances->where('is_attended', true)->count()}}
+      + {{$visitors->where('is_attended', true)->count()}})
     </h3>
     <table class="ui unstackable compact small table">
       @forelse ($visitors->where('is_attended', true) as $visitor)
@@ -68,14 +70,15 @@ Service attendance
   <div id="waiting-column" class="eleven wide column">
     <h3 class="ui icon heading">
       <i class="clock icon"></i>
-      Waiting
+      Waiting ({{$attendances->where('is_attended', null)->count()}}
+      + {{$visitors->where('is_attended', null)->count()}})
     </h3>
     {!! Form::open(['url' => 'admin/attendance/attended', 'class' => 'ui form']) !!}
     {!! Form::hidden('service_id', $service->id) !!}
     {!! Form::hidden('cellgroup_id', $cellgroup->id) !!}
     <h4 class="ui header">Visitors</h4>
     <table class="ui unstackable compact small table  checkable-table">
-      @forelse ($visitors->where('is_attended', false) as $visitor)
+      @forelse ($visitors->where('is_attended', null) as $visitor)
       <tr>
         <td>
           <h4 class="ui header">
@@ -99,7 +102,7 @@ Service attendance
     </table>
 
     <table class="ui unstackable compact small table checkable-table">
-      @forelse ($attendances->where('is_attended', false) as $attendance)
+      @forelse ($attendances->where('is_attended', null) as $attendance)
       <tr>
         <td>
           <h4 class="ui header">

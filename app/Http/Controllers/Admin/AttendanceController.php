@@ -113,7 +113,7 @@ class AttendanceController extends Controller
         } else {
             $obj = ServiceAttendance::find($request->id);
         }
-        $obj->is_attended = false;
+        $obj->is_attended = null;
         $obj->save();
 
         Service::find($request->service_id)->cacheAttendance()->save();
