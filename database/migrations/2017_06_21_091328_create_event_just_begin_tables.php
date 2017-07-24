@@ -18,6 +18,7 @@ class CreateEventJustBeginTables extends Migration
             $table->integer('soul_id')->unsigned()->index();
             $table->integer('cellgroup_id')->unsigned()->index();
             $table->integer('meters');
+            $table->integer('minutes');
             $table->string('screenshot_path');
             $table->timestamps();
         });

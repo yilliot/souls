@@ -38,8 +38,8 @@ class CreateServiceAttendanceTables extends Migration
             $table->datetime('at')->index();
             $table->integer('created_by')->index();
 
-            $table->integer('forecast_size');
-            $table->integer('attendance_size');
+            $table->integer('forecast_size')->unsigned()->default(0);
+            $table->integer('attendance_size')->unsigned()->default(0);
 
             $table->timestamps();
         });
@@ -49,7 +49,19 @@ class CreateServiceAttendanceTables extends Migration
             $table->integer('service_id')->unsigned()->index();
             $table->integer('cellgroup_id')->unsigned()->index();
             $table->integer('soul_id')->unsigned()->index();
-            $table->boolean('is_attended')->default(false);
+            $table->boolean('is_attended')->nullable();
+
+            $table->timestamps();
+        });
+
+        Schema::create('service_visitors', function(Blueprint $table) {
+            $table->increments('id');
+            $table->integer('attendance_id')->unsigned()->index();
+            $table->integer('service_id')->unsigned()->index();
+            $table->integer('cellgroup_id')->unsigned()->index();
+            $table->integer('soul_id')->unsigned()->index();
+            $table->string('name');
+            $table->boolean('is_attended')->nullable();
 
             $table->timestamps();
         });
@@ -62,6 +74,7 @@ class CreateServiceAttendanceTables extends Migration
      */
     public function down()
     {
+        Schema::drop('service_visitors');
         Schema::drop('service_attendances');
         Schema::drop('services');
         Schema::drop('service_venues');

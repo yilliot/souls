@@ -5,6 +5,8 @@ return [
         'be_helper' => 'Be helpful to other\'s cellgroup?',
         'be_helper_placeholder' => 'Leave blank do use default CG',
         'just_begin' => 'Just Begin',
+
+        // soul field
         'nickname' => 'Name that we usually call you',
         'nric' => 'IC / Passport number',
         'nric_fullname' => 'IC / Passport\'s full name',
@@ -16,6 +18,7 @@ return [
         'postal_code' => 'Postal Code',
         'contact' => 'Phone number',
         'birthday' => 'Birthday',
+
         'screenshot_path' => 'Screenshot / Photo',
         'signup' => 'Sign up',
         'checkin' => 'Check in',

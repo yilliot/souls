@@ -22,9 +22,14 @@ class ServiceController extends Controller
             'onward' => \Carbon\Carbon::now()->format('Y-m-d'),
         ]);
 
-        $services = Service::paginate();
-
-        return view('admin.service.index', compact('services', 'filter'));
+        $page_services = Service::with('type', 'venue', 'speaker')
+            ->where('at', '>', $filter['onward'])
+            ->orderBy('at', 'asc')
+            ->paginate(6);
+        $chunk_services = $page_services->groupBy(function($item, $key){
+            return $item->at->format('Y F');
+        });
+        return view('admin.service.index', compact('chunk_services', 'page_services', 'filter'));
     }
 
     /**
@@ -46,7 +51,7 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $service = new Service;
-        $service->at = $request->at;
+        $service->at = $request->at . ' ' . $request->at_time . ':00';
         $service->topic = $request->topic;
         $service->type_id = $request->type;
         $service->speaker_id = $request->speaker;
@@ -68,7 +73,21 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
 
-        return view('admin.service.show', compact('service'));
+        $cellgroups = \App\Models\Cellgroup::all();
+
+        // REPORT
+        // \DB::enableQueryLog();
+        $report = \DB::table('service_attendances')
+            ->select(
+                \DB::raw('IFNULL(SUM(is_attended), 0) as attended, COUNT(id) as forecast, cellgroup_id')
+            )
+            ->where('service_id', $id)
+            ->groupBy('cellgroup_id')
+            ->get()
+            ->keyBy('cellgroup_id');
+        // dd(\DB::getQueryLog());
+
+        return view('admin.service.show', compact('service', 'cellgroups', 'report'));
     }
 
     /**
@@ -93,7 +112,7 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         $service = Service::find($id);
-        $service->at = $request->at;
+        $service->at = $request->at . ' ' . $request->at_time . ':00';
         $service->topic = $request->topic;
         $service->type_id = $request->type;
         $service->speaker_id = $request->speaker;
