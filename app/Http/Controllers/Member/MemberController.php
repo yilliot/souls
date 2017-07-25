@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 
 class MemberController extends Controller
 {
     //
-        public function postForecast(Request $request)
+    public function postForecast(Request $request)
     {
         $this->validate($request, [
             'nric' => [
@@ -53,7 +54,10 @@ class MemberController extends Controller
 
     public function forecast()
     {
-        return view('member.forecast');
+        $services = Service::where('at','>=',\Carbon\Carbon::now())
+                    ->where('at','<=',\Carbon\Carbon::now()->addDays(7))
+                    ->get();
+        return view('member.forecast',compact('services'));
     }
    
 
