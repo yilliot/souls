@@ -23,7 +23,7 @@
   </div>
   <script src="/js/manifest.js"></script>
   <script src="/js/vendor.js"></script>
-  <script src="/js/member.forecast.js"></script>
+  <script src="/js/member.js"></script>
   @yield('script')
 </body>
 </html>

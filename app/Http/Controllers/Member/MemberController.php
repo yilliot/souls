@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Models\ServiceAttendance;
+use App\Models\Soul;
 
 class MemberController extends Controller
 {
@@ -21,43 +23,42 @@ class MemberController extends Controller
         ]);
 
         $soul = Soul::where('nric', $request->nric)->first();
-
-        // session()->put('nric', $request->nric);
-
-        // check last record timing
-        // $lastRecord = JustBeginRecord::where('soul_id', $soul->id)
-        //     ->orderBy('created_at', 'desc')
-        //     ->first();
-
-        // if ($lastRecord && $lastRecord->created_at->diffInHours(\Carbon\Carbon::now()) < 8) {
-        //     $message = trans('event.just_begin.message_please_wait', [
-        //             't1' => $lastRecord->created_at->diffForHumans(\Carbon\Carbon::now()),
-        //             't2' => $lastRecord->created_at->addHours(8)->format('jS h:iA'),
-        //         ]);
-        //     return back()->with('error', 'rejected')->with('message', $message);
-        // }
-
-		//Check registered forecast void repeated
-
-
-       
-        // $record = new JustBeginRecord();
-        // $record->soul_id = $soul->id;
-        // $record->cellgroup_id = $request->has('cellgroup_id') ? $request->cellgroup_id : $soul->cellgroup_id;
-        // $record->meters = $meters;
-        // $record->minutes = $request->minutes;
-        // $record->screenshot_path = $request->screenshot_path->store('events.just_begin', 'public');
-        // $record->save();
-
-        return redirect('/member/forecast/')->with('success', 'success')->with('message', 'You have registered your forecast');
+        $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
+                    ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
+                    ->get();
+        $service_ids = collect([]);
+        foreach($services as $service){
+            $service_ids->prepend($service->id);
+        }
+        $serviceAttendances = ServiceAttendance::where('soul_id',$soul->id)
+                                              ->where('service_id',$service_ids->toArray());
+        return view('member.forecastService',compact('soul','services','serviceAttendances'));
+        // return redirect('/member/forecast/service')->with('success', 'success')->with('message', 'You have registered your forecast');
     }
 
     public function forecast()
     {
-        $services = Service::where('at','>=',\Carbon\Carbon::now())
-                    ->where('at','<=',\Carbon\Carbon::now()->addDays(7))
-                    ->get();
-        return view('member.forecast',compact('services'));
+        return view('member.forecast');
+    }
+
+    public function postForecastService()
+    {
+        return redirect('/member/forecast/service');
+    }
+
+    public function forecastService()
+    {
+        return view('member.forecastService');
+    }
+
+    public function postVisitor()
+    {
+        return redirect('/member/forecast/service');
+    }
+
+    public function visitor()
+    {
+        return view('member.forecastVisitor');
     }
    
 
