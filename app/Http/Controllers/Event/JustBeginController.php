@@ -147,4 +147,20 @@ class JustBeginController extends Controller
         $records = JustBeginRecord::orderBy('created_at', 'desc')->get();
         return view('event.just_begin.validation', compact('records'));
     }
+
+    public function searchClaim(){
+        $souls_nric = Soul::get()->pluck('nric', 'id');
+        return view('event.just_begin.search_claim', compact('souls_nric'));
+    }
+    public function claim(Request $request){
+        $soul = Soul::find($request->soul_id);
+        if (!$soul) {
+            return redirect()->back()->with('message', 'Record not found')->with('error', 'error');
+        }
+        $records = JustBeginRecord::where('soul_id', $request->soul_id)->get();
+        return view('event.just_begin.claim', compact('records', 'soul'));
+    }
+    public function postClaim(Request $request){
+
+    }
 }

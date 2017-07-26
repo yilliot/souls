@@ -10,6 +10,9 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
     Route::post('/3km/checkin', 'JustBeginController@postCheckin');
     Route::get('/3km/recorded/{id}', 'JustBeginController@recorded');
     Route::get('/3km/validation', 'JustBeginController@validation');
+    Route::get('/3km/search_claim', 'JustBeginController@searchClaim');
+    Route::get('/3km/claim', 'JustBeginController@claim');
+    Route::post('/3km/claim', 'JustBeginController@postClaim');
 });
 
 ## SESSION
