@@ -17,6 +17,7 @@ $('.addVisitorCaller').on('click',function(){
 });
 
 $('.delVisitorCaller').on('click',function(){
+	$('.ui.popup').removeClass("visible").addClass("hidden");
 	setModalUp($(this),'.delvisitor',2);
 });
 

@@ -76,15 +76,27 @@ Forecast
 				      </td>
 				      <td class="visitors" data-visitor="{{$serviceAttendance->id}}">
 				      	{{$serviceAttendance->visitors->count()}}
-				      	<div class="ui popup" id="{{$serviceAttendance->id}}">
+				      	<div class="ui inverted popup" id="{{$serviceAttendance->id}}">
 						  <div class="header">{{trans('member.forecast.visitorslist')}}</div>
-						  </br>
-						  @forelse($serviceAttendance->visitors as $visitor)
-						    {{$visitor->name}}  	
-						  </br>
-						  @empty
-						  {{trans('member.forecast.novisitors')}}
-						  @endforelse
+							<table class="ui inverted unstackable compact small invitedvisitor table">
+							  @forelse($serviceAttendance->visitors as $visitor)
+						      <tr>
+						      	<td>
+								    {{$visitor->name}}  	
+								  </br>
+							    </td>
+							    <td class="right aligned delVisitorCaller" data-visitor="{{$visitor->name}}" data-visitor-id="{{$visitor->id}}">
+							    	<i class="remove icon"></i>
+							    </td>
+							  </tr>
+							  @empty
+							  <tr>
+							    <td>
+								  {{trans('member.forecast.novisitors')}}
+							    </td>
+							  </tr>
+							  @endforelse
+						  	</table>
 						</div>
 				      </td>
 				      <td>
@@ -143,25 +155,6 @@ Forecast
     
   </div>
   <div class="center aligned content" style="color:black">
-  	<table class="ui invitedvisitor table">
-	  @forelse($serviceAttendance->visitors as $visitor)
-      <tr>
-      	<td>
-		    {{$visitor->name}}  	
-		  </br>
-	    </td>
-	    <td class="right aligned delVisitorCaller" data-visitor="{{$visitor->name}}" data-visitor-id="{{$visitor->id}}">
-	    	<i class="remove icon"></i>
-	    </td>
-	  </tr>
-	  @empty
-	    <tr>
-	      <td>
-			  {{trans('member.forecast.novisitors')}}
-	      </td>
-	    </tr>
-	  @endforelse
-  	</table>
 	<table class="ui visitor table">
       <tr>
         <td>
