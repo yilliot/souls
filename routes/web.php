@@ -67,10 +67,16 @@ Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
 
 ##Member
 Route::group(['prefix' => 'member', 'namespace' => 'Member'],function(){
-    Route::get('/forecast', 'MemberController@forecast');
-    Route::post('/forecast', 'MemberController@postForecast');
-    Route::post('/forecast/service', 'MemberController@postForecastService');
-    Route::post('/forecast/service/{service_attendance}', 'MemberController@postVisitor');
+    Route::group(['prefix' => 'forecast'],function(){
+        Route::get('/', 'MemberController@forecast');
+        Route::post('/', 'MemberController@postForecast');
+        Route::post('service', 'MemberController@postForecastService');
+        Route::post('delservice', 'MemberController@deleteForecastService');
+        Route::post('visitor', 'MemberController@postVisitor');
+        Route::post('delvisitor', 'MemberController@deleteVisitor');
+    });
+
+
 });
 
 ##Usher/Register Souls
