@@ -6,6 +6,8 @@ Forecast
 
 @section('content')
   <div id="forecast-container" class="ui piled inverted segment text container">
+    <a href="/session/lang/zh">中文</a> |
+    <a href="/session/lang/en">English</a>
     <h1 class="ui center aligned icon header">
       <div>
         <img id="logo" src="/images/hcc-logo-black320.png" alt="HCCJB">

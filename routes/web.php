@@ -69,9 +69,7 @@ Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
 Route::group(['prefix' => 'member', 'namespace' => 'Member'],function(){
     Route::get('/forecast', 'MemberController@forecast');
     Route::post('/forecast', 'MemberController@postForecast');
-    // Route::get('/forecast/service', 'MemberController@forecastService');
     Route::post('/forecast/service', 'MemberController@postForecastService');
-    // Route::get('/forecast/service/{service_attendance}', 'MemberController@visitor');
     Route::post('/forecast/service/{service_attendance}', 'MemberController@postVisitor');
 });
 
