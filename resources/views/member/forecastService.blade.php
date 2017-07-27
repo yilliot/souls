@@ -5,16 +5,16 @@ Forecast
 @endsection
 
 @section('content')
-  <div id="forecast-container" class="ui piled inverted segment text container">
+  <div id="forecast-container" class="ui text container">
     <a href="/session/lang/zh">中文</a> |
     <a href="/session/lang/en">English</a>
     <h1 class="ui center aligned icon header">
       <div>
         <img id="logo" src="/images/hcc-logo-black320.png" alt="HCCJB">
       </div>
-      <div class="neon-green content">
-          <span class="glow">{{$soul->nickname}}</span>
-          <div class="sub neon-green header">
+      <div class="content" style="color:white">
+          <span class="">{{$soul->nickname}}</span>
+          <div class="sub header" style="color:white">
           	{{ trans('member.forecast.please_select_service') }}
           </div>
         </div>

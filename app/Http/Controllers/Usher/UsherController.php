@@ -35,7 +35,7 @@ class UsherController extends Controller
         $contact2_string = $request->contact2_code . ltrim($contact2_string, '0');
 
         $soul = new Soul;
-        $soul->cellgroup_id = $request->cellgroup_id;
+        $soul->cellgroup_id = $request->cellgroup;
         $soul->nric = $request->nric;
         $soul->nric_fullname = $request->nric_fullname;
         $soul->birthday = $request->birthday;
