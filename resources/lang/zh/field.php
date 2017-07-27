@@ -12,4 +12,6 @@ return [
     'postal_code' => '邮区编号',
     'contact' => '电话号码',
     'birthday' => '生日日期',
+    'cellgroup' => '选择你的小组',
+    'contact' => '国际格式　例子： 60127654321'
 ];

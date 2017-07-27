@@ -12,4 +12,6 @@ return [
     'postal_code' => 'Postal Code',
     'contact' => 'Phone number',
     'birthday' => 'Birthday',
+    'cellgroup' => 'Choose a cellgroup',
+    'contact' => 'International format. E.g : 60127654321',
 ];
