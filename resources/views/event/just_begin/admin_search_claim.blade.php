@@ -25,11 +25,11 @@
     @include('event.just_begin.part.flash')
     {{ Form::open(['url' => '/event/3km/claim', 'method' => 'get', 'class' => 'ui inverted form', 'id' => 'just-begin-checkin', 'files' => true]) }}
 
-      <div class="field {{$errors->has('nric') ? 'error' : ''}}">
+      <div class="field {{$errors->has('soul_id') ? 'error' : ''}}">
         <label>{{ trans('event.just_begin.nric') }}</label>
-        {{ Form::text('nric', null, ['class' => '', 'placeholder' => 'e.g : 901001-01-1234 / S01234567B'])}}
-        @if ($errors->has('nric'))
-          <label > * {{ $errors->first('nric') }}</label>
+        {{ Form::select('soul_id', $souls_nric , null, ['class' => 'ui search dropdown fluid', 'placeholder' => 'e.g : 901001-01-1234 / S01234567B'])}}
+        @if ($errors->has('soul_id'))
+          <label > * {{ $errors->first('soul_id') }}</label>
         @endif
       </div>
 

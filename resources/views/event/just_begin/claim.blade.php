@@ -7,10 +7,6 @@
 @section('content')
   <div id="signup-container" class="ui piled inverted segment text container">
 
-    <a href="/event/3km"> <i class="home icon"></i> </a> |
-    <a href="/session/lang/zh">中文</a> |
-    <a href="/session/lang/en">English</a>
-
     <h1 class="ui center aligned icon header">
       <div>
         <img id="logo" src="/images/hcc-logo-black320.png" alt="HCCJB">
@@ -50,10 +46,8 @@
       <div class="ui hidden divider"></div>
 
       <div class="field">
-        <div class="ui two basic huge inverted buttons">
-        <a href="/event/3km/search_claim" class="ui button">Back</a>
-          
-        <a href="/event/3km/search_claim" class="ui button">Claim</a>
+        <div class="ui basic huge fluid inverted buttons">
+          <a href="{{url()->previous()}}" class="ui button">返回</a>
         </div>
       </div>
 
