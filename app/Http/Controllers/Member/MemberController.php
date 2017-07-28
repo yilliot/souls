@@ -12,7 +12,7 @@ use App\Models\Soul;
 class MemberController extends Controller
 {
     //
-    public function postForecast(Request $request)
+    public function getForecastService(Request $request)
     {
         $this->validate($request, [
             'nric' => [
@@ -56,13 +56,12 @@ class MemberController extends Controller
     {
         $soul = Soul::where('id', $request->soul_id)->first();
         if ($request->has('services')) {
+            $soulAttendance = ServiceAttendance::where('soul_id',$soul->id)
+                                               ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
+                                               ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
+                                               ->get();
             foreach ($request->get('services') as $service_id) {
-                if(ServiceAttendance::where('soul_id',$soul->id)
-                                                           ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                                                           ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                                                           ->where('service_id',$service_id)
-                                                           ->get()
-                                                           ->isEmpty()){
+                if($soulAttendance->where('service_id',$service_id)->isEmpty()){
                 $serviceAttendance = new ServiceAttendance;
                 $serviceAttendance->service_id = $service_id;
                 $serviceAttendance->soul_id = $request->soul_id;
@@ -74,28 +73,29 @@ class MemberController extends Controller
             }
         }
 
-        $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                    ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                    ->get()
-                    ->sortBy('at');
-        $serviceAttendances = collect([]);
-        $temp = collect([]);
-        foreach($services as $service){
-            $attendingService = ServiceAttendance::where('soul_id',$soul->id)
-                                                          ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                                                          ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                                                          ->where('service_id',$service->id)
-                                                          ->first();
-            if($attendingService != null)$serviceAttendances->prepend($attendingService);
-        }
-        if($serviceAttendances->isNotEmpty()){
-            $serviceAttendances = $serviceAttendances->reverse();
-            foreach($serviceAttendances as $serviceAttendance){
-                $services->splice($services->search($serviceAttendance->service),1);
-            }
-        }
+        return back()->with('success', 'success')->with('message', 'added');
+        // $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
+        //             ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
+        //             ->get()
+        //             ->sortBy('at');
+        // $serviceAttendances = collect([]);
+        // $temp = collect([]);
+        // foreach($services as $service){
+        //     $attendingService = ServiceAttendance::where('soul_id',$soul->id)
+        //                                                   ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
+        //                                                   ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
+        //                                                   ->where('service_id',$service->id)
+        //                                                   ->first();
+        //     if($attendingService != null)$serviceAttendances->prepend($attendingService);
+        // }
+        // if($serviceAttendances->isNotEmpty()){
+        //     $serviceAttendances = $serviceAttendances->reverse();
+        //     foreach($serviceAttendances as $serviceAttendance){
+        //         $services->splice($services->search($serviceAttendance->service),1);
+        //     }
+        // }
 
-        return view('member.forecastService',compact('soul','services','serviceAttendances'));
+        // return view('member.forecastService',compact('soul','services','serviceAttendances'));
     }
 
     public function deleteForecastService(Request $request)
@@ -105,36 +105,8 @@ class MemberController extends Controller
         $serviceAttendance->delete();
 
         Service::find($serviceAttendance->service->id)->cacheAttendance()->save();
-        $soul = Soul::where('id', $request->soul_id)->first();
-        $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                    ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                    ->get()
-                    ->sortBy('at');
-        $serviceAttendances = collect([]);
-        $temp = collect([]);
-        foreach($services as $service){
-            $attendingService = ServiceAttendance::where('soul_id',$soul->id)
-                                                          ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                                                          ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                                                          ->where('service_id',$service->id)
-                                                          ->first();
-            if($attendingService != null)$serviceAttendances->prepend($attendingService);
-        }
-        if($serviceAttendances->isNotEmpty()){
-            $serviceAttendances = $serviceAttendances->reverse();
-            foreach($serviceAttendances as $serviceAttendance){
-                $services->splice($services->search($serviceAttendance->service),1);
-            }
-        }
-
-        return view('member.forecastService',compact('soul','services','serviceAttendances'));
+        return back()->with('success', 'success')->with('message', 'deleted');
     }
-
-    public function forecastService()
-    {
-        return view('member.forecastService');
-    }
-
 
     public function postVisitor(Request $request)
     {
@@ -156,29 +128,7 @@ class MemberController extends Controller
             }
         }
 
-        $soul = Soul::where('id', $request->soul_id)->first();
-        $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                    ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                    ->get()
-                    ->sortBy('at');
-        $serviceAttendances = collect([]);
-        $temp = collect([]);
-        foreach($services as $service){
-            $attendingService = ServiceAttendance::where('soul_id',$soul->id)
-                                                          ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                                                          ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                                                          ->where('service_id',$service->id)
-                                                          ->first();
-            if($attendingService != null)$serviceAttendances->prepend($attendingService);
-        }
-        if($serviceAttendances->isNotEmpty()){
-            $serviceAttendances = $serviceAttendances->reverse();
-            foreach($serviceAttendances as $serviceAttendance){
-                $services->splice($services->search($serviceAttendance->service),1);
-            }
-        }
-
-        return view('member.forecastService',compact('soul','services','serviceAttendances'));
+        return back()->with('success', 'success')->with('message', 'added');
     }
 
 //
@@ -187,34 +137,7 @@ class MemberController extends Controller
         $visitor = ServiceVisitor::find($request->id);
         $visitor->delete();
         
-        $soul = Soul::where('id', $request->soul_id)->first();
-        $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                    ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                    ->get()
-                    ->sortBy('at');
-        $serviceAttendances = collect([]);
-        $temp = collect([]);
-        foreach($services as $service){
-            $attendingService = ServiceAttendance::where('soul_id',$soul->id)
-                                                          ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                                                          ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                                                          ->where('service_id',$service->id)
-                                                          ->first();
-            if($attendingService != null)$serviceAttendances->prepend($attendingService);
-        }
-        if($serviceAttendances->isNotEmpty()){
-            $serviceAttendances = $serviceAttendances->reverse();
-            foreach($serviceAttendances as $serviceAttendance){
-                $services->splice($services->search($serviceAttendance->service),1);
-            }
-        }
-
-        return view('member.forecastService',compact('soul','services','serviceAttendances'));
+        return back()->with('success', 'success')->with('message', 'deleted');
     }
 
-    public function visitor()
-    {
-        return view('member.forecastVisitor');
-    }
-   
 }

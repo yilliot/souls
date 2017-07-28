@@ -17,7 +17,7 @@ Forecast
         </div>
     </h1>
     @include('member.part.flash')
-    {{ Form::open(['url' => '/member/forecast', 'method' => 'post', 'class' => 'ui inverted form', 'id' => 'member-forecast', 'files' => true]) }}
+    {{ Form::open(['url' => '/member/forecast/service', 'method' => 'get', 'class' => 'ui inverted form', 'id' => 'member-forecast', 'files' => true]) }}
 
       <div class="field {{$errors->has('nric') ? 'error' : ''}}">
         <label>{{ trans('member.forecast.nric') }}</label>
