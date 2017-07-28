@@ -34,7 +34,7 @@ class MemberController extends Controller
           ->whereIn('service_id',$services->pluck('id'))
           ->get();
         foreach($attendingServices as $attendingService){
-            $serviceAttendances->prepend($attendingService);
+            if($attendingService)$serviceAttendances->prepend($attendingService);
         }
         if($serviceAttendances->isNotEmpty()){
             $serviceAttendances = $serviceAttendances->reverse();
