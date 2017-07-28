@@ -28,14 +28,13 @@ class MemberController extends Controller
                     ->get()
                     ->sortBy('at');
         $serviceAttendances = collect([]);
-        $temp = collect([]);
-        foreach($services as $service){
-            $attendingService = ServiceAttendance::where('soul_id',$soul->id)
-                                                          ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                                                          ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-                                                          ->where('service_id',$service->id)
-                                                          ->first();
-            if($attendingService != null)$serviceAttendances->prepend($attendingService);
+        $attendingServices = ServiceAttendance::where('soul_id',$soul->id)
+          ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
+          ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
+          ->whereIn('service_id',$services->pluck('id'))
+          ->get();
+        foreach($attendingServices as $attendingService){
+            $serviceAttendances->prepend($attendingService);
         }
         if($serviceAttendances->isNotEmpty()){
             $serviceAttendances = $serviceAttendances->reverse();
@@ -74,28 +73,6 @@ class MemberController extends Controller
         }
 
         return back()->with('success', 'success')->with('message', 'added');
-        // $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-        //             ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-        //             ->get()
-        //             ->sortBy('at');
-        // $serviceAttendances = collect([]);
-        // $temp = collect([]);
-        // foreach($services as $service){
-        //     $attendingService = ServiceAttendance::where('soul_id',$soul->id)
-        //                                                   ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-        //                                                   ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
-        //                                                   ->where('service_id',$service->id)
-        //                                                   ->first();
-        //     if($attendingService != null)$serviceAttendances->prepend($attendingService);
-        // }
-        // if($serviceAttendances->isNotEmpty()){
-        //     $serviceAttendances = $serviceAttendances->reverse();
-        //     foreach($serviceAttendances as $serviceAttendance){
-        //         $services->splice($services->search($serviceAttendance->service),1);
-        //     }
-        // }
-
-        // return view('member.forecastService',compact('soul','services','serviceAttendances'));
     }
 
     public function deleteForecastService(Request $request)
