@@ -20,7 +20,6 @@ class MemberController extends Controller
                 'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/',
                 'exists:souls,nric',
             ],
-            //Services Will Attend
         ]);
 
         $soul = Soul::where('nric', $request->nric)->first();
@@ -139,21 +138,24 @@ class MemberController extends Controller
 
     public function postVisitor(Request $request)
     {
+
         $serviceAttendance = ServiceAttendance::where('id', $request->id)->first();
         if ($request->has('visitors')) {
+
             foreach ($request->get('visitors') as $visitor) {
-                $serviceVisitor = new ServiceVisitor;
-                $serviceVisitor->attendance_id = $serviceAttendance->id;
-                $serviceVisitor->service_id = $serviceAttendance->service_id;
-                $serviceVisitor->soul_id = $request->soul_id;
-                $serviceVisitor->cellgroup_id = $serviceAttendance->cellgroup_id;
-                $serviceVisitor->is_attended = null;
-                $serviceVisitor->name = $visitor;
-                $serviceVisitor->save();
+                if($visitor != null){
+                    $serviceVisitor = new ServiceVisitor;
+                    $serviceVisitor->attendance_id = $serviceAttendance->id;
+                    $serviceVisitor->service_id = $serviceAttendance->service_id;
+                    $serviceVisitor->soul_id = $request->soul_id;
+                    $serviceVisitor->cellgroup_id = $serviceAttendance->cellgroup_id;
+                    $serviceVisitor->is_attended = null;
+                    $serviceVisitor->name = $visitor;
+                    $serviceVisitor->save();
+                }
             }
         }
 
-        Service::find($visitor->service->id)->cacheAttendance()->save();
         $soul = Soul::where('id', $request->soul_id)->first();
         $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
                     ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
@@ -184,8 +186,6 @@ class MemberController extends Controller
     {
         $visitor = ServiceVisitor::find($request->id);
         $visitor->delete();
-
-        Service::find($visitor->service->id)->cacheAttendance()->save();
         
         $soul = Soul::where('id', $request->soul_id)->first();
         $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
