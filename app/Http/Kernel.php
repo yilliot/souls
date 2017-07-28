@@ -60,6 +60,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'acl' => \Kodeine\Acl\Middleware\HasPermission::class,
         'admin' => \App\Http\Middleware\OfficeAdminOnly::class,
+        'cgl' => \App\Http\Middleware\CellGroupLeaderOnly::class,
+        'pastoral' => \App\Http\Middleware\PastoralOnly::class,
+        'apc' => \App\Http\Middleware\AdminPastoralAndCellGroupLeaderOnly::class,
 
     ];
 }

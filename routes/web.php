@@ -39,7 +39,8 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
 ## Admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
-     'middleware' => 'admin'
+     // 'middleware' => 'admin'
+     'middleware' => 'apc'
     ], function () {
         Route::get('service/{service}/attendance', 'AttendanceController@index');
         Route::group(['prefix' => 'attendance'], function() {
@@ -62,7 +63,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
 
 ## CGL
 Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
-    // 'middleware' => 'cgl'
+     'middleware' => 'cgl'
     ], function () {
         Route::resource('soul', 'SoulController');
 });
