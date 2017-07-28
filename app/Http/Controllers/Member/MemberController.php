@@ -55,19 +55,26 @@ class MemberController extends Controller
 
     public function postForecastService(Request $request)
     {
+        $soul = Soul::where('id', $request->soul_id)->first();
         if ($request->has('services')) {
             foreach ($request->get('services') as $service_id) {
+                if(ServiceAttendance::where('soul_id',$soul->id)
+                                                           ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
+                                                           ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
+                                                           ->where('service_id',$service_id)
+                                                           ->get()
+                                                           ->isEmpty()){
                 $serviceAttendance = new ServiceAttendance;
                 $serviceAttendance->service_id = $service_id;
                 $serviceAttendance->soul_id = $request->soul_id;
                 $serviceAttendance->cellgroup_id = $request->cellgroup_id;
                 $serviceAttendance->is_attended = null;
                 $serviceAttendance->save();
+                Service::find($serviceAttendance->service->id)->cacheAttendance()->save();
+                }
             }
         }
 
-        Service::find($serviceAttendance->service->id)->cacheAttendance()->save();
-        $soul = Soul::where('id', $request->soul_id)->first();
         $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
                     ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
                     ->get()
