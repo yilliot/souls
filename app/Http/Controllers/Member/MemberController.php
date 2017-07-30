@@ -37,7 +37,7 @@ class MemberController extends Controller
             if($attendingService)$serviceAttendances->prepend($attendingService);
         }
         if($serviceAttendances->isNotEmpty()){
-            $serviceAttendances = $serviceAttendances->reverse();
+            $serviceAttendances = $serviceAttendances->sortBy('service_id');
             foreach($serviceAttendances as $serviceAttendance){
                 $services->splice($services->search($serviceAttendance->service),1);
             }
