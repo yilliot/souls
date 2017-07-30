@@ -25,7 +25,7 @@ class MemberController extends Controller
         $soul = Soul::where('nric', $request->nric)->first();
         $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
                     ->where('at','>=',\Carbon\Carbon::now(\Carbon\Carbon::SUNDAY))
-                    ->sortBy('at')
+                    ->orderBy('at')
                     ->get();
         $serviceAttendances = collect([]);
         $attendingServices = ServiceAttendance::where('soul_id',$soul->id)
