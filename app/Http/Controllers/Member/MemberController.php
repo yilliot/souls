@@ -24,13 +24,13 @@ class MemberController extends Controller
 
         $soul = Soul::where('nric', $request->nric)->first();
         $services = Service::where('at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-                    ->where('at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
+                    ->where('at','>=',\Carbon\Carbon::now(\Carbon\Carbon::SUNDAY))
                     ->get()
                     ->sortBy('at');
         $serviceAttendances = collect([]);
         $attendingServices = ServiceAttendance::where('soul_id',$soul->id)
           ->where('created_at','<=',\Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY))
-          ->where('created_at','>=',\Carbon\Carbon::now()->previous(\Carbon\Carbon::SUNDAY))
+          ->where('created_at','>=',\Carbon\Carbon::now(\Carbon\Carbon::SUNDAY))
           ->whereIn('service_id',$services->pluck('id'))
           ->get();
         foreach($attendingServices as $attendingService){
