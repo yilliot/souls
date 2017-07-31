@@ -46,16 +46,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
         Route::get('service/{service}/attendance', 'AttendanceController@index');
         Route::group(['prefix' => 'attendance'], function() {
             // forecast
-            Route::post('add', 'AttendanceController@add');
-            Route::post('delete', 'AttendanceController@delete');
+            Route::post('add', 'AttendanceController@postAdd');
+            Route::post('delete', 'AttendanceController@postDelete');
             // attendance
-            Route::post('attended', 'AttendanceController@attended');
-            Route::post('absent', 'AttendanceController@absent');
-            Route::post('reset', 'AttendanceController@reset');
+            Route::post('attended', 'AttendanceController@postAttended');
+            Route::post('reset', 'AttendanceController@postReset');
 
             Route::get('/{attendance_id}/visitor', 'AttendanceController@visitor');
             Route::post('visitor', 'AttendanceController@postVisitor');
-            Route::delete('visitor', 'AttendanceController@destroyVisitor');
+            Route::delete('visitor', 'AttendanceController@postDeleteVisitor');
         });
 
         Route::resource('service', 'ServiceController');
