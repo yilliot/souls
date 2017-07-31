@@ -68,7 +68,19 @@ class AttendanceController extends Controller
     public function add(Request $request)
     {
         if ($request->has('souls')) {
-            foreach ($request->get('souls') as $soul_id) {
+            $tobeInserted = $request->souls;
+
+            $attendedSoulId = ServiceAttendance::where('service_id', $request->service_id)
+                ->whereIn('soul_id', $request->souls)
+                ->get()
+                ->pluck('soul_id');
+            if ($attendedSoulId) {
+                $tobeInserted = collect($request->souls)
+                    ->diff($attendedSoulId);
+            }
+
+
+            foreach ($tobeInserted as $soul_id) {
                 $serviceAttendance = new ServiceAttendance;
                 $serviceAttendance->service_id = $request->service_id;
                 $serviceAttendance->soul_id = $soul_id;
