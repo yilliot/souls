@@ -1,6 +1,30 @@
 <?php
 
 Route::get('/', 'HomeController@welcome');
+Route::get('/i/', function(){
+    $data = [
+        'chat_id' => 'yilliot',
+        'text'    => 'hi',
+    ];
+    $response = Telegram::getUpdates([
+        // 'offset' => '320308637',
+        'allowed_updates' => ['message', 'edited_message', 'channel_post', 'edited_channel_post', 'inline_query']
+    ]);
+
+    dd($response);
+    $request = collect(end($response)); // fetch the last request from the collection
+
+    $chatid = $request['message']['chat']['id']; // get chatid from request
+    $text = $request['message']['text']; // get the user sent text
+    $response = Telegram::sendMessage([
+        'chat_id' => $chatid, 
+        'text' => 'Hey! This is bot sending you the first message :)'
+    ]);
+    dd($response);
+});
+Route::get('/i/todo', function(){
+    return view('todo');
+});
 
 Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
     Route::get('/3km', 'JustBeginController@home');
