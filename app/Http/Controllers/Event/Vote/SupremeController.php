@@ -22,7 +22,7 @@ class SupremeController extends Controller
 
     public function postS01(Request $request)
     {
-        if (session('supreme.vote'))
+        if (!session('supreme.vote'))
             return redirect('/event/vote/supreme');
 
         $record = new \App\Models\Events\SupremeVoteRecord;
