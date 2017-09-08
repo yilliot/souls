@@ -27,6 +27,7 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        return redirect('/event/vote/supreme');
         return view('welcome');
     }
 }
