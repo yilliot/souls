@@ -27,6 +27,15 @@ Route::get('/i/todo', function(){
 });
 
 Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
+
+    Route::group(['prefix' => 'vote', 'namespace' => 'Vote'], function () {
+
+        Route::get('/supreme', 'SupremeController@s01');
+        Route::post('/supreme', 'SupremeController@postS01');
+        Route::get('/supreme/message', 'SupremeController@message');
+
+    });
+
     Route::get('/3km', 'JustBeginController@home');
     Route::get('/3km/signup', 'JustBeginController@signup');
     Route::post('/3km/signup', 'JustBeginController@postSignup');

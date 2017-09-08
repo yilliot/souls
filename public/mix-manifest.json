@@ -3,6 +3,8 @@
   "/js/admin.js": "/js/admin.js",
   "/css/admin.css": "/css/admin.css",
   "/css/event.just-begin.css": "/css/event.just-begin.css",
+  "/css/event.supreme-vote.css": "/css/event.supreme-vote.css",
   "/js/event.just-begin.js": "/js/event.just-begin.js",
+  "/js/event.supreme-vote.js": "/js/event.supreme-vote.js",
   "/js/manifest.js": "/js/manifest.js"
 }
