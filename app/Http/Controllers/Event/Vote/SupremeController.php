@@ -17,13 +17,13 @@ class SupremeController extends Controller
 
     public function message(Request $request)
     {
+        if (!session('supreme.vote'))
+            return redirect('/event/vote/supreme');
         return view('event.supreme.message');
     }
 
     public function postS01(Request $request)
     {
-        if (!session('supreme.vote'))
-            return redirect('/event/vote/supreme');
 
         $record = new \App\Models\Events\SupremeVoteRecord;
         $record->option = $request->option;
