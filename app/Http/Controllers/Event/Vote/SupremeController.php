@@ -10,9 +10,8 @@ class SupremeController extends Controller
 {
     public function s01(Request $request)
     {
-        if (session('supreme.vote')) {
+        if (session('supreme.vote'))
             return redirect('/event/vote/supreme/message');
-        }
         return view('event.supreme.s01');
     }
 
@@ -23,6 +22,9 @@ class SupremeController extends Controller
 
     public function postS01(Request $request)
     {
+        if (session('supreme.vote'))
+            return redirect('/event/vote/supreme');
+
         $record = new \App\Models\Events\SupremeVoteRecord;
         $record->option = $request->option;
         $record->save();
