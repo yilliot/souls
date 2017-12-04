@@ -65,10 +65,22 @@ class AttendanceController extends Controller
         ]));
     }
 
-    public function add(Request $request)
+    public function postAdd(Request $request)
     {
         if ($request->has('souls')) {
-            foreach ($request->get('souls') as $soul_id) {
+            $tobeInserted = $request->souls;
+
+            $attendedSoulId = ServiceAttendance::where('service_id', $request->service_id)
+                ->whereIn('soul_id', $request->souls)
+                ->get()
+                ->pluck('soul_id');
+            if ($attendedSoulId) {
+                $tobeInserted = collect($request->souls)
+                    ->diff($attendedSoulId);
+            }
+
+
+            foreach ($tobeInserted as $soul_id) {
                 $serviceAttendance = new ServiceAttendance;
                 $serviceAttendance->service_id = $request->service_id;
                 $serviceAttendance->soul_id = $soul_id;
@@ -80,7 +92,7 @@ class AttendanceController extends Controller
         Service::find($request->service_id)->cacheAttendance()->save();
         return back()->with('success', 'success')->with('message', 'added');
     }
-    public function delete(Request $request)
+    public function postDelete(Request $request)
     {
         $serviceAttendance = ServiceAttendance::find($request->id);
         $serviceAttendance->visitors()->delete();
@@ -90,7 +102,7 @@ class AttendanceController extends Controller
 
         return back()->with('success', 'success')->with('message', 'deleted');
     }
-    public function attended(Request $request)
+    public function postAttended(Request $request)
     {
         if (collect($request->get('visitor'))->count()) {
             ServiceVisitor::whereIn('id', $request->get('visitor'))
@@ -106,7 +118,7 @@ class AttendanceController extends Controller
         return back()->with('success', 'success')->with('message', 'flag attended');
     }
 
-    public function reset(Request $request)
+    public function postReset(Request $request)
     {
         if ($request->type == 'visitor') {
             $obj = ServiceVisitor::find($request->id);
@@ -146,7 +158,7 @@ class AttendanceController extends Controller
         return back()->with('success', 'success')->with('message', 'updated');
     }
 
-    public function destroyVisitor(Request $request)
+    public function postDeleteVisitor(Request $request)
     {
         $visitor = ServiceVisitor::find($request->id);
         $visitor->delete();
