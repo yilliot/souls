@@ -1,4 +1,5 @@
 <?php
+Route::get('/calendar', 'HomeController@calendar');
 
 Route::get('/', 'HomeController@welcome');
 Route::get('/i/', function(){
@@ -30,9 +31,9 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
 
     Route::group(['prefix' => 'vote', 'namespace' => 'Vote'], function () {
 
-        Route::get('/supreme', 'SupremeController@s01');
-        Route::post('/supreme', 'SupremeController@postS01');
-        Route::get('/supreme/message', 'SupremeController@message');
+        // Route::get('/supreme', 'SupremeController@s01');
+        // Route::post('/supreme', 'SupremeController@postS01');
+        // Route::get('/supreme/message', 'SupremeController@message');
 
     });
 
