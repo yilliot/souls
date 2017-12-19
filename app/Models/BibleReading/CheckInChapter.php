@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models\BibleReading;
+namespace App\Models\Events\BibleReading;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Cellgroup;
-use App\Models\BibleReading\CheckIn;
-use App\Models\BibleReading\Chapter;
-use App\Models\BibleReading\Comment;
+use App\Models\Events\BibleReading\CheckIn;
+use App\Models\Events\BibleReading\Chapter;
+use App\Models\Events\BibleReading\Comment;
 
 class CheckInChapter extends Model
 {
-    protected $table = 'chapters';
+    protected $table = 'e03_chapters';
 
     // REL
     public function comment()

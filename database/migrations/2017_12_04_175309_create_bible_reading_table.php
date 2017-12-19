@@ -14,13 +14,13 @@ class CreateBibleReadingTable extends Migration
     public function up()
     {
         //
-        Schema::create('check_ins', function(Blueprint $table){
+        Schema::create('e03_check_ins', function(Blueprint $table){
             $table->increments('id');
             $table->integer('soul_id')->unsigned()->index();
             $table->timestamps();
         });
 
-        Schema::create('check_in_chapters', function(Blueprint $table){
+        Schema::create('e03_check_in_chapters', function(Blueprint $table){
             $table->increments('id');
             $table->integer('check_in_id')->unsigned()->index();
             $table->integer('chapter_id')->unsigned()->index();
@@ -28,7 +28,7 @@ class CreateBibleReadingTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('comments', function(Blueprint $table){
+        Schema::create('e03_comments', function(Blueprint $table){
             $table->increments('id');
             $table->integer('check_in_chapter_id')->unsigned()->index();
             $table->string('title')->nullable();
@@ -36,7 +36,7 @@ class CreateBibleReadingTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('chapters', function(Blueprint $table){
+        Schema::create('e03_chapters', function(Blueprint $table){
             $table->increments('id');
             $table->string('book_name');
             $table->integer('chapter_number');
@@ -51,10 +51,10 @@ class CreateBibleReadingTable extends Migration
     public function down()
     {
         //
-        Schema::drop('check_ins');
-        Schema::drop('check_in_chapters');
-        Schema::drop('comments');
-        Schema::drop('chapters');
+        Schema::drop('e03_check_ins');
+        Schema::drop('e03_check_in_chapters');
+        Schema::drop('e03_comments');
+        Schema::drop('e03_chapters');
 
     }
 }

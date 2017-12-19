@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\BibleReading;
+namespace App\Models\Events\BibleReading;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\BibleReading\CheckInChapter;
+use App\Models\Events\BibleReading\CheckInChapter;
 
 class Chapter extends Model
 {
-    protected $table = 'chapters';
+    protected $table = 'e03_chapters';
 
     // REL
     public function checkInChapter()
