@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\BibleReading\Chapter;
+use App\Models\Events\BibleReading\Chapter;
 
 class BibleChapterSeeder extends Seeder
 {
