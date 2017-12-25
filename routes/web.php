@@ -48,6 +48,14 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
     Route::get('/3km/admin_search_claim', 'JustBeginController@adminSearchClaim');
     Route::get('/3km/claim', 'JustBeginController@claim');
     Route::post('/3km/claim', 'JustBeginController@postClaim');
+
+    Route::group(['prefix' => 'bible_reading', 'namespace' => 'BibleReading'], function () {
+
+        Route::get('/', 'BibleReadingController@home');
+        Route::get('/signup', 'BibleReadingController@signup');
+        Route::get('/checkin', 'BibleReadingController@checkin');
+        Route::get('/history', 'BibleReadingController@history');
+    });
 });
 
 ## SESSION
