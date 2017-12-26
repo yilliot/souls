@@ -74,7 +74,7 @@ a { color: #BBB !important; }
 
 @media only screen and (min-width: 1200px) {
   #signup-container{
-    max-width: 550px !important;
+    max-width: 700px !important;
     margin: 100px auto 20px auto;
     .ui.form{
       margin:1em;
@@ -86,8 +86,8 @@ a { color: #BBB !important; }
 /**
  * FORMS
  */
-#just-begin-checkin,
-#just-begin-signup{
+#bible-reading-checkin,
+#bible-reading-signup{
   .field .ui.dropdown .item {
     font-size: 1.05em !important;
     background-color: #333 !important;
@@ -110,7 +110,8 @@ a { color: #BBB !important; }
   .field input[type=number],
   .field input[type=email],
   .field input[type=date],
-  .field input[type=password]
+  .field input[type=password],
+  .field textarea
   {
     padding-top: 20px !important;
     padding-bottom: 20px !important;
@@ -136,6 +137,56 @@ a { color: #BBB !important; }
   {
     color:white !important;
     background-color: $neon-pink !important;
+  }
+}
+
+/**
+ * ACCORDIANS
+ */
+
+
+.ui.accordion {
+  background-color: #333 !important;
+  .title {
+    color: $neon-cyan !important;
+  }
+  .content {
+    font-size: 1em !important;
+    background-color: #333 !important;
+    .title,
+    .content {
+      color: $neon-cyan !important;
+      background-color: #222 !important;
+    }
+  }
+}
+
+.m-auto {
+  margin: auto !important;
+}
+.p-clear {
+  padding: 2.5px 5px !important;
+}
+.chapter.button {
+  color: white !important;
+  margin: 0.1rem 0.1rem!important;
+  text-align: center !important;
+  background-color: #111;
+  width: 100% !important;
+}
+
+
+/**
+ * CARD
+ */
+
+.ui.fluid.card {
+  background-color: #111 !important;
+  border-color: #222 !important;
+  p,
+  span,
+  .header {
+    color: #DDD !important;
   }
 }
 
