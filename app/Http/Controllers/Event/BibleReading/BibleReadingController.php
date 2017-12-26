@@ -73,7 +73,6 @@ class BibleReadingController extends Controller
         $status = [];
         $i = 1;
         $check_in = CheckIn::where('soul_id', $soul->id)->get();
-        $bible_chapter = Chapter::all();
 
         foreach ($this->bible_books as $book => $chapter) {
           if($i++ <= 39) $old_test[$book] = $chapter;
@@ -84,17 +83,26 @@ class BibleReadingController extends Controller
           }
         }
         $chapters = [];
-        foreach ($check_in as $checkIn) {
-          $chapters[] = $checkIn->checkInChapter()->get()->pluck('chapter_id');
+        foreach ($check_in as $value) {
+          $chapters[] = CheckInChapter::where('check_in_id', $value->id)->get()->pluck('chapter_id');
         }
         foreach ($chapters as $chapter) {
           foreach ($chapter as $id) {
-            $chapter_data = $bible_chapter->where('id', $id)->first();
-            $status[$chapter_data->book_name][$chapter_data->chapter_number] = 1;
+            foreach ($this->bible_books as $book => $chapter_num) {
+              if($id - $chapter_num > 0) {
+                $id -= $chapter_num;
+              }
+              else {
+                $chapter_data['book_name'] = $book;
+                $chapter_data['chapter_number'] = $id;
+                break;
+              }
+            }
+            $status[$chapter_data['book_name']][$chapter_data['chapter_number']] = 1;
           }
         }
 
-        $amount = $this->countRecord($soul);
+        $amount = $this->countRecord($check_in);
         return view('event.bible_reading.history', compact('old_test', 'new_test', 'status', 'amount'));
     }
 
@@ -108,9 +116,8 @@ class BibleReadingController extends Controller
         return view('event.bible_reading.show_comments', compact('comments', 'type'));
     }
 
-    public function countRecord($soul)
+    public function countRecord($check_in)
     {
-        $check_in = CheckIn::where('soul_id', $soul->id)->get();
         $check_in_chapter = [];
         foreach ($check_in as $checkIn) {
           $check_in_chapter[] = $checkIn->checkInChapter()->get();
@@ -125,7 +132,8 @@ class BibleReadingController extends Controller
         $comments = Comment::where('soul_id', $soul->id)
                     ->get();
         $type = 'soul';
-        $amount = $this->countRecord($soul);
+        $check_in = CheckIn::where('soul_id', $soul->id)->get();
+        $amount = $this->countRecord($check_in);
         return view('event.bible_reading.show_comments', compact('comments', 'type', 'amount'));
     }
 
