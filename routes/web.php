@@ -54,7 +54,18 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
         Route::get('/', 'BibleReadingController@home');
         Route::get('/signup', 'BibleReadingController@signup');
         Route::get('/checkin', 'BibleReadingController@checkin');
-        Route::get('/history', 'BibleReadingController@history');
+        Route::group(['middleware' => 'nric'], function() {
+            Route::get('/history', 'BibleReadingController@history');
+            Route::get('/history/{book}/{verse}', 'BibleReadingController@showHistory');
+            Route::get('/history/my', 'BibleReadingController@showMyHistory');
+        });
+        Route::get('/nric', 'BibleReadingController@nric');
+        Route::get('/signout', 'BibleReadingController@signout');
+
+        Route::post('/signup', 'BibleReadingController@postSignup');
+        Route::post('/checkin', 'BibleReadingController@postCheckin');
+        Route::post('/history', 'BibleReadingController@postHistory');
+        Route::post('/nric', 'BibleReadingController@postNric');
     });
 });
 
