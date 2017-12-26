@@ -18,7 +18,7 @@ Bible Reading Sign up
     </h2>
     @include('event.bible_reading.part.flash')
 
-    {{ Form::open(['url' => '/event/3km/signup', 'method' => 'post', 'class' => 'ui inverted form', 'id' => 'just-begin-signup']) }}
+    {{ Form::open(['url' => '/event/bible_reading/signup', 'method' => 'post', 'class' => 'ui inverted form', 'id' => 'bible-reading-signup']) }}
 
       <div class="field {{$errors->has('nickname') ? 'error' : ''}}">
         <label>{{trans('event.bible_reading.nickname')}}</label>
@@ -81,7 +81,7 @@ Bible Reading Sign up
       <div class="field {{$errors->has('contact') ? 'error' : ''}}">
         <label>{{ trans('event.bible_reading.contact') }}</label>
         <div class="field">
-          {{ Form::select('contact_code', \App\Enums\ContactCountryCodes::all(), null, ['class' => 'ui compact dropdown label'] )}}
+          {{ Form::select('contact_code', \App\Enums\ContactCountryCodes::all(), null, ['class' => 'ui compact dropdown label', 'id'=>'contact-code'] )}}
         </div>
         <div class="field">
           {{ Form::text('contact', null, ['placeholder' => 'e.g : 0167654321'])}}
@@ -102,7 +102,7 @@ Bible Reading Sign up
         @endif
       </div>
       <div class="field {{$errors->has('cellgroup_id') ? 'error' : ''}}">
-        {{ Form::select('cellgroup_id', \App\Models\Cellgroup::get()->pluck('name', 'id'), null, ['class'=>'ui compact search dropdown', 'placeholder' => trans('event.bible_reading.cellgroup')] ) }}
+        {{ Form::select('cellgroup_id', \App\Models\Cellgroup::get()->pluck('name', 'id'), null, ['class'=>'ui compact search dropdown', 'id'=>'cellgroup', 'placeholder' => trans('event.bible_reading.cellgroup')] ) }}
         @if ($errors->has('cellgroup_id'))
           <label > * {{ $errors->first('cellgroup_id') }}</label>
         @endif
