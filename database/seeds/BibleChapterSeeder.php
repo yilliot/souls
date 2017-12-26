@@ -86,7 +86,7 @@ class BibleChapterSeeder extends Seeder
 
         foreach ($bible_books as $book_name => $chapter_number) {
             for ($chapter = 1; $chapter <= $chapter_number; $chapter++) { 
-                DB::table('chapters')->insert(['book_name' => $book_name, 'chapter_number' => $chapter]);
+                DB::table('e03_chapters')->insert(['book_name' => $book_name, 'chapter_number' => $chapter]);
             }
         }
     }
