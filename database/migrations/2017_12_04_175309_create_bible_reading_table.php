@@ -24,6 +24,7 @@ class CreateBibleReadingTable extends Migration
             $table->increments('id');
             $table->integer('check_in_id')->unsigned()->index();
             $table->integer('chapter_id')->unsigned()->index();
+            $table->integer('cellgroup_id')->unsigned()->index();
             $table->integer('comment_id')->nullable()->unsigned()->index();
             $table->timestamps();
         });
@@ -31,6 +32,7 @@ class CreateBibleReadingTable extends Migration
         Schema::create('e03_comments', function(Blueprint $table){
             $table->increments('id');
             $table->integer('check_in_chapter_id')->unsigned()->index();
+            $table->integer('soul_id')->unsigned()->index();
             $table->string('title')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
