@@ -40,7 +40,8 @@ class BibleReadingController extends Controller
             'count' => 0,
           ],
         ];
-        $topScore = max($count);
+
+        $topScore = $count? max($count):1;
         for($i = 1; $i <= 4; $i++){
           if(isset($count[$i])) $totals[$i]['count'] = $count[$i];
         }
@@ -67,37 +68,32 @@ class BibleReadingController extends Controller
     public function history()
     {
         $soul = Soul::where('nric', session('nric'))->first();
-        $books = trans('event.bible_reading.bible_books');
         $old_test = [];
         $new_test = [];
         $status = [];
         $i = 1;
-        foreach($books as $book => $value){
-          $state = [];
-          if($i++ <=39) {
-            $old_test[$book] = Chapter::where('book_name', $book)->count();
-            for($j = 0; $j < $old_test[$book]; $j++) {
-              $id = $this->culm_chapter[$book] + $j;
-              $check_in_chapters = Chapter::find($id)->checkInChapter()->get();
-              $state[$j] = 0;
-              foreach ($check_in_chapters as $check_in_chapter) {
-                $state[$j] = $check_in_chapter->checkIn()->first()->soul()->first()->id == $soul->id ? 1:0;
-              }
-            }
+        $check_in = CheckIn::where('soul_id', $soul->id)->get();
+        $bible_chapter = Chapter::all();
+
+        foreach ($this->bible_books as $book => $chapter) {
+          if($i++ <= 39) $old_test[$book] = $chapter;
+          else $new_test[$book] = $chapter;
+          $status[$book] = [];
+          for($j = 1; $j <= $chapter; $j++) {
+            $status[$book][$j] = 0;
           }
-          else {
-            $new_test[$book] = Chapter::where('book_name', $book)->count();
-            for($j = 0; $j < $new_test[$book]; $j++) {
-              $id = $this->culm_chapter[$book] + $j;
-              $check_in_chapters = Chapter::find($id)->checkInChapter()->get();
-              $state[$j] = 0;
-              foreach ($check_in_chapters as $check_in_chapter) {
-                $state[$j] = $check_in_chapter->checkIn()->first()->soul()->first()->id == $soul->id ? 1:0;
-              }
-            }
-          }
-          $status[$book] = $state;
         }
+        $chapters = [];
+        foreach ($check_in as $checkIn) {
+          $chapters[] = $checkIn->checkInChapter()->get()->pluck('chapter_id');
+        }
+        foreach ($chapters as $chapter) {
+          foreach ($chapter as $id) {
+            $chapter_data = $bible_chapter->where('id', $id)->first();
+            $status[$chapter_data->book_name][$chapter_data->chapter_number] = 1;
+          }
+        }
+
         $amount = $this->countRecord($soul);
         return view('event.bible_reading.history', compact('old_test', 'new_test', 'status', 'amount'));
     }
@@ -235,72 +231,72 @@ class BibleReadingController extends Controller
         return redirect()->intended('event/bible_reading/history');
     }
 
-    protected $culm_chapter = [
-              "Gen" => 1,
-              "Ex" => 51,
-              "Lev" => 91,
-              "Num" => 118,
-              "Deut" => 154,
-              "Josh" => 188,
-              "Judg" => 212,
-              "Ruth" => 233,
-              "1Sam" => 237,
-              "2Sam" => 268,
-              "1Kings" => 292,
-              "2Kings" => 314,
-              "1Chron" => 339,
-              "2Chron" => 368,
-              "Ezra" => 404,
-              "Neh" => 414,
-              "Est" => 427,
-              "Job" => 437,
-              "Ps" => 479,
-              "Prov" => 629,
-              "Eccles" => 660,
-              "Song" => 672,
-              "Isa" => 680,
-              "Jer" => 746,
-              "Lam" => 798,
-              "Ezek" => 803,
-              "Dan" => 851,
-              "Hos" => 863,
-              "Joel" => 877,
-              "Amos" => 880,
-              "Obad" => 889,
-              "Jonah" => 890,
-              "Mic" => 894,
-              "Nah" => 901,
-              "Hab" => 904,
-              "Zeph" => 907,
-              "Hag" => 910,
-              "Zech" => 912,
-              "Mal" => 926,
-              "Matt" => 930,
-              "Mark" => 958,
-              "Luke" => 974,
-              "John" => 998,
-              "Acts" => 1019,
-              "Rom" => 1047,
-              "1Cor" => 1063,
-              "2Cor" => 1079,
-              "Gal" => 1092,
-              "Eph" => 1098,
-              "Phil" => 1104,
-              "Col" => 1108,
-              "1Thess" => 1112,
-              "2Thess" => 1117,
-              "1Tim" => 1120,
-              "2Tim" => 1126,
-              "Titus" => 1130,
-              "Philemon" => 1133,
-              "Heb" => 1134,
-              "James" => 1147,
-              "1Pet" => 1152,
-              "2Pet" => 1157,
-              "1John" => 1160,
-              "2John" => 1165,
-              "3John" => 1166,
-              "Jude" => 1167,
-              "Rev" => 1168,
+    protected $bible_books = [
+            'Gen' => 50,
+            'Ex' => 40,
+            'Lev' => 27,
+            'Num' => 36,
+            'Deut' => 34,
+            'Josh' => 24,
+            'Judg' => 21,
+            'Ruth' => 4,
+            '1Sam' => 31,
+            '2Sam' => 24,
+            '1Kings' => 22,
+            '2Kings' => 25,
+            '1Chron' => 29,
+            '2Chron' => 36,
+            'Ezra' => 10,
+            'Neh' => 13,
+            'Est' => 10,
+            'Job' => 42,
+            'Ps' => 150,
+            'Prov' => 31,
+            'Eccles' => 12,
+            'Song' => 8,
+            'Isa' => 66,
+            'Jer' => 52,
+            'Lam' => 5,
+            'Ezek' => 48,
+            'Dan' => 12,
+            'Hos' => 14,
+            'Joel' => 3,
+            'Amos' => 9,
+            'Obad' => 1,
+            'Jonah' => 4,
+            'Mic' => 7,
+            'Nah' => 3,
+            'Hab' => 3,
+            'Zeph' => 3,
+            'Hag' => 2,
+            'Zech' => 14,
+            'Mal' => 4,
+            'Matt' => 28,
+            'Mark' => 16,
+            'Luke' => 24,
+            'John' => 21,
+            'Acts' => 28,
+            'Rom' => 16,
+            '1Cor' => 16,
+            '2Cor' => 13,
+            'Gal' => 6,
+            'Eph' => 6,
+            'Phil' => 4,
+            'Col' => 4,
+            '1Thess' => 5,
+            '2Thess' => 3,
+            '1Tim' => 6,
+            '2Tim' => 4,
+            'Titus' => 3,
+            'Philemon' => 1,
+            'Heb' => 13,
+            'James' => 5,
+            '1Pet' => 5,
+            '2Pet' => 3,
+            '1John' => 5,
+            '2John' => 1,
+            '3John' => 1,
+            'Jude' => 1,
+            'Rev' => 22,
         ];
 }
