@@ -37,7 +37,7 @@ Bible Reading Home
             @for($i = 1 ;$i <= $chapter; $i++)
               <div class="column p-clear">
                 
-                <a href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui chapter {{ $status[$book][$i-1] ? 'red':'' }} button">{{$i}}</a>
+                <a href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui chapter {{ $status[$book][$i] ? 'red':'' }} button">{{$i}}</a>
               </div>
             @endfor
             </div>
@@ -60,7 +60,7 @@ Bible Reading Home
             <div class="ui doubling eight column grid m-auto">
             @for($i = 1 ;$i <= $chapter; $i++)
               <div class="column p-clear">
-                <a href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui chapter {{ $status[$book][$i-1] ? 'red':'' }} button">{{$i}}</a>
+                <a href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui chapter {{ $status[$book][$i] ? 'red':'' }} button">{{$i}}</a>
               </div>
             @endfor
             </div>
