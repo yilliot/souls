@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'cgl' => \App\Http\Middleware\CellGroupLeaderOnly::class,
         'pastoral' => \App\Http\Middleware\PastoralOnly::class,
         'apc' => \App\Http\Middleware\AdminPastoralAndCellGroupLeaderOnly::class,
+        'nric' => \App\Http\Middleware\HasNricSession::class,
 
     ];
 }
