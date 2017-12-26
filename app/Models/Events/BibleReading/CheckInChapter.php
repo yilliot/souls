@@ -10,7 +10,7 @@ use App\Models\Events\BibleReading\Comment;
 
 class CheckInChapter extends Model
 {
-    protected $table = 'e03_chapters';
+    protected $table = 'e03_check_in_chapters';
 
     // REL
     public function comment()
