@@ -39,7 +39,7 @@ $(function(){
         options = '';
         for(var i = 1; i <= bible_books[selected_book]; i++){
           options += '<input name=\'chapters[]\' type=\'hidden\' value=\'0\'id=\'input-' + i + '\'>' +
-                     '<div class=\'column p-clear\'><div class=\'ui checkin chapter button\' data-value=\'' + i + '\'>' + i + '</div></div>'
+                     '<div class=\'column p-clear\'><div class=\'ui basic checkin chapter button\' data-value=\'' + i + '\'>' + i + '</div></div>'
                       ;
         }
         $('#chapters').html(options);
@@ -54,10 +54,12 @@ $(function(){
           if (status == 1) {
             if(i != 1)$(this).parent().before(newlinebefore);
             $(this).parent().after(newlineafter + textarea);
-            $(this).addClass('primary');
+            $(this).addClass('red');
+            $(this).removeClass('basic');
             $(this).parent().removeClass('column').addClass('my fluid');
           } else {
-            $(this).removeClass('primary');
+            $(this).removeClass('red');
+            $(this).addClass('basic');
             $(this).parent().addClass('column').removeClass('my fluid');
             if(i != 1)$('#newlinebefore' + i).remove();
             $('#newlineafter' + i).remove();
@@ -75,7 +77,9 @@ $(function(){
     })
   ;
 
-  $('.ui.progress').progress();
+  $('.ui.progress')
+    .progress()
+  ;
 
   $('.modalcaller').click( function() {
 

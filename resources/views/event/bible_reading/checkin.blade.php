@@ -46,10 +46,11 @@ Bible Reading Check in
     <div class="ui hidden divider"></div>
 
     <div class="field">
-      <button class="ui basic fluid huge button">{{trans('event.bible_reading.checkin')}}</button>
+      <button class="ui black fluid huge button">{{trans('event.bible_reading.checkin')}}</button>
     </div>
     <div class="field">
       <a href="/event/bible_reading/signup">{{trans('event.bible_reading.signup_now')}}</a>
     </div>
   </form>
+  <div class="ui hidden divider"></div>
 @endsection

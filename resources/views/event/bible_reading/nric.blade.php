@@ -30,7 +30,8 @@ Bible Reading Login
     <div class="ui hidden divider"></div>
 
     <div class="field">
-      <button class="ui basic fluid huge button">{{trans('event.bible_reading.login')}}</button>
+      <button class="ui black fluid huge button">{{trans('event.bible_reading.login')}}</button>
     </div>
   {{ Form::close() }}
+    <div class="ui hidden divider"></div>
 @endsection

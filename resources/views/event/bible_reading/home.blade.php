@@ -21,20 +21,16 @@ Bible Reading Home
   <h2 class="header">{{trans('event.bible_reading.result')}}</h2>
   <div class="ui ordered list">
   @foreach ($totals as $total)
-    <div class="item">
-      <div class="content">
-        <span class="ui large {{$total['color']}} label">
-          {{$total['name']}}
-        </span>
-        {{ trans('event.bible_reading.chapter_read_count') . ': ' . $total['count'] . ' ' . trans('event.bible_reading.chapter') }}
-      </div>
-      <div style="width: 100%;">
-        <div class="ui tiny progress" data-percent="{{$total['count']/$topScore*100}}">
-          <div class="bar">
-          </div>
-        </div>
-      </div>
+  <div class="item">
+    <div class="content">
+          {{ $total['name'] }} : 
+        
+      {{ trans('event.bible_reading.chapter_read_count') . ': ' . $total['count'] . ' ' . trans('event.bible_reading.chapter') }}
     </div>
+    <div class="ui {{ $total['color']}} progress" data-value="{{ $total['count'] }}" data-total="{{ $topScore * 1.2 }}">
+      <div class="bar"></div>
+    </div>
+  </div>
   @endforeach
   </div>
 

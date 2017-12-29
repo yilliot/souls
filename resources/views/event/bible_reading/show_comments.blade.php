@@ -35,4 +35,5 @@ Bible Reading My Records
   </tr>
   @endforelse
 
+  <div class="ui hidden divider"></div>
 @endsection
