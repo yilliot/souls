@@ -66,6 +66,8 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
         Route::post('/checkin', 'BibleReadingController@postCheckin');
         Route::post('/history', 'BibleReadingController@postHistory');
         Route::post('/nric', 'BibleReadingController@postNric');
+
+        Route::get('/schedule', 'BibleReadingController@getSchedule');
     });
 });
 
