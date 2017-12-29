@@ -239,6 +239,11 @@ class BibleReadingController extends Controller
         return redirect()->intended('event/bible_reading/history');
     }
 
+    public function getSchedule()
+    {
+        return view('event.bible_reading.schedule');
+    }
+
     protected $bible_books = [
             'Gen' => 50,
             'Ex' => 40,
