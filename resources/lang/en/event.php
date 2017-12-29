@@ -51,8 +51,8 @@ return [
         'chapter_read' => 'of chapter read.',
         'chapter_read_count' => 'Chapter read',
         'chapter' => 'chapters',
-        'signout' => 'Sign out',
-        'success_signout' => 'Successfully sign out',
+        'logout' => 'Log out',
+        'success_logout' => 'Successfully log out',
 
 
         // check in page

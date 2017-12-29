@@ -52,8 +52,8 @@ return [
         'chapter_read' => '完成',
         'chapter_read_count' => '已读经文总数',
         'chapter' => '章',
-        'signout' => '登出',
-        'success_signout' => '成功登出',
+        'logout' => '登出',
+        'success_logout' => '成功登出',
 
         // check in page
         'check_in_chapter' => '经文',
