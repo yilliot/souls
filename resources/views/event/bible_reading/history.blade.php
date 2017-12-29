@@ -5,69 +5,54 @@ Bible Reading Home
 @endsection
 
 @section('content')
+
+  <a href="/event/bible_reading/checkin"> {{trans('event.bible_reading.checkin')}} </a> | 
+  <a href="/event/bible_reading/history/my"> {{trans('event.bible_reading.my_record')}} </a> |
+  <a href="/event/bible_reading/logout"> {{trans('event.bible_reading.logout')}} </a> 
+
+  @include('event.bible_reading.part.logo')
+  @include('event.bible_reading.part.flash')
+  @include('event.bible_reading.part.progress', ['amount' => $amount])
   
-	<div id="signup-container" class="ui inverted segment text container">
-
-    <a href="/event/bible_reading"> <i class="home icon"></i> </a> |
-    <a href="/session/lang/zh">中文</a> |
-    <a href="/session/lang/en">English</a> |
-    <a href="/event/bible_reading/checkin"> {{trans('event.bible_reading.checkin')}} </a> | 
-    <a href="/event/bible_reading/history/my"> {{trans('event.bible_reading.my_record')}} </a>
-    | <a href="/event/bible_reading/logout"> {{trans('event.bible_reading.logout')}} </a> 
-
-    @include('event.bible_reading.part.logo')
-    @include('event.bible_reading.part.flash')
-    @include('event.bible_reading.part.progress', ['amount' => $amount])
-    
-    <div class="ui styled fluid accordion">
-      <div class="active title">
+  <div class="ui header">
+    {{ trans('event.bible_reading.old_test') }}
+  </div>
+  <div class="ui styled fluid accordion">
+  @foreach($old_test as $book => $chapter)
+    <div class="title">
         <i class="dropdown icon"></i>
-        {{ trans('event.bible_reading.old_test') }}
-      </div>
-      <div class="active content">
-        <div class="accordion">
-        @foreach($old_test as $book => $chapter)
-          <div class="title">
-              <i class="dropdown icon"></i>
-              {{ trans('event.bible_reading.bible_books.' . $book) }}
-          </div>
-          <div class="content">
-            <div class="ui doubling eight column grid m-auto">
-            @for($i = 1 ;$i <= $chapter; $i++)
-              <div class="column p-clear">
-                
-                <a href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui chapter {{ $status[$book][$i] ? 'red':'' }} button">{{$i}}</a>
-              </div>
-            @endfor
-            </div>
-          </div>
-        @endforeach
-        </div>
-      </div>
-      <div class="title">
-        <i class="dropdown icon"></i>
-        {{ trans('event.bible_reading.new_test') }}
-      </div>
-      <div class="content">
-        <div class="accordion">
-        @foreach($new_test as $book => $chapter)
-          <div class="title">
-              <i class="dropdown icon"></i>
-              {{ trans('event.bible_reading.bible_books.' . $book) }}
-          </div>
-          <div class="content">
-            <div class="ui doubling eight column grid m-auto">
-            @for($i = 1 ;$i <= $chapter; $i++)
-              <div class="column p-clear">
-                <a href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui chapter {{ $status[$book][$i] ? 'red':'' }} button">{{$i}}</a>
-              </div>
-            @endfor
-            </div>
-          </div>
-        @endforeach
+        {{ trans('event.bible_reading.bible_books.' . $book) }}
+    </div>
+    <div class="content">
+      <div class="" style="">
+        <div style="display: flex;justify-content: center;flex-wrap: wrap;">
+        @for($i = 1 ;$i <= $chapter; $i++)
+            <a style="display:block; min-width: 40px; padding: 12px 0;margin-bottom: 6px" href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui {{ $status[$book][$i] ? 'red':'' }} circular button">{{$i}}</a>
+        @endfor
         </div>
       </div>
     </div>
-
-	</div>
+  @endforeach
+  </div>
+  <div class="ui header">
+    {{ trans('event.bible_reading.new_test') }}
+  </div>
+  <div class="ui styled fluid accordion">
+  @foreach($new_test as $book => $chapter)
+    <div class="title">
+        <i class="dropdown icon"></i>
+        {{ trans('event.bible_reading.bible_books.' . $book) }}
+    </div>
+    <div class="content">
+      <div class="ui doubling eight column grid m-auto">
+      @for($i = 1 ;$i <= $chapter; $i++)
+        <div class="column p-clear">
+          <a href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui chapter {{ $status[$book][$i] ? 'red':'' }} button">{{$i}}</a>
+        </div>
+      @endfor
+      </div>
+    </div>
+  @endforeach
+  </div>
+  <div class="ui hidden divider"></div>
 @endsection

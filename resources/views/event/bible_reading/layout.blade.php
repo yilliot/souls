@@ -11,7 +11,13 @@
 </head>
 <body>
   <div id="maincontent" class="ui main container">
-  @yield('content')
+    <div id="bible-reading-container">
+      @yield('content')
+      <div>
+        <a href="/session/lang/zh">中文</a> |
+        <a href="/session/lang/en">English</a>
+      </div>
+    </div>
 
   <div class="marginated ui fluid container engraved footer">
     <div class="ui center aligned basic padded segment">
@@ -19,6 +25,7 @@
       <p class="top free">All trademarks and service marks are the properties of their respective owners.</p>
     </div>
   </div>
+
 
   </div>
   <script src="/js/manifest.js"></script>
