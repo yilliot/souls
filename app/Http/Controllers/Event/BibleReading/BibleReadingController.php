@@ -53,10 +53,10 @@ class BibleReadingController extends Controller
         return view('event.bible_reading.signup');
     }
 
-    public function signout(Request $request)
+    public function logout(Request $request)
     {
         $request->session()->forget('nric');
-        return redirect('event/bible_reading')->with('success', trans('event.bible_reading.success_signout'));
+        return redirect('event/bible_reading')->with('success', trans('event.bible_reading.success_logout'));
     }
 
     public function checkin()
@@ -306,5 +306,74 @@ class BibleReadingController extends Controller
             '3John' => 1,
             'Jude' => 1,
             'Rev' => 22,
+        ];
+
+    protected $culm_chapter = [
+          "Gen" => 1,
+          "Ex" => 51,
+          "Lev" => 91,
+          "Num" => 118,
+          "Deut" => 154,
+          "Josh" => 188,
+          "Judg" => 212,
+          "Ruth" => 233,
+          "1Sam" => 237,
+          "2Sam" => 268,
+          "1Kings" => 292,
+          "2Kings" => 314,
+          "1Chron" => 339,
+          "2Chron" => 368,
+          "Ezra" => 404,
+          "Neh" => 414,
+          "Est" => 427,
+          "Job" => 437,
+          "Ps" => 479,
+          "Prov" => 629,
+          "Eccles" => 660,
+          "Song" => 672,
+          "Isa" => 680,
+          "Jer" => 746,
+          "Lam" => 798,
+          "Ezek" => 803,
+          "Dan" => 851,
+          "Hos" => 863,
+          "Joel" => 877,
+          "Amos" => 880,
+          "Obad" => 889,
+          "Jonah" => 890,
+          "Mic" => 894,
+          "Nah" => 901,
+          "Hab" => 904,
+          "Zeph" => 907,
+          "Hag" => 910,
+          "Zech" => 912,
+          "Mal" => 926,
+          "Matt" => 930,
+          "Mark" => 958,
+          "Luke" => 974,
+          "John" => 998,
+          "Acts" => 1019,
+          "Rom" => 1047,
+          "1Cor" => 1063,
+          "2Cor" => 1079,
+          "Gal" => 1092,
+          "Eph" => 1098,
+          "Phil" => 1104,
+          "Col" => 1108,
+          "1Thess" => 1112,
+          "2Thess" => 1117,
+          "1Tim" => 1120,
+          "2Tim" => 1126,
+          "Titus" => 1130,
+          "Philemon" => 1133,
+          "Heb" => 1134,
+          "James" => 1147,
+          "1Pet" => 1152,
+          "2Pet" => 1157,
+          "1John" => 1160,
+          "2John" => 1165,
+          "3John" => 1166,
+          "Jude" => 1167,
+          "Rev" => 1168,
         ];
 }
