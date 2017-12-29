@@ -16,7 +16,7 @@ Bible Reading Home
     @if($type != 'soul')
     <a href="/event/bible_reading/history/my"> {{trans('event.bible_reading.my_record')}} </a> |
     @endif
-    <a href="/event/bible_reading/signout"> {{trans('event.bible_reading.signout')}} </a> 
+    <a href="/event/bible_reading/logout"> {{trans('event.bible_reading.logout')}} </a> 
 
     @include('event.bible_reading.part.logo')
     @include('event.bible_reading.part.flash')

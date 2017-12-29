@@ -14,7 +14,7 @@ Bible Reading Home
     <a href="/event/bible_reading/signup"> {{trans('event.bible_reading.signup')}} </a> |
     <a href="/event/bible_reading/checkin"> {{trans('event.bible_reading.checkin')}} </a> | 
     <a href="/event/bible_reading/history/my"> {{trans('event.bible_reading.my_record')}} </a>
-    | <a href="/event/bible_reading/signout"> {{trans('event.bible_reading.signout')}} </a> 
+    | <a href="/event/bible_reading/logout"> {{trans('event.bible_reading.logout')}} </a> 
 
     @include('event.bible_reading.part.logo')
     @include('event.bible_reading.part.flash')

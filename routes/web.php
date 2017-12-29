@@ -60,7 +60,7 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
             Route::get('/history/my', 'BibleReadingController@showMyHistory');
         });
         Route::get('/nric', 'BibleReadingController@nric');
-        Route::get('/signout', 'BibleReadingController@signout');
+        Route::get('/logout', 'BibleReadingController@logout');
 
         Route::post('/signup', 'BibleReadingController@postSignup');
         Route::post('/checkin', 'BibleReadingController@postCheckin');
