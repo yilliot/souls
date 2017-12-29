@@ -66,6 +66,7 @@ return [
         'must_has_one_main_chapter' => 'There must be one main chapter for each comment.',
         'success' => 'Success',
         'success_checkin' => 'You\'ve successfully checked in',
+        'comment_placeholder' => 'Say something about this chapter.',
 
         // soul field
         'nickname' => 'Name that we usually call you',

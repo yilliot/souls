@@ -15,7 +15,7 @@ class BibleReadingController extends Controller
     public function home()
     {
         $yesterday = date("Y-m-d-h-m-s", strtotime( '-1 days' ) );
-        $comments = Comment::where('created_at', '>=', $yesterday)->get();
+        $comments = Comment::where('created_at', '>=', $yesterday)->get()->sortByDesc('created_at');
         $check_in_chapter = CheckInChapter::all()->pluck('cellgroup_id', 'id');
         $count = array_count_values($check_in_chapter->toArray());
         $totals = [
@@ -111,7 +111,7 @@ class BibleReadingController extends Controller
         $chapter = Chapter::where('book_name', $book)
                            ->where('chapter_number', $verse)
                            ->first();
-        $comments = $chapter->comment()->get();
+        $comments = $chapter->comment()->get()->sortByDesc('created_at');
         $type = 'chapter';
         return view('event.bible_reading.show_comments', compact('comments', 'type'));
     }
@@ -130,7 +130,7 @@ class BibleReadingController extends Controller
     {
         $soul = Soul::where('nric', session('nric'))->first();
         $comments = Comment::where('soul_id', $soul->id)
-                    ->get();
+                    ->get()->sortByDesc('created_at');
         $type = 'soul';
         $check_in = CheckIn::where('soul_id', $soul->id)->get();
         $amount = $this->countRecord($check_in);
@@ -190,10 +190,6 @@ class BibleReadingController extends Controller
                 'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/'],
                 'exists:souls,nric',
         ]);
-        if(!$request->comment)return back()->with('error', trans('event.bible_reading.comment_cannot_empty'));
-        $count = array_count_values($request->chapters);
-        $flag = array_key_exists(2, $count);
-        if(!$flag) return back()->with('error', trans('event.bible_reading.must_has_one_main_chapter'));
 
         $soul = Soul::where('nric', $request->nric)->first();
         
@@ -201,6 +197,7 @@ class BibleReadingController extends Controller
         $check_in->soul_id = $soul->id;
         $check_in->save();
 
+        $comments = $request->comment;
 
         foreach ($request->chapters as $chapter => $status) {
             if($status == 0) continue;
@@ -209,10 +206,10 @@ class BibleReadingController extends Controller
             $check_in_chapter->cellgroup_id = $soul->cellgroup_id;
             $check_in_chapter->chapter_id = $chapter + $this->culm_chapter[$request->book];
             $check_in_chapter->save();
-            if($status == 2) {
-                
+            if(isset($comments[$chapter + 1]) && $comments[$chapter + 1] != '') {
+            
                 $comment = new Comment();
-                $comment->content = $request->comment;
+                $comment->content = $comments[$chapter + 1];
                 $comment->soul_id = $soul->id;
                 $comment->check_in_chapter_id = $check_in_chapter->id;
                 $comment->save();

@@ -28,6 +28,10 @@ $(function(){
   $('.dropdown#cellgroup')
     .dropdown()
   ;
+
+  comment = $('#chapters').data('comment');
+  comment_placeholder = $('#chapters').data('comment-placeholder');
+
   $('.dropdown#books')
     .dropdown({
       onChange : function(){
@@ -39,20 +43,25 @@ $(function(){
                       ;
         }
         $('#chapters').html(options);
-        var main_flag = 0;
         $('.checkin.chapter.button').off('click').on('click', function(){
-          id = 'input-' + $(this).data('value');
+          i = $(this).data('value');
+          id = 'input-' + i;
           status = $('#' + id).val() != 0 ? 0:1;
           $('#' + id).val(status);
-          if(!main_flag && !$(this).hasClass('primary')) {
-            $(this).addClass('red');
-            main_flag = 1;
-            $('#' + id).val(2);
-          } else if($(this).hasClass('red')) {
-            $(this).removeClass('red');
-            main_flag = 0;
+          if(i != 1)newlinebefore = '<div class="my hidden divider" id="newlinebefore' + i + '"></div>';
+          newlineafter = '<div class="my hidden divider" id="newlineafter' + i + '"></div>';
+          textarea = '<textarea name="comment[' + i + ']" id="comment' + i + '" cols="30" rows="10" placeholder="' + comment_placeholder + '"></textarea>';
+          if (status == 1) {
+            if(i != 1)$(this).parent().before(newlinebefore);
+            $(this).parent().after(newlineafter + textarea);
+            $(this).addClass('primary');
+            $(this).parent().removeClass('column').addClass('my fluid');
           } else {
-            $(this).toggleClass('primary');
+            $(this).removeClass('primary');
+            $(this).parent().addClass('column').removeClass('my fluid');
+            if(i != 1)$('#newlinebefore' + i).remove();
+            $('#newlineafter' + i).remove();
+            $('#comment' + i).remove();
           }
         });
       },

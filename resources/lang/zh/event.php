@@ -66,6 +66,7 @@ return [
         'must_has_one_main_chapter' => '每一次笔记必须有一个主要经文。',
         'success' => '成功了',
         'success_checkin' => '打卡成功！',
+        'comment_placeholder' => '说说你对这章的看法。',
 
 
         // soul field

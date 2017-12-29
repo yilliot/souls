@@ -40,24 +40,11 @@ Bible Reading Check in
         </div>
 
         <div class="ui field">
-          <div class="ui doubling eight column grid m-auto" id="chapters"></div>
-          <div class="ui horizontal divider font-white">Remark</div>
-          <div class="ui red fluid button">{{ trans('event.bible_reading.main_chapter') }}</div>
-          <div class="ui primary fluid button">{{ trans('event.bible_reading.secondary_chapter') }}</div>
+          <div class="ui doubling eight column grid m-auto" id="chapters" data-comment="{{ trans('event.bible_reading.comment') }}" data-comment-placeholder="{{ trans('event.bible_reading.comment_placeholder') }}"></div>
         </div>
 
         @if ($errors->has('check_in_chapter'))
           <label > * {{ $errors->first('check_in_chapter') }}</label>
-        @endif
-      </div>
-
-      <div class="field {{$errors->has('comment') ? 'error' : ''}}">
-        <label>{{ trans('event.bible_reading.comment') }}</label>
-        <div class="ui fluid input">
-          {{ Form::textarea('comment') }}
-        </div>
-        @if ($errors->has('comment'))
-          <label > * {{ $errors->first('comment') }}</label>
         @endif
       </div>
 
