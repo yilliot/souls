@@ -6,7 +6,7 @@ Bible Reading Check in
 
 @section('content')
   
-  <div id="signup-container" class="ui piled inverted segment text container">
+  <div id="signup-container" class="ui inverted segment text container">
 
     <a href="/event/bible_reading"> <i class="home icon"></i> </a> |
     <a href="/session/lang/zh">中文</a> |
@@ -41,6 +41,9 @@ Bible Reading Check in
 
         <div class="ui field">
           <div class="ui doubling eight column grid m-auto" id="chapters"></div>
+          <div class="ui horizontal divider font-white">Remark</div>
+          <div class="ui red fluid button">{{ trans('event.bible_reading.main_chapter') }}</div>
+          <div class="ui primary fluid button">{{ trans('event.bible_reading.secondary_chapter') }}</div>
         </div>
 
         @if ($errors->has('check_in_chapter'))
