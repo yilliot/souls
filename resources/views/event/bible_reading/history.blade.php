@@ -24,10 +24,10 @@ Bible Reading Home
         {{ trans('event.bible_reading.bible_books.' . $book) }}
     </div>
     <div class="content">
-      <div class="" style="">
+      <div class="">
         <div style="display: flex;justify-content: center;flex-wrap: wrap;">
         @for($i = 1 ;$i <= $chapter; $i++)
-            <a style="display:block; min-width: 40px; padding: 12px 0;margin-bottom: 6px" href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui {{ $status[$book][$i] ? 'red':'' }} circular button">{{$i}}</a>
+            <a style="display:block; min-width: 40px; padding: 12px 0;margin-bottom: 6px" href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui {{ $status[$book][$i] ? 'black':'' }} circular button">{{$i}}</a>
         @endfor
         </div>
       </div>
@@ -44,12 +44,14 @@ Bible Reading Home
         {{ trans('event.bible_reading.bible_books.' . $book) }}
     </div>
     <div class="content">
-      <div class="ui doubling eight column grid m-auto">
-      @for($i = 1 ;$i <= $chapter; $i++)
-        <div class="column p-clear">
-          <a href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui chapter {{ $status[$book][$i] ? 'red':'' }} button">{{$i}}</a>
+      <div class="">
+        <div style="display: flex;justify-content: center;flex-wrap: wrap;">
+        @for($i = 1 ;$i <= $chapter; $i++)
+          <div class="column p-clear">
+              <a style="display:block; min-width: 40px; padding: 12px 0;margin-bottom: 6px" href="{{Request::url()}}/{{$book}}/{{$i}}" class="ui {{ $status[$book][$i] ? 'black':'' }} circular button">{{$i}}</a>
+          </div>
+        @endfor
         </div>
-      @endfor
       </div>
     </div>
   @endforeach

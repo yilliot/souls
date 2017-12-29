@@ -5,6 +5,7 @@ namespace App\Models\Events\BibleReading;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Events\BibleReading\CheckInChapter;
 use App\Models\Events\BibleReading\Chapter;
+use App\Models\Soul;
 
 class Comment extends Model
 {
@@ -23,7 +24,7 @@ class Comment extends Model
     
     public function soul()
     {
-        return $this->belongsTo(Soul::class, 'soul_id');
+        return $this->belongsTo(Soul::class);
     }
 
 }

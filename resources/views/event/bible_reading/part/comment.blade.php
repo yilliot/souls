@@ -15,7 +15,7 @@
   <div class="extra content">
     <div class="right floated author">
       <i class="user icon"></i>
-       {{ $comment->checkInChapter->first()->checkIn->first()->soul->first()->nickname }}
+       {{ $comment->soul()->first()->nickname }}
     </div>
   </div>
 </div>
