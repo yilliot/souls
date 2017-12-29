@@ -18,7 +18,8 @@ class BibleReadingController extends Controller
         $comments = Comment::where('created_at', '>=', $yesterday)->get()->sortByDesc('created_at');
         $check_in_chapter = CheckInChapter::all()->pluck('cellgroup_id', 'id');
         $count = array_count_values($check_in_chapter->toArray());
-        $totals = [
+        arsort($count);
+        $color = [
           1 => [
             'name' => 'W1',
             'color' => 'red',
@@ -40,11 +41,20 @@ class BibleReadingController extends Controller
             'count' => 0,
           ],
         ];
+        $totals = [];
 
         $topScore = $count? max($count):1;
-        for($i = 1; $i <= 4; $i++){
-          if(isset($count[$i])) $totals[$i]['count'] = $count[$i];
+        for ($i = 1; $i <= 4; $i++) {
+          if(isset($count[$i])) $color[$i]['count'] = $count[$i];
         }
+        foreach ($count as $cellgroup_id => $count) {
+          $totals[$cellgroup_id] = $color[$cellgroup_id];
+          $totals[$cellgroup_id]['count'] = $count;
+        }
+        for ($i = 1; $i <= 4; $i++) {
+          if (!isset($totals[$i])) $totals[$i] = $color[$i];
+        }
+
         return view('event.bible_reading.home', compact('comments', 'totals', 'topScore'));
     }
 
