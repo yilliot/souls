@@ -1,7 +1,7 @@
 @extends('event.bible_reading.layout')
 
 @section('title')
-Bible Reading Home
+Bible Reading My Records
 @endsection
 
 @section('content')

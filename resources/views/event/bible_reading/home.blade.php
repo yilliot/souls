@@ -10,11 +10,13 @@ Bible Reading Home
 
     <a href="/session/lang/zh">中文</a> |
     <a href="/session/lang/en">English</a> |
+    @if(!session('nric'))
     <a href="/event/bible_reading/signup"> {{trans('event.bible_reading.signup')}} </a> |
+    @endif
     <a href="/event/bible_reading/checkin"> {{trans('event.bible_reading.checkin')}} </a> | 
     <a href="/event/bible_reading/history"> {{trans('event.bible_reading.history')}} </a>
     @if(session('nric'))
-    | <a href="/event/bible_reading/signout"> {{trans('event.bible_reading.signout')}} </a> 
+    | <a href="/event/bible_reading/logout"> {{trans('event.bible_reading.logout')}} </a> 
     @endif
 
     @include('event.bible_reading.part.logo')

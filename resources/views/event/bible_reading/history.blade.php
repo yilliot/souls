@@ -11,7 +11,6 @@ Bible Reading Home
     <a href="/event/bible_reading"> <i class="home icon"></i> </a> |
     <a href="/session/lang/zh">中文</a> |
     <a href="/session/lang/en">English</a> |
-    <a href="/event/bible_reading/signup"> {{trans('event.bible_reading.signup')}} </a> |
     <a href="/event/bible_reading/checkin"> {{trans('event.bible_reading.checkin')}} </a> | 
     <a href="/event/bible_reading/history/my"> {{trans('event.bible_reading.my_record')}} </a>
     | <a href="/event/bible_reading/logout"> {{trans('event.bible_reading.logout')}} </a> 
