@@ -5,7 +5,7 @@ Bible Reading My Records
 @endsection
 
 @section('content')
-
+  |
   <a href="/event/bible_reading/checkin"> {{trans('event.bible_reading.checkin')}} </a> | 
   <a href="/event/bible_reading/history"> {{trans('event.bible_reading.history')}} </a> |
   @if($type != 'soul')

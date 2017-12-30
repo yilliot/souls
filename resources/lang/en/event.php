@@ -53,6 +53,7 @@ return [
         'chapter' => 'chapters',
         'logout' => 'Log out',
         'success_logout' => 'Successfully log out',
+        'schedule' => 'Schedule',
 
 
         // check in page

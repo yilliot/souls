@@ -5,7 +5,7 @@ Bible Reading Check in
 @endsection
 
 @section('content')
-  
+  |
   <a href="/event/bible_reading/history"> {{trans('event.bible_reading.history')}} </a>
 
   @include('event.bible_reading.part.logo')

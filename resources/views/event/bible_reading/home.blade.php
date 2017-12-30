@@ -5,7 +5,7 @@ Bible Reading Home
 @endsection
 
 @section('content')
-  
+  |
   @if(!session('nric'))
   <a href="/event/bible_reading/signup"> {{trans('event.bible_reading.signup')}} </a> |
   @endif

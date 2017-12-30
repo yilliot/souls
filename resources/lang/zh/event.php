@@ -54,6 +54,7 @@ return [
         'chapter' => '章',
         'logout' => '登出',
         'success_logout' => '成功登出',
+        'schedule' => '时间表',
 
         // check in page
         'check_in_chapter' => '经文',

@@ -12,6 +12,9 @@
 <body>
   <div id="maincontent" class="ui main container">
     <div id="bible-reading-container">
+      @if(!Request::is('*/schedule'))
+      <a href="/event/bible_reading/schedule">{{ trans('event.bible_reading.schedule') }}</a>
+      @endif
       @yield('content')
       <div>
         <a href="/session/lang/zh">中文</a> |

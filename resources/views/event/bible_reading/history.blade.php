@@ -5,7 +5,7 @@ Bible Reading Home
 @endsection
 
 @section('content')
-
+  |
   <a href="/event/bible_reading/checkin"> {{trans('event.bible_reading.checkin')}} </a> | 
   <a href="/event/bible_reading/history/my"> {{trans('event.bible_reading.my_record')}} </a> |
   <a href="/event/bible_reading/logout"> {{trans('event.bible_reading.logout')}} </a> 
