@@ -16,46 +16,8 @@ class BibleReadingController extends Controller
     {
         $yesterday = date("Y-m-d-h-m-s", strtotime( '-1 days' ) );
         $comments = Comment::where('created_at', '>=', $yesterday)->get()->sortByDesc('created_at');
-        $check_in_chapter = CheckInChapter::all()->pluck('cellgroup_id', 'id');
-        $count = array_count_values($check_in_chapter->toArray());
-        arsort($count);
-        $color = [
-          1 => [
-            'name' => 'W1',
-            'color' => 'red',
-            'count' => 0,
-          ],
-          2 => [
-            'name' => 'S1',
-            'color' => 'green',
-            'count' => 0,
-          ],
-          3 => [
-            'name' => 'E1',
-            'color' => 'blue',
-            'count' => 0,
-          ],
-          4 => [
-            'name' => 'E2',
-            'color' => 'yellow',
-            'count' => 0,
-          ],
-        ];
-        $totals = [];
 
-        $topScore = $count? max($count):1;
-        for ($i = 1; $i <= 4; $i++) {
-          if(isset($count[$i])) $color[$i]['count'] = $count[$i];
-        }
-        foreach ($count as $cellgroup_id => $count) {
-          $totals[$cellgroup_id] = $color[$cellgroup_id];
-          $totals[$cellgroup_id]['count'] = $count;
-        }
-        for ($i = 1; $i <= 4; $i++) {
-          if (!isset($totals[$i])) $totals[$i] = $color[$i];
-        }
-
-        return view('event.bible_reading.home', compact('comments', 'totals', 'topScore'));
+        return view('event.bible_reading.home', compact('comments'));
     }
 
     public function signup()
