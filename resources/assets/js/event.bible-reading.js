@@ -36,7 +36,7 @@ $(function(){
     options = '';
     for(var i = 1; i <= bible_books[selected_book]; i++){
       options += '<input name=\'chapters[]\' type=\'hidden\' value=\'0\'id=\'input-' + i + '\'>' +
-                 '<div class=\'column p-clear\'><div class=\'ui basic checkin chapter button\' data-value=\'' + i + '\'>' + i + '</div></div>'
+                 '<div class=\'column p-clear\'><div class=\'ui basic checkin chapter button\' id=\'c' + i + '\' data-value=\'' + i + '\'>' + i + '</div></div>'
                   ;
     }
     $('#chapters').html(options);
@@ -186,10 +186,34 @@ $(function(){
 
 
   /**
-   * On the buttons of selected
+   * Generate the buttons of selected chapter
    */
   if(old_selected_book) {
     generateButton(old_selected_book);
+
+    /**
+     * Auto fill in with old input
+     */
+    chapter_data = $('#old-chapters');
+    comment_data = $('#old-comment');
+    buttons = $('.checkin.chapter.button');
+    old_chapter = [];
+    old_comment = [];
+    for (var i = 1; i <= bible_books[old_selected_book]; i++) {
+      if(chapter_data.data('chapter' + i) == 1) {
+        if(i != 1)newlinebefore = '<div class="my hidden divider" id="newlinebefore' + i + '"></div>';
+        newlineafter = '<div class="my hidden divider" id="newlineafter' + i + '"></div>';
+        textarea = '<textarea name="comment[' + i + ']" id="comment' + i + '" cols="30" rows="10" placeholder="' + comment_placeholder + '"></textarea>';
+        chapter_button = buttons.filter('#c' + i);
+        chapter_button.parent().after(newlineafter + textarea);
+        chapter_button.addClass('red');
+        chapter_button.removeClass('basic');
+        chapter_button.parent().removeClass('column').addClass('my fluid');
+        if(comment_data.data('comment' + i)){
+          $('#comment' + i).val(comment_data.data('comment' + i));
+        }
+      }
+    }
   }
 
 });
