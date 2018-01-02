@@ -201,6 +201,9 @@ $(function(){
     old_comment = [];
     for (var i = 1; i <= bible_books[old_selected_book]; i++) {
       if(chapter_data.data('chapter' + i) == 1) {
+        id = 'input-' + i;
+        status = 1;
+        $('#' + id).val(status);
         if(i != 1)newlinebefore = '<div class="my hidden divider" id="newlinebefore' + i + '"></div>';
         newlineafter = '<div class="my hidden divider" id="newlineafter' + i + '"></div>';
         textarea = '<textarea name="comment[' + i + ']" id="comment' + i + '" cols="30" rows="10" placeholder="' + comment_placeholder + '"></textarea>';
