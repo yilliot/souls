@@ -32,40 +32,46 @@ $(function(){
   comment = $('#chapters').data('comment');
   comment_placeholder = $('#chapters').data('comment-placeholder');
 
+  generateButton = function(selected_book) {
+    options = '';
+    for(var i = 1; i <= bible_books[selected_book]; i++){
+      options += '<input name=\'chapters[]\' type=\'hidden\' value=\'0\'id=\'input-' + i + '\'>' +
+                 '<div class=\'column p-clear\'><div class=\'ui basic checkin chapter button\' data-value=\'' + i + '\'>' + i + '</div></div>'
+                  ;
+    }
+    $('#chapters').html(options);
+    $('.checkin.chapter.button').off('click').on('click', function(){
+      i = $(this).data('value');
+      id = 'input-' + i;
+      status = $('#' + id).val() != 0 ? 0:1;
+      $('#' + id).val(status);
+      if(i != 1)newlinebefore = '<div class="my hidden divider" id="newlinebefore' + i + '"></div>';
+      newlineafter = '<div class="my hidden divider" id="newlineafter' + i + '"></div>';
+      textarea = '<textarea name="comment[' + i + ']" id="comment' + i + '" cols="30" rows="10" placeholder="' + comment_placeholder + '"></textarea>';
+      if (status == 1) {
+        if(i != 1)$(this).parent().before(newlinebefore);
+        $(this).parent().after(newlineafter + textarea);
+        $(this).addClass('red');
+        $(this).removeClass('basic');
+        $(this).parent().removeClass('column').addClass('my fluid');
+      } else {
+        $(this).removeClass('red');
+        $(this).addClass('basic');
+        $(this).parent().addClass('column').removeClass('my fluid');
+        if(i != 1)$('#newlinebefore' + i).remove();
+        $('#newlineafter' + i).remove();
+        $('#comment' + i).remove();
+      }
+    });
+  }
+
+  old_selected_book = $('.dropdown#books').val();
+
   $('.dropdown#books')
     .dropdown({
       onChange : function(){
         var selected_book = $(this).val();
-        options = '';
-        for(var i = 1; i <= bible_books[selected_book]; i++){
-          options += '<input name=\'chapters[]\' type=\'hidden\' value=\'0\'id=\'input-' + i + '\'>' +
-                     '<div class=\'column p-clear\'><div class=\'ui basic checkin chapter button\' data-value=\'' + i + '\'>' + i + '</div></div>'
-                      ;
-        }
-        $('#chapters').html(options);
-        $('.checkin.chapter.button').off('click').on('click', function(){
-          i = $(this).data('value');
-          id = 'input-' + i;
-          status = $('#' + id).val() != 0 ? 0:1;
-          $('#' + id).val(status);
-          if(i != 1)newlinebefore = '<div class="my hidden divider" id="newlinebefore' + i + '"></div>';
-          newlineafter = '<div class="my hidden divider" id="newlineafter' + i + '"></div>';
-          textarea = '<textarea name="comment[' + i + ']" id="comment' + i + '" cols="30" rows="10" placeholder="' + comment_placeholder + '"></textarea>';
-          if (status == 1) {
-            if(i != 1)$(this).parent().before(newlinebefore);
-            $(this).parent().after(newlineafter + textarea);
-            $(this).addClass('red');
-            $(this).removeClass('basic');
-            $(this).parent().removeClass('column').addClass('my fluid');
-          } else {
-            $(this).removeClass('red');
-            $(this).addClass('basic');
-            $(this).parent().addClass('column').removeClass('my fluid');
-            if(i != 1)$('#newlinebefore' + i).remove();
-            $('#newlineafter' + i).remove();
-            $('#comment' + i).remove();
-          }
-        });
+        generateButton(selected_book);
       },
     });
   ;
@@ -177,5 +183,13 @@ $(function(){
       'Jude' : 1,
       'Rev' : 22,
   };
+
+
+  /**
+   * On the buttons of selected
+   */
+  if(old_selected_book) {
+    generateButton(old_selected_book);
+  }
 
 });
