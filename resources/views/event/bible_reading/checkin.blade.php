@@ -32,6 +32,23 @@ Bible Reading Check in
            $books
         , null, ['class'=>'ui compact search dropdown fluid', 'id' => 'books', 'placeholder' => trans('event.bible_reading.book')] ) }}
         
+        @if(old('chapters') != [])
+        <div id="old-chapters" style="display:none;"
+        @foreach(old('chapters') as $chapter => $status)
+          data-chapter{{$chapter + 1}}="{{$status}}"
+        @endforeach
+        >
+        </div>
+        @endif
+
+        @if(old('comment') != [])
+        <div id="old-comment" style="display:none;"
+        @foreach(old('comment') as $chapter => $content)
+          data-comment{{$chapter}}="{{$content}}"
+        @endforeach
+        >
+        </div>
+        @endif
       </div>
 
       <div class="ui field">

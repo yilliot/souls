@@ -161,6 +161,8 @@ class BibleReadingController extends Controller
                 'required',
                 'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/'],
                 'exists:souls,nric',
+            'book' => 'required',
+            'chapters' => 'required',
         ]);
 
         $soul = Soul::where('nric', $request->nric)->first();
