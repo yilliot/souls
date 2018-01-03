@@ -1,0 +1,175 @@
+/**
+ * VAR
+ */
+
+$neon-green : #83f52c;
+$neon-cyan : #70fff7;
+$neon-pink : #ff0099;
+$text-glow-small : 0px 0px 3px rgba(33, 255, 0, 0.5);
+$text-glow : 0px 0px 30px rgba(33, 255, 0, 1);
+$hcc-black : #FFFFFF;
+
+/**
+ * THEME RESET
+ */
+body { background-color: $hcc-black; color: black; }
+a { color: #000; }
+.sub.header.neon-green,
+.neon-green {
+  color: $neon-green !important;
+  // color: #84db64 !important;
+}
+
+.ui.inverted.segment, .ui.primary.inverted.segment {
+  background-color: $hcc-black;
+}
+.text-centered {
+  text-align: center !important;
+}
+
+.ui.piled.segment:after, .ui.piled.segment:before, .ui.piled.segments:after, .ui.piled.segments:before {
+  background-color: $neon-green !important;
+}
+.glow{
+  text-shadow: $text-glow;
+}
+#logo{width: 200px;}
+/** 
+#77ffbf
+#7afff8
+#ff32e0
+#70fff7
+*/
+/**
+ * ERROR COLORS
+ */
+.alert-danger {
+  background-color: $neon-pink;
+  border-color: #77ffbf;
+  color: white;
+}
+.field.error label {
+  color: $neon-pink !important;
+}
+
+.ui.positive.message
+{
+  background-color: $hcc-black;
+  .header{
+    color: #000 !important;
+  }
+  p {
+    color: #000 !important;
+  }
+}
+
+/**
+ * LAYOUT
+ */
+#bible-reading-container{
+  margin: 15px auto 5px auto;
+}
+
+@media only screen and (min-width: 1200px) {
+  #bible-reading-container{
+    max-width: 700px !important;
+    margin: 100px auto 20px auto;
+    .ui.form{
+      margin:1em;
+    }
+  }
+}
+
+@media only screen and (max-width: 740) {
+  #bible-reading-container{
+    margin: auto;
+    .ui.form{
+      margin:1em;
+    }
+  }
+}
+
+/**
+ * FORMS
+ */
+#bible-reading-checkin,
+#bible-reading-signup{
+  .field .ui.dropdown .item {
+    font-size: 1.05em !important;
+  }
+
+  .field i.icon {
+    color: black !important;
+  }
+
+  .field .labeled.input .ui.label {
+    color: black !important;
+  }
+
+  .field .labeled.input .ui.label,
+  .field .ui.dropdown.selection,
+  .field input[type=file],
+  .field input[type=text],
+  .field input[type=number],
+  .field input[type=email],
+  .field input[type=date],
+  .field input[type=password],
+  .field textarea
+  {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    font-size: 1.3em !important;
+    background-color: #FFF !important;
+    color: black !important;
+
+    .dropdown.icon {
+      line-height: 2.3em;
+    }
+  }
+  .field.error .ui.dropdown.selection, 
+  .field.error .ui.dropdown .text, 
+  .field.error input
+  {
+    color:white !important;
+    background-color: $neon-pink !important;
+  }
+}
+
+.m-auto {
+  margin: auto !important;
+}
+.p-clear {
+  padding: 2.5px 5px !important;
+}
+.chapter.button {
+  margin: 0.1rem 0.1rem!important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+
+/**
+ * Display
+ */
+
+.my.hidden.divider {
+  visibility: hidden;
+  width: 100%;
+  height: 0.5rem;
+}
+
+.my.fluid {
+  width: 100%;
+}
+
+/**
+ * Card
+ */
+
+.ui.card>:first-child {
+  margin-bottom:1rem;
+}
+
+
+@import 'zz';
+@import '../featherlight/featherlight.min.css';

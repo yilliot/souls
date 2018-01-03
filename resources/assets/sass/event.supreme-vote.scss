@@ -1,0 +1,48 @@
+/**
+ * VAR
+ */
+
+/**
+ * THEME RESET
+ */
+body {
+  background-color: black;
+}
+a { color: #BBB !important; }
+.text-centered {
+  text-align: center !important;
+}
+#logo{max-width: 100%;}
+
+/**
+ * LAYOUT
+ */
+#supreme-container{
+  background-image: url('/images/supreme-vote/background.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin: 10px auto 5px auto;
+}
+
+@media only screen and (min-width: 1200px) {
+  #supreme-container{
+    max-width: 550px !important;
+    margin: 80px auto 20px auto;
+    .ui.form{
+      margin:1em;
+    }
+  }
+}
+
+.engraved.footer{
+  color: white;
+}
+
+
+/**
+ * FORMS
+ */
+
+
+@import 'zz';
+@import '../featherlight/featherlight.min.css';

@@ -9,7 +9,8 @@
 
     <a href="/event/3km"> <i class="home icon"></i> </a> |
     <a href="/session/lang/zh">中文</a> |
-    <a href="/session/lang/en">English</a>
+    <a href="/session/lang/en">English</a> | 
+    <a href="/event/3km/search_claim"> 成绩单 </a>
 
     <h1 class="ui center aligned icon header">
       <div>

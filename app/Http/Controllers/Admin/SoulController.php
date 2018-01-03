@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Soul;
+use App\Models\Cellgroup;
 use App\Http\Requests\NewSoulRequest;
 use App\Http\Requests\UpdateSoulRequest;
 
@@ -17,15 +18,23 @@ class SoulController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = $request->only(['sortBy', 'order', 'cellgroup']);
+        $filter = $request->only(['sortBy', 'order', 'cellgroup_id']);
         $filter = array_default($filter, [
             'sortBy' => 'id',
-            'order' => 'asc',
-            'cellgroup' => 'all',
+            'order' => 'desc',
+            'cellgroup_id' => 'all',
         ]);
 
-        $souls = Soul::paginate();
-        return view('admin.soul.index', compact('souls'));
+        $souls = Soul::with('cellgroup')
+            ->orderBy($filter['sortBy'], $filter['order']);
+
+        if ($filter['cellgroup_id'] !== 'all') {
+            $souls = $souls->where('cellgroup_id', $filter['cellgroup_id']);
+        }
+
+        $souls = $souls->paginate();
+        $cellgroups = Cellgroup::get();
+        return view('admin.soul.index', compact('souls', 'cellgroups', 'filter'));
     }
 
     /**

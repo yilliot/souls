@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CoreSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(CgSeeder::class);
+        $this->call(BibleChapterSeeder::class);
 
         // $this->call(ServiceSeeder::class);
 

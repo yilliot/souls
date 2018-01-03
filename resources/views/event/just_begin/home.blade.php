@@ -16,7 +16,8 @@
     <a href="/session/lang/zh">中文</a> |
     <a href="/session/lang/en">English</a> |
     <a href="/event/3km/signup"> {{trans('event.just_begin.signup')}} </a> |
-    <a href="/event/3km/checkin"> {{trans('event.just_begin.checkin')}} </a>
+    <a href="/event/3km/checkin"> {{trans('event.just_begin.checkin')}} </a> | 
+    <a href="/event/3km/search_claim"> 成绩单 </a>
 
     <h1 class="ui center aligned icon header">
       <div>
