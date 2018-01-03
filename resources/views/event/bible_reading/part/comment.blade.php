@@ -8,7 +8,7 @@
     </div>
     <div class="description">
       <p>
-        {{ $comment->content }}
+        {!! nl2br(e($comment->content)) !!}
       </p>
     </div>
   </div>
