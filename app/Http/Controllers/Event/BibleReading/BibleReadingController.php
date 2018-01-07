@@ -12,8 +12,13 @@ use App\Models\Soul;
 
 class BibleReadingController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
+        $comment_id = $request->comment;
+        if($comment_id) {
+          $comment = Comment::find($comment_id);
+          return view('event.bible_reading.show_single_comment', compact('comment'));
+        }
         $yesterday = date("Y-m-d-h-m-s", strtotime( '-1 days' ) );
         $comments = Comment::where('created_at', '>=', $yesterday)->get()->sortByDesc('created_at');
 
