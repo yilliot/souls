@@ -21,6 +21,11 @@ class BibleReadingController extends Controller
 
         $yesterday = date("Y-m-d-h-m-s", strtotime( '-1 days' ) );
         $comments = Comment::where('created_at', '>=', $yesterday)->get()->sortByDesc('created_at');
+        $comments = $this->getCommentsDetail($comments);
+        return view('event.bible_reading.home', compact('comments'));
+    }
+
+    public function getCommentsDetail($comments) {
         $authors_name = Soul::whereIn('id', $comments->pluck('soul_id'))->pluck('nickname', 'id');
         $chapters_id = CheckInChapter::whereIn('comment_id', $comments->pluck('id'))->pluck('chapter_id', 'comment_id');
         $chapters = Chapter::whereIn('id', $chapters_id)->get();
@@ -31,8 +36,7 @@ class BibleReadingController extends Controller
             $comment['bible_book_chapter'] = $chapter_number[$chapters_id[$comment->id]];
             $comment['author_name'] = $authors_name[$comment->soul_id];
         }
-
-        return view('event.bible_reading.home', compact('comments'));
+        return $comments;
     }
 
     public function showComment($comment_id) {
@@ -105,6 +109,8 @@ class BibleReadingController extends Controller
                            ->where('chapter_number', $verse)
                            ->first();
         $comments = $chapter->comment()->get()->sortByDesc('created_at');
+        $comments = $this->getCommentsDetail($comments);
+        
         $type = 'chapter';
         return view('event.bible_reading.show_comments', compact('comments', 'type'));
     }
@@ -125,6 +131,7 @@ class BibleReadingController extends Controller
         $soul = Soul::where('nric', session('nric'))->first();
         $comments = Comment::where('soul_id', $soul->id)
                     ->get()->sortByDesc('created_at');
+        $comments = $this->getCommentsDetail($comments);
         $type = 'soul';
         $check_in = CheckIn::where('soul_id', $soul->id)->get();
         $amount = $this->countRecord($check_in);
