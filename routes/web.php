@@ -1,5 +1,7 @@
 <?php
 Route::get('/calendar', 'HomeController@calendar');
+Route::get('/privacy', 'LegalController@privacy');
+Route::get('/terms', 'LegalController@terms');
 
 Route::get('/', 'HomeController@welcome');
 Route::get('/i/', function(){
