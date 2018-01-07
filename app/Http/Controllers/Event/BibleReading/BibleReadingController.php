@@ -60,8 +60,9 @@ class BibleReadingController extends Controller
           }
         }
         $chapters = [];
+        $CheckInChapter = CheckInChapter::whereIn('check_in_id', $check_in->pluck('id'))->get();
         foreach ($check_in as $value) {
-          $chapters[] = CheckInChapter::where('check_in_id', $value->id)->get()->pluck('chapter_id');
+          $chapters[] = $CheckInChapter->where('check_in_id', $value->id)->pluck('chapter_id');
         }
         foreach ($chapters as $chapter) {
           foreach ($chapter as $id) {
@@ -96,8 +97,10 @@ class BibleReadingController extends Controller
     public function countRecord($check_in)
     {
         $check_in_chapter = [];
+        $checkInChapter = CheckInChapter::whereIn('check_in_id', $check_in->pluck('id'))->get();
         foreach ($check_in as $checkIn) {
-          $check_in_chapter[] = $checkIn->checkInChapter()->get();
+          if($checkIn->id == 20)continue;
+          $check_in_chapter[] = $checkInChapter->where('check_in_id', $checkIn->id);
         }
         $amount = collect([$check_in_chapter])->collapse()->collapse()->pluck('chapter_id')->unique()->count();
         return $amount;
