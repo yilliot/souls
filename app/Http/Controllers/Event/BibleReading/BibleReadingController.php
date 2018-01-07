@@ -16,13 +16,28 @@ class BibleReadingController extends Controller
     {
         $comment_id = $request->comment;
         if($comment_id) {
-          $comment = Comment::find($comment_id);
-          return view('event.bible_reading.show_single_comment', compact('comment'));
+            return $this->showComment($comment_id);
         }
+
         $yesterday = date("Y-m-d-h-m-s", strtotime( '-1 days' ) );
         $comments = Comment::where('created_at', '>=', $yesterday)->get()->sortByDesc('created_at');
+        $authors_name = Soul::whereIn('id', $comments->pluck('soul_id'))->pluck('nickname', 'id');
+        $chapters_id = CheckInChapter::whereIn('comment_id', $comments->pluck('id'))->pluck('chapter_id', 'comment_id');
+        $chapters = Chapter::whereIn('id', $chapters_id)->get();
+        $book_name = $chapters->pluck('book_name', 'id');
+        $chapter_number = $chapters->pluck('chapter_number', 'id');
+        foreach ($comments as $comment) {
+            $comment['bible_book'] = $book_name[$chapters_id[$comment->id]];
+            $comment['bible_book_chapter'] = $chapter_number[$chapters_id[$comment->id]];
+            $comment['author_name'] = $authors_name[$comment->soul_id];
+        }
 
         return view('event.bible_reading.home', compact('comments'));
+    }
+
+    public function showComment($comment_id) {
+        $comment = Comment::find($comment_id);
+        return view('event.bible_reading.show_single_comment', compact('comment'));
     }
 
     public function signup()
