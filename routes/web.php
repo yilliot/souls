@@ -70,6 +70,8 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
         Route::post('/nric', 'BibleReadingController@postNric');
 
         Route::get('/schedule', 'BibleReadingController@getSchedule');
+
+        Route::get('/supervise', 'BibleReadingSupervision@home')->middleware('apc');
     });
 });
 
