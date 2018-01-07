@@ -114,7 +114,6 @@ class BibleReadingController extends Controller
         $check_in_chapter = [];
         $checkInChapter = CheckInChapter::whereIn('check_in_id', $check_in->pluck('id'))->get();
         foreach ($check_in as $checkIn) {
-          if($checkIn->id == 20)continue;
           $check_in_chapter[] = $checkInChapter->where('check_in_id', $checkIn->id);
         }
         $amount = collect([$check_in_chapter])->collapse()->collapse()->pluck('chapter_id')->unique()->count();
