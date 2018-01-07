@@ -10,6 +10,7 @@
   <link href="{{ asset('css/event.bible-reading.css') }}" rel="stylesheet">
 </head>
 <body>
+  @yield('pre-body')
   <div id="maincontent" class="ui main container">
     <div id="bible-reading-container">
       @if(!Request::is('*/schedule'))
