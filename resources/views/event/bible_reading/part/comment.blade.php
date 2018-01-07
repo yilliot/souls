@@ -13,6 +13,7 @@
     </div>
   </div>
   <div class="extra content">
+    <div class="fb-like" data-href="http://hcc.ground.my/bible_reading/?comment={{$comment->id}}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
     <div class="right floated author">
       <i class="user icon"></i>
        {{ $comment->soul()->first()->nickname }}
