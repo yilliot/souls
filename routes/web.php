@@ -71,7 +71,7 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
 
         Route::get('/schedule', 'BibleReadingController@getSchedule');
 
-        Route::get('/supervise', 'BibleReadingSupervision@home')->middleware('apc');
+        Route::get('/supervise', 'BibleReadingSupervision@home');
     });
 });
 
