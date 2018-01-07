@@ -159,8 +159,9 @@ class BibleReadingController extends Controller
         $this->validate($request, [
             'nric' => [
                 'required',
-                'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/'],
+                'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/',
                 'exists:souls,nric',
+            ],
             'book' => 'required',
             'chapters' => 'required',
         ]);
@@ -202,8 +203,9 @@ class BibleReadingController extends Controller
         $this->validate($request, [
             'nric' => [
                 'required',
-                'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/'],
+                'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/',
                 'exists:souls,nric',
+              ],
         ]);
         $request->session()->put('nric', $request->nric);
 
