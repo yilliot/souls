@@ -22,7 +22,7 @@ Bible Reading Home
     td label{display: block;}
     td span{display:block; font-size: 0.8em;}
   </style>
-  <h3 class="ui header">一月读经表</h3>
+  <h3 class="ui header">二月读经表</h3>
   <table class="ui unstackable compact table">
     <thead>
       <tr>
@@ -35,45 +35,46 @@ Bible Reading Home
         <th>Su</th>
       </tr>
       <tr>
-        <td><label>创</label> <span>1-3</span></td>
-        <td><label>创</label> <span>4-6</span></td>
-        <td><label>创</label> <span>7-9</span></td>
-        <td><label>创</label> <span>10-12</span></td>
-        <td><label>创</label> <span>13-15</span></td>
-        <td><label>创</label> <span>16-18</span></td>
-        <td><label>创</label> <span>19-22</span></td>
+        <td><label></label> <span></span></td>
+        <td><label></label> <span></span></td>
+        <td><label></label> <span></span></td>
+        <td><label>利</label> <span>8-10</span></td>
+        <td><label>利</label> <span>11-13</span></td>
+        <td><label>利</label> <span>14-16</span></td>
+        <td><label>利</label> <span>17-20</span></td>
       </tr>
       <tr>
-        <td><label>创</label> <span>23-25</span></td>
-        <td><label>创</label> <span>26-28</span></td>
-        <td><label>创</label> <span>29-31</span></td>
-        <td><label>创</label> <span>32-34</span></td>
-        <td><label>创</label> <span>35-37</span></td>
-        <td><label>创</label> <span>38-40</span></td>
-        <td><label>创</label> <span>41-44</span></td>
+        <td><label>利</label> <span>21-23</span></td>
+        <td><label>利</label> <span>24-26</span></td>
+        <td><label>利/民</label> <span>27-2</span></td>
+        <td><label>民</label> <span>3-5</span></td>
+        <td><label>民</label> <span>6-8</span></td>
+        <td><label>民</label> <span>9-11</span></td>
+        <td><label>民</label> <span>12-15</span></td>
       </tr>
       <tr>
-        <td><label>创</label> <span>45-47</span></td>
-        <td><label>创</label> <span>48-50</span></td>
-        <td><label>出</label> <span>1-3</span></td>
-        <td><label>出</label> <span>4-6</span></td>
-        <td><label>出</label> <span>7-9</span></td>
-        <td><label>出</label> <span>10-12</span></td>
-        <td><label>出</label> <span>13-16</span></td>
+        <td><label>民</label> <span>16-18</span></td>
+        <td><label>民</label> <span>19-21</span></td>
+        <td><label>民</label> <span>22-24</span></td>
+        <td><label>民</label> <span>25-27</span></td>
+        <td><label>民</label> <span>28-30</span></td>
+        <td><label>民</label> <span>31-33</span></td>
+        <td><label>申</label> <span>34-1</span></td>
       </tr>
       <tr>
-        <td><label>出</label> <span>17-19</span></td>
-        <td><label>出</label> <span>20-22</span></td>
-        <td><label>出</label> <span>23-25</span></td>
-        <td><label>出</label> <span>26-28</span></td>
-        <td><label>出</label> <span>29-31</span></td>
-        <td><label>出</label> <span>32-34</span></td>
-        <td><label>出</label> <span>35-38</span></td>
+        <td><label>申</label> <span>2-4</span></td>
+        <td><label>申</label> <span>5-7</span></td>
+        <td><label>申</label> <span>8-10</span></td>
+        <td><label>申</label> <span>11-13</span></td>
+        <td><label>申</label> <span>14-16</span></td>
+        <td><label>申</label> <span>17-19</span></td>
+        <td><label>申</label> <span>20-24</span></td>
       </tr>
       <tr>
-        <td><label>出/利</label> <span>39-1</span></td>
-        <td><label>利</label> <span>2-4</span></td>
-        <td><label>利</label> <span>5-7</span></td>
+        <td><label>申</label> <span>25-27</span></td>
+        <td><label>申</label> <span>28-30</span></td>
+        <td><label>申</label> <span>31-33</span></td>
+        <td><label>申/書</label> <span>34-2</span></td>
       </tr>
 
     </thead>
