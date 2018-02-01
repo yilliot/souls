@@ -18,17 +18,17 @@ cp .env.example .env
 vim .env
 
 composer selfupdate
-composer install
+composer install .....................
 composer dump -o
 
 chmod -R 777 storage
 chmod -R 777 public/sizeds
 
-php artisan key:generate
+php artisan key:generate .................
 
 ### DB & Seed
 
-php artisan migrate:refresh --seed
+php artisan migrate:refresh --seed ......................
 php artisan db:seed --class=DemoDatabaseSeeder
 
 // Mongo index
