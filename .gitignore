@@ -10,3 +10,4 @@ Homestead.yaml
 .env
 npm-debug.log
 public/bower_components
+public/mix-manifest.json

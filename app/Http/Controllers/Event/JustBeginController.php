@@ -157,6 +157,7 @@ class JustBeginController extends Controller
         return view('event.just_begin.admin_search_claim', compact('souls_nric'));
     }
     public function claim(Request $request){
+
         if ($request->has('nric')) {
             $soul = Soul::where('nric', $request->nric)->first();
         } else {
