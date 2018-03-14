@@ -1,0 +1,250 @@
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.7.6 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2017, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+@media all{.featherlight{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483647;text-align:center;white-space:nowrap;cursor:pointer;background:#333;background:rgba(0,0,0,0)}.featherlight:last-of-type{background:rgba(0,0,0,.8)}.featherlight:before{content:'';display:inline-block;height:100%;vertical-align:middle}.featherlight .featherlight-content{position:relative;text-align:left;vertical-align:middle;display:inline-block;overflow:auto;padding:25px 25px 0;border-bottom:25px solid transparent;margin-left:5%;margin-right:5%;max-height:95%;background:#fff;cursor:auto;white-space:normal}.featherlight .featherlight-inner{display:block}.featherlight link.featherlight-inner,.featherlight script.featherlight-inner,.featherlight style.featherlight-inner{display:none}.featherlight .featherlight-close-icon{position:absolute;z-index:9999;top:0;right:0;line-height:25px;width:25px;cursor:pointer;text-align:center;font-family:Arial,sans-serif;background:#fff;background:rgba(255,255,255,.3);color:#000;border:0;padding:0}.featherlight .featherlight-close-icon::-moz-focus-inner{border:0;padding:0}.featherlight .featherlight-image{width:100%}.featherlight-iframe .featherlight-content{border-bottom:0;padding:0;-webkit-overflow-scrolling:touch;overflow-y:scroll}.featherlight iframe{border:0}.featherlight *{-webkit-box-sizing:border-box;box-sizing:border-box}}@media only screen and (max-width:1024px){.featherlight .featherlight-content{margin-left:0;margin-right:0;max-height:98%;padding:10px 10px 0;border-bottom:10px solid transparent}}/**
+ * VAR
+ */
+
+/**
+ * THEME RESET
+ */
+
+body {
+  background-color: #FFFFFF;
+  color: black;
+}
+
+a {
+  color: #000;
+}
+
+.sub.header.neon-green,
+.neon-green {
+  color: #83f52c !important;
+}
+
+.ui.inverted.segment,
+.ui.primary.inverted.segment {
+  background-color: #FFFFFF;
+}
+
+.text-centered {
+  text-align: center !important;
+}
+
+.ui.piled.segment:after,
+.ui.piled.segment:before,
+.ui.piled.segments:after,
+.ui.piled.segments:before {
+  background-color: #83f52c !important;
+}
+
+.glow {
+  text-shadow: 0px 0px 30px #21ff00;
+}
+
+#logo {
+  width: 200px;
+}
+
+/** 
+#77ffbf
+#7afff8
+#ff32e0
+#70fff7
+*/
+
+/**
+ * ERROR COLORS
+ */
+
+.alert-danger {
+  background-color: #ff0099;
+  border-color: #77ffbf;
+  color: white;
+}
+
+.field.error label {
+  color: #ff0099 !important;
+}
+
+.ui.positive.message {
+  background-color: #FFFFFF;
+}
+
+.ui.positive.message .header {
+  color: #000 !important;
+}
+
+.ui.positive.message p {
+  color: #000 !important;
+}
+
+/**
+ * LAYOUT
+ */
+
+#bible-reading-container {
+  margin: 15px auto 5px auto;
+}
+
+@media only screen and (min-width: 1200px) {
+  #bible-reading-container {
+    max-width: 700px !important;
+    margin: 100px auto 20px auto;
+  }
+
+  #bible-reading-container .ui.form {
+    margin: 1em;
+  }
+}
+
+@media only screen and (max-width: 740) {
+  #bible-reading-container {
+    margin: auto;
+  }
+
+  #bible-reading-container .ui.form {
+    margin: 1em;
+  }
+}
+
+/**
+ * FORMS
+ */
+
+#bible-reading-checkin .field .ui.dropdown .item,
+#bible-reading-signup .field .ui.dropdown .item {
+  font-size: 1.05em !important;
+}
+
+#bible-reading-checkin .field i.icon,
+#bible-reading-signup .field i.icon {
+  color: black !important;
+}
+
+#bible-reading-checkin .field .labeled.input .ui.label,
+#bible-reading-signup .field .labeled.input .ui.label {
+  color: black !important;
+}
+
+#bible-reading-checkin .field .labeled.input .ui.label,
+#bible-reading-checkin .field .ui.dropdown.selection,
+#bible-reading-checkin .field input[type=file],
+#bible-reading-checkin .field input[type=text],
+#bible-reading-checkin .field input[type=number],
+#bible-reading-checkin .field input[type=email],
+#bible-reading-checkin .field input[type=date],
+#bible-reading-checkin .field input[type=password],
+#bible-reading-checkin .field textarea,
+#bible-reading-signup .field .labeled.input .ui.label,
+#bible-reading-signup .field .ui.dropdown.selection,
+#bible-reading-signup .field input[type=file],
+#bible-reading-signup .field input[type=text],
+#bible-reading-signup .field input[type=number],
+#bible-reading-signup .field input[type=email],
+#bible-reading-signup .field input[type=date],
+#bible-reading-signup .field input[type=password],
+#bible-reading-signup .field textarea {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  font-size: 1.3em !important;
+  background-color: #FFF !important;
+  color: black !important;
+}
+
+#bible-reading-checkin .field .labeled.input .ui.label .dropdown.icon,
+#bible-reading-checkin .field .ui.dropdown.selection .dropdown.icon,
+#bible-reading-checkin .field input[type=file] .dropdown.icon,
+#bible-reading-checkin .field input[type=text] .dropdown.icon,
+#bible-reading-checkin .field input[type=number] .dropdown.icon,
+#bible-reading-checkin .field input[type=email] .dropdown.icon,
+#bible-reading-checkin .field input[type=date] .dropdown.icon,
+#bible-reading-checkin .field input[type=password] .dropdown.icon,
+#bible-reading-checkin .field textarea .dropdown.icon,
+#bible-reading-signup .field .labeled.input .ui.label .dropdown.icon,
+#bible-reading-signup .field .ui.dropdown.selection .dropdown.icon,
+#bible-reading-signup .field input[type=file] .dropdown.icon,
+#bible-reading-signup .field input[type=text] .dropdown.icon,
+#bible-reading-signup .field input[type=number] .dropdown.icon,
+#bible-reading-signup .field input[type=email] .dropdown.icon,
+#bible-reading-signup .field input[type=date] .dropdown.icon,
+#bible-reading-signup .field input[type=password] .dropdown.icon,
+#bible-reading-signup .field textarea .dropdown.icon {
+  line-height: 2.3em;
+}
+
+#bible-reading-checkin .field.error .ui.dropdown.selection,
+#bible-reading-checkin .field.error .ui.dropdown .text,
+#bible-reading-checkin .field.error input,
+#bible-reading-signup .field.error .ui.dropdown.selection,
+#bible-reading-signup .field.error .ui.dropdown .text,
+#bible-reading-signup .field.error input {
+  color: white !important;
+  background-color: #ff0099 !important;
+}
+
+.m-auto {
+  margin: auto !important;
+}
+
+.p-clear {
+  padding: 2.5px 5px !important;
+}
+
+.chapter.button {
+  margin: 0.1rem 0.1rem !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+/**
+ * Display
+ */
+
+.my.hidden.divider {
+  visibility: hidden;
+  width: 100%;
+  height: 0.5rem;
+}
+
+.my.fluid {
+  width: 100%;
+}
+
+/**
+ * Card
+ */
+
+.ui.card > :first-child {
+  margin-bottom: 1rem;
+}
+
+.inline {
+  display: inline !important;
+}
+
+.hide {
+  display: none;
+}
+
+.uppercased {
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
