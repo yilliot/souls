@@ -31,6 +31,30 @@ Route::get('/i/todo', function(){
 
 Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
 
+    Route::group(['prefix' => 'usher', 'namespace' => 'Usher'], function(){
+
+        Route::get('/', 'UsherController@home');
+        Route::get('/QR/', 'UsherController@QRcode');
+        Route::get('/chatbook/', 'UsherController@getChatbook');
+        Route::post('/chatbook/edit', 'UsherController@postChatbook');
+        Route::get('/detail', 'UsherController@detail');
+        Route::get('/feedback/', 'UsherController@getFeedback');
+        Route::post('/feedback/{id}', 'UsherController@postFeedback');
+    });
+
+    Route::group(['prefix' => 'pastoral', 'namespace' => 'Usher'], function(){
+
+        Route::get('/newcomer/', 'UsherController@getnewcomer');
+        Route::post('/newcomer/{id}', 'UsherController@postnewcomer');
+    });
+
+    Route::group(['prefix' => 'followup', 'namespace' => 'Usher'], function(){
+
+        Route::get('/followup/', 'UsherController@getfollowup');
+        Route::post('/followup/{id}', 'UsherController@postfollowupid');
+        Route::post('/followup/{id}/comment', 'UsherController@postfollowupcomment');
+    });
+
     Route::group(['prefix' => 'vote', 'namespace' => 'Vote'], function () {
 
         // Route::get('/supreme', 'SupremeController@s01');
@@ -51,6 +75,7 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
     Route::get('/3km/claim', 'JustBeginController@claim');
     Route::post('/3km/claim', 'JustBeginController@postClaim');
 
+
     Route::group(['prefix' => 'bible_reading', 'namespace' => 'BibleReading'], function () {
 
         Route::get('/', 'BibleReadingController@home');
@@ -70,6 +95,7 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
         Route::post('/nric', 'BibleReadingController@postNric');
 
         Route::get('/schedule', 'BibleReadingController@getSchedule');
+        
     });
 });
 
@@ -116,6 +142,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
 
         Route::resource('service', 'ServiceController');
         Route::resource('soul', 'SoulController');
+
+
+
+
 });
 
 ## CGL
@@ -124,4 +154,5 @@ Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
     ], function () {
         Route::resource('soul', 'SoulController');
 });
+
 
