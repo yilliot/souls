@@ -36,6 +36,13 @@ return [
 
     ],
 
+    'usher' => [
+        //newcomer list
+        'assigned_people' => '分配人',
+        'assigned_cg' => '分配小组',
+        'newcomer_list' => '新人名单'
+    ],
+    
     'bible_reading' => [
         'bible_reading' => '阅读圣经',
         'history' => '历史记录',
