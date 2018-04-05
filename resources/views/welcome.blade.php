@@ -5,6 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link href="{{ asset('semantic/semantic.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/event.bible-reading.css') }}" rel="stylesheet">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -22,14 +24,14 @@
                 margin: 0;
             }
 
-            body{
+            /*body{
                 animation: trans_bg 2s ease-in-out 1;
                 background-color: black;
             }
             @keyframes trans_bg {
               0% {background-color: white;}
               100% {background-color: black;}
-            } 
+            }*/
 
             .full-height {
                 height: 100vh;
@@ -37,8 +39,9 @@
 
             .flex-center {
                 align-items: center;
-                display: flex;
+                /*display: flex;*/
                 justify-content: center;
+                /*flex-flow: row wrap;*/
             }
 
             .position-ref {
@@ -72,16 +75,29 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .massive.lean.button {
+                font-weight: lighter;
+            }
+            
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-
-            <div class="content">
+            @include('event.bible_reading.part.logo')
+            <a href="/event/bible_reading/schedule" class="ui massive fluid black button lean">
+                Bible Reading
+            </a>
+            <div class="ui hidden divider"></div>
+            <a href="/calendar" class="ui massive fluid black button lean">
+                Public Calendar
+            </a>
+            
+            {{-- <div class="content">
                 <div class="title m-b-md">
                     {{config('app.name')}}
                 </div>
-            </div>
+            </div> --}}
         </div>
     </body>
 </html>

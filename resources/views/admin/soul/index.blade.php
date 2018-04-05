@@ -7,7 +7,7 @@ Souls
 <h1 class="ui header">Souls</h1>
 <div class="ui segment">
   {!! Form::open(['url' => url()->current(), 'class' => 'ui form', 'method' => 'GET']) !!}
-    {!! Form::select('type', [], null, ['class' => 'ui dropdown']) !!}
+    {!! Form::select('cellgroup_id', $cellgroups->pluck('name', 'id')->push(['all' => 'All']), $filter['cellgroup_id'], ['class' => 'ui dropdown']) !!}
     <div class="clearfix field">
       <a href="{{ url()->current() }}" class="ui basic right floated right labeled icon tiny button">
         Reset <i class="undo icon"></i>

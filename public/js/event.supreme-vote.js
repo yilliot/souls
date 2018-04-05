@@ -1,67 +1,9 @@
-webpackJsonp([1,2],{
+webpackJsonp([4],{
 
-/***/ 110:
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {window.$ = window.jQuery = __webpack_require__(1);
-__webpack_require__(112);
-__webpack_require__(0);
-
-$(function () {
-
-  // click form to submit
-  $('.clicksubmit').click(function () {
-    $(this).submit();
-  });
-
-  // click close to close message
-  $('.message .close').on('click', function () {
-    $(this).closest('.message').transition('fade');
-  });
-  $('.ui.checkbox').checkbox();
-  $('.dropdown').dropdown();
-
-  $('.modalcaller').click(function () {
-
-    // get the right modal init
-    var modalclass = '.ui.modal';
-    if ($(this).data('modalId')) {
-      modalclass = modalclass + '.' + $(this).data('modalId');
-    }
-
-    // init
-    $(modalclass).modal('show');
-
-    // put in text data
-    var modaldatatexts = $(this).data('modalText');
-    for (var key in modaldatatexts) {
-      var datafield = '.data.text.' + key;
-      $(modalclass + ' ' + datafield).text(modaldatatexts[key]);
-    }
-
-    // put in value data
-    var modaldatavals = $(this).data('modalVal');
-    for (var key in modaldatavals) {
-      var datafield = '.data.val.' + key;
-      $(modalclass + ' ' + datafield).val(modaldatavals[key]);
-    }
-  });
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-
-/***/ 111:
+/***/ 1:
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 112:
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(jQuery) {var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};/*
+var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};/*
  * # Semantic UI - 2.2.9
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
@@ -787,17 +729,32 @@ onLoad:function onLoad(){},onAllLoaded:function onAllLoaded(){},// special callb
 onFixed:function onFixed(){},onUnfixed:function onUnfixed(){},// utility callbacks
 onUpdate:false,// disabled by default for performance
 onRefresh:function onRefresh(){},metadata:{src:'src'},className:{fixed:'fixed',placeholder:'placeholder',visible:'visible'},error:{method:'The method you called is not defined.',visible:'Element is hidden, you must call refresh after element becomes visible'}};})(jQuery,window,document);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 
-/***/ 115:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(110);
-module.exports = __webpack_require__(111);
+module.exports = __webpack_require__(134);
 
+
+/***/ }),
+
+/***/ 134:
+/***/ (function(module, exports, __webpack_require__) {
+
+window.$ = window.jQuery = __webpack_require__(2);
+__webpack_require__(1);
+
+$(function () {
+  $('button.option').click(function (e) {
+    var supreme_option = $(this).data('option');
+    $('#supreme-container').css('background-image', 'url(/images/supreme-vote/' + supreme_option + '.jpg)');
+    $('#form-option').val(supreme_option);
+    e.preventDefault();
+  });
+});
 
 /***/ })
 
-},[115]);
+},[133]);

@@ -17,12 +17,22 @@ const { mix } = require('laravel-mix');
 //   .copy('resources/assets/semantic/dist', 'public/semantic', false);
 
 mix
+.copyDirectory('resources/assets/jquery-ui', 'public/css/jquery-ui-1.12.1.custom')
 .sass('resources/assets/sass/admin.scss', 'public/css')
 .sass('resources/assets/sass/event.just-begin.scss', 'public/css')
+.sass('resources/assets/sass/event.supreme-vote.scss', 'public/css')
+.sass('resources/assets/sass/event.bible-reading.scss', 'public/css')
 .js([
       'resources/assets/js/admin.js',
   ], 'public/js/admin.js')
 .js([
       'resources/assets/js/event.just-begin.js',
   ], 'public/js/event.just-begin.js')
+.js([
+      'resources/assets/js/event.supreme-vote.js',
+  ], 'public/js/event.supreme-vote.js')
+
+.js([
+      'resources/assets/js/event.bible-reading.js',
+  ], 'public/js/event.bible-reading.js')
   .extract(['jquery', 'moment']);
