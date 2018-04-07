@@ -18,7 +18,7 @@ class CreateWelcomeTable extends Migration
         Schema::create('welcome_chat_record', function(Blueprint $table){
             $table->increments('id');
             $table->integer('nc_id')->unsigned()->index();
-            $table->integer('accomponian_id')->unsigned()->index();
+            $table->integer('accompanion_id')->unsigned()->index();
             $table->text('record')->nullable();
             $table->timestamps();
         });
