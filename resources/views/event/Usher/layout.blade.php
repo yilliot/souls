@@ -13,9 +13,6 @@
   @yield('pre-body')
   <div id="maincontent" class="ui main container">
     <div id="bible-reading-container">
-      @if(!Request::is('*/schedule'))
-      <a href="/event/bible_reading/schedule">{{ trans('event.bible_reading.schedule') }}</a>
-      @endif
       @yield('content')
       <div>
         <a href="/session/lang/zh">中文</a> |
@@ -34,7 +31,7 @@
   </div>
   <script src="/js/manifest.js"></script>
   <script src="/js/vendor.js"></script>
-  <script src="{{ asset('js/event.usher.js') }}"></script>
+  <script src="/js/event.usher.js"></script>
   @yield('script')
 </body>
 </html>
