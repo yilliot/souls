@@ -45,14 +45,14 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
     Route::group(['prefix' => 'pastoral', 'namespace' => 'Usher'], function(){
 
         Route::get('/newcomer/', 'UsherController@getnewcomer');
-        Route::post('/newcomer/{id}', 'UsherController@postnewcomer');
+        Route::post('/newcomer/post', 'UsherController@postnewcomer');
     });
 
     Route::group(['prefix' => 'followup', 'namespace' => 'Usher'], function(){
 
-        Route::get('/followup/', 'UsherController@getfollowup');
-        Route::post('/followup/{id}', 'UsherController@postfollowupid');
-        Route::post('/followup/{id}/comment', 'UsherController@postfollowupcomment');
+        Route::get('/', 'UsherController@getfollowup');
+        Route::post('/{id}', 'UsherController@postfollowupid');
+        Route::post('/{id}/comment', 'UsherController@postfollowupcomment');
     });
 
     Route::group(['prefix' => 'vote', 'namespace' => 'Vote'], function () {
