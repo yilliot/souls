@@ -739,7 +739,8 @@ __webpack_require__(124);
 __webpack_require__(127);
 __webpack_require__(128);
 __webpack_require__(129);
-module.exports = __webpack_require__(130);
+__webpack_require__(130);
+module.exports = __webpack_require__(131);
 
 
 /***/ }),
@@ -747,10 +748,10 @@ module.exports = __webpack_require__(130);
 /***/ 124:
 /***/ (function(module, exports, __webpack_require__) {
 
-window.$ = window.jQuery = __webpack_require__(2);
+window.$ = window.jQuery = __webpack_require__(3);
 __webpack_require__(1);
 __webpack_require__(0);
-__webpack_require__(3);
+__webpack_require__(2);
 
 $(function () {
 
@@ -825,7 +826,14 @@ $(function () {
 
 /***/ }),
 
-/***/ 3:
+/***/ 131:
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: ENOENT: no such file or directory, open 'C:\\wamp64\\www\\souls\\resources\\assets\\sass\\event.usher.scss'\n    at runLoaders (C:\\wamp64\\www\\souls\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at C:\\wamp64\\www\\souls\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\wamp64\\www\\souls\\node_modules\\loader-runner\\lib\\LoaderRunner.js:200:19\n    at C:\\wamp64\\www\\souls\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:70:14\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
+
+/***/ }),
+
+/***/ 2:
 /***/ (function(module, exports) {
 
 /**
