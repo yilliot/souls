@@ -5,6 +5,7 @@ require('featherlight');
 
 $(function(){
 
+  init_newcomerlist();
   // click form to submit
   $('.clicksubmit').click(function(){
     $(this).submit();
@@ -218,5 +219,10 @@ $(function(){
       }
     }
   }
-
+function init_newcomerlist() {
+  $(".jsbutton").click(function(){
+      let id = $(this).attr('id');
+      $('.modal#modal-of-' + id).modal('show');  
+  });
+}
 });

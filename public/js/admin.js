@@ -739,7 +739,8 @@ __webpack_require__(124);
 __webpack_require__(127);
 __webpack_require__(128);
 __webpack_require__(129);
-module.exports = __webpack_require__(130);
+__webpack_require__(130);
+module.exports = __webpack_require__(131);
 
 
 /***/ }),
@@ -747,10 +748,10 @@ module.exports = __webpack_require__(130);
 /***/ 124:
 /***/ (function(module, exports, __webpack_require__) {
 
-window.$ = window.jQuery = __webpack_require__(2);
+window.$ = window.jQuery = __webpack_require__(3);
 __webpack_require__(1);
 __webpack_require__(0);
-__webpack_require__(3);
+__webpack_require__(2);
 
 $(function () {
 
@@ -825,7 +826,14 @@ $(function () {
 
 /***/ }),
 
-/***/ 3:
+/***/ 131:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 2:
 /***/ (function(module, exports) {
 
 /**
