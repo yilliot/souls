@@ -15,7 +15,7 @@ class CreateWelcomeTable extends Migration
     {
         //
           //
-        Schema::create('welcome_chat_record', function(Blueprint $table){
+        Schema::create('welcome_chat_records', function(Blueprint $table){
             $table->increments('id');
             $table->integer('nc_id')->unsigned()->index();
             $table->integer('accompanion_id')->unsigned()->index();
@@ -23,7 +23,7 @@ class CreateWelcomeTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('welcome_followupper', function(Blueprint $table){
+        Schema::create('welcome_followuppers', function(Blueprint $table){
             $table->increments('id');
             $table->integer('nc_id')->unsigned()->index();
             $table->integer('welcome_followupper_id')->unsigned()->index();
@@ -31,7 +31,7 @@ class CreateWelcomeTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('welcome_chat_question', function(Blueprint $table){
+        Schema::create('welcome_chat_questions', function(Blueprint $table){
             $table->increments('id');
             $table->integer('question')->unsigned()->index();
             $table->integer('order')->unsigned()->index();
@@ -39,7 +39,7 @@ class CreateWelcomeTable extends Migration
             $table->string('options')->nullable();
         });
 
-        Schema::create('welcome_followup_comment', function(Blueprint $table){
+        Schema::create('welcome_followup_comments', function(Blueprint $table){
             $table->increments('id');
             $table->integer('nc_id')->unsigned()->index();
             $table->integer('followupper_id')->unsigned()->index();
@@ -55,10 +55,10 @@ class CreateWelcomeTable extends Migration
     public function down()
     {
         //
-        Schema::drop('welcome_chat_record');
-        Schema::drop('welcome_followupper');
-        Schema::drop('welcome_chat_question');
-        Schema::drop('welcome_followup_comment');
+        Schema::drop('welcome_chat_records');
+        Schema::drop('welcome_followuppers');
+        Schema::drop('welcome_chat_questions');
+        Schema::drop('welcome_followup_comments');
 
     }
 }
