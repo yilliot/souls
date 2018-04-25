@@ -22,7 +22,7 @@ mix
 .sass('resources/assets/sass/event.just-begin.scss', 'public/css')
 .sass('resources/assets/sass/event.supreme-vote.scss', 'public/css')
 .sass('resources/assets/sass/event.bible-reading.scss', 'public/css')
-.sass('resources/assets/sass/event.usher.scss', 'public/css')
+.sass('resources/assets/sass/event.welcome.scss', 'public/css')
 
 .js([
       'resources/assets/js/admin.js',
@@ -38,6 +38,6 @@ mix
       'resources/assets/js/event.bible-reading.js',
   ], 'public/js/event.bible-reading.js')
 .js([
-      'resources/assets/js/event.usher.js',
-  ], 'public/js/event.usher.js')
+      'resources/assets/js/event.welcome.js',
+  ], 'public/js/event.welcome.js')
   .extract(['jquery', 'moment']);

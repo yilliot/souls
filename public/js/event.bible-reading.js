@@ -750,6 +750,7 @@ __webpack_require__(2);
 
 $(function () {
 
+  init_newcomerlist();
   // click form to submit
   $('.clicksubmit').click(function () {
     $(this).submit();
@@ -942,6 +943,12 @@ $(function () {
         }
       }
     }
+  }
+  function init_newcomerlist() {
+    $(".jsbutton").click(function () {
+      var id = $(this).attr('id');
+      $('.modal#modal-of-' + id).modal('show');
+    });
   }
 });
 

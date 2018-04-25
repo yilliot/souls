@@ -29,6 +29,31 @@ Route::get('/i/todo', function(){
     return view('todo');
 });
 
+Route::group(['prefix' => 'welcome', 'namespace' => 'welcome'], function(){
+
+    Route::get('/', 'WelcomeController@home');
+    Route::get('/QR/', 'WelcomeController@QRcode');
+    Route::get('/chatbook/', 'WelcomeController@getChatbook');
+    Route::post('/chatbook/edit', 'WelcomeController@postChatbook');
+    Route::get('/detail', 'WelcomeController@detail');
+    Route::get('/feedback/', 'WelcomeController@getFeedback');
+    Route::post('/feedback/{id}', 'WelcomeController@postFeedback');
+});
+
+Route::group(['prefix' => 'pastoral', 'namespace' => 'welcome'], function(){
+
+    Route::get('/newcomer/', 'WelcomeController@getnewcomer');
+    Route::post('/newcomer/post', 'WelcomeController@postnewcomer');
+});
+
+Route::group(['prefix' => 'followup', 'namespace' => 'welcome'], function(){
+
+    Route::get('/', 'WelcomeController@getfollowup');
+    Route::post('/{id}', 'WelcomeController@postfollowupid');
+    Route::post('/{id}/comment', 'WelcomeController@postfollowupcomment');
+});
+
+
 Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
 
     Route::group(['prefix' => 'vote', 'namespace' => 'Vote'], function () {
@@ -51,6 +76,7 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
     Route::get('/3km/claim', 'JustBeginController@claim');
     Route::post('/3km/claim', 'JustBeginController@postClaim');
 
+
     Route::group(['prefix' => 'bible_reading', 'namespace' => 'BibleReading'], function () {
 
         Route::get('/', 'BibleReadingController@home');
@@ -70,6 +96,7 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
         Route::post('/nric', 'BibleReadingController@postNric');
 
         Route::get('/schedule', 'BibleReadingController@getSchedule');
+        
     });
 });
 
@@ -116,6 +143,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
 
         Route::resource('service', 'ServiceController');
         Route::resource('soul', 'SoulController');
+
+
+
+
 });
 
 ## CGL
@@ -124,4 +155,5 @@ Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
     ], function () {
         Route::resource('soul', 'SoulController');
 });
+
 
