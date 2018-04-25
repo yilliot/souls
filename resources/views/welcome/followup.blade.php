@@ -1,10 +1,10 @@
-@extends('event.usher.layout')
+@extends('welcome.layout')
 
 @section('title')
   followup
 @endsection
 
-{{-- @include('event.Usher.parts.navigation_bar') --}}
+{{-- @include('welcome.parts.navigation_bar') --}}
 
 @section('content')
 
@@ -41,27 +41,27 @@
               <table class="ui table">
                 <tbody>
                   <tr>
-                    <td>{{ trans('event.usher.phone_number') }}</td>
+                    <td>{{ trans('welcome.welcome.phone_number') }}</td>
                     <td>{{$newcomerdetail['phone']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('event.usher.inviter') }}</td>
+                    <td>{{ trans('welcome.welcome.inviter') }}</td>
                     <td>{{$newcomerdetail['inviter']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('event.usher.birthday') }}</td>
+                    <td>{{ trans('welcome.welcome.birthday') }}</td>
                     <td>{{$newcomerdetail['birthday']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('event.usher.christian') }}</td>
+                    <td>{{ trans('welcome.welcome.christian') }}</td>
                     <td>{{$newcomerdetail['christian']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('event.usher.fbid') }}</td>
+                    <td>{{ trans('welcome.welcome.fbid') }}</td>
                     <td>{{$newcomerdetail['FBID']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('event.usher.about_me') }}</td>
+                    <td>{{ trans('welcome.welcome.about_me') }}</td>
                     <td style="width: 40em; word-break: break-all !important;">{{$newcomerdetail['description']}}</td>
                   </tr>
                 </tbody>
@@ -86,7 +86,7 @@
 
                 <div class="actions">
                   <button type="submit" class="ui positive right labeled icon button mb-3">
-                    {{ trans('event.usher.submit') }}
+                    {{ trans('welcome.welcome.submit') }}
                     <i class="checkmark icon"></i>
                   </button>
                 </div>
@@ -107,7 +107,7 @@
 
               <div class="actions">
                 <button type="submit" class="ui positive right labeled icon button mb-3">
-                  {{ trans('event.usher.submit') }}
+                  {{ trans('welcome.welcome.submit') }}
                   <i class="checkmark icon"></i>
                 </button>
               </div>

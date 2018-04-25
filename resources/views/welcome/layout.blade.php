@@ -7,7 +7,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title> @yield('title') : {{ config('app.name', 'Laravel') }}</title>
   <link href="{{ asset('semantic/semantic.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/event.usher.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
 </head>
 <body>
   @yield('pre-body')
@@ -31,7 +31,7 @@
   </div>
   <script src="/js/manifest.js"></script>
   <script src="/js/vendor.js"></script>
-  <script src="/js/event.usher.js"></script>
+  <script src="/js/welcome.js"></script>
   @yield('script')
 </body>
 </html>

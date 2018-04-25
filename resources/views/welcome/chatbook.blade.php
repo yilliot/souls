@@ -1,4 +1,4 @@
-@extends('event.usher.layout')
+@extends('welcome.layout')
 
 @section('title')
   QR Code

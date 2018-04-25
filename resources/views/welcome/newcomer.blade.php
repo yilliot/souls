@@ -1,10 +1,10 @@
-@extends('event.usher.layout')
+@extends('welcome.layout')
 
 @section('title')
-  {{ trans('event.usher.newcomer_list') }}
+  {{ trans('welcome.newcomer_list') }}
 @endsection
 
-{{-- @include('event.Usher.parts.navigation_bar') --}}
+{{-- @include('welcome.parts.navigation_bar') --}}
 
 @section('content')
 
@@ -13,7 +13,7 @@
 <table class="ui unstackable table">
   <thead>
     <tr>
-      <th>{{ trans('event.usher.newcomer_list') }} (5)</th>
+      <th>{{ trans('welcome.newcomer_list') }} (5)</th>
       <th class="right aligned">Action</th>
     </tr>
   </thead>
@@ -34,27 +34,27 @@
               <table class="ui table">
                 <tbody>
                   <tr>
-                    <td>{{ trans('event.usher.phone_number') }}</td>
+                    <td>{{ trans('welcome.phone_number') }}</td>
                     <td>{{$newcomerdetail['phone']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('event.usher.inviter') }}</td>
+                    <td>{{ trans('welcome.inviter') }}</td>
                     <td>{{$newcomerdetail['inviter']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('event.usher.birthday') }}</td>
+                    <td>{{ trans('welcome.birthday') }}</td>
                     <td>{{$newcomerdetail['birthday']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('event.usher.christian') }}</td>
+                    <td>{{ trans('welcome.christian') }}</td>
                     <td>{{$newcomerdetail['christian']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('event.usher.fbid') }}</td>
+                    <td>{{ trans('welcome.fbid') }}</td>
                     <td>{{$newcomerdetail['FBID']}}</td>
                   </tr>
                  <tr>
-                    <td>{{ trans('event.usher.about_me') }}</td>
+                    <td>{{ trans('welcome.about_me') }}</td>
                     <td style="width: 40em; word-break: break-all !important;">{{$newcomerdetail['description']}}</td>
                   </tr>
                 </tbody>
@@ -62,7 +62,7 @@
               {!! Form::open(['url' => '/event/pastoral/newcomer/post', 'method' => 'POST', 'autocomplete' => 'off']) !!}
               <div class="ui form">
                 <div class="field">
-                  <label class="mt-2">{{ trans('event.usher.assigned_people') }}</label>
+                  <label class="mt-2">{{ trans('welcome.assigned_people') }}</label>
                   <select class="ui dropdown">
                     @foreach ($followuplists as $followuplist)
                       <option>{{$followuplist['name']}}</option>
@@ -74,7 +74,7 @@
           </div>
           <div class="actions">
             <button type="submit" class="ui positive right labeled icon button mb-3">
-              {{ trans('event.usher.submit') }}
+              {{ trans('welcome.submit') }}
               <i class="checkmark icon"></i>
             </button>
           {!! Form::close() !!}

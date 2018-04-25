@@ -34,23 +34,7 @@ return [
         'signup_now' => 'Don\'t have account yet? Sign up now!',
         'message_please_wait' => 'Your last check in was just :t1, try again after :t2',
     ],
-
-    'usher' => [
-        //newcomer list
-        'assigned_people' => 'Assigned People',
-        'assigned_cg' => 'Assigned Cell Group',
-        'newcomer_list' => 'Newcomer List',
-        'phone_number' => 'Phone Number',
-        'inviter' => 'Inviter',
-        'profile_picture' => 'Profile Picture', 
-        'birthday' => 'Birthday',
-        'christian' => 'Christian',
-        'fbid' => 'FBID',
-        'about_me' => 'Description',
-        'submit' => 'Submit',
-    ],
     
-
     'bible_reading' => [
         'bible_reading' => 'Bible Reading',
         'history' => 'History Records',
