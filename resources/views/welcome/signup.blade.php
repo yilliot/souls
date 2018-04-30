@@ -1,16 +1,17 @@
 @extends('welcome.layout')
 
 @section('title')
-  Welcome Detail
+Welcome Sign up
 @endsection
 
-@include('welcome.parts.navigation_bar')
-
 @section('content')
+  
+  <h2 class="header">
+    {{trans('event.bible_reading.signup')}}
+  </h2>
+  @include('event.bible_reading.part.flash')
 
-  <h4 class="ui dividing header">Newcomer form list</h4>
-
-  {{ Form::open(['url' => '/', 'method' => 'post', 'class' => 'ui form', 'id' => 'bible-reading-signup']) }}
+  {{ Form::open(['url' => '/event/bible_reading/signup', 'method' => 'post', 'class' => 'ui form', 'id' => 'bible-reading-signup']) }}
 
     <div class="field {{$errors->has('nickname') ? 'error' : ''}}">
       <label>{{trans('event.bible_reading.nickname')}}</label>
@@ -132,5 +133,4 @@ jQuery(function($) {
     });
 });
 </script>
-
 @endsection

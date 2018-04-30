@@ -29,7 +29,7 @@ Route::get('/i/todo', function(){
     return view('todo');
 });
 
-Route::group(['prefix' => 'welcome', 'namespace' => 'welcome'], function(){
+Route::group(['prefix' => 'welcome'], function(){
 
     Route::get('/', 'WelcomeController@home');
     Route::get('/QR/', 'WelcomeController@QRcode');
@@ -38,15 +38,17 @@ Route::group(['prefix' => 'welcome', 'namespace' => 'welcome'], function(){
     Route::get('/detail', 'WelcomeController@detail');
     Route::get('/feedback/', 'WelcomeController@getFeedback');
     Route::post('/feedback/{id}', 'WelcomeController@postFeedback');
+    Route::get('/signup', 'WelcomeController@getsignup');
+    Route::get('/signup/edit', 'WelcomeController@postsignup');
 });
 
-Route::group(['prefix' => 'pastoral', 'namespace' => 'welcome'], function(){
+Route::group(['prefix' => 'pastoral'], function(){
 
     Route::get('/newcomer/', 'WelcomeController@getnewcomer');
     Route::post('/newcomer/post', 'WelcomeController@postnewcomer');
 });
 
-Route::group(['prefix' => 'followup', 'namespace' => 'welcome'], function(){
+Route::group(['prefix' => 'followup'], function(){
 
     Route::get('/', 'WelcomeController@getfollowup');
     Route::post('/{id}', 'WelcomeController@postfollowupid');

@@ -1,9 +1,10 @@
 @extends('welcome.layout')
 
 @section('title')
-  feedback
+  Welcome Feedback
 @endsection
 
+@include('welcome.parts.navigation_bar')
 
 @section('content')
 

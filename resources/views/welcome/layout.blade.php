@@ -13,12 +13,21 @@
   @yield('pre-body')
   <div id="maincontent" class="ui main container">
     <div id="bible-reading-container">
+
+    @if(!session('nric'))
+    <a href="/welcome/signup"> {{trans('event.bible_reading.signup')}} </a>
+    @endif
+    @if(session('nric'))
+    | <a href="/welcome/QR"> {{trans('event.bible_reading.logout')}} </a> 
+    @endif
+
       @yield('content')
       <div>
         <a href="/session/lang/zh">中文</a> |
         <a href="/session/lang/en">English</a>
       </div>
     </div>
+
 
   <div class="marginated ui fluid container engraved footer">
     <div class="ui center aligned basic padded segment">

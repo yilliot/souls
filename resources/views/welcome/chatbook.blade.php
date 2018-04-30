@@ -1,9 +1,10 @@
 @extends('welcome.layout')
 
 @section('title')
-  QR Code
+  Welcome Chatbook 
 @endsection
 
+@include('welcome.parts.navigation_bar')
 
 @section('content')
 

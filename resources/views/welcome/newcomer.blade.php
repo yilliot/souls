@@ -1,10 +1,10 @@
 @extends('welcome.layout')
 
 @section('title')
-  {{ trans('welcome.newcomer_list') }}
+  Welcome Newcomer
 @endsection
 
-{{-- @include('welcome.parts.navigation_bar') --}}
+@include('welcome.parts.navigation_bar')
 
 @section('content')
 
@@ -13,7 +13,7 @@
 <table class="ui unstackable table">
   <thead>
     <tr>
-      <th>{{ trans('welcome.newcomer_list') }} (5)</th>
+      <th>{{ trans('welcome.welcome.newcomer_list') }} (5)</th>
       <th class="right aligned">Action</th>
     </tr>
   </thead>
@@ -21,7 +21,7 @@
   @foreach ($newcomerdetails as $newcomerdetail)
     <tr>
       <td>
-        <button class="ui secondary button jsbutton" type="button" id="nc{{$newcomerdetail['id']}}">{{$newcomerdetail['name']}}</button>
+        <button class="ui secondary button jsbutton" type="button" id="nc{{$newcomerdetail['id']}}">{{$newcomerdetail['nickname']}}</button>
       
         <div class="ui modal" id="modal-of-nc{{$newcomerdetail['id']}}">
           <i class="close icon"></i>
@@ -30,39 +30,56 @@
           </div>
           <div class="image content">
             <div class="description">
-              <h2>{{$newcomerdetail['name']}}</h2>
+              <h2>{{$newcomerdetail['nickname']}}</h2>
               <table class="ui table">
                 <tbody>
+                <tbody>
                   <tr>
-                    <td>{{ trans('welcome.phone_number') }}</td>
-                    <td>{{$newcomerdetail['phone']}}</td>
+                    <td>Nickname</td>
+                    <td>{{$newcomerdetail['nickname']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('welcome.inviter') }}</td>
-                    <td>{{$newcomerdetail['inviter']}}</td>
+                    <td>NRIC</td>
+                    <td>{{$newcomerdetail['nric']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('welcome.birthday') }}</td>
+                    <td>NRIC Full Name</td>
+                    <td>{{$newcomerdetail['nric_fullname']}}</td>
+                  </tr>
+                  <tr>
+                    <td>{{ trans('welcome.welcome.birthday') }}</td>
                     <td>{{$newcomerdetail['birthday']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('welcome.christian') }}</td>
-                    <td>{{$newcomerdetail['christian']}}</td>
+                    <td>Email</td>
+                    <td>{{$newcomerdetail['email']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('welcome.fbid') }}</td>
-                    <td>{{$newcomerdetail['FBID']}}</td>
+                    <td>Contact 1</td>
+                    <td>{{$newcomerdetail['contact']}}</td>
                   </tr>
-                 <tr>
-                    <td>{{ trans('welcome.about_me') }}</td>
-                    <td style="width: 40em; word-break: break-all !important;">{{$newcomerdetail['description']}}</td>
+                  <tr>
+                    <td>Contact 2</td>
+                    <td>{{$newcomerdetail['contact2']}}</td>
+                  </tr>
+                  <tr>
+                    <td>Address 1</td>
+                    <td style="width: 40em;">{{$newcomerdetail['address']}}</td>
+                  </tr>
+                  <tr>
+                    <td>Address 2</td>
+                    <td style="width: 40em;">{{$newcomerdetail['address2']}}</td>
+                  </tr>
+                  <tr>
+                    <td>First time come to chruch?</td>
+                    <td style="width: 40em;">{{$newcomerdetail['new_comer']}}</td>
                   </tr>
                 </tbody>
               </table>
               {!! Form::open(['url' => '/event/pastoral/newcomer/post', 'method' => 'POST', 'autocomplete' => 'off']) !!}
               <div class="ui form">
                 <div class="field">
-                  <label class="mt-2">{{ trans('welcome.assigned_people') }}</label>
+                  <label class="mt-2">{{ trans('welcome.welcome.assigned_people') }}</label>
                   <select class="ui dropdown">
                     @foreach ($followuplists as $followuplist)
                       <option>{{$followuplist['name']}}</option>
@@ -74,7 +91,7 @@
           </div>
           <div class="actions">
             <button type="submit" class="ui positive right labeled icon button mb-3">
-              {{ trans('welcome.submit') }}
+              {{ trans('welcome.welcome.submit') }}
               <i class="checkmark icon"></i>
             </button>
           {!! Form::close() !!}

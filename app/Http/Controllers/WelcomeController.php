@@ -23,17 +23,17 @@ class WelcomeController extends Controller
     public function newcomerlist()
     {
         return [
-            ['id' => 1, 'name' => 'Joseph', 'phone' => '0127777777', 'inviter' => 'Wei Guo', 'birthday' => '1999/January/02', 'christian' => Boolean::YES, 'FBID' => 'joseph@ict.com', 'description' => 'My name is Joseph User shall provide valid bank account details which belongs to the User. If the bank account belongs to another person, User hereby warrants and agrees that User will be solely responsible for any issue arising from using bank account which belongs to another person to receive money from Timev. Meanwhile, the User will be solely responsible for any issues arising from providing incorrect bank account details.', 'assign' => '0'],
-            ['id' => 2, 'name' => 'Elliot', 'phone' => '0126666666', 'inviter' => 'Wei Guo', 'birthday' => '1988/January/02', 'christian' => Boolean::YES, 'FBID' => 'elliot@ict.com', 'description' => 'My name is Elliot', 'assign' => '2'],
-            ['id' => 3, 'name' => 'Davion', 'phone' => '0125555555', 'inviter' => 'Wei Guo', 'birthday' => '1995/January/02', 'christian' => Boolean::YES, 'FBID' => 'davion@ict.com', 'description' => 'My name is davion sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 'assign' => '2'],
-            ['id' => 4, 'name' => 'Chloe', 'phone' => '0125555555', 'inviter' => 'Wei Guo', 'birthday' => '1995/January/03', 'christian' => Boolean::YES, 'FBID' => 'chloe@ict.com', 'description' => 'My name is Chloe', 'assign' => '0'],
-            ['id' => 5, 'name' => 'Stephen', 'phone' => '0125555555', 'inviter' => 'Wei Guo', 'birthday' => '1995/January/02', 'christian' => Boolean::YES, 'FBID' => 'stephen@ict.com', 'description' => 'My name is Stephen', 'assign' => '1'],
+            ['id' => 1, 'nric' => '990602-01-5566', 'nric_fullname' => 'Joseph Chew Hou Ren', 'birthday' => '1999-06-02', 'email' => 'joseph@ict.com', 'contact' => '012-7777777', 'contact2' => '012-77777777', 'address' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'address2' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'postal_code' => '81100', 'new_comer' => Boolean::YES, 'nickname' => 'Joseph', 'assign' => 2],
+            ['id' => 2, 'nric' => '880602-01-5566', 'nric_fullname' => 'Elliot Yap', 'birthday' => '1988-06-02', 'email' => 'elliot@ict.com', 'contact' => '012-7777777', 'contact2' => '012-77777777', 'address' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'address2' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'postal_code' => '81100', 'new_comer' => Boolean::YES, 'nickname' => 'Elliot', 'assign' => 1],
+            ['id' => 3, 'nric' => '950602-01-5566', 'nric_fullname' => 'Davion Lee', 'birthday' => '1995-06-02', 'email' => 'davion@ict.com', 'contact' => '012-7777777', 'contact2' => '012-77777777', 'address' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'address2' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'postal_code' => '81100', 'new_comer' => Boolean::YES, 'nickname' => 'Davion', 'assign' => 2],
+            ['id' => 4, 'nric' => '950602-01-5566', 'nric_fullname' => 'Chloe Goh', 'birthday' => '1995-06-02', 'email' => 'chloe@ict.com', 'contact' => '012-7777777', 'contact2' => '012-77777777', 'address' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'address2' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'postal_code' => '81100', 'new_comer' => Boolean::YES, 'nickname' => 'Chloe', 'assign' => 1],
+            ['id' => 5, 'nric' => '950602-01-5566', 'nric_fullname' => 'Stephen Khooooo', 'birthday' => '1995-06-02', 'email' => 'chloe@ict.com', 'contact' => '012-7777777', 'contact2' => '012-77777777', 'address' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'address2' => 'No.61, Jalan Harmonium 35/1, Taman Desa Tebrau, 81100 Johor Bahru, Johor Darul Takzim, Malaysia.', 'postal_code' => '81100', 'new_comer' => Boolean::YES, 'nickname' => 'Stephen', 'assign' => 2],
         ];
     }
 
     public function home(Request $request)
     {
-        return view('event.usher.home');
+        return view('welcome.home');
     }
 
     public function getnewcomer(Request $request)
@@ -42,7 +42,7 @@ class WelcomeController extends Controller
         $newcomerdetails = $this->newcomerlist();
         $followuplists = $this->followuplist();
 
-        return view('newcomer', compact('newcomerdetails', 'followuplists'));
+        return view('welcome.newcomer', compact('newcomerdetails', 'followuplists'));
     }
 
     public function postnewcomer(Request $request)
@@ -52,7 +52,7 @@ class WelcomeController extends Controller
 
     public function QRcode(Request $request)
     {
-        return view('QR');
+        return view('welcome.QR');
     }
 
     public function getfollowup(Request $request)
@@ -61,18 +61,40 @@ class WelcomeController extends Controller
         $followuplists = $this->followuplist();
         $newcomerdetails = $this->newcomerlist();
 
-        return view('followup', compact('newcomerdetails', 'followuplists'));
+        return view('welcome.followup', compact('newcomerdetails', 'followuplists'));
     }
 
     public function getfeedback(Request $request)
     {
 
-        return view('feedback');
+        return view('welcome.feedback');
     }
 
     public function detail(Request $request)
     {
 
-        return view('detail');
+        return view('welcome.detail');
     }
+
+    public function getChatbook(Request $request)
+    {
+
+        return view('welcome.chatbook');
+    }
+
+    public function getsignup(Request $request)
+    {
+
+        return view('welcome.signup');
+    }
+
+    public function postsignup(Request $request)
+    {
+
+        $lm = app(\App\Services\Event\BibleReading\BibleReadingController::class);
+        $souls = $lm->postSignup(); 
+        $souls->save();
+
+        return redirect()->back()->with('success', trans('event.bible_reading.success'))->with('message', trans('event.bible_reading.success_checkin'));
+    }      
 }

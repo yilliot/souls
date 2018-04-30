@@ -1,10 +1,10 @@
 @extends('welcome.layout')
 
 @section('title')
-  followup
+  Welcome Followup
 @endsection
 
-{{-- @include('welcome.parts.navigation_bar') --}}
+@include('welcome.parts.navigation_bar')
 
 @section('content')
 
@@ -23,7 +23,7 @@
   <tbody>
     <tr>
       <td>
-        <button class="ui secondary button jsbutton" type="button" id="nc{{$newcomerdetail['id']}}">{{$newcomerdetail['name']}}</button>      
+        <button class="ui secondary button jsbutton" type="button" id="nc{{$newcomerdetail['id']}}">{{$newcomerdetail['nickname']}}</button>      
         <div class="ui modal" id="modal-of-nc{{$newcomerdetail['id']}}">
           <i class="close icon"></i>
           <div class="header">
@@ -37,32 +37,48 @@
 
               {{-- profile picture --}}
 
-              <h2>{{$newcomerdetail['name']}}</h2>
+              <h2>{{$newcomerdetail['nickname']}}</h2>
               <table class="ui table">
                 <tbody>
                   <tr>
-                    <td>{{ trans('welcome.welcome.phone_number') }}</td>
-                    <td>{{$newcomerdetail['phone']}}</td>
+                    <td>Nickname</td>
+                    <td>{{$newcomerdetail['nickname']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('welcome.welcome.inviter') }}</td>
-                    <td>{{$newcomerdetail['inviter']}}</td>
+                    <td>NRIC</td>
+                    <td>{{$newcomerdetail['nric']}}</td>
+                  </tr>
+                  <tr>
+                    <td>NRIC Full Name</td>
+                    <td>{{$newcomerdetail['nric_fullname']}}</td>
                   </tr>
                   <tr>
                     <td>{{ trans('welcome.welcome.birthday') }}</td>
                     <td>{{$newcomerdetail['birthday']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('welcome.welcome.christian') }}</td>
-                    <td>{{$newcomerdetail['christian']}}</td>
+                    <td>Email</td>
+                    <td>{{$newcomerdetail['email']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('welcome.welcome.fbid') }}</td>
-                    <td>{{$newcomerdetail['FBID']}}</td>
+                    <td>Contact 1</td>
+                    <td>{{$newcomerdetail['contact']}}</td>
                   </tr>
                   <tr>
-                    <td>{{ trans('welcome.welcome.about_me') }}</td>
-                    <td style="width: 40em; word-break: break-all !important;">{{$newcomerdetail['description']}}</td>
+                    <td>Contact 2</td>
+                    <td>{{$newcomerdetail['contact2']}}</td>
+                  </tr>
+                  <tr>
+                    <td>Address 1</td>
+                    <td style="width: 40em;">{{$newcomerdetail['address']}}</td>
+                  </tr>
+                  <tr>
+                    <td>Address 2</td>
+                    <td style="width: 40em;">{{$newcomerdetail['address2']}}</td>
+                  </tr>
+                  <tr>
+                    <td>First time come to chruch?</td>
+                    <td style="width: 40em;">{{$newcomerdetail['new_comer']}}</td>
                   </tr>
                 </tbody>
               </table>
