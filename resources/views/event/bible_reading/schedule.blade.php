@@ -23,7 +23,7 @@ Bible Reading Home
     #schedule td label{display: block;}
     #schedule td span{display:block; font-size: 0.8em;}
   </style>
-  <h3 class="ui header">四月读经表</h3>
+  <h3 class="ui header">五月读经表</h3>
   <table id="schedule" class="ui unstackable compact table">
     <thead>
       <tr>
@@ -36,60 +36,49 @@ Bible Reading Home
         <th>Sun</th>
       </tr>
       <tr>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td colspan="2" style="text-align: right;">
-          <label>撒下／王上</label> 
-          <span style="padding-right: 17px ">21-1</span>
+         <td><label></label> <span></span></td>
+        <td><label>代下</label> <span>21-23</span></td>
+        <td><label>代下</label> <span>24-26</span></td>
+        <td><label>代下</label> <span>27-29</span></td>
+        <td><label>代下</label> <span>30-32</span></td>
+        <td><label>代下</label> <span>23-35</span></td>
+        <td><label>代下／拉</label> <span>36－4</span>
         </td>
       </tr>
       <tr>
-        <td><label>王上</label> <span>2-4</span></td>
-        <td><label>王上</label> <span>5-7</span></td>
-        <td><label>王上</label> <span>8-10</span></td>
-        <td><label>王上</label> <span>11-13</span></td>
-        <td><label>王上</label> <span>14-16</span></td>
-        <td><label>王上</label> <span>17-19</span></td>
-        <td><label>王上/下</label> <span>20-2</span></td>
+        <td><label>拉</label> <span>5-7</span></td>
+        <td><label>拉</label> <span>8-10</span></td>
+        <td><label>尼</label> <span>1-3</span></td>
+        <td><label>尼</label> <span>4-6</span></td>
+        <td><label>尼</label> <span>7-9</span></td>
+        <td><label>尼</label> <span>10-12</span></td>
+        <td><label>尼/斯</label> <span>13-4</span></td>
       </tr>
       <tr>
-        <td><label>王下</label> <span>3-5</span></td>
-        <td><label>王下</label> <span>6-8</span></td>
-        <td><label>王下</label> <span>9-11</span></td>
-        <td><label>王下</label> <span>12-14</span></td>
-        <td><label>王下</label> <span>15-17</span></td>
-        <td><label>王下</label> <span>18-20</span></td>
-        <td><label>王下</label> <span>21-25</span></td>
+        <td><label>斯</label> <span>5-7</span></td>
+        <td><label>斯</label> <span>8-10</span></td>
+        <td><label>伯</label> <span>1－3</span></td>
+        <td><label>伯</label> <span>4-6</span></td>
+        <td><label>伯</label> <span>7-9</span></td>
+        <td><label>伯</label> <span>10-12</span></td>
+        <td><label>伯</label> <span>13-17</span></td>
       </tr>
       <tr>
-        <td><label>代上</label> <span>1-3</span></td>
-        <td><label>代上</label> <span>4-6</span></td>
-        <td><label>代上</label> <span>7-9</span></td>
-        <td><label>代上</label> <span>10-12</span></td>
-        <td><label>代上</label> <span>13-15</span></td>
-        <td><label>代上</label> <span>16-18</span></td>
-        <td><label>代上</label> <span>19-23</span></td>
+        <td><label>伯</label> <span>18-20</span></td>
+        <td><label>伯</label> <span>21-23</span></td>
+        <td><label>伯</label> <span>24-26</span></td>
+        <td><label>伯</label> <span>27-29</span></td>
+        <td><label>伯</label> <span>30-32</span></td>
+        <td><label>伯</label> <span>33-35</span></td>
+        <td><label>伯</label> <span>36-40</span></td>
       </tr>
       <tr>
-        <td><label>代上</label> <span>24-26</span></td>
-        <td><label>代上</label> <span>27-29</span></td>
-        <td><label>代下</label> <span>1-3</span></td>
-        <td><label>代下</label> <span>4-6</span></td>
-        <td><label>代下</label> <span>7-9</span></td>
-        <td><label>代下</label> <span>10-12</span></td>
-        <td><label>代下</label> <span>13-17</span></td>
+        <td><label>伯／诗</label> <span>41-1</span></td>
+        <td><label>诗</label> <span>2-4</span></td>
+        <td><label>诗</label> <span>5-7</span></td>
+        <td><label>诗</label> <span>8-10</span></td>
       </tr>
-      <tr>
-        <td><label>代下</label> <span>18-20</span></td>
-      </tr>
-       
-
-
-    </thead>
-    
+    </thead>    
   </table>
   <div class="ui hidden divider"></div>
 @endsection
