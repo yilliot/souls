@@ -41,7 +41,7 @@ Bible Reading Home
         <td><label>代下</label> <span>24-26</span></td>
         <td><label>代下</label> <span>27-29</span></td>
         <td><label>代下</label> <span>30-32</span></td>
-        <td><label>代下</label> <span>23-35</span></td>
+        <td><label>代下</label> <span>33-35</span></td>
         <td><label>代下／拉</label> <span>36－4</span>
         </td>
       </tr>
