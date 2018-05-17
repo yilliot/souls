@@ -22,5 +22,12 @@ class Soul extends Model
     {
         return $this->belongsTo(Cellgroup::class, 'cellgroup_id');
     }
-
+    public function chatRecord()
+    {
+        return $this->hasOne(ChatReord::class, 'nc_id');
+    }
+     public function accompanionRecord()
+    {
+        return $this->hasMany(ChatReord::class, 'accompanion_id');
+    }
 }
