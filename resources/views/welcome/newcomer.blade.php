@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div>Welcome "Pastor Gin"</div>
+<h3>Welcome "Pastor Gin"</h3>
 
 <table class="ui unstackable table">
   <thead>
@@ -17,22 +17,24 @@
       <th class="right aligned">Action</th>
     </tr>
   </thead>
+  @forelse ($newcomerdetails as $newcomerdetail)
   <tbody>
-  @foreach ($newcomerdetails as $newcomerdetail)
     <tr>
       <td>
-        <button class="ui secondary button jsbutton" type="button" id="nc{{$newcomerdetail['id']}}">{{$newcomerdetail['nickname']}}</button>
+        <div>{{$newcomerdetail['nickname']}}</div>
       
-        <div class="ui modal" id="modal-of-nc{{$newcomerdetail['id']}}">
+        {{-- Profile piicture --}}
+
+        <div class="ui modal" id="modal-of-edit-nc{{$newcomerdetail['id']}}">
           <i class="close icon"></i>
-          <div class="header">
-            Profile Picture
-          </div>
+          <div class="header">Profile Picture</div>
           <div class="image content">
             <div class="description">
               <h2>{{$newcomerdetail['nickname']}}</h2>
+
+              {{-- profile picture detail --}}
+
               <table class="ui table">
-                <tbody>
                 <tbody>
                   <tr>
                     <td>Nickname</td>
@@ -76,41 +78,77 @@
                   </tr>
                 </tbody>
               </table>
-              {!! Form::open(['url' => '/event/pastoral/newcomer/post', 'method' => 'POST', 'autocomplete' => 'off']) !!}
-              <div class="ui form">
-                <div class="field">
-                  <label class="mt-2">{{ trans('welcome.welcome.assigned_people') }}</label>
-                  <select class="ui dropdown">
-                    @foreach ($followuplists as $followuplist)
-                      <option>{{$followuplist['name']}}</option>
-                    @endforeach
-                  </select>
-                </div>
+
+              <div style="display: flex; justify-content: center;">
+              <button type="submit" class="ui teal button mt-2 mb-1">
+                OK
+              </button>
               </div>
+
+              {{-- end of profile picture detail --}}
+
             </div>
           </div>
-          <div class="actions">
-            <button type="submit" class="ui positive right labeled icon button mb-3">
-              {{ trans('welcome.welcome.submit') }}
-              <i class="checkmark icon"></i>
-            </button>
-          {!! Form::close() !!}
-          </div>
         </div>
+
+        {{-- end of profile picture --}}
+
+        {{-- cell group assign --}}
+
+        <div class="ui modal p-3" id="modal-of-view-nc{{$newcomerdetail['id']}}">
+
+          <div class="ui form">
+            <div class="field">
+              <label class="mt-2">{{ trans('welcome.welcome.assigned_people') }}</label>
+              <select class="ui dropdown">
+                @foreach ($followuplists as $followuplist)
+                  <option>{{$followuplist['name']}}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+
+          {!! Form::open(['url' => '/event/pastoral/newcomer/post', 'method' => 'POST', 'autocomplete' => 'off']) !!}
+            <div class="actions">
+              <button type="submit" class="ui right floated green labeled icon button mt-3 mb-3">
+                {{ trans('welcome.welcome.submit') }}
+                <i class="checkmark icon"></i>
+              </button>
+            </div>
+          {!! Form::close() !!}
+
+        </div>
+
+        {{-- end of cell group assign --}}
+
       </td>
+
+      {{-- option "assign cell group" "profile picture detail" --}}
+
       <td class="right aligned">
         <div class="ui small icon buttons">
-          <a href="/office/user/" class="ui grey button">
+          <a class="ui grey button button-click" id="edit-nc{{$newcomerdetail['id']}}">
             <i class="eye icon"></i>
           </a>
-          <a href="/office/user/verify/" class="ui button">
+          <a class="ui button button-click" id="view-nc{{$newcomerdetail['id']}}">
             <i class="write icon"></i>
           </a>
         </div>
       </td>
+
+      {{-- end of option "assign cell group" "profile picture detail" --}}
+
     </tr>
-    @endforeach
   </tbody>
+  @empty
+  <tbody>
+    <tr>
+      <td>
+        No services, change filter or come back later
+      </td>
+    </tr>
+  </tbody>
+  @endforelse
 </table>
 
 @endsection

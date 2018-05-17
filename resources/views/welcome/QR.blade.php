@@ -8,5 +8,7 @@
 
 @section('content')
 
-
+<div>
+	<img src="">
+</div>
 @endsection

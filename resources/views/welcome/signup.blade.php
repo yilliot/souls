@@ -11,7 +11,7 @@ Welcome Sign up
   </h2>
   @include('event.bible_reading.part.flash')
 
-  {{ Form::open(['url' => '/event/bible_reading/signup', 'method' => 'post', 'class' => 'ui form', 'id' => 'bible-reading-signup']) }}
+  {{ Form::open(['url' => '/welcome/signup/edit', 'method' => 'post', 'class' => 'ui form', 'id' => 'bible-reading-signup']) }}
 
     <div class="field {{$errors->has('nickname') ? 'error' : ''}}">
       <label>{{trans('event.bible_reading.nickname')}}</label>

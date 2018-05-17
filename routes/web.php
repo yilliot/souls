@@ -39,13 +39,17 @@ Route::group(['prefix' => 'welcome'], function(){
     Route::get('/feedback/', 'WelcomeController@getFeedback');
     Route::post('/feedback/{id}', 'WelcomeController@postFeedback');
     Route::get('/signup', 'WelcomeController@getsignup');
-    Route::get('/signup/edit', 'WelcomeController@postsignup');
+    Route::post('/signup/edit', 'WelcomeController@postsignup');
 });
 
 Route::group(['prefix' => 'pastoral'], function(){
 
     Route::get('/newcomer/', 'WelcomeController@getnewcomer');
     Route::post('/newcomer/post', 'WelcomeController@postnewcomer');
+    
+    Route::group(['prefix' => 'Newcomer'], function(){
+
+    });
 });
 
 Route::group(['prefix' => 'followup'], function(){

@@ -91,9 +91,24 @@ class WelcomeController extends Controller
     public function postsignup(Request $request)
     {
 
-        $lm = app(\App\Services\Event\BibleReading\BibleReadingController::class);
-        $souls = $lm->postSignup(); 
-        $souls->save();
+        $this->validate($request, [
+            'nric' => [
+                'required',
+                'unique:souls,nric',
+                'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/'],
+            'nric_fullname' => 'required|max:255',
+            'email' => 'required|email|unique:souls,email|max:255',
+            'nickname' => 'required|max:255',
+            'contact' => 'required|between:6,12',
+            'address1' => 'required|max:255',
+            'address2' => 'required|max:255',
+            'birthday' => 'required|date',
+            'postal_code' => 'required|digits_between:5,8',
+
+        ]);
+        
+        $lm = app(\App\Services\Welcome\WelcomeManager::class);
+        $souls = $lm->createNewComer(); 
 
         return redirect()->back()->with('success', trans('event.bible_reading.success'))->with('message', trans('event.bible_reading.success_checkin'));
     }      

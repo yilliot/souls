@@ -8,13 +8,15 @@
 
 @section('content')
 
-<div>Welcome "{{$followuplists[0]['name']}}"</div>
+<h3>Welcome "{{$followuplists[0]['name']}}"</h3>
 
 <table class="ui unstackable table mt-4">
   <thead>
     <tr>
-      <th colspan="3">
-        Followup list (2)
+      <th>
+        Followup list (3)
+      </th>
+      <th>
       </th>
     </tr>
   </thead>
@@ -23,7 +25,7 @@
   <tbody>
     <tr>
       <td>
-        <button class="ui secondary button jsbutton" type="button" id="nc{{$newcomerdetail['id']}}">{{$newcomerdetail['nickname']}}</button>      
+        <div>{{$newcomerdetail['nickname']}}</div>    
         <div class="ui modal" id="modal-of-nc{{$newcomerdetail['id']}}">
           <i class="close icon"></i>
           <div class="header">
@@ -82,91 +84,104 @@
                   </tr>
                 </tbody>
               </table>
-              
-              {{-- end of profile picture --}}
 
-              {{-- assigned cell group --}}
-
-              {!! Form::open(['url' => '/event/pastoral/newcomer/post', 'method' => 'POST', 'autocomplete' => 'off']) !!}
-              <div class="ui form">
-                <div class="field">
-                  <label class="mt-2">Assigned Cell Group</label>
-                  <select class="ui dropdown">
-                    <option>E1</option>
-                    <option>E2</option>
-                    <option>E3</option>
-                    <option>S1</option>
-                    <option>W1</option>
-                  </select>
-                </div>
-
-                <div class="actions">
-                  <button type="submit" class="ui positive right labeled icon button mb-3">
-                    {{ trans('welcome.welcome.submit') }}
-                    <i class="checkmark icon"></i>
-                  </button>
-                </div>
-              </div>
-              {!! Form::close() !!}
-              
-              {{-- end of assigned cell group --}}
-
-              {{-- comment --}}
-
-              {!! Form::open(['url' => '/event/pastoral/newcomer/post', 'method' => 'POST', 'autocomplete' => 'off']) !!}
-              <div class="ui form">
-                <div class="field">
-                  <label class="mt-1">Comment</label>
-                  <textarea class="mb-3"></textarea>
-                </div>
-              </div>
-
-              <div class="actions">
-                <button type="submit" class="ui positive right labeled icon button mb-3">
-                  {{ trans('welcome.welcome.submit') }}
-                  <i class="checkmark icon"></i>
+              <div style="display: flex; justify-content: center;">
+                <button type="submit" class="ui teal button mt-2 mb-1">
+                  OK
                 </button>
               </div>
-              {!! Form::close() !!}
               
-              {{-- end of comment --}}
-
-              {{-- comment history --}}
-
-              <table class="ui table">
-                <thead>
-                  <tr class="content" style="display: flex !important; justify-content: space-between !important;">
-                    <th class="header w-100">
-                      Comment History (1)
-                    </th>
-                    <th class="meta">
-                      10 hours ago
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="mt-2">
-                      <p class="width-md-comment-history width-lg-comment-history" style="word-break: break-word; white-space: pre-line;">Awesome, thats all. Recommend him 5 star. 32 likes, 64 likes, 92 likes. ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>              
-              
-              {{-- end of comment history --}}
-
             </div>
           </div>
           
-          {{-- end of form layout structure --}}
-
         </div>
+              
+        {{-- end of profile picture --}}
+
+        {{-- assigned cell group --}}
+
+        {!! Form::open(['url' => '/event/pastoral/newcomer/post', 'method' => 'POST', 'autocomplete' => 'off']) !!}
+          <div class="ui modal p-4" id="modal-of-assigned-cell-group-nc{{$newcomerdetail['id']}}">
+            <div class="ui form">
+              <div class="field">
+                <label class="mt-2">Assigned Cell Group</label>
+                <select class="ui dropdown">
+                  <option>E1</option>
+                  <option>E2</option>
+                  <option>E3</option>
+                  <option>S1</option>
+                  <option>W1</option>
+                </select>
+              </div>
+            </div>
+            <div class="actions">
+              <button type="submit" class="ui positive right labeled icon button mb-3">
+                {{ trans('welcome.welcome.submit') }}
+                <i class="checkmark icon"></i>
+              </button>
+            </div>
+          </div>
+        {!! Form::close() !!}
+              
+        {{-- end of assigned cell group --}}
+
+        {{-- comment --}}
+
+        <div class="ui modal p-4" id="modal-of-comment-nc{{$newcomerdetail['id']}}">
+          {!! Form::open(['url' => '/event/pastoral/newcomer/post', 'method' => 'POST', 'autocomplete' => 'off']) !!}
+          <div class="ui form">
+            <div class="field">
+              <label class="mt-1">Comment</label>
+              <textarea class="mb-3"></textarea>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="ui positive right labeled icon button mb-3">
+              {{ trans('welcome.welcome.submit') }}
+              <i class="checkmark icon"></i>
+            </button>
+          </div>
+          {!! Form::close() !!}
+              
+          {{-- end of comment --}}
+
+          {{-- comment history --}}
+
+          <table class="ui table">
+            <thead>
+              <tr class="content p-2" style="display: flex !important; justify-content: space-between !important;">
+                <th class="header w-100">
+                  Comment History (1)
+                </th>
+                <th class="meta">
+                  10 hours ago
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mt-2">
+                  <p class="width-md-comment-history width-lg-comment-history" style="word-break: break-word; white-space: pre-line;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, ad odio! Eos distinctio possimus nihil omnis amet quis labore, magnam minima eaque dicta, optio error pariatur eius, quisquam, eveniet deleniti?</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>        
+
+          {{-- end of comment history --}}
+
+        </div>             
+          
+        {{-- end of form layout structure --}}
+
       </td>
-      <td style="float: right;">
-        <div>1 comment history</div>
-        <div>2 assigned cell group</div>
-        <div>3 comment </div>  
+
+      <td class="p-2" style="float: right;">
+        <div id="nc{{$newcomerdetail['id']}}" class="button-click">1 profile picture</div>
+        <div id="assigned-cell-group-nc{{$newcomerdetail['id']}}" class="button-click">2 assigned cell group</div>
+        <div id="comment-nc{{$newcomerdetail['id']}}" class="button-click"> 3 comment </div>  
       </td>
+
     </tr>
   </tbody>
   @endif
