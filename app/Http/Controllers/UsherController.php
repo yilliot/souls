@@ -27,6 +27,8 @@ class UsherController extends Controller
 
     public function getQR(Request $request)
     {
-        return view('welcome.QR');
+        // $url = config('app.url') . '/usher/details?accompanion_id=13';
+        $url = config('app.url') . '/usher/details?accompanion_id=' . \Auth::user()->id;
+        return view('welcome.QR', compact('url'));
     }
 }

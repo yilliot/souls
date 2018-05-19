@@ -10,9 +10,10 @@
 
 <div>
 	<div class="mt-5 mb-5">
-		<div style="text-align: center;" ">Scan this QR code to continue</div>
-		<div class="">
-			<img class="image-center mt-2" src="http://qreateandtrack.com/files/2009/12/website.png" />
+		<div style="text-align: center;">Scan this QR code to continue</div>
+		<div style="text-align: center;">
+      {!! QrCode::size(200)->generate($url); !!}
+      
 		</div>
 	</div>
 </div>
