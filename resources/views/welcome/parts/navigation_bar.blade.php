@@ -1,4 +1,15 @@
-      <div id="btn-nav" class="align-self-center">lala</div>
+
+<section id='top-bar'>
+  <div class="mt-2 pb-2 mb-3" style="display: flex; justify-content: space-between;">
+    <div id="btn-nav" class="align-self-center"><i class="align justify icon"></i></div>
+
+    <div>
+      <a href="/session/lang/zh">中文</a> |
+      <a href="/session/lang/en">English</a>
+    </div>
+  </div>
+</section>
+
 <div class="overlay"></div>
 <nav id="nav" class="">
   
@@ -6,79 +17,62 @@
 
   <div id="nav-profile">
     <a href="/profile/">
-      <div class="ml-2">
+      <div class="">
         <strong class="d-block">Hi,</strong>
-        <div>click to edit profile</div>
+        <div>View profile</div>
       </div>
     </a>
   </div>
 
   <!-- nav profile -->
 
-    <li class="dropdown-divider"></li>
-    <li class="nav-item">
-      <div class='item-block'>
-        <a href="/auth/login" class="nav-title">
-          Login
+    <div class="nav-item ui list">
+      <div class='item p-3'>
+        <a href="*" class="nav-title">
+          Log In
         </a>
       </div>
-    </li>
-    <li class="nav-item">
-      <div class='item-block'>
-        <a href="/auth/signup" class="nav-title">
-          Sign Up
+      <div class='item p-3'>
+        <a href="/pastoral/newcomer" class="nav-title">
+          @if(!session('nric'))
+          <a href="/welcome/signup"> {{trans('event.bible_reading.signup')}} </a>
+          @endif
+          @if(session('nric'))
+          | <a href="/welcome/QR"> {{trans('event.bible_reading.logout')}} </a> 
+          @endif
         </a>
       </div>
-    </li>
-    <li class="nav-item">
-      <div class='item-block'>
-        <a href="/list/booked" class="nav-title">
-          List
+    <div class="dropdown-divider"></div>
+      <div class='item p-3'>
+        <a href="/welcome/QR" class="nav-title">
+          QR
         </a>
       </div>
-    </li>
-    <li class="nav-item">
-      <div class='item-block'>
-        <a href="/bookmark" class="nav-title">
-          Favourite
+      <div class='item p-3'>
+        <a href="/welcome/chatbook" class="nav-title">
+          Chatbook
         </a>
       </div>
-    </li>
-    <li class="nav-item">
-      <div class='item-block'>
-        <a href="/chat/inbox" class="nav-title">
-          Inbox
-        </a>
-        <div class="nav-badge"> </div>
-      </div>
-    </li>
-    <li class="nav-item">
-      <div class='item-block'>
-        <a href="/promotions" class="nav-title">
-          Promotions
-        </a>
-        <div class="nav-badge"> </div>
-      </div>
-    </li>
-    <li class="nav-item" id="support">
-      <div class='item-block'>
-        <a href="#" class="nav-title">
-          Support
+      <div class='item p-3'>
+        <a href="/welcome/detail" class="nav-title">
+          Detail
         </a>
       </div>
-    </li>
+      <div class='item p-3'>
+        <a href="/welcome/feedback" class="nav-title">
+          Feedback
+        </a>
+      </div>
+      <div class='item p-3'>
+        <a href="/followup" class="nav-title">
+          Followup
+        </a>
+      </div>
+      <div class='item p-3'>
+        <a href="/pastoral/newcomer" class="nav-title">
+          Newcomer
+        </a>
+      </div>
+    </div>
   </ul>
 </nav>
-
-
-
-
-
-<div style="justify-content: space-between; display: flex;">
-  <a href="/welcome/QR/">QR</a>
-  <a href="/welcome/chatbook/">Chatbook</a>
-  <a href="/welcome/detail/">Detail</a>
-  <a href="/welcome/feedback/">Feedback</a>
-  <a href="/followup/">Followup</a>
-  <a href="/pastoral/newcomer/">Newcomer</a>
-</div>

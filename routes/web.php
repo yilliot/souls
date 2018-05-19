@@ -37,6 +37,8 @@ Route::group(['prefix' => 'welcome'], function(){
     Route::post('/chatbook/edit', 'WelcomeController@postChatbook');
     Route::get('/detail', 'WelcomeController@detail');
     Route::get('/feedback/', 'WelcomeController@getFeedback');
+    Route::get('/feedback/record/history', 'WelcomeController@getFeedbackRecordHistory');
+    Route::get('/feedback/history', 'WelcomeController@getFeedbackHistory');
     Route::post('/feedback/{id}', 'WelcomeController@postFeedback');
     Route::get('/signup', 'WelcomeController@getsignup');
     Route::post('/signup/edit', 'WelcomeController@postsignup');
@@ -46,7 +48,8 @@ Route::group(['prefix' => 'pastoral'], function(){
 
     Route::get('/newcomer/', 'WelcomeController@getnewcomer');
     Route::post('/newcomer/post', 'WelcomeController@postnewcomer');
-    
+    Route::get('/newcomer/profile/{id}', 'WelcomeController@getnewcomerPublicProfile');    
+    Route::get('/newcomer/assign-people/{id}', 'WelcomeController@getnewcomerAssignedPeople'); 
     Route::group(['prefix' => 'Newcomer'], function(){
 
     });
@@ -55,8 +58,12 @@ Route::group(['prefix' => 'pastoral'], function(){
 Route::group(['prefix' => 'followup'], function(){
 
     Route::get('/', 'WelcomeController@getfollowup');
-    Route::post('/{id}', 'WelcomeController@postfollowupid');
-    Route::post('/{id}/comment', 'WelcomeController@postfollowupcomment');
+    Route::get('/profile/{id}', 'WelcomeController@getfollowupProfileID');   
+    Route::get('/assign-cell-group/{id}', 'WelcomeController@getfollowupAssignedCellGroup');  
+    Route::get('/comment/{id}', 'WelcomeController@getfollowupComment');  
+    Route::get('/comment-history/{id}', 'WelcomeController@getfollowupCommentHistory');  
+    Route::post('/cell-group/edit', 'WelcomeController@postfollowupid');
+    Route::post('/comment/edit', 'WelcomeController@postfollowupcomment');
 });
 
 

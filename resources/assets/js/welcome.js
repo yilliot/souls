@@ -17,12 +17,12 @@ function init_newcomerlist() {
 }
 
 function init_menu() {
-    $('#btn-nav').click(function(){
+    $('#btn-nav').click(function () {
         $('#nav').addClass('open');
         $('.overlay').show();
     });
-    $('.overlay').click(function(){
+    $('.overlay').click(function () {
         $('#nav').removeClass('open');
         $('.overlay').hide();
-    })
+    });
 }

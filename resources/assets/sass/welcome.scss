@@ -64,8 +64,9 @@ a { color: #000; }
 }
 
 /**
- * LAYOUT
+ * LAYOUT & responsive
  */
+
 #bible-reading-container{
   margin: 15px auto 5px auto;
 }
@@ -81,7 +82,7 @@ a { color: #000; }
   }
 }
 
-@media only screen and (max-width: 740) {
+@media only screen and (max-width: 740px) {
   #bible-reading-container {
     margin: auto;
   }
@@ -108,18 +109,26 @@ a { color: #000; }
   .width-md-comment-history {
     width: 44em;
   }
+  .text-center {
+    display: block;
+    width: 270px;
+    height: 270px;
+    margin: 42px auto 12px;
+  }
 }
 
-@media (min-width: 576px) {
+@media (min-width: 577px) {
   .mobile-only {
     display: none;
   }
 }
 
 
+
 /**
  * FORMS
  */
+
 #bible-reading-checkin,
 #bible-reading-signup{
   .field .ui.dropdown .item {
@@ -206,6 +215,19 @@ a { color: #000; }
   margin-bottom:1rem;
 }
 
+
+// TOP NAV
+#top-bar{
+  box-shadow: 0 1px 1px rgba(0,0,0,.15);
+}
+
+.dropdown-divider {
+  height: 0;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border-top: 1px solid #e9ecef;
+}
+
 /**
  * Other
  */
@@ -215,6 +237,85 @@ a { color: #000; }
   word-break: break-word;
 }
 
+#nav {
+  background-color: #FFF;
+  position: fixed; top: 0; bottom: 0; left: 0; right: 18%;
+  z-index: 30;
+  transition: transform .6s cubic-bezier(.785,.135,.15,.86);
+  transform: translateX(-100%);
+  overflow: hidden;
+  &.open {
+    transform: translateX(0%) !important;
+  }
+  #nav-profile{
+    overflow: hidden;
+    background-color: #f2f3f5;
+    padding: 20px 30px;
+    margin-bottom: 10px;
+    a{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  #nav-list {
+    transition: transform .6s cubic-bezier(.785,.135,.15,.86);
+    .nav-item {
+      position: relative;
+      .item-block {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px 20px;
+        color: #686f7a;
+        .nav-title {
+          display: block;
+          flex: 1;
+          min-width: 140px;
+          padding: 0;
+          color: #686f7a;
+          text-align: left;
+        }
+        .fa {
+          width: 10%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+.overlay {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(41,48,59,.55);
+  z-index: 25;
+}
+
+.image-center {
+  width: 50%;    
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-control {
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  tap-highlight-color: rgba(255,255,255,0);
+  line-height: 1.21428571em;
+  padding: .67857143em 1em;
+  font-size: 1em;
+  background: #fff;
+  border: 1px solid rgba(34,36,38,.15);
+  color: rgba(0,0,0,.87);
+  border-radius: .28571429rem;
+  -webkit-box-shadow: 0 0 0 0 transparent inset;
+  box-shadow: 0 0 0 0 transparent inset;
+  -webkit-transition: color .1s ease,border-color .1s ease;
+  transition: color .1s ease,border-color .1s ease
+}
 /** bootstrap margin **/
 
 @import "resources/assets/sass/bootstrap-margin";

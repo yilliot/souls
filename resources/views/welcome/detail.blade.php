@@ -8,7 +8,7 @@
 
 @section('content')
 
-  <h4 class="ui dividing header">Newcomer form list</h4>
+  <h4 class="ui dividing header mt-4 mb-2">Newcomer form list</h4>
 
   {{ Form::open(['url' => '/', 'method' => 'post', 'class' => 'ui form', 'id' => 'bible-reading-signup']) }}
 

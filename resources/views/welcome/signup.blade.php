@@ -4,6 +4,8 @@
 Welcome Sign up
 @endsection
 
+@include('welcome.parts.navigation_bar')
+
 @section('content')
   
   <h2 class="header">

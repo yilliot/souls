@@ -45,13 +45,78 @@ class WelcomeController extends Controller
         return view('welcome.newcomer', compact('newcomerdetails', 'followuplists'));
     }
 
+    public function getnewcomerPublicProfile(Request $request)
+    {
+
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+
+        return view('welcome.newcomer.public_profile', compact('newcomerdetails', 'followuplists'));
+    }
+
+    public function getnewcomerAssignedPeople(Request $request)
+    {
+
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+
+        return view('welcome.newcomer.assigned_people', compact('newcomerdetails', 'followuplists'));
+    }
+
+    public function getfollowupProfileID(Request $request)
+    {
+
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+
+        return view('welcome.followup.profile_id', compact('newcomerdetails', 'followuplists'));
+    }
+
+    public function getfollowupAssignedCellGroup(Request $request)
+    {
+
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+
+        return view('welcome.followup.assigned_cell_group', compact('newcomerdetails', 'followuplists'));
+    }
+
+    public function getfollowupComment(Request $request)
+    {
+
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+
+        return view('welcome.followup.comment', compact('newcomerdetails', 'followuplists'));
+    }
+
+    public function getfollowupCommentHistory(Request $request)
+    {
+
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+
+        return view('welcome.followup.comment_history', compact('newcomerdetails', 'followuplists'));
+    }
+    
     public function postnewcomer(Request $request)
     {
-        return redirect()->back()->with('success', 'Success')->with('message', 'Assigned successfully');
+        return redirect('/pastoral/newcomer/')->with('success', 'Success')->with('message', 'Assigned People Successfully');
+    }
+
+    public function postfollowupcomment(Request $request)
+    {
+        return redirect('/followup/')->with('success', 'Success')->with('message', 'Comment Successfully');
+    }
+
+    public function postfollowupID(Request $request)
+    {
+        return redirect('/followup/')->with('success', 'Success')->with('message', 'Assigned Cell Group Successfully');
     }
 
     public function QRcode(Request $request)
     {
+
         return view('welcome.QR');
     }
 
@@ -64,11 +129,34 @@ class WelcomeController extends Controller
         return view('welcome.followup', compact('newcomerdetails', 'followuplists'));
     }
 
-    public function getfeedback(Request $request)
+    public function getFeedback(Request $request)
     {
 
-        return view('welcome.feedback');
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+
+        return view('welcome.feedback', compact('newcomerdetails', 'followuplists'));
     }
+
+    public function getfeedbackHistory(Request $request)
+    {
+
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+        
+        return view('welcome.feedback.feedback_history', compact('newcomerdetails', 'followuplists'));
+    }
+
+
+    public function getfeedbackRecordHistory(Request $request)
+    {
+
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+        
+        return view('welcome.feedback.feedback_history_record', compact('newcomerdetails', 'followuplists'));
+    }
+
 
     public function detail(Request $request)
     {
@@ -79,7 +167,16 @@ class WelcomeController extends Controller
     public function getChatbook(Request $request)
     {
 
-        return view('welcome.chatbook');
+        $newcomerdetails = $this->newcomerlist();
+        $followuplists = $this->followuplist();
+
+        return view('welcome.chatbook', compact('newcomerdetails', 'followuplists'));
+    }
+
+    public function postChatbook(Request $request)
+    {
+
+        return redirect()->back()->with('success', 'Success')->with('message', 'Question successfully');
     }
 
     public function getsignup(Request $request)
