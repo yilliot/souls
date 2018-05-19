@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Welcome\ChatRecord;
+use App\Models\Welcome\Followupper;
+use App\Models\Welcome\FollowupComment;
 
 class Soul extends Model
 {
@@ -29,5 +32,13 @@ class Soul extends Model
      public function accompanionRecord()
     {
         return $this->hasMany(ChatReord::class, 'accompanion_id');
+    }
+     public function followupComment()
+    {
+        return $this->hasMany(FollowupComment::class, 'followupper_id');
+    }
+    public function followupper()
+    {
+        return $this->hasMany(Followupper::class, 'followupper_id');
     }
 }
