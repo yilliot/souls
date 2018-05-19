@@ -67,7 +67,7 @@ class WelcomeManager
     	 * @return Collection
     	 */
 
-    	$newComers = Soul::where('is_new_comer', true)
+    	$newComers = Soul::whereNull('cellgroup_id')
     					 ->orderBy('created_at', 'desc')
     					 ->get();
 

@@ -9,7 +9,7 @@
 @section('content')
 
 
-<h4> {{ trans('welcome.welcome.newcomer_list') }} (5)</h4>
+<h4> {{ trans('welcome.welcome.newcomer_list') }} ({{$newcomers->count()}})</h4>
 
 <table class="ui unstackable table mt-4">
   <thead>
@@ -21,7 +21,7 @@
   </thead>
 
 
-  @forelse ($newcomerdetails as $newcomerdetail)
+  @forelse ($newcomers as $newcomerdetail)
   <tbody>
     <tr>
       <td>

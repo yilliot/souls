@@ -13,6 +13,12 @@ class PastoralController extends Controller
     	$this->welcomeManager = $welcomeManager;
     }
 
+    public function index()
+    {
+        $newcomers = $this->welcomeManager->getNewComer();
+        return view('welcome.newcomer', compact('newcomers'));
+    }
+
     public function postAssignFollowupper()
     {
     	$this->welcomeManager->assignFollowUpper();
