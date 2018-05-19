@@ -3,15 +3,15 @@
 namespace App\Services\Welcome;
 
 use App\Models\Soul;
-use App\Models\Welcome\WelcomeFollowupper;
-use App\Models\Welcome\WelcomeFollowupperComment;
+use App\Models\Welcome\Followupper;
+use App\Models\Welcome\FollowupComment;
 
 use Carbon\Carbon;
-use App\Services\Welcome\WelcomeChatRecordManager;
+use App\Services\Welcome\ChatRecordManager;
 
 class WelcomeManager
 {
-	public function __construct(WelcomeChatRecordManager $chatRecordManager)
+	public function __construct(ChatRecordManager $chatRecordManager)
 	{
 		$this->chatRecordManager = $chatRecordManager;
 	}
@@ -55,7 +55,7 @@ class WelcomeManager
 
     	$newComer->save();
 
-    	$this->chatRecordManager->createWelcomeChatRecord($newComer, $data['accompanion_id']);
+    	$this->chatRecordManager->createChatRecord($newComer, $data['accompanion_id']);
 
     }
 
@@ -85,7 +85,7 @@ class WelcomeManager
     	 * @return void
     	 */
 
-    	$assignment = new WelcomeFollowupper;
+    	$assignment = new Followupper;
     	$assignment->new_comer_id = $new_comer_id;
     	$assignment->followupper_id = $followupper_id;
     	$assignment->assigner_id = $assigner_id;
@@ -102,7 +102,7 @@ class WelcomeManager
     	 */
 
     	// Maybe will not use last comment, but get the comment list in the query.
-    	$assignments = WelcomeFollowupper::where('followupper_id', $followupper_id)
+    	$assignments = Followupper::where('followupper_id', $followupper_id)
     									 ->orderBy('last_comment', 'desc');
     									 ->get();
 
@@ -119,14 +119,14 @@ class WelcomeManager
     	 * @return void
     	 */
 
-    	$comment = new WelcomeFollowupComment;
+    	$comment = new FollowupComment;
     	$comment->new_comer_id = $new_comer_id;
     	$comment->followupper_id = $followupper_id;
     	$comment->comment = $comment;
     	$comment->save();
 
     	// If the last comment is not needed this part can be omitted.
-    	$assignment = WelcomeFollowupper::where('new_comer_id', $new_comer_id)
+    	$assignment = Followupper::where('new_comer_id', $new_comer_id)
     									->where('followupper_id', $followupper_id)
     									->first();
     	$assignment->last_comment = Carbon::now();

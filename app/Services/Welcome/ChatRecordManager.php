@@ -3,12 +3,12 @@
 namespace App\Services\Welcome;
 
 use App\Models\Soul;
-use App\Models\Welcome\WelcomeChatRecord;
+use App\Models\Welcome\ChatRecord;
 
-class WelcomeChatRecordManager
+class ChatRecordManager
 {
 
-    public function createWelcomeChatRecord(Soul $newComer, $accompanion_id)
+    public function createChatRecord(Soul $newComer, $accompanion_id)
     {
     	/**
     	 * Create welcome chat record to be update from the followupper.
@@ -18,7 +18,7 @@ class WelcomeChatRecordManager
     	 * @return void
     	 */
 
-    	$chatRecord = new WelcomeChatRecord;
+    	$chatRecord = new ChatRecord;
 
     	$chatRecord->new_comer_id = $newComer->id;
     	$chatRecord->accompanion_id = $data['accompanion_id'];
@@ -27,7 +27,7 @@ class WelcomeChatRecordManager
 
     }
 
-    public function welcomeChatRecordIndex(Soul $accompanion)
+    public function chatRecordIndex(Soul $accompanion)
     {
         /**
          * Get a collection of record based on the logged in soul.
@@ -37,14 +37,14 @@ class WelcomeChatRecordManager
          * @return Collection
          */
 
-        $chatRecords = WelcomeChatRecord::where('accompanion_id', $accompanion->id)
+        $chatRecords = ChatRecord::where('accompanion_id', $accompanion->id)
                                         ->where('record', null)
                                         ->get();
 
         return $chatRecords;
     }
 
-    public function getWelcomeChatRecord($accompanion_id, $new_comer_id)
+    public function getChatRecord($accompanion_id, $new_comer_id)
     {
         /**
          * Get the selected chat record.
@@ -54,14 +54,14 @@ class WelcomeChatRecordManager
          * @return Single Object
          */
 
-        $chatRecord = WelcomeChatRecord::where('accompanion_id', $accompanion_id)
+        $chatRecord = ChatRecord::where('accompanion_id', $accompanion_id)
                                        ->where('new_comer_id', $new_comer_id)
                                        ->first();
 
         return $chatRecord;
     }
 
-    public function updateWelcomeChatRecord($accompanion_id, $new_comer_id, $record)
+    public function updateChatRecord($accompanion_id, $new_comer_id, $record)
     {
         /**
          * Update the record with string of the questions and answer.
@@ -71,7 +71,7 @@ class WelcomeChatRecordManager
          * @return void
          */
 
-        $chatRecord = $this->getWelcomeChatRecord($accompanion_id, $new_comer_id);
+        $chatRecord = $this->getChatRecord($accompanion_id, $new_comer_id);
         $chatRecord->record = $record;
         $chatRecord->save();
     }
