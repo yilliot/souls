@@ -3,8 +3,8 @@
 namespace App\Services\Welcome;
 
 use App\Models\Soul;
-use App\Models\Welcome\Followupper;
-use App\Models\Welcome\FollowupComment;
+// use App\Models\Welcome\Followupper;
+// use App\Models\Welcome\FollowupComment;
 
 use Carbon\Carbon;
 use App\Services\Welcome\ChatRecordManager;
@@ -26,7 +26,7 @@ class WelcomeManager
 	     * @return image data url (use as <img src="{{ $qrCode }}" />)
 	     */
 
-        return QrCode::format($type)->size($size)->generate($url);
+        return \QrCode::format($type)->size($size)->generate($url);
     }
 
     public function createNewComer($data)
@@ -103,7 +103,7 @@ class WelcomeManager
 
     	// Maybe will not use last comment, but get the comment list in the query.
     	$assignments = Followupper::where('followupper_id', $followupper_id)
-    									 ->orderBy('last_comment', 'desc');
+    									 ->orderBy('last_comment', 'desc')
     									 ->get();
 
     	return $assignments;

@@ -125,3 +125,35 @@ Route::group(['prefix' => 'cgl', 'namespace' => 'Cgl',
         Route::resource('soul', 'SoulController');
 });
 
+## Usher
+Route::group(['prefix' => 'usher'], function () {
+    Route::get('chatbook', 'UsherController@getChatbook');
+    Route::get('chatbook/edit', 'UsherController@getEditChatbookForm');
+    Route::get('QR', 'UsherController@getQR');
+    Route::get('details', 'UsherController@getWelcomeCard');
+    Route::get('feedback', 'UsherController@index');
+    Route::get('feedback/{id}', 'UsherController@getNewComerId');
+
+    Route::post('chatbook/edit', 'UsherController@postChatbook');
+    Route::post('details', 'UsherController@postWelcomeCard');
+    Route::post('feedback', 'UsherController@postNewComerFeedback');
+
+});
+
+## Pastoral
+Route::group(['prefix' => 'pastoral'], function () {
+    Route::get('newcomer', 'PastoralController@index');
+    Route::get('newcomer/{id}', 'PastoralController@getNewComerId');
+
+    Route::post('newcomer/assign', 'PastoralController@postAssignFollowupper');
+});
+
+## Follow Up
+Route::group(['prefix' => 'followup'], function () {
+    Route::get('followup', 'FollowUpController@index');
+    Route::get('followup/{id}', 'FollowUpController@getFollowupperId');
+    Route::get('followup/{id}/comments', 'FollowUpController@getFollowupperComments');
+
+    Route::post('followup/assignCg', 'FollowUpController@postAssignCg');
+    Route::post('followup/comment', 'FollowUpController@postFollowuppperComments');
+});
