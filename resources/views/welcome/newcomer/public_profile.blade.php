@@ -10,8 +10,6 @@
 
 {{-- profile picture detail --}}
 
-@foreach ($newcomerdetails as $newcomerdetail)
-@if ($newcomerdetail['id'] == 1)
   <h3> Public Profile </h3>
   <table class="ui table">
     <thead>
@@ -70,8 +68,6 @@
       OK
     </a>
   </div>
-@endif
-@endforeach
 
 {{-- end of profile picture detail --}}
 

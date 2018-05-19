@@ -19,6 +19,14 @@ class PastoralController extends Controller
         return view('welcome.newcomer', compact('newcomers'));
     }
 
+    public function getNewComer(Request $request, $id)
+    {
+        $newcomerdetail = \App\Models\Soul::where('id', $id)
+            ->whereNull('cellgroup_id')
+            ->first();
+        return view('welcome.newcomer.public_profile', compact('newcomerdetail', 'followuplists'));
+    }
+
     public function postAssignFollowupper()
     {
     	$this->welcomeManager->assignFollowUpper();

@@ -187,7 +187,7 @@ Route::group(['prefix' => 'usher'], function () {
 ## Pastoral
 Route::group(['prefix' => 'pastoral'], function () {
     Route::get('newcomer', 'PastoralController@index');
-    Route::get('newcomer/{id}', 'PastoralController@getNewComerId');
+    Route::get('newcomer/{id}', 'PastoralController@getNewComer');
 
     Route::post('newcomer/assign', 'PastoralController@postAssignFollowupper');
 });

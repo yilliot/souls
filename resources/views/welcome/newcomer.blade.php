@@ -31,7 +31,7 @@
         <div>{{$newcomerdetail['nickname']}}</div>
       </td>
       <td class="right aligned">
-          <a class="ui small black icon button" href="/pastoral/newcomer/profile/{{$newcomerdetail['id']}}">
+          <a class="ui small black icon button" href="/pastoral/newcomer/{{$newcomerdetail['id']}}">
             <i class="eye icon"></i>
           </a>
           <a class="ui small icon button" href="/pastoral/newcomer/assign-people/{{$newcomerdetail['id']}}">
