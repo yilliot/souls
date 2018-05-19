@@ -33,7 +33,7 @@ class CreateWelcomeTable extends Migration
 
         Schema::create('welcome_chat_questions', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('question')->unsigned()->index();
+            $table->string('question');
             $table->integer('order')->unsigned()->index();
             $table->boolean('is_active')->index();
             $table->string('options')->nullable();

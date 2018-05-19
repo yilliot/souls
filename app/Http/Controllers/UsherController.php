@@ -13,6 +13,13 @@ class UsherController extends Controller
         $this->welcomeManager = $welcomeManager;
     }
 
+    public function getChatbook()
+    {
+        $chatQuestions = \App\Models\Welcome\ChatQuestion::where('is_active', 1)
+            ->get();
+        return view('welcome.chatbook', compact('chatQuestions'));
+    }
+
     public function postWelcomeCard()
     {
         $details = $this->welcomeManager->createNewComer();

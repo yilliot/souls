@@ -13,138 +13,26 @@
 <h4 class="ui dividing header">Chatbook</h4>
   <table class="ui unstackable table">
     <tbody>
+      @foreach ($chatQuestions as $chatQuestion)
       <tr>
         <td>
           <div class="ui form">
             <div class="grouped fields">
-              <label>How often do you use checkboxes?</label>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example2" checked="checked">
-                  <label>Once a week</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example2">
-                  <label>2-3 times a week</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example2">
-                  <label>Once a day</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example2">
-                  <label>Twice a day</label>
-                </div>
-              </div>
-            </div>
-          </div>				
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="ui form">
-            <div class="grouped fields">
-              <label>How often do you use checkboxes?</label>
+              <label>{{$chatQuestion->question}}</label>
+              {{-- {{dd(json_encode(['有', '没有']))}} --}}
+              @foreach ($chatQuestion->options as $option)
               <div class="field">
                 <div class="ui radio checkbox">
                   <input type="radio" name="example3" checked="checked">
-                  <label>Once a week</label>
+                  <label>{{$option}}</label>
                 </div>
               </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example3">
-                  <label>2-3 times a week</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example3">
-                  <label>Once a day</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example3">
-                  <label>Twice a day</label>
-                </div>
-              </div>
+              @endforeach
             </div>
-          </div>   
+          </div>
         </td>
       </tr>
-      <tr>
-        <td>
-          <div class="ui form">
-            <div class="grouped fields">
-              <label>How often do you use checkboxes?</label>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example4" checked="checked">
-                  <label>Once a week</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example4">
-                  <label>2-3 times a week</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example4">
-                  <label>Once a day</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example4">
-                  <label>Twice a day</label>
-                </div>
-              </div>
-            </div>
-          </div>     
-        </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="ui form">
-            <div class="grouped fields">
-              <label>How often do you use checkboxes?</label>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example5" checked="checked">
-                  <label>Once a week</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example5">
-                  <label>2-3 times a week</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example5">
-                  <label>Once a day</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="example5">
-                  <label>Twice a day</label>
-                </div>
-              </div>
-            </div>
-          </div> 
-        </td>
-      </tr>
+      @endforeach
     </tbody>
     <tbody style="display: none;">
       <tr>
