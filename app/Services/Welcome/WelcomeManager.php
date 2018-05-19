@@ -102,7 +102,7 @@ class WelcomeManager
     	 */
 
     	// Maybe will not use last comment, but get the comment list in the query.
-    	$assignments = Followupper::where('followupper_id', $followupper_id)
+    	$assignments = WelcomeFollowupper::where('followupper_id', $followupper_id)
     									 ->orderBy('last_comment', 'desc')
     									 ->get();
 

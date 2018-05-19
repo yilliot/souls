@@ -1,4 +1,4 @@
-webpackJsonp([3],{
+webpackJsonp([4],{
 
 /***/ 1:
 /***/ (function(module, exports) {
@@ -732,24 +732,25 @@ onRefresh:function onRefresh(){},metadata:{src:'src'},className:{fixed:'fixed',p
 
 /***/ }),
 
-/***/ 135:
+/***/ 136:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(136);
+module.exports = __webpack_require__(137);
 
 
 /***/ }),
 
-/***/ 136:
+/***/ 137:
 /***/ (function(module, exports, __webpack_require__) {
 
-window.$ = window.jQuery = __webpack_require__(2);
+window.$ = window.jQuery = __webpack_require__(3);
 __webpack_require__(1);
 __webpack_require__(0);
-__webpack_require__(3);
+__webpack_require__(2);
 
 $(function () {
 
+  init_newcomerlist();
   // click form to submit
   $('.clicksubmit').click(function () {
     $(this).submit();
@@ -943,11 +944,17 @@ $(function () {
       }
     }
   }
+  function init_newcomerlist() {
+    $(".jsbutton").click(function () {
+      var id = $(this).attr('id');
+      $('.modal#modal-of-' + id).modal('show');
+    });
+  }
 });
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /***/ (function(module, exports) {
 
 /**
@@ -961,4 +968,4 @@ $(function () {
 
 /***/ })
 
-},[135]);
+},[136]);

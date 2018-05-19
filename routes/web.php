@@ -29,6 +29,44 @@ Route::get('/i/todo', function(){
     return view('todo');
 });
 
+Route::group(['prefix' => 'welcome'], function(){
+
+    Route::get('/', 'WelcomeController@home');
+    Route::get('/QR/', 'WelcomeController@QRcode');
+    Route::get('/chatbook/', 'WelcomeController@getChatbook');
+    Route::post('/chatbook/edit', 'WelcomeController@postChatbook');
+    Route::get('/detail', 'WelcomeController@detail');
+    Route::get('/feedback/', 'WelcomeController@getFeedback');
+    Route::get('/feedback/record/history', 'WelcomeController@getFeedbackRecordHistory');
+    Route::get('/feedback/history', 'WelcomeController@getFeedbackHistory');
+    Route::post('/feedback/{id}', 'WelcomeController@postFeedback');
+    Route::get('/signup', 'WelcomeController@getsignup');
+    Route::post('/signup/edit', 'WelcomeController@postsignup');
+});
+
+Route::group(['prefix' => 'pastoral'], function(){
+
+    Route::get('/newcomer/', 'WelcomeController@getnewcomer');
+    Route::post('/newcomer/post', 'WelcomeController@postnewcomer');
+    Route::get('/newcomer/profile/{id}', 'WelcomeController@getnewcomerPublicProfile');    
+    Route::get('/newcomer/assign-people/{id}', 'WelcomeController@getnewcomerAssignedPeople'); 
+    Route::group(['prefix' => 'Newcomer'], function(){
+
+    });
+});
+
+Route::group(['prefix' => 'followup'], function(){
+
+    Route::get('/', 'WelcomeController@getfollowup');
+    Route::get('/profile/{id}', 'WelcomeController@getfollowupProfileID');   
+    Route::get('/assign-cell-group/{id}', 'WelcomeController@getfollowupAssignedCellGroup');  
+    Route::get('/comment/{id}', 'WelcomeController@getfollowupComment');  
+    Route::get('/comment-history/{id}', 'WelcomeController@getfollowupCommentHistory');  
+    Route::post('/cell-group/edit', 'WelcomeController@postfollowupid');
+    Route::post('/comment/edit', 'WelcomeController@postfollowupcomment');
+});
+
+
 Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
 
     Route::group(['prefix' => 'vote', 'namespace' => 'Vote'], function () {
@@ -51,6 +89,7 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
     Route::get('/3km/claim', 'JustBeginController@claim');
     Route::post('/3km/claim', 'JustBeginController@postClaim');
 
+
     Route::group(['prefix' => 'bible_reading', 'namespace' => 'BibleReading'], function () {
 
         Route::get('/', 'BibleReadingController@home');
@@ -70,6 +109,7 @@ Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
         Route::post('/nric', 'BibleReadingController@postNric');
 
         Route::get('/schedule', 'BibleReadingController@getSchedule');
+        
     });
 });
 
@@ -116,6 +156,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
 
         Route::resource('service', 'ServiceController');
         Route::resource('soul', 'SoulController');
+
+
+
+
 });
 
 ## CGL

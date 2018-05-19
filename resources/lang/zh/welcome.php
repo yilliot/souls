@@ -14,6 +14,6 @@ return [
         'christian' => '基督徒',
         'fbid' => '脸书帐号',
         'about_me' => '关于自己',
-        'submit' => '储存'
+        'submit' => '储存',
     ],
 ];
