@@ -23,7 +23,7 @@ Bible Reading Home
     #schedule td label{display: block;}
     #schedule td span{display:block; font-size: 0.8em;}
   </style>
-  <h3 class="ui header">四月读经表</h3>
+  <h3 class="ui header">六月读经表</h3>
   <table id="schedule" class="ui unstackable compact table">
     <thead>
       <tr>
@@ -35,60 +35,53 @@ Bible Reading Home
         <th>Sat</th>
         <th>Sun</th>
       </tr>
-      <tr>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td colspan="2" style="text-align: right;">
-          <label>撒下／王上</label> 
-          <span style="padding-right: 17px ">21-1</span>
-        </td>
-      </tr>
-      <tr>
-        <td><label>王上</label> <span>2-4</span></td>
-        <td><label>王上</label> <span>5-7</span></td>
-        <td><label>王上</label> <span>8-10</span></td>
-        <td><label>王上</label> <span>11-13</span></td>
-        <td><label>王上</label> <span>14-16</span></td>
-        <td><label>王上</label> <span>17-19</span></td>
-        <td><label>王上/下</label> <span>20-2</span></td>
-      </tr>
-      <tr>
-        <td><label>王下</label> <span>3-5</span></td>
-        <td><label>王下</label> <span>6-8</span></td>
-        <td><label>王下</label> <span>9-11</span></td>
-        <td><label>王下</label> <span>12-14</span></td>
-        <td><label>王下</label> <span>15-17</span></td>
-        <td><label>王下</label> <span>18-20</span></td>
-        <td><label>王下</label> <span>21-25</span></td>
-      </tr>
-      <tr>
-        <td><label>代上</label> <span>1-3</span></td>
-        <td><label>代上</label> <span>4-6</span></td>
-        <td><label>代上</label> <span>7-9</span></td>
-        <td><label>代上</label> <span>10-12</span></td>
-        <td><label>代上</label> <span>13-15</span></td>
-        <td><label>代上</label> <span>16-18</span></td>
-        <td><label>代上</label> <span>19-23</span></td>
-      </tr>
-      <tr>
-        <td><label>代上</label> <span>24-26</span></td>
-        <td><label>代上</label> <span>27-29</span></td>
-        <td><label>代下</label> <span>1-3</span></td>
-        <td><label>代下</label> <span>4-6</span></td>
-        <td><label>代下</label> <span>7-9</span></td>
-        <td><label>代下</label> <span>10-12</span></td>
-        <td><label>代下</label> <span>13-17</span></td>
-      </tr>
-      <tr>
-        <td><label>代下</label> <span>18-20</span></td>
-      </tr>
-       
-
-
     </thead>
+    <tbody>
+      <tr>
+        <td><label></label> <span></span></td>
+        <td><label></label> <span></span></td>
+        <td><label></label> <span></span></td>
+        <td><label></label> <span></span></td>
+        <td><label>诗</label> <span>11-13</span></td>
+        <td><label>诗</label> <span>14-16</span></td>
+        <td><label>诗</label> <span>17-21</span></td>
+      </tr>
+      <tr>
+        <td><label>诗</label> <span>22-24</span></td>
+        <td><label>诗</label> <span>25-27</span></td>
+        <td><label>诗</label> <span>28-30</span></td>
+        <td><label>诗</label> <span>31-33</span></td>
+        <td><label>诗</label> <span>34-36</span></td>
+        <td><label>诗</label> <span>37-39</span></td>
+        <td><label>诗</label> <span>40-44</span></td>
+      </tr>
+      <tr>
+        <td><label>诗</label> <span>45-47</span></td>
+        <td><label>诗</label> <span>48-50</span></td>
+        <td><label>诗</label> <span>51-53</span></td>
+        <td><label>诗</label> <span>54-56</span></td>
+        <td><label>诗</label> <span>57-59</span></td>
+        <td><label>诗</label> <span>60-62</span></td>
+        <td><label>诗</label> <span>63-67</span></td>
+      </tr>
+      <tr>
+        <td><label>诗</label> <span>68-70</span></td>
+        <td><label>诗</label> <span>71-73</span></td>
+        <td><label>诗</label> <span>74-76</span></td>
+        <td><label>诗</label> <span>77-79</span></td>
+        <td><label>诗</label> <span>80-82</span></td>
+        <td><label>诗</label> <span>83-85</span></td>
+        <td><label>诗</label> <span>86-90</span></td>
+      </tr>
+      <tr>
+        <td><label>诗</label> <span>91-93</span></td>
+        <td><label>诗</label> <span>94-96</span></td>
+        <td><label>诗</label> <span>97-99</span></td>
+        <td><label>诗</label> <span>100-102</span></td>
+        <td><label>诗</label> <span>103-105</span></td>
+        <td><label>诗</label> <span>106-108</span></td>
+      </tr>
+    </tbody>
     
   </table>
   <div class="ui hidden divider"></div>
