@@ -5,7 +5,6 @@
 @endsection
 
 @section('content-blank')
-<<<<<<< HEAD
 @include('partial.firebase')
 <script>
   window.onload = function() {
