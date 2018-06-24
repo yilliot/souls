@@ -17,6 +17,8 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="{{ asset('css/auth.css') }}" />
 @yield('content-blank')
+<a href="/session/lang/zh">中文</a> |
+<a href="/session/lang/en">English</a>
 
 </body>
 </html>
