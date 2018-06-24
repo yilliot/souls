@@ -3,6 +3,11 @@ Route::get('/calendar', 'HomeController@calendar');
 Route::get('/privacy', 'LegalController@privacy');
 Route::get('/terms', 'LegalController@terms');
 
+## FORECAST
+Route::group(['prefix' => 'forecast', 'namespace' => 'Forecast'], function () {
+});
+
+
 Route::get('/', 'HomeController@welcome');
 Route::get('/i/', function(){
     $data = [
