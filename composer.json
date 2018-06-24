@@ -7,6 +7,7 @@
     "require": {
         "php": ">=5.6.4",
         "barryvdh/laravel-debugbar": "^2.3",
+        "firebase/php-jwt": "^5.0",
         "irazasyed/telegram-bot-sdk": "^2.0",
         "kalnoy/nestedset": "^4.2",
         "kodeine/laravel-acl": "~1.0@dev",
