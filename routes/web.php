@@ -4,7 +4,11 @@ Route::get('/privacy', 'LegalController@privacy');
 Route::get('/terms', 'LegalController@terms');
 
 ## FORECAST
-Route::group(['prefix' => 'forecast', 'namespace' => 'Forecast'], function () {
+Route::group(['prefix' => 'attendance', 'namespace' => 'Attendance'], function () {
+    Route::get('/', 'ForecastController@index'); // redirect
+    Route::get('/forecast/services', 'ForecastController@getServices'); // list services
+    Route::get('/forecast/service/{id}', 'ForecastController@getService'); // action
+    Route::post('/forecast/service/{id}', 'ForecastController@postService'); // action
 });
 
 
