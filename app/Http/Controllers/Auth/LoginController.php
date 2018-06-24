@@ -65,8 +65,9 @@ class LoginController extends Controller
             $user->password = '_FB_LOGIN_NO_PASSWORD_';
             $user->first_name = $soul->nric_fullname;
             $user->soul_id = $soul->id;
-            $user->facebook_id = $request->session()->pull('facebook_id');
+            $user->facebook_id = session('facebook_id');
             $user->save();
+            $request->session()->forget('facebook_id');
             \Auth::login($user, true);
             return redirect()->intended('/');
         } else {
