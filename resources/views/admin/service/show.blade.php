@@ -30,30 +30,22 @@ Service details
           <th>
             Attendance
           </th>
-          <th>
-          </th>
         </tr>
       </thead>
       <tbody>
         @foreach ($cellgroups as $cellgroup)
           <tr>
             <td> {{$cellgroup}} </td>
-            <td> {{$report->has($cellgroup->id) ? $report->get($cellgroup->id)->forecast : 0 }} </td>
-            <td> {{$report->has($cellgroup->id) ? $report->get($cellgroup->id)->attended : 0 }} </td>
-            <td>
-              <a href="/admin/service/{{$service->id}}/attendance?cellgroup={{$cellgroup->id}}" class="ui tiny icon teal button">
-                <i class="edit icon"></i>
-              </a>
-            </td>
+            <td> 0 </td>
+            <td> 0 </td>
           </tr>
         @endforeach
       </tbody>
       <tfoot>
         <tr>
           <th> Total </th>
-          <th> {{ $service->forecast_size }} </th>
-          <th> {{ $service->attendance_size }} </th>
-          <th></th>
+          <th> 0 </th>
+          <th> 0 </th>
         </tr>
       </tfoot>
     </table>

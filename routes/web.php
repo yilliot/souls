@@ -104,8 +104,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
 ## Admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
-     // 'middleware' => 'admin'
-     'middleware' => 'apc'
+     'middleware' => 'admin'
     ], function () {
         Route::get('service/{service}/attendance', 'AttendanceController@index');
         Route::group(['prefix' => 'attendance'], function() {
