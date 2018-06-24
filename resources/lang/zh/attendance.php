@@ -11,6 +11,7 @@ return [
         'not-going' => '无法出席',
         'tbc' => '在确定中',
         'bring-someone' => '带朋友来？',
-
+        'im-bringing' => '我将会带...',
+        'add-one-more' => '再来一个',
     ],
 ];

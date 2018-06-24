@@ -11,5 +11,7 @@ return [
         'not-going' => 'not going',
         'tbc' => 'to be confirmed',
         'bring-someone' => 'bringing someone?',
+        'im-bringing' => 'I\'m bringing...',
+        'add-one-more' => 'Add one more',
     ],
 ];
