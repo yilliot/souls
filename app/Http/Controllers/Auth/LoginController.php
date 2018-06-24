@@ -51,7 +51,6 @@ class LoginController extends Controller
         $this->validate($request, [
             'nric' => [
                 'required',
-                'unique:souls,nric',
                 'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/'],
         ]);
 
