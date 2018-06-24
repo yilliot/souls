@@ -54,6 +54,11 @@ class RegisterController extends Controller
         ]);
     }
 
+    protected function postRegistrationForm()
+    {
+        return redirect()->intended('/');
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *

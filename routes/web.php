@@ -82,6 +82,8 @@ Route::group(['prefix' => 'session', 'namespace' => 'Session'], function () {
 ## AUTH
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
+    Route::get('/signup', 'RegisterController@showRegistrationForm');
+    Route::post('/signup', 'RegisterController@postRegistrationForm');
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
     Route::get('/merge/nric', 'LoginController@getMergeNric');
     Route::post('/merge/nric', 'LoginController@postMergeNric');
