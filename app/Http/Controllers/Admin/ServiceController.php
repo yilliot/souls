@@ -51,7 +51,11 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $service = new Service;
-        $service->at = $request->at . ' ' . $request->at_time;
+        $service->at = \Carbon\Carbon::parse($request->at . ' ' . $request->at_time);
+        $service->created_at = \Carbon\Carbon::now();
+        $service->updated_at = \Carbon\Carbon::now();
+        $service->created_by = \Auth::user()->id;
+
         $service->topic = $request->topic;
         $service->type_id = $request->type;
         $service->speaker_id = $request->speaker;
