@@ -92,6 +92,10 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
         ->name('password.request');
     Route::get('verify_email/{code}', 'VerifyEmailController@verifyEmail')
         ->name('auth.verify_email');
+
+    ### Facebook
+    Route::get('/facebook', 'FacebookLoginController@redirectToProvider');
+    Route::get('/facebook/callback', 'FacebookLoginController@handleProviderCallback');
 });
 
 

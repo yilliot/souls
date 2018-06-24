@@ -26,9 +26,20 @@ class FacebookLoginController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
 
-        echo $user->token;
-
-        // $user->token;
+        /*
+        // Existing Facebook User
+        $facebookUser = FacebookUser::where('token', $user->token);
+        if ($facebookUser) {
+            // Login
+            session()->put('nric', $facebookUser->soul->nric);
+            // Redirect to original action page
+        } else {
+    
+        New Facebook User
+            // Fill in detail (sign up)
+            // Redirect for filling in detail
+        }
+        */
     }
 
     public function getUser()
