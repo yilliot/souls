@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Socialite;
+use App\Models\User;
 
 class FacebookLoginController extends Controller
 {
@@ -24,22 +26,16 @@ class FacebookLoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('facebook')->user();
-
-        /*
-        // Existing Facebook User
-        $facebookUser = FacebookUser::where('token', $user->token);
-        if ($facebookUser) {
-            // Login
-            session()->put('nric', $facebookUser->soul->nric);
-            // Redirect to original action page
+        $facebookUser = Socialite::driver('facebook')->user();
+        $user = User::where('facebook_id', $facebookUser->id)->first();
+        if($user) {
+            // User exist, login
+            \Auth::login($user, true);
+            return redirect()->intended('/');
         } else {
-    
-        New Facebook User
-            // Fill in detail (sign up)
-            // Redirect for filling in detail
+            // User doesn't exist redirect to register
+            return redirect('auth/merge/nric');
         }
-        */
     }
 
     public function getUser()
