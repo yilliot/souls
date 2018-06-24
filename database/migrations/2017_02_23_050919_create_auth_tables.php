@@ -21,6 +21,7 @@ class CreateAuthTables extends Migration
             $table->string('last_name', 30)->nullable();
             $table->rememberToken();
             $table->integer('soul_id')->nullable();
+            $table->bigInteger('facebook_id')->nullable();
             $table->timestamps();
         });
         Schema::create('roles', function (Blueprint $table) {

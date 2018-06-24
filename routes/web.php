@@ -82,8 +82,11 @@ Route::group(['prefix' => 'session', 'namespace' => 'Session'], function () {
 ## AUTH
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
+    Route::get('/signup', 'RegisterController@showRegistrationForm');
+    Route::post('/signup', 'RegisterController@postRegistrationForm');
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
-    Route::post('/login', 'LoginController@login');
+    Route::get('/merge/nric', 'LoginController@getMergeNric');
+    Route::post('/merge/nric', 'LoginController@postMergeNric');
     Route::post('/logout', 'LoginController@logout')->name('logout');
 
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')
@@ -92,6 +95,10 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
         ->name('password.request');
     Route::get('verify_email/{code}', 'VerifyEmailController@verifyEmail')
         ->name('auth.verify_email');
+
+    ### Facebook
+    Route::get('/facebook', 'FacebookLoginController@redirectToProvider');
+    Route::get('/facebook/callback', 'FacebookLoginController@handleProviderCallback');
 });
 
 

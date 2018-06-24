@@ -12,9 +12,9 @@ const { mix } = require('laravel-mix');
  */
 
 // mix.js('resources/assets/js/app.js', 'public/js')
-//   .sass('resources/assets/sass/app.scss', 'public/css')
-//   .sass('resources/assets/sass/office.scss', 'public/css')
-//   .copy('resources/assets/semantic/dist', 'public/semantic', false);
+  // .sass('resources/assets/sass/app.scss', 'public/css')
+  // .sass('resources/assets/sass/office.scss', 'public/css')
+mix.copy('resources/assets/semantic/dist', 'public/semantic', false);
 
 mix
 .copyDirectory('resources/assets/jquery-ui', 'public/css/jquery-ui-1.12.1.custom')
