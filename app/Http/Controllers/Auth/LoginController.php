@@ -36,4 +36,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    public function getMergeNric()
+    {
+        return view('auth.merge_nric');
+    }
+
+    public function postMergeNric()
+    {
+
+    }
 }
