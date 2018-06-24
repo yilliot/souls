@@ -8,7 +8,7 @@ Route::group(['prefix' => 'attendance', 'namespace' => 'Attendance'], function (
     Route::get('/', 'ForecastController@index'); // redirect
     Route::get('/forecast/services', 'ForecastController@getServices'); // list services
     Route::get('/forecast/service/{id}', 'ForecastController@getService'); // action
-    Route::post('/forecast/service/{id}', 'ForecastController@postService'); // action
+    Route::get('/forecast/service/{id}/guests', 'ForecastController@getGuests'); // guests
 });
 
 

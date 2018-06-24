@@ -22,6 +22,8 @@
     <button class="ui button">To be confirmed</button>
   </div>
 </form>
+<div class="ui hidden divider"></div>
+<a class="ui primary fluid mini button" href="/attendance/forecast/service/{{$service->id}}/guests">Bringing someone?</a>
 
 <h2 class="ui header">What's up, {{$cg}}!
   <div class="sub header">3 Going</div>
@@ -31,10 +33,15 @@
   <tbody>
   @foreach ($members as $member)
     <tr>
-      <td>{{$member}}</td>
+      <td>{{$member}} </td>
       <td class="positive">
+        {{-- <i class="circle outline icon"></i> --}}
         <i class="circle icon"></i>
-        <i class="circle outline icon"></i>
+      </td>
+      <td>
+        <div>Guest 01</div>
+        <div>Guest 02</div>
+        <div>Guest 03</div>
       </td>
     </tr>
   @endforeach
