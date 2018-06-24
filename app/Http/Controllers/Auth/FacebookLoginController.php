@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Socialite;
 use App\Models\User;
 
@@ -26,7 +25,7 @@ class FacebookLoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $facebookUser = Socialite::driver('facebook')->user();
+        $facebookUser = Socialite::driver('facebook')->stateless()->user();
         $user = User::where('facebook_id', $facebookUser->id)->first();
         if($user) {
             // User exist, login
@@ -34,6 +33,7 @@ class FacebookLoginController extends Controller
             return redirect()->intended('/');
         } else {
             // User doesn't exist redirect to register
+            session(['facebook_id' => $facebookUser->id]);
             return redirect('auth/merge/nric');
         }
     }
