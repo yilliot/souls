@@ -22,6 +22,8 @@ return [
         'greet' => 'Ah, first time here huh?',
         'greet2' => 'We\'ll need some information from you to continue with the signup.',
         'btn_signup' => 'Complete Signup',
+        'text_check' => 'please check your',
+        'text_amend' => 'to amend',
         // soul field
         'nickname' => 'Prefered name to call',
         'nric' => 'IC / Passport number',

@@ -21,6 +21,8 @@ return [
         'greet' => '啊，你是第一次来吗？',
         'greet2' => '我需要您的一些资料来完成账户申请',
         'btn_signup' => '完成申请',
+        'text_check' => '请检查您的',
+        'text_amend' => '修正',
         // soul field
         'nickname' => '平时称呼的名字',
         'nric' => 'IC 身份证 / 护照编号',

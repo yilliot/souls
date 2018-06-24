@@ -11,8 +11,9 @@
   {{ csrf_field() }}
 
   <div class="field {{$errors->has('nric') ? 'error' : ''}}">
-    <label>{{ trans('auth.signup.nric') }}</label>
+    <label>{{trans('auth.signup.text_check')}} {{ trans('auth.signup.nric') }}</label>
     {{ session('nric') }}
+    <a href="/auth/merge/nric">{{trans('auth.signup.text_amend')}} {{ trans('auth.signup.nric') }}</a>
   </div>
   {{ Form::open(['url' => '/auth/signup', 'method' => 'post', 'class' => 'ui form']) }}
 
