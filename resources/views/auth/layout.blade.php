@@ -9,6 +9,7 @@
     @show
   </title>
   <link href="{{ asset('semantic/semantic.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/zz.css') }}" rel="stylesheet">
 
 </head>
 <body>

@@ -1,6 +1,8 @@
 {
     "/js/vendor.js": "/js/vendor.js",
     "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/zz.css": "/css/zz.css",
     "/css/admin.css": "/css/admin.css",
     "/css/event.just-begin.css": "/css/event.just-begin.css",
     "/css/event.supreme-vote.css": "/css/event.supreme-vote.css",

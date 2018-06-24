@@ -1,5 +1,9 @@
+.border-inset{
+  border: 7px white solid;
+  box-sizing: border-box;
+}
 .inline {
-    display: inline !important;
+  display: inline !important;
 }
 .hide {
   display: none;
