@@ -5,6 +5,89 @@
 @endsection
 
 @section('content-blank')
+@include('partial.firebase')
+<script>
+  window.onload = function() {
+    firebaseDo(function() {
+      Array.from(document.getElementsByClassName('submit-forecast'))
+        .forEach(function(button){
+          button.onclick = function(e) {
+            const status = {
+              go: 'going',
+              ng: 'not going',
+              tbc: 'to be confirmed'
+            }
+            e.preventDefault();
+            db.collection("services")
+            .doc("{{$service->id}}")
+            .collection("souls")
+            .doc("{{Auth::user()->soul_id}}")
+              .set({
+                forecast_status: status[this.id],
+                cg_id: {{Auth::user()->soul->cellgroup_id}},
+                soul_id: {{Auth::user()->soul_id}},
+                is_attended: false
+              }, { merge: true });
+            return false;
+          }
+      });
+
+
+      db.collection("services")
+      .doc("{{$service->id}}")
+      .collection("souls")
+      .onSnapshot(function(querySnapshot) {
+        let souls = {};
+        querySnapshot.forEach(function(soul) {
+          let {soul_id, cg_id, is_attended, forecast_status} = soul.data();
+          if(!souls[cg_id])souls[cg_id] = {};
+          souls[cg_id][soul_id] = {is_attended, forecast_status};
+        });
+        Array.from(document.getElementsByClassName('forecast-status'))
+          .forEach(function(element){
+            let status = souls['{{$cg->id}}'][element.id.slice(4)];
+            element.classList.remove('positive');
+            element.classList.remove('negative');
+            if(status) element.classList.add(status.forecast_status == 'to be confirmed' || status.forecast_status == 'not going' ? 'negative': 'positive');
+        });
+
+        Array.from(document.getElementsByClassName('circle'))
+          .forEach(function(element){
+            let status = souls['{{$cg->id}}'][element.id.slice(9)];
+            element.classList.remove('outline');
+            if(status && (status.forecast_status == 'to be confirmed' || status.forecast_status == 'not going')) element.classList.add('outline');
+        });
+
+      });
+
+      db.collection("services")
+      .doc("{{$service->id}}")
+      .collection("guests")
+      .onSnapshot(function(querySnapshot) {
+        let guests = {};
+        querySnapshot.forEach(function(guest) {
+          let {soul_id, cg_id, is_attended, name} = guest.data();
+          if(!guests[cg_id])guests[cg_id] = {};
+          if(!guests[cg_id][soul_id])guests[cg_id][soul_id] = [];
+          guests[cg_id][soul_id].push({is_attended, name});
+        });
+        console.log(guests);
+
+        Array.from(document.getElementsByClassName('guest'))
+          .forEach(function(element){
+            let content = '';
+            let guests_list = guests['{{$cg->id}}'][element.id.slice(5)]? guests['{{$cg->id}}'][element.id.slice(5)]: [];
+            for(let x in guests_list) {
+              content += '<div>' + guests_list[x].name + '</div>';
+            }
+            if(content)element.innerHTML = content;
+        });
+
+      });
+
+    });
+  }
+</script>
 <h2> {{ trans('attendance.forecast.greet') }} </h2>
 
 <div class="header">{{$service->topic}}</div>
@@ -14,14 +97,13 @@
 
 <h2>You're <span id="user_action">not responsed yet.</span></h2>
 
-<form action="/attendance/forecast/service/{{$service->id}}" class="ui form">
-  {{csrf_field()}}
+<div class="ui form">
   <div class="ui fluid buttons">
-    <button class="ui positive button">Going</button>
-    <button class="ui negative button">Not going</button>
-    <button class="ui button">To be confirmed</button>
+    <button id="go" class="ui positive button submit-forecast">Going</button>
+    <button id="ng" class="ui negative button submit-forecast">Not going</button>
+    <button id="tbc" class="ui button submit-forecast">To be confirmed</button>
   </div>
-</form>
+</div>
 <div class="ui hidden divider"></div>
 <a class="ui primary fluid mini button" href="/attendance/forecast/service/{{$service->id}}/guests">Bringing someone?</a>
 
@@ -34,11 +116,11 @@
   @foreach ($members as $member)
     <tr>
       <td>{{$member}} </td>
-      <td class="positive">
+      <td id={{'soul' . $member->id}} class="forecast-status positive">
         {{-- <i class="circle outline icon"></i> --}}
-        <i class="circle icon"></i>
+        <i id={{'indicator' . $member->id}} class="circle icon"></i>
       </td>
-      <td>
+      <td id={{'guest' . $member->id}} class="guest">
         <div>Guest 01</div>
         <div>Guest 02</div>
         <div>Guest 03</div>

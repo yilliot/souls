@@ -3,7 +3,7 @@
 Service details
 @endsection
 @section('content')
-@include('admin.service.partial.firebase')
+@include('partial.firebase')
 <script>
   auth.signInWithEmailAndPassword('admin@mail.io', 'secret').then(function() {
     db.collection("services").doc("{{$service->id}}").collection("souls")

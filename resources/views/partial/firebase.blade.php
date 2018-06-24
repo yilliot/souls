@@ -12,13 +12,12 @@ firebase.initializeApp(config);
 auth = firebase.auth();
 window.db = firebase.firestore();
 db.settings({timestampsInSnapshots: true});
-// window.loginDo = function (token, callback) {
-//   auth.signInWithCustomToken(token).then(function(decodedToken) {
-//     console.log(decodedToken);
-//     console.log('Logged in');
-//     callback();
-//   }).catch(function(e) {
-//     console.log(e);
-//   });
-// }
+window.firebaseDo = function (callback) {
+  auth.signInWithEmailAndPassword('admin@mail.io', 'secret').then(function() {
+    console.log('Logged in');
+    callback();
+  }).catch(function(e) {
+    console.log(e);
+  });
+}
 </script>
