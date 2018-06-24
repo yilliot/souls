@@ -94,6 +94,9 @@ Service details
           </div>
           <div class="description">
             <ol class="list">
+              @foreach ($cg->members as $soul)
+                <li>{{$soul}}</li>
+              @endforeach
               <li><span class="forecast_yes attended">Member 001</span></li>
               <li><span class="attended">Member 005</span></li>
               <li><span class="forecast_no">Member 002</span></li>

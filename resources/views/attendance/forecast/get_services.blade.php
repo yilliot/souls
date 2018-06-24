@@ -6,7 +6,6 @@
 
 @section('content-blank')
 <h1> {{ trans('attendance.forecast.greet') }} </h1>
-<div class="ui divider"></div>
 
 <div class="ui cards">
   @foreach ($services as $service)
@@ -18,7 +17,7 @@
         <div>{{$service->speaker}}</div>
       </div>
     </div>
-    <a href="/attendance/forecast/service/{{$service->id}}" class="ui bottom attached button">
+    <a href="/attendance/forecast/service/{{$service->id}}" class="ui bottom attached primary button">
       <i class="eye icon"></i>
       RSVP
     </a>

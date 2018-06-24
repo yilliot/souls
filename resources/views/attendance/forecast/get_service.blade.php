@@ -5,6 +5,7 @@
 @endsection
 
 @section('content-blank')
+<<<<<<< HEAD
 @include('partial.firebase')
 <script>
   window.onload = function() {
@@ -88,27 +89,27 @@
     });
   }
 </script>
-<h2> {{ trans('attendance.forecast.greet') }} </h2>
+<h2> {{ trans('attendance.forecast.greet2') }} </h2>
 
 <div class="header">{{$service->topic}}</div>
 <div>{{$service->at->format('(D) d M, h:iA')}} @ {{$service->venue}}</div>
 
 <div class="ui divider"></div>
 
-<h2>You're <span id="user_action">not responsed yet.</span></h2>
+<h2>{{trans("attendance.forecast.you-re")}}<span id="user_action">{{trans("attendance.forecast.not-responded-yet")}}</span></h2>
 
 <div class="ui form">
   <div class="ui fluid buttons">
-    <button id="go" class="ui positive button submit-forecast">Going</button>
-    <button id="ng" class="ui negative button submit-forecast">Not going</button>
-    <button id="tbc" class="ui button submit-forecast">To be confirmed</button>
+    <button id="go" class="ui positive button submit-forecast">{{trans("attendance.forecast.going")}}</button>
+    <button id="ng" class="ui negative button submit-forecast">{{trans("attendance.forecast.not-going")}}</button>
+    <button id="tbc" class="ui button submit-forecast">{{trans("attendance.forecast.tbc")}}</button>
   </div>
 </div>
 <div class="ui hidden divider"></div>
-<a class="ui primary fluid mini button" href="/attendance/forecast/service/{{$service->id}}/guests">Bringing someone?</a>
+<a class="ui primary fluid mini button" href="/attendance/forecast/service/{{$service->id}}/guests">{{trans("attendance.forecast.bring-someone")}}</a>
 
 <h2 class="ui header">What's up, {{$cg}}!
-  <div class="sub header">3 Going</div>
+  <div class="sub header">3 {{trans("attendance.forecast.going")}}</div>
 </h2>
 
 <table class="ui very basic very compact unstackable table">

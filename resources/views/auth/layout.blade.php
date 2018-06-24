@@ -19,8 +19,12 @@
 <script src="/js/vendor.js"></script>
 <script src="/js/app.js"></script>
 @yield('content-blank')
-<a href="/session/lang/zh">中文</a> |
-<a href="/session/lang/en">English</a>
+<div class="ui divider"></div>
+@if (session('locale') == 'zh')
+  <a href="/session/lang/en">English</a>
+@else
+  <a href="/session/lang/zh">中文</a>
+@endif
 
 </body>
 </html>
