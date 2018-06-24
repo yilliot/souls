@@ -83,7 +83,8 @@ Route::group(['prefix' => 'session', 'namespace' => 'Session'], function () {
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
-    Route::post('/login', 'LoginController@login');
+    Route::get('/merge/nric', 'LoginController@getMergeNric');
+    Route::post('/merge/nric', 'LoginController@postMergeNric');
     Route::post('/logout', 'LoginController@logout')->name('logout');
 
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')
