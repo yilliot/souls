@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Services\FirebaseAdmin;
 
 class ServiceController extends Controller
 {
+
+    public function __construct(FirebaseAdmin $firebaseAdmin)
+    {
+        $this->firebaseAdmin = $firebaseAdmin;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -78,7 +85,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
 
         $cellgroups = \App\Models\Cellgroup::all();
-
+        // $token = $this->firebaseAdmin->create_custom_token('ZhGt0Hwu71bjReYq5cDkhPQLwgH2', true);
         // REPORT
         // \DB::enableQueryLog();
         return view('admin.service.show', compact('service', 'cellgroups'));

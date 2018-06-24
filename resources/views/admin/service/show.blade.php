@@ -3,6 +3,31 @@
 Service details
 @endsection
 @section('content')
+@include('admin.service.partial.firebase')
+<script>
+  auth.signInWithEmailAndPassword('admin@mail.io', 'secret').then(function() {
+    db.collection("services").doc("{{$service->id}}").collection("souls")
+      .onSnapshot(function(querySnapshot) {
+        let souls = {};
+        querySnapshot.forEach(function(doc) {
+          let {cg_id, soul_id, is_attended, forecast_status} = doc.data()
+          if (!souls[cg_id]) souls[cg_id] = {};
+          souls[cg_id][soul_id] = {is_attended, forecast_status};
+        });
+        console.log(souls);
+      });
+    db.collection("services").doc("{{$service->id}}").collection("guests")
+      .onSnapshot(function(querySnapshot) {
+        let guests = {};
+        querySnapshot.forEach(function(doc) {
+          let {cg_id, soul_id, is_attended, name} = doc.data();
+          guests[doc.data().cg_id] = {is_attended, forecast_status, name};
+        });
+      });
+  }).catch(function(e) {
+    console.log(e);
+  });
+</script>
 <style>
   .attended {background-color: green; color: white;}
   .forecast_yes::after { content: "🌱";}
