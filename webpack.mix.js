@@ -18,6 +18,8 @@ mix.copy('resources/assets/semantic/dist', 'public/semantic', false);
 
 mix
 .copyDirectory('resources/assets/jquery-ui', 'public/css/jquery-ui-1.12.1.custom')
+.sass('resources/assets/sass/app.scss', 'public/css')
+.sass('resources/assets/sass/zz.scss', 'public/css')
 .sass('resources/assets/sass/admin.scss', 'public/css')
 .sass('resources/assets/sass/event.just-begin.scss', 'public/css')
 .sass('resources/assets/sass/event.supreme-vote.scss', 'public/css')
