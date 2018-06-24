@@ -84,8 +84,8 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
 
-        $cellgroups = \App\Models\Cellgroup::all();
-        // $token = $this->firebaseAdmin->create_custom_token('ZhGt0Hwu71bjReYq5cDkhPQLwgH2', true);
+        $cellgroups = \App\Models\Cellgroup::with('members')->get();
+
         // REPORT
         // \DB::enableQueryLog();
         return view('admin.service.show', compact('service', 'cellgroups'));
