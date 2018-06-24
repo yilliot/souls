@@ -72,6 +72,7 @@ class LoginController extends Controller
             return redirect()->intended('/');
         } else {
             // redirect to details
+            $request->session()->put('nric', $request->input('nric'));
             return redirect('auth/signup');
         }
     }
