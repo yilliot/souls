@@ -45,8 +45,8 @@ class User extends Authenticatable implements AuthenticatableContract, CanResetP
         return $this->hasOne(EmailVerification::class, 'user_id');
     }
 
-    public function seller()
+    public function soul()
     {
-        return $this->hasOne(UserSeller::class, 'id');
+        return $this->belongsTo(Soul::class, 'soul_id');
     }
 }

@@ -3,6 +3,15 @@ Route::get('/calendar', 'HomeController@calendar');
 Route::get('/privacy', 'LegalController@privacy');
 Route::get('/terms', 'LegalController@terms');
 
+## FORECAST
+Route::group(['prefix' => 'attendance', 'namespace' => 'Attendance', 'middleware' => 'auth'], function () {
+    Route::get('/', 'ForecastController@index'); // redirect
+    Route::get('/forecast/services', 'ForecastController@getServices'); // list services
+    Route::get('/forecast/service/{id}', 'ForecastController@getService'); // action
+    Route::get('/forecast/service/{id}/guests', 'ForecastController@getGuests'); // guests
+});
+
+
 Route::get('/', 'HomeController@welcome');
 Route::get('/i/', function(){
     $data = [
@@ -104,8 +113,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
 ## Admin
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
-     // 'middleware' => 'admin'
-     'middleware' => 'apc'
+     'middleware' => 'admin'
     ], function () {
         Route::get('service/{service}/attendance', 'AttendanceController@index');
         Route::group(['prefix' => 'attendance'], function() {

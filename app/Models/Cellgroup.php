@@ -31,4 +31,9 @@ class Cellgroup extends Model
         return $this->belongsTo(Soul::class, 'leader');
     }
 
+    public function members()
+    {
+        return $this->hasMany(Soul::class, 'cellgroup_id');
+    }
+
 }

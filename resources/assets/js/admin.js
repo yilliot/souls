@@ -5,6 +5,10 @@ require('featherlight');
 
 $(function(){
 
+  $('.clone-previous').click(function(){
+    $(this).prev().clone().insertBefore(this);
+  });
+
   // click form to submit
   $('.clicksubmit').click(function(){
     $(this).submit();

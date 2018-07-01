@@ -9,6 +9,12 @@
   margin-top: 55px;
 }
 
+.border-inset {
+  border: 7px white solid;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .inline {
   display: inline !important;
 }

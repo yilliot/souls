@@ -5,9 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Services\FirebaseAdmin;
 
 class ServiceController extends Controller
 {
+
+    public function __construct(FirebaseAdmin $firebaseAdmin)
+    {
+        $this->firebaseAdmin = $firebaseAdmin;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +58,11 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $service = new Service;
-        $service->at = $request->at . ' ' . $request->at_time;
+        $service->at = \Carbon\Carbon::parse($request->at . ' ' . $request->at_time);
+        $service->created_at = \Carbon\Carbon::now();
+        $service->updated_at = \Carbon\Carbon::now();
+        $service->created_by = \Auth::user()->id;
+
         $service->topic = $request->topic;
         $service->type_id = $request->type;
         $service->speaker_id = $request->speaker;
@@ -73,21 +84,11 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
 
-        $cellgroups = \App\Models\Cellgroup::all();
+        $cellgroups = \App\Models\Cellgroup::with('members')->get();
 
         // REPORT
         // \DB::enableQueryLog();
-        $report = \DB::table('service_attendances')
-            ->select(
-                \DB::raw('IFNULL(SUM(is_attended), 0) as attended, COUNT(id) as forecast, cellgroup_id')
-            )
-            ->where('service_id', $id)
-            ->groupBy('cellgroup_id')
-            ->get()
-            ->keyBy('cellgroup_id');
-        // dd(\DB::getQueryLog());
-
-        return view('admin.service.show', compact('service', 'cellgroups', 'report'));
+        return view('admin.service.show', compact('service', 'cellgroups'));
     }
 
     /**
