@@ -29,15 +29,15 @@
       add_button.onclick = function() {
         let names = [];
         Array.from(guests_list.getElementsByTagName('input'))
-            .forEach(function(input){
-                names.push(input.value);
-          });
+          .forEach(function(input){
+            names.push(input.value);
+        });
         let i = 0;
         guests_list.innerHTML += `<input class="guest" type="text" placeholder="name of your friend">`;
         Array.from(guests_list.getElementsByTagName('input'))
-            .forEach(function(input){
-                if(names[i])input.value = names[i++];
-          });
+          .forEach(function(input){
+            if(names[i])input.value = names[i++];
+        });
       }
 
       let submit = document.getElementById('submit');
@@ -53,19 +53,24 @@
               batch.delete(doc.ref);
             });
 
-          Array.from(guests_list.getElementsByTagName('input'))
-            .forEach(function(input){
-                name = input.value;
-                if(name)db.collection("services").doc("{{$service->id}}").collection("guests").add({
-                  soul_id: {{Auth::user()->soul_id}},
-                  cg_id: {{Auth::user()->soul->cellgroup_id}},
-                  is_attended: false,
-                  name: name
-                }).then(function() {
-                  window.location.href = "/attendance/forecast/service/{{$service->id}}";
-                });
+        batch.commit();
+
+        Array.from(guests_list.getElementsByTagName('input'))
+          .forEach(function(input){
+            name = input.value;
+            if(name) {
+              db.collection("services").doc("{{$service->id}}").collection("guests").add({
+                soul_id: {{Auth::user()->soul_id}},
+                cg_id: {{Auth::user()->soul->cellgroup_id}},
+                is_attended: false,
+                name: name
+              }).then(function() {
+                window.location.href = "/attendance/forecast/service/{{$service->id}}";
+              });
+            } else {
+              window.location.href = "/attendance/forecast/service/{{$service->id}}";
+            }
           });
-          return batch.commit();
         });
       }
     });

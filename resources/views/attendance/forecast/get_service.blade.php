@@ -45,17 +45,21 @@
         });
         Array.from(document.getElementsByClassName('forecast-status'))
           .forEach(function(element){
-            let status = souls['{{$cg->id}}'][element.id.slice(4)];
-            element.classList.remove('positive');
-            element.classList.remove('negative');
-            if(status) element.classList.add(status.forecast_status == 'to be confirmed' || status.forecast_status == 'not going' ? 'negative': 'positive');
+            if(Object.keys(souls).includes('{{$cg->id}}')) {
+              let status = souls['{{$cg->id}}'][element.id.slice(4)];
+              element.classList.remove('positive');
+              element.classList.remove('negative');
+              if(status) element.classList.add(status.forecast_status == 'to be confirmed' || status.forecast_status == 'not going' ? 'negative': 'positive');
+            }
         });
 
         Array.from(document.getElementsByClassName('circle'))
           .forEach(function(element){
-            let status = souls['{{$cg->id}}'][element.id.slice(9)];
-            element.classList.remove('outline');
-            if(status && (status.forecast_status == 'to be confirmed' || status.forecast_status == 'not going')) element.classList.add('outline');
+            if(Object.keys(souls).includes('{{$cg->id}}')) {            
+              let status = souls['{{$cg->id}}'][element.id.slice(9)];
+              element.classList.remove('outline');
+              if(status && (status.forecast_status == 'to be confirmed')) element.classList.add('outline');
+            }
         });
 
       });
@@ -75,12 +79,14 @@
 
         Array.from(document.getElementsByClassName('guest'))
           .forEach(function(element){
-            let content = '';
-            let guests_list = guests['{{$cg->id}}'][element.id.slice(5)]? guests['{{$cg->id}}'][element.id.slice(5)]: [];
-            for(let x in guests_list) {
-              content += '<div>' + guests_list[x].name + '</div>';
+            if(Object.keys(guests).includes('{{$cg->id}}')) {            
+              let content = '';
+              let guests_list = guests['{{$cg->id}}'][element.id.slice(5)]? guests['{{$cg->id}}'][element.id.slice(5)]: [];
+              for(let x in guests_list) {
+                content += '<div>' + guests_list[x].name + '</div>';
+              }
+              if(content)element.innerHTML = content;
             }
-            if(content)element.innerHTML = content;
         });
 
       });
@@ -102,9 +108,9 @@
   <div class="ui form">
     {{csrf_field()}}
     <div class="ui fluid buttons">
-      <button id="go"  class="ui button">{{trans("attendance.forecast.going")}}</button>
-      <button id="ng"  class="ui button">{{trans("attendance.forecast.not-going")}}</button>
-      <button id="tbc" class="ui button">{{trans("attendance.forecast.tbc")}}</button>
+      <button id="go"  class="ui button submit-forecast">{{trans("attendance.forecast.going")}}</button>
+      <button id="ng"  class="ui button submit-forecast">{{trans("attendance.forecast.not-going")}}</button>
+      <button id="tbc" class="ui button submit-forecast">{{trans("attendance.forecast.tbc")}}</button>
     </div>
   </div>
   <div class="ui hidden divider"></div>
