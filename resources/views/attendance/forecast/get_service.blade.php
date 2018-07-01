@@ -53,12 +53,21 @@
             }
         });
 
-        Array.from(document.getElementsByClassName('circle'))
+        Array.from(document.getElementsByClassName('icon'))
           .forEach(function(element){
             if(Object.keys(souls).includes('{{$cg->id}}')) {            
               let status = souls['{{$cg->id}}'][element.id.slice(9)];
               element.classList.remove('outline');
-              if(status && (status.forecast_status == 'to be confirmed')) element.classList.add('outline');
+              element.classList.remove('circle');
+              if(status) {
+                switch(status.forecast_status) {
+                  case 'to be confirmed':
+                    element.classList.add('outline');
+                  case 'not going':
+                  case 'going':
+                    element.classList.add('circle');
+                }
+              } 
             }
         });
 
@@ -127,14 +136,10 @@
   @foreach ($members as $member)
     <tr>
       <td>{{$member}} </td>
-      <td id={{'soul' . $member->id}} class="forecast-status positive">
-        {{-- <i class="circle outline icon"></i> --}}
-        <i id={{'indicator' . $member->id}} class="circle icon"></i>
+      <td id={{'soul' . $member->id}} class="forecast-status">
+        <i id={{'indicator' . $member->id}} class="icon"></i>
       </td>
       <td id={{'guest' . $member->id}} class="guest">
-        <div>Guest 01</div>
-        <div>Guest 02</div>
-        <div>Guest 03</div>
       </td>
     </tr>
   @endforeach
