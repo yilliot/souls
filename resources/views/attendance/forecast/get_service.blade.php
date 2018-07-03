@@ -38,6 +38,7 @@
       .collection("souls")
       .onSnapshot(function(querySnapshot) {
         let souls = {};
+        let coming_count = 0;
         querySnapshot.forEach(function(soul) {
           let {soul_id, cg_id, is_attended, forecast_status} = soul.data();
           if(!souls[cg_id])souls[cg_id] = {};
@@ -49,9 +50,13 @@
               let status = souls['{{$cg->id}}'][element.id.slice(4)];
               element.classList.remove('positive');
               element.classList.remove('negative');
-              if(status) element.classList.add(status.forecast_status == 'to be confirmed' || status.forecast_status == 'not going' ? 'negative': 'positive');
+              if(status) {
+                element.classList.add(status.forecast_status == 'to be confirmed' || status.forecast_status == 'not going' ? 'negative': 'positive');
+                if(status.forecast_status == 'going') ++coming_count;
+              }
             }
         });
+        document.getElementById('forecast-count').innerHTML = coming_count;
 
         Array.from(document.getElementsByClassName('icon'))
           .forEach(function(element){
@@ -78,25 +83,28 @@
       .collection("guests")
       .onSnapshot(function(querySnapshot) {
         let guests = {};
+        let guest_count = 0;
         querySnapshot.forEach(function(guest) {
           let {soul_id, cg_id, is_attended, name} = guest.data();
           if(!guests[cg_id])guests[cg_id] = {};
           if(!guests[cg_id][soul_id])guests[cg_id][soul_id] = [];
           guests[cg_id][soul_id].push({is_attended, name});
         });
-        console.log(guests);
 
         Array.from(document.getElementsByClassName('guest'))
           .forEach(function(element){
             if(Object.keys(guests).includes('{{$cg->id}}')) {            
               let content = '';
               let guests_list = guests['{{$cg->id}}'][element.id.slice(5)]? guests['{{$cg->id}}'][element.id.slice(5)]: [];
+              guest_count = Object.keys(guests_list).length;
+              console.log(guest_count);
               for(let x in guests_list) {
                 content += '<div>' + guests_list[x].name + '</div>';
               }
               if(content)element.innerHTML = content;
             }
         });
+        document.getElementById('guest-count').innerHTML = guest_count;
 
       });
 
@@ -128,7 +136,7 @@
 </div>
 
 <h2 class="ui header">What's up, {{$cg}}!
-  <div class="sub header">3 {{trans("attendance.forecast.going")}}</div>
+  <div class="sub header"><span id="forecast-count">0</span>/{{ $cg->members->count() }}(<span id="guest-count">0</span>) {{trans("attendance.forecast.going")}}</div>
 </h2>
 
 <table class="ui very basic very compact unstackable table">
