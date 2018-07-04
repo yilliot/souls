@@ -44,6 +44,14 @@
           if(!souls[cg_id])souls[cg_id] = {};
           souls[cg_id][soul_id] = {is_attended, forecast_status};
         });
+        let data = {
+          "going": 'going',
+          "not going": 'not-going',
+          "to be confirmed": 'tbc',
+        }
+        if(document.getElementById('user_action').getAttribute('data-' + data[souls[{{$cg->id}}][{{Auth::user()->soul->id}}].forecast_status])) {
+          document.getElementById('user_action').innerHTML = document.getElementById('user_action').getAttribute('data-' + data[souls[{{$cg->id}}][{{Auth::user()->soul->id}}].forecast_status]);
+        }
         Array.from(document.getElementsByClassName('forecast-status'))
           .forEach(function(element){
             if(Object.keys(souls).includes('{{$cg->id}}')) {
@@ -120,7 +128,10 @@
 
 <div class="border-inset">
 
-  <h2>{{trans("attendance.forecast.you-re")}}<span id="user_action">{{trans("attendance.forecast.not-responded-yet")}}</span></h2>
+  <h2>{{trans("attendance.forecast.you-re")}}<span id="user_action"
+    data-going="{{trans("attendance.forecast.going")}}"
+    data-not-going="{{trans("attendance.forecast.not-going")}}"
+    data-tbc="{{trans("attendance.forecast.tbc")}}">{{trans("attendance.forecast.not-responded-yet")}}</span></h2>
 
   <div class="ui form">
     {{csrf_field()}}

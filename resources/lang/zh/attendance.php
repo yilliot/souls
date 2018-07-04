@@ -7,7 +7,7 @@ return [
         'greet2' => '聚会出席表',
         'you-re' => '您',
         'not-responded-yet' => '还没有回应',
-        'going' => '出席',
+        'going' => '将会出席',
         'not-going' => '无法出席',
         'tbc' => '在确定中',
         'bring-someone' => '带朋友来？',
