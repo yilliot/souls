@@ -5,28 +5,115 @@ Service details
 @section('content')
 @include('partial.firebase')
 <script>
-  auth.signInWithEmailAndPassword('admin@mail.io', 'secret').then(function() {
-    db.collection("services").doc("{{$service->id}}").collection("souls")
-      .onSnapshot(function(querySnapshot) {
-        let souls = {};
-        querySnapshot.forEach(function(doc) {
-          let {cg_id, soul_id, is_attended, forecast_status} = doc.data()
-          if (!souls[cg_id]) souls[cg_id] = {};
-          souls[cg_id][soul_id] = {is_attended, forecast_status};
+  const status = {
+    going: 'forecast_yes',
+    ['not going']: 'forecast_no',
+    ['to be confirmed']: 'tbc'
+  }
+  window.onload = function() {
+    let count_template = function() {
+      return {souls: 0, guests: 0, count: function() {
+        return this.souls + this.guests;
+      }};
+    }
+    let attended_count = {data: {}, soul_count: function() {
+      let count = 0;
+      for (let i in this.data) {
+        count += this.data[i].souls;
+      }
+      return count;
+    }, guest_count: function() {
+      let count = 0;
+      for (let i in this.data) {
+        count += this.data[i].guests;
+      }
+      return count;
+    }};
+    let forecast_count = {data: {}, soul_count: function() {
+      let count = 0;
+      for (let i in this.data) {
+        count += this.data[i].souls;
+      }
+      return count;
+    }, guest_count: function() {
+      let count = 0;
+      for (let i in this.data) {
+        count += this.data[i].guests;
+      }
+      return count;
+    }};
+
+    firebaseDo(function() {
+      let souls = {};
+      db.collection("services").doc("{{$service->id}}").collection("souls")
+        .onSnapshot(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+            let {cg_id, soul_id, is_attended, forecast_status} = doc.data()
+            if (!souls[cg_id]) souls[cg_id] = {};
+            souls[cg_id][soul_id] = {is_attended, forecast_status};
+          });
+          for (let cg in souls) {
+            if(!attended_count.data[cg]) attended_count.data[cg] = count_template();
+            if(!forecast_count.data[cg]) forecast_count.data[cg] = count_template();
+            attended_count.data[cg].souls = 0;
+            forecast_count.data[cg].souls = 0;
+            for (let id in souls[cg]) {
+              document.getElementById('soul' + id).classList.forEach(function(className) {
+                document.getElementById('soul' + id).classList.remove(className);
+              });
+              console.log(document.getElementById('soul' + id));
+              console.log(status[souls[cg][id].forecast_status]);
+              document.getElementById('soul' + id).classList.add(status[souls[cg][id].forecast_status]);
+              if (souls[cg][id].is_attended)
+              document.getElementById('soul' + id).classList.add("attended");
+            
+              if(souls[cg][id].forecast_status == 'going') forecast_count.data[cg].souls++;
+              if(souls[cg][id].is_attended) attended_count.data[cg].souls++;
+            }
+            document.getElementById('cg_forecast' + cg).innerHTML = forecast_count.data[cg].count();
+            document.getElementById('cg_attended' + cg).innerHTML = attended_count.data[cg].count();
+            document.getElementById('summary_forecast' + cg).innerHTML = `${forecast_count.data[cg].souls} + ${forecast_count.data[cg].guests}`
+            document.getElementById('summary_attended' + cg).innerHTML = `${attended_count.data[cg].souls} + ${attended_count.data[cg].guests}`;
+          }
+          document.getElementById('summary_total_forecast').innerHTML = `${forecast_count.soul_count()} + ${forecast_count.guest_count()}`
+          document.getElementById('summary_total_attended').innerHTML = `${attended_count.soul_count()} + ${attended_count.guest_count()}`;
+          // console.log(souls);
         });
-        console.log(souls);
-      });
-    db.collection("services").doc("{{$service->id}}").collection("guests")
-      .onSnapshot(function(querySnapshot) {
-        let guests = {};
-        querySnapshot.forEach(function(doc) {
-          let {cg_id, soul_id, is_attended, name} = doc.data();
-          guests[doc.data().cg_id] = {is_attended, forecast_status, name};
+      db.collection("services").doc("{{$service->id}}").collection("guests")
+        .onSnapshot(function(querySnapshot) {
+          let guests = {};
+          querySnapshot.forEach(function(doc) {
+            let {cg_id, soul_id, is_attended, name} = doc.data();
+            if (!guests[cg_id]) guests[cg_id] = [];
+            guests[cg_id].push({soul_id, is_attended, name});
+          });
+          for (let cg in guests) {
+            if(!attended_count.data[cg]) attended_count.data[cg] = count_template();
+            if(!forecast_count.data[cg]) forecast_count.data[cg] = count_template();
+            attended_count.data[cg].guests = 0;
+            forecast_count.data[cg].guests = 0;
+            document.getElementById('cg' + cg).innerHTML = '';
+            guests[cg].forEach(function(guest) {
+              document.getElementById('cg' + cg).innerHTML += `
+                <li class="${guest.is_attended? 'attended': ''}">
+                  <span class="guest-name">${guest.name}</span>
+                  <span class="invitor-name">${document.getElementById('soul'+guest.soul_id).getAttribute('data-name')}</span>
+                </li>
+              `;
+              forecast_count.data[cg].guests++;
+              if(guest.is_attended)attended_count.data[cg].guests++;
+            });
+            document.getElementById('cg_forecast' + cg).innerHTML = forecast_count.data[cg].count();
+            document.getElementById('cg_attended' + cg).innerHTML = attended_count.data[cg].count();
+            document.getElementById('summary_forecast' + cg).innerHTML = `${forecast_count.data[cg].souls} + ${forecast_count.data[cg].guests}`
+            document.getElementById('summary_attended' + cg).innerHTML = `${attended_count.data[cg].souls} + ${attended_count.data[cg].guests}`;
+          }
+          document.getElementById('summary_total_forecast').innerHTML = `${forecast_count.soul_count()} + ${forecast_count.guest_count()}`
+          document.getElementById('summary_total_attended').innerHTML = `${attended_count.soul_count()} + ${attended_count.guest_count()}`;
+          // console.log(guests);
         });
-      });
-  }).catch(function(e) {
-    console.log(e);
-  });
+    });
+  }
 </script>
 <style>
   .attended {background-color: green; color: white;}
@@ -36,6 +123,7 @@ Service details
     padding-left: 15px;
   }
   .guest-name{color: #000;}
+  .attended > .guest-name{color: white;}
   .invitor-name{ font-size: 0.7em;}
   .invitor-name::after {content: ")"; }
   .invitor-name::before {content: "("; }
@@ -64,16 +152,16 @@ Service details
         @foreach ($cellgroups as $cellgroup)
           <tr>
             <td> {{$cellgroup}} </td>
-            <td> 0 + 0</td>
-            <td> 0 + 0 </td>
+            <td id="summary_forecast{{$cellgroup->id}}"> 0 + 0</td>
+            <td id="summary_attended{{$cellgroup->id}}"> 0 + 0 </td>
           </tr>
         @endforeach
       </tbody>
       <tfoot>
         <tr>
           <th> Total </th>
-          <th> 0 + 0</th>
-          <th> 0 + 0</th>
+          <th id="summary_total_forecast"> 0 + 0</th>
+          <th id="summary_total_attended"> 0 + 0</th>
         </tr>
       </tfoot>
     </table>
@@ -88,28 +176,20 @@ Service details
             {{$cg}}
           </div>
           <div class="meta">
-            <span class="total_forecast_yes">8</span>
+            <span id="cg_forecast{{$cg->id}}" class="total_forecast_yes">0</span>
               +
-            <span class="total_attended">7</span>
+            <span id="cg_attended{{$cg->id}}" class="total_attended">0</span>
           </div>
           <div class="description">
             <ol class="list">
               @foreach ($cg->members as $soul)
-                <li>{{$soul}}</li>
+                <li data-name="{{$soul}}" id="soul{{$soul->id}}">{{$soul}}</li>
               @endforeach
-              <li><span class="forecast_yes attended">Member 001</span></li>
-              <li><span class="attended">Member 005</span></li>
-              <li><span class="forecast_no">Member 002</span></li>
-              <li><span class="forecast_yes">Member 003</span></li>
-              <li><span class="">Member 004</span></li>
             </ol>
           </div>
         </div> <!-- content -->
         <div class="extra content">
-          <ol class="list">
-            <li><span class="guest-name">Guest 01</span> <span class="invitor-name">Member 001</span></li>
-            <li><span class="guest-name">Guest 02</span> <span class="invitor-name">Member 001</span></li>
-            <li><span class="guest-name">Guest 03</span> <span class="invitor-name">Member 001</span></li>
+          <ol class="list" id="cg{{$cg->id}}">
           </ol>
         </div>
       </div>
