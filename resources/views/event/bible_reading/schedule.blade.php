@@ -23,7 +23,7 @@ Bible Reading Home
     #schedule td label{display: block;}
     #schedule td span{display:block; font-size: 0.8em;}
   </style>
-  <h3 class="ui header">七月读经表</h3>
+  <h3 class="ui header">八月读经表</h3>
   <table id="schedule" class="ui unstackable compact table">
     <thead>
       <tr>
@@ -40,54 +40,45 @@ Bible Reading Home
       <tr>
         <td><label></label> <span></span></td>
         <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label>诗</label> <span>109-113</span></td>
+        <td><label>赛</label> <span>11-13</span></td>
+        <td><label>赛</label> <span>14-16</span></td>
+        <td><label>赛</label> <span>17-19</span></td>
+        <td><label>赛</label> <span>20-22</span></td>
+        <td><label>赛</label> <span>23-27</span></td>
       </tr>
       <tr>
-        <td><label>诗</label> <span>114-116</span></td>
-        <td><label>诗</label> <span>117-119</span></td>
-        <td><label>诗</label> <span>120-122</span></td>
-        <td><label>诗</label> <span>123-125</span></td>
-        <td><label>诗</label> <span>126-128</span></td>
-        <td><label>诗</label> <span>129-131</span></td>
-        <td><label>诗</label> <span>132-136</span></td>
+        <td><label>赛</label> <span>28-30</span></td>
+        <td><label>赛</label> <span>31-33</span></td>
+        <td><label>赛</label> <span>34-36</span></td>
+        <td><label>赛</label> <span>37-39</span></td>
+        <td><label>赛</label> <span>40-42</span></td>
+        <td><label>赛</label> <span>43-45</span></td>
+        <td><label>赛</label> <span>46-50</span></td>
       </tr>
       <tr>
-        <td><label>诗</label> <span>137-139</span></td>
-        <td><label>诗</label> <span>140-142</span></td>
-        <td><label>诗</label> <span>143-145</span></td>
-        <td><label>诗</label> <span>146-148</span></td>
-        <td><label>诗-箴</label> <span>149-1</span></td>
-        <td><label>箴</label> <span>2-4</span></td>
-        <td><label>箴</label> <span>5-9</span></td>
+        <td><label>赛</label> <span>51-53</span></td>
+        <td><label>赛</label> <span>54-56</span></td>
+        <td><label>赛</label> <span>57-59</span></td>
+        <td><label>赛</label> <span>60-62</span></td>
+        <td><label>赛</label> <span>63-65</span></td>
+        <td><label>赛-耶</label> <span>66-2</span></td>
+        <td><label>耶</label> <span>3-7</span></td>
       </tr>
       <tr>
-        <td><label>箴</label> <span>10-12</span></td>
-        <td><label>箴</label> <span>13-15</span></td>
-        <td><label>箴</label> <span>16-18</span></td>
-        <td><label>箴</label> <span>19-21</span></td>
-        <td><label>箴</label> <span>22-24</span></td>
-        <td><label>箴</label> <span>25-27</span></td>
-        <td><label>传</label> <span>28-1</span></td>
+        <td><label>耶</label> <span>8-10</span></td>
+        <td><label>耶</label> <span>11-13</span></td>
+        <td><label>耶</label> <span>14-16</span></td>
+        <td><label>耶</label> <span>17-19</span></td>
+        <td><label>耶</label> <span>20-22</span></td>
+        <td><label>耶</label> <span>23-25</span></td>
+        <td><label>耶</label> <span>26-30</span></td>
       </tr>
       <tr>
-        <td><label>传</label> <span>2-4</span></td>
-        <td><label>传</label> <span>5-7</span></td>
-        <td><label>传</label> <span>8-10</span></td>
-        <td><label>传-歌</label> <span>11-1</span></td>
-        <td><label>歌</label> <span>2-4</span></td>
-        <td><label>歌</label> <span>5-7</span></td>
-        <td><label>歌-赛</label> <span>8-4</span></td>
-      </tr>
-      <tr>
-        <td><label>赛</label> <span>5-7</span></td>
-        <td><label>赛</label> <span>8-10</span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
+        <td><label>耶</label> <span>31-33</span></td>
+        <td><label>耶</label> <span>34-36</span></td>
+        <td><label>耶</label> <span>37-39</span></td>
+        <td><label>耶</label> <span>40-42</span></td>
+        <td><label>耶</label> <span>43-45</span></td>
         <td><label></label> <span></span></td>
         <td><label></label> <span></span></td>
       </tr>
