@@ -40,47 +40,47 @@ Bible Reading Home
       <tr>
         <td><label></label> <span></span></td>
         <td><label></label> <span></span></td>
-        <td><label>赛</label> <span>11-13</span></td>
-        <td><label>赛</label> <span>14-16</span></td>
-        <td><label>赛</label> <span>17-19</span></td>
-        <td><label>赛</label> <span>20-22</span></td>
-        <td><label>赛</label> <span>23-27</span></td>
-      </tr>
-      <tr>
-        <td><label>赛</label> <span>28-30</span></td>
-        <td><label>赛</label> <span>31-33</span></td>
-        <td><label>赛</label> <span>34-36</span></td>
-        <td><label>赛</label> <span>37-39</span></td>
-        <td><label>赛</label> <span>40-42</span></td>
-        <td><label>赛</label> <span>43-45</span></td>
-        <td><label>赛</label> <span>46-50</span></td>
-      </tr>
-      <tr>
-        <td><label>赛</label> <span>51-53</span></td>
-        <td><label>赛</label> <span>54-56</span></td>
-        <td><label>赛</label> <span>57-59</span></td>
-        <td><label>赛</label> <span>60-62</span></td>
-        <td><label>赛</label> <span>63-65</span></td>
-        <td><label>赛-耶</label> <span>66-2</span></td>
-        <td><label>耶</label> <span>3-7</span></td>
-      </tr>
-      <tr>
-        <td><label>耶</label> <span>8-10</span></td>
-        <td><label>耶</label> <span>11-13</span></td>
-        <td><label>耶</label> <span>14-16</span></td>
-        <td><label>耶</label> <span>17-19</span></td>
-        <td><label>耶</label> <span>20-22</span></td>
-        <td><label>耶</label> <span>23-25</span></td>
-        <td><label>耶</label> <span>26-30</span></td>
-      </tr>
-      <tr>
-        <td><label>耶</label> <span>31-33</span></td>
-        <td><label>耶</label> <span>34-36</span></td>
-        <td><label>耶</label> <span>37-39</span></td>
-        <td><label>耶</label> <span>40-42</span></td>
-        <td><label>耶</label> <span>43-45</span></td>
         <td><label></label> <span></span></td>
         <td><label></label> <span></span></td>
+        <td><label></label> <span></span></td>
+        <td><label>耶</label> <span>46-48</span></td>
+        <td><label>耶-哀</label> <span>49-1</span></td>
+      </tr>
+      <tr>
+        <td><label>哀</label> <span>2-4</span></td>
+        <td><label>哀-結</label> <span>5-2</span></td>
+        <td><label>結</label> <span>3-5</span></td>
+        <td><label>結</label> <span>6-8</span></td>
+        <td><label>結</label> <span>9-11</span></td>
+        <td><label>結</label> <span>12-14</span></td>
+        <td><label>結</label> <span>15-19</span></td>
+      </tr>
+      <tr>
+        <td><label>結</label> <span>20-22</span></td>
+        <td><label>結</label> <span>23-25</span></td>
+        <td><label>結</label> <span>26-28</span></td>
+        <td><label>結</label> <span>29-31</span></td>
+        <td><label>結</label> <span>32-34</span></td>
+        <td><label>結</label> <span>35-37</span></td>
+        <td><label>結</label> <span>38-42</span></td>
+      </tr>
+      <tr>
+        <td><label>結</label> <span>43-45</span></td>
+        <td><label>結</label> <span>46-48</span></td>
+        <td><label>但</label> <span>1-3</span></td>
+        <td><label>但</label> <span>4-6</span></td>
+        <td><label>但</label> <span>7-9</span></td>
+        <td><label>但</label> <span>10-12</span></td>
+        <td><label>何</label> <span>1-5</span></td>
+      </tr>
+      <tr>
+        <td><label>何</label> <span>6-8</span></td>
+        <td><label>何</label> <span>9-11</span></td>
+        <td><label>何</label> <span>12-14</span></td>
+        <td><label>珥</label> <span>1-3</span></td>
+        <td><label>摩</label> <span>1-3</span></td>
+        <td><label>摩</label> <span>4-6</span></td>
+        <td><label>摩-拿</label> <span>7-1</span></td>
       </tr>
     </tbody>
     
