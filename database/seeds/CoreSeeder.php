@@ -29,7 +29,7 @@ class CoreSeeder extends Seeder
         DB::table('service_types')->insert(['id' => 1, 'name' => 'Saturday']);
         DB::table('service_types')->insert(['id' => 2, 'name' => 'Supreme']);
 
-        DB::table('service_venues')->insert(['id' => 1, 'name' => 'HCCJB']);
+        DB::table('service_venues')->insert(['id' => 1, 'name' => 'OASIS']);
 
 
         // ministries

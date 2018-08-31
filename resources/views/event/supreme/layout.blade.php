@@ -15,7 +15,7 @@
 
   <div class="marginated ui fluid container engraved footer">
     <div class="ui center aligned basic padded segment">
-      <p class="bottom free"> &copy; Copyright {{date('Y')}} HCCJB All rights reserved.</p>
+      <p class="bottom free"> &copy; Copyright {{date('Y')}} OASIS All rights reserved.</p>
       <p class="top free">All trademarks and service marks are the properties of their respective owners.</p>
     </div>
   </div>

@@ -9,7 +9,7 @@
 
     <h1 class="ui center aligned icon header">
       <div>
-        <img id="logo" src="/images/hcc-logo-black320.png" alt="HCCJB">
+        <img id="logo" src="/images/hcc-logo-black320.png" alt="OASIS">
       </div>
       <div class="neon-green content">
           <span class="glow">3KM {{trans('event.just_begin.record')}}</span>
