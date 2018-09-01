@@ -21,7 +21,7 @@
 
     <h1 class="ui center aligned icon header">
       <div>
-        <img id="logo" src="/images/hcc-logo-black320.png" alt="HCCJB">
+        <img id="logo" src="/images/hcc-logo-black320.png" alt="OASIS">
         <div> Total {{ number_format($totals->sum('total')/1000) }} KM </div>
       </div>
       <div class="neon-green content">

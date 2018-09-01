@@ -4,7 +4,7 @@ Laravel church management system.
 
 ## Welcome Collaborators
 
-We as owner of Harvest Culture JB known as HCCJB, as well as initiator of this project, would like to extend the idea of the community and also welcome developers who are interested in collaborative in this project.
+We as owner of OASIS, as well as initiator of this project, would like to extend the idea of the community and also welcome developers who are interested in collaborative in this project.
 
 ## Our values
 
