@@ -23,7 +23,7 @@ Bible Reading Home
     #schedule td label{display: block;}
     #schedule td span{display:block; font-size: 0.8em;}
   </style>
-  <h3 class="ui header">八月读经表</h3>
+  <h3 class="ui header">九月读经表</h3>
   <table id="schedule" class="ui unstackable compact table">
     <thead>
       <tr>
