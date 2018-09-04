@@ -23,7 +23,7 @@ Bible Reading Home
     #schedule td label{display: block;}
     #schedule td span{display:block; font-size: 0.8em;}
   </style>
-  <h3 class="ui header">九月读经表</h3>
+  <h3 class="ui header">{{ trans('event.bible_reading.timetable', ['month' => trans('event.bible_reading.month.'.\Carbon\Carbon::now()->month)]) }}</h3>
   <table id="schedule" class="ui unstackable compact table">
     <thead>
       <tr>
@@ -37,51 +37,20 @@ Bible Reading Home
       </tr>
     </thead>
     <tbody>
+      @foreach($schedule->chunk(7) as $row)
       <tr>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label></label> <span></span></td>
-        <td><label>耶</label> <span>46-48</span></td>
-        <td><label>耶-哀</label> <span>49-1</span></td>
+        @foreach($row as $info)
+        @if($info instanceof \App\Models\Events\BibleReading\BibleSchedule)
+        <td @if($info->day == \Carbon\Carbon::today())style="background: grey;"@endif>
+          <label>{{ $info->book }}</label>
+          <span>{{ $info->verse }}</span>
+        </td>
+        @else
+        <td></td>
+        @endif
+        @endforeach
       </tr>
-      <tr>
-        <td><label>哀</label> <span>2-4</span></td>
-        <td><label>哀-結</label> <span>5-2</span></td>
-        <td><label>結</label> <span>3-5</span></td>
-        <td><label>結</label> <span>6-8</span></td>
-        <td><label>結</label> <span>9-11</span></td>
-        <td><label>結</label> <span>12-14</span></td>
-        <td><label>結</label> <span>15-19</span></td>
-      </tr>
-      <tr>
-        <td><label>結</label> <span>20-22</span></td>
-        <td><label>結</label> <span>23-25</span></td>
-        <td><label>結</label> <span>26-28</span></td>
-        <td><label>結</label> <span>29-31</span></td>
-        <td><label>結</label> <span>32-34</span></td>
-        <td><label>結</label> <span>35-37</span></td>
-        <td><label>結</label> <span>38-42</span></td>
-      </tr>
-      <tr>
-        <td><label>結</label> <span>43-45</span></td>
-        <td><label>結</label> <span>46-48</span></td>
-        <td><label>但</label> <span>1-3</span></td>
-        <td><label>但</label> <span>4-6</span></td>
-        <td><label>但</label> <span>7-9</span></td>
-        <td><label>但</label> <span>10-12</span></td>
-        <td><label>何</label> <span>1-5</span></td>
-      </tr>
-      <tr>
-        <td><label>何</label> <span>6-8</span></td>
-        <td><label>何</label> <span>9-11</span></td>
-        <td><label>何</label> <span>12-14</span></td>
-        <td><label>珥</label> <span>1-3</span></td>
-        <td><label>摩</label> <span>1-3</span></td>
-        <td><label>摩</label> <span>4-6</span></td>
-        <td><label>摩-拿</label> <span>7-1</span></td>
-      </tr>
+      @endforeach
     </tbody>
     
   </table>

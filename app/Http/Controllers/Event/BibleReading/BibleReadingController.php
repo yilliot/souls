@@ -8,6 +8,7 @@ use App\Models\Events\BibleReading\Chapter;
 use App\Models\Events\BibleReading\CheckIn;
 use App\Models\Events\BibleReading\CheckInChapter;
 use App\Models\Events\BibleReading\Comment;
+use App\Models\Events\BibleReading\BibleSchedule;
 use App\Models\Soul;
 
 class BibleReadingController extends Controller
@@ -243,7 +244,12 @@ class BibleReadingController extends Controller
 
     public function getSchedule()
     {
-        return view('event.bible_reading.schedule');
+        $schedule = BibleSchedule::whereMonth('day', \Carbon\Carbon::now()->month)->get();
+        $firstDay = $schedule[0];
+        for ($i = 0; $i < $firstDay->day_of_week - 1;$i++) {
+          $schedule->prepend(0);
+        }
+        return view('event.bible_reading.schedule', compact('schedule'));
     }
 
     protected $bible_books = [
