@@ -41,7 +41,7 @@ Bible Reading Home
       <tr>
         @foreach($row as $info)
         @if($info instanceof \App\Models\Events\BibleReading\BibleSchedule)
-        <td @if($info->day == \Carbon\Carbon::today())style="background: grey;"@endif>
+        <td @if($info->day == \Carbon\Carbon::today()) class="negative"@endif>
           <label>{{ $info->book }}</label>
           <span>{{ $info->verse }}</span>
         </td>
