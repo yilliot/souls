@@ -3,6 +3,14 @@ Route::get('/calendar', 'HomeController@calendar');
 Route::get('/privacy', 'LegalController@privacy');
 Route::get('/terms', 'LegalController@terms');
 
+## FutureFund
+Route::group(['prefix' => 'ff', 'namespace' => 'FutureFund'], function () {
+    Route::get('/{ff_code}', 'MemberController@index');
+    Route::get('/{ff_code}/{pledge_code}', 'MemberController@show');
+    Route::get('/{ff_code}/{pledge_code}/payment', 'MemberController@getPaymentForm');
+    Route::post('/{ff_code}/{pledge_code}/payment', 'MemberController@postPaymentForm');
+});
+
 ## FORECAST
 Route::group(['prefix' => 'attendance', 'namespace' => 'Attendance', 'middleware' => 'auth'], function () {
     Route::get('/', 'ForecastController@index'); // redirect

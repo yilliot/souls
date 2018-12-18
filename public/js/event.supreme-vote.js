@@ -1,31 +1,6 @@
-webpackJsonp([5],{
+webpackJsonp([6],{
 
-/***/ 141:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(142);
-
-
-/***/ }),
-
-/***/ 142:
-/***/ (function(module, exports, __webpack_require__) {
-
-window.$ = window.jQuery = __webpack_require__(1);
-__webpack_require__(2);
-
-$(function () {
-  $('button.option').click(function (e) {
-    var supreme_option = $(this).data('option');
-    $('#supreme-container').css('background-image', 'url(/images/supreme-vote/' + supreme_option + '.jpg)');
-    $('#form-option').val(supreme_option);
-    e.preventDefault();
-  });
-});
-
-/***/ }),
-
-/***/ 2:
+/***/ 1:
 /***/ (function(module, exports) {
 
 var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};/*
@@ -764,6 +739,31 @@ onFixed:function onFixed(){},onUnfixed:function onUnfixed(){},// utility callbac
 onUpdate:false,// disabled by default for performance
 onRefresh:function onRefresh(){},metadata:{src:'src'},className:{fixed:'fixed',placeholder:'placeholder',visible:'visible'},error:{method:'The method you called is not defined.',visible:'Element is hidden, you must call refresh after element becomes visible'}};})(jQuery,window,document);
 
+/***/ }),
+
+/***/ 144:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(145);
+
+
+/***/ }),
+
+/***/ 145:
+/***/ (function(module, exports, __webpack_require__) {
+
+window.$ = window.jQuery = __webpack_require__(2);
+__webpack_require__(1);
+
+$(function () {
+  $('button.option').click(function (e) {
+    var supreme_option = $(this).data('option');
+    $('#supreme-container').css('background-image', 'url(/images/supreme-vote/' + supreme_option + '.jpg)');
+    $('#form-option').val(supreme_option);
+    e.preventDefault();
+  });
+});
+
 /***/ })
 
-},[141]);
+},[144]);

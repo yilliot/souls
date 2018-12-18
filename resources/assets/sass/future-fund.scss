@@ -1,0 +1,20 @@
+#header {
+    padding-top: 80px;
+    color: white;
+    z-index: 3;
+    text-shadow: 1px 1px 1px #000;
+  }
+  .bg-size {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height: 180px;
+  }
+  .bg-image {
+    background-size: cover;
+    background-image: url('/images/ff-structure.jpg');
+  }
+  .bg-image-fade {
+    filter: brightness(4) contrast(1) grayscale(1);
+  }

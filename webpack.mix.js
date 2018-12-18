@@ -24,6 +24,7 @@ mix
 .sass('resources/assets/sass/event.just-begin.scss', 'public/css')
 .sass('resources/assets/sass/event.supreme-vote.scss', 'public/css')
 .sass('resources/assets/sass/event.bible-reading.scss', 'public/css')
+.sass('resources/assets/sass/future-fund.scss', 'public/css')
 .js([
   'resources/assets/js/app.js',
   ], 'public/js/app.js')
@@ -33,6 +34,9 @@ mix
 .js([
       'resources/assets/js/event.just-begin.js',
   ], 'public/js/event.just-begin.js')
+.js([
+      'resources/assets/js/future-fund.js',
+  ], 'public/js/future-fund.js')
 .js([
       'resources/assets/js/event.supreme-vote.js',
   ], 'public/js/event.supreme-vote.js')
