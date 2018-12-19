@@ -6,7 +6,7 @@ Future Fund
 
 @section('content')
 
-<h1 id="header" class="header bg-size">个人目标尚差 <br> RM {{number_format($pledge->amount-$collected_sum, 2)}} </h1>
+<h1 id="header" class="header bg-size">距离个人目标 <br> RM {{number_format($pledge->amount-$collected_sum, 2)}} </h1>
 <div class="bg-size bg-image bg-image-fade"></div>
 <div class="bg-size bg-image" style="width:{{$collected_sum/$pledge->amount*100}}%"></div>
 <div style="padding-top: 200px"></div>
@@ -26,7 +26,7 @@ Future Fund
 <div class="ui fluid mini input">
   <input type="text" name="remarks" placeholder=" ** remarks 备注">
 </div>
-<button class="ui secondary huge fluid button">Pay 缴付</button>
+<button class="ui secondary huge fluid button">Submit 提交</button>
 </form>
 <div style="padding-top: 80px"></div>
 

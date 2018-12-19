@@ -5,7 +5,7 @@ Future Fund
 @endsection
 
 @section('content')
-<h1 id="header" class="header bg-size">距离目标尚差 <br> RM {{number_format($session_total-$session_collected, 2)}} </h1>
+<h1 id="header" class="header bg-size">距离目标 <br> RM {{number_format($session_total-$session_collected, 2)}} </h1>
 <div class="bg-size bg-image bg-image-fade"></div>
 <div class="bg-size bg-image" style="width:{{$session_collected/$session_total*100}}%"></div>
 <div style="padding-top: 200px"></div>
@@ -91,7 +91,7 @@ Future Fund
     </tr>
   </tfoot>
 </table>
-<a href="/ff/{{$ff_code}}/{{$pledge_code}}/payment" class="ui small fluid teal big button">Make Payment</a>
+<a href="/ff/{{$ff_code}}/{{$pledge_code}}/payment" class="ui small fluid teal big button">记录缴付 Record payment</a>
 
 <div style="padding-top: 50px"></div>
 
