@@ -3,6 +3,12 @@ Route::get('/calendar', 'HomeController@calendar');
 Route::get('/privacy', 'LegalController@privacy');
 Route::get('/terms', 'LegalController@terms');
 
+Route::group(['prefix' => 'telegram-bot', 'namespace' => 'TelegramBot'], function () {
+    Route::post('/', function(\Illuminate\Http\Request $request) {
+        \Log::info($request->all());
+    });
+});
+
 ## FutureFund
 Route::group(['prefix' => 'ff', 'namespace' => 'FutureFund'], function () {
     Route::get('/{ff_code}', 'MemberController@index');
