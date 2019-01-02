@@ -6,7 +6,7 @@
 
 @section('content-blank')
 <h1 class="text-center uppercase pt-5">{{config('app.name')}} - {{trans('auth.signup.title')}}</h3>
-<form method="POST" action="/auth/signup" class="ui form p-5">
+<form method="POST" action="/auth/complete_profile" class="ui form p-5">
   {{ csrf_field() }}
   @include('auth.flash')
 
