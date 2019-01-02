@@ -4,6 +4,9 @@
 Future Fund
 @endsection
 
+<div id="secure" style="z-index:999; position: absolute;">
+  <a href="/auth/signup" class="ui mini button">secure your account with password</a>
+</div>
 @section('content')
 <h1 id="header" class="header">{{trans('futurefund.target')}} <br> RM {{number_format($session_total-$session_collected, 2)}} </h1>
 

@@ -5,7 +5,6 @@
 @endsection
 
 @section('content-blank')
-
 <h1 class="text-center uppercase pt-5">{{config('app.name')}} - {{trans('auth.login.title')}}</h3>
 <form action="/auth/login" method="post" class="ui form p-5">
   {{ csrf_field() }}

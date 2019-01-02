@@ -26,15 +26,40 @@ class FacebookLoginController extends Controller
     public function handleProviderCallback()
     {
         $facebookUser = Socialite::driver('facebook')->stateless()->user();
+
         $user = User::where('facebook_id', $facebookUser->id)->first();
+
         if($user) {
             // User exist, login
             \Auth::login($user, true);
             return redirect()->intended('/');
+
         } else {
-            // User doesn't exist redirect to register
-            session(['facebook_id' => $facebookUser->id]);
-            return redirect('auth/merge/nric');
+            // FB user doesn't exist 
+            // create user from FB
+
+            $socialiteFbUser = Socialite::driver('facebook')
+                ->fields([
+                    'name',
+                    'first_name',
+                    'last_name',
+                    'email',
+                    'gender',
+                    'verified',
+                    'link',
+                ])
+            ->userFromToken($facebookUser->token);
+
+            $user = new User;
+            $user->email = $socialiteFbUser->email;
+            $user->password = '_FB_LOGIN_NO_PASSWORD_';
+            $user->first_name = $facebookUser->user['first_name'];
+            $user->last_name = $facebookUser->user['last_name'];
+            $user->soul_id = null;
+            $user->facebook_id = $facebookUser->id;//session('facebook_id');
+            $user->save();
+            \Auth::login($user, true);
+            return redirect('/auth/merge/nric');
         }
     }
 

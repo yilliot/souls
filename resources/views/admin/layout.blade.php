@@ -16,8 +16,8 @@
         OASIS
       </a>
 
-      <a class="{{Request::is('admin/service*')?'active':''}} item" href="/admin/service">Services</a>
       <a class="{{Request::is('admin/soul*')?'active':''}} item" href="/admin/soul">Souls</a>
+      <a class="{{Request::is('admin/ff*')?'active':''}} item" href="/admin/ff">Future</a>
 
       <div class="right menu">
         <div class="ui simple dropdown item">

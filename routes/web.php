@@ -69,9 +69,10 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::get('/signup/nric', 'RegisterController@getMergeNric');
     Route::post('/signup/nric', 'RegisterController@postMergeNric');
 
-    Route::get('/merge/nric', 'LoginController@getMergeNric');
-    Route::post('/merge/nric', 'LoginController@postMergeNric');
     Route::post('/logout', 'LoginController@logout')->name('logout');
+
+    Route::get('/merge/nric', 'MergeUserController@getMergeNric');
+    Route::post('/merge/nric', 'MergeUserController@postMergeNric');
 
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')
         ->name('password.reset');
