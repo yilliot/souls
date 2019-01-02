@@ -40,7 +40,7 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
         return view('auth.login');
     }
@@ -48,10 +48,11 @@ class LoginController extends Controller
     public function postLoginForm(Request $request)
     {
         $credentials = $request->only('email', 'password');
+
         if (\Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/');
         }
-        return redirect()->back()->with('error', 'Error!')->with('message', trans('auth.failed'));
+        return redirect()->back()->with('error', 'Error!')->with('message', trans('auth.failed'))->withInput();
     }
 
 }

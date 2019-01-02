@@ -74,6 +74,9 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::get('/merge/nric', 'MergeUserController@getMergeNric');
     Route::post('/merge/nric', 'MergeUserController@postMergeNric');
 
+    Route::get('/complete_profile', 'CompleteSoulController@getCompleteSoulForm');
+    Route::post('/complete_profile', 'CompleteSoulController@postCompleteSoulForm');
+
     Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')
         ->name('password.reset');
     Route::post('password/reset', 'ResetPasswordController@reset')

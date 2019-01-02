@@ -11,7 +11,7 @@
   @include('auth.flash')
 
   <div class="field">
-    <input name="email" type="text" value="{{old('email')}}" placeholder="{{trans('auth.login.email')}}" />
+    {{ Form::text('email', old('email'), ['placeholder' => trans('auth.login.email')])}}
   </div>
   <div class="field">
     <input name="password" type="password" placeholder="{{trans('auth.login.password')}}" />

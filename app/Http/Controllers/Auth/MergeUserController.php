@@ -26,36 +26,19 @@ class MergeUserController extends Controller
         // Search if soul exist for this nric
         $soul = Soul::where('nric' ,$request->input('nric'))->first();
 
-        // if soul exist
-        if ($soul) {
-
-            // if login
-            if (\Auth::user()) {
+        // if had login
+        if (\Auth::user()) {
+            if ($soul) {
                 $user = \Auth::user();
                 $user->soul_id = $soul->id;
                 $user->save();
                 return redirect()->intended('/');
+            } else {
+                return redirect('/auth/complete_profile?nric=' . $request->input('nric'));
             }
-
-            return redirect('/auth/signup/nric?nric=' . $request->input('nric'));
-
-
-            // // new user merge with souls
-            // $user = new User;
-            // $user->email = $soul->email;
-            // $user->password = '_FB_LOGIN_NO_PASSWORD_';
-            // $user->first_name = $soul->nric_fullname;
-            // $user->soul_id = $soul->id;
-            // $user->facebook_id = session('facebook_id');
-            // $user->save();
-            // $request->session()->forget('facebook_id');
-            // \Auth::login($user, true);
-            // return redirect()->intended('/');
-        } else {
-            // redirect to details
-            $request->session()->put('nric', $request->input('nric'));
-            return redirect('/auth/signup?nric=' . $request->input('nric'));
         }
+        // new signup
+        return redirect('/auth/signup?nric=' . $request->input('nric'));
     }
 
 }
