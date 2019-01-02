@@ -84,7 +84,11 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @include('event.bible_reading.part.logo')
+            <h1 class="ui center aligned icon header">
+              <a href="/">
+                <img id="logo" src="/images/OASIS_logo-01-320.jpg" alt="OASIS" style="position: relative; left: -1px;">
+              </a>
+            </h1>
             <div class="ui hidden divider"></div>
             <a href="/calendar" class="ui massive fluid black button lean">
                 Public Calendar
