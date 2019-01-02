@@ -53,11 +53,12 @@ class FacebookLoginController extends Controller
             $user = new User;
             $user->email = $socialiteFbUser->email;
             $user->password = '_FB_LOGIN_NO_PASSWORD_';
-            $user->first_name = $facebookUser->user['first_name'];
-            $user->last_name = $facebookUser->user['last_name'];
+            $user->first_name = $socialiteFbUser->user['first_name'];
+            $user->last_name = $socialiteFbUser->user['last_name'];
             $user->soul_id = null;
-            $user->facebook_id = $facebookUser->id;//session('facebook_id');
+            $user->facebook_id = $socialiteFbUser->id;
             $user->save();
+
             \Auth::login($user, true);
             return redirect('/auth/merge/nric');
         }
