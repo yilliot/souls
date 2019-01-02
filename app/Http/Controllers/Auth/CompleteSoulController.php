@@ -23,7 +23,7 @@ class CompleteSoulController extends Controller
     protected function postCompleteSoulForm(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email|unique:users,email|max:255',
+            'email' => 'required|email|unique:souls,email|max:255',
             'nric' => ['required',
                 'max:255',
                 'unique:souls,nric',
