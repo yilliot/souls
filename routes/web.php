@@ -48,52 +48,9 @@ Route::get('/i/', function(){
     ]);
     dd($response);
 });
-Route::get('/i/todo', function(){
-    return view('todo');
-});
 
 Route::group(['prefix' => 'event', 'namespace' => 'Event'], function () {
 
-    Route::group(['prefix' => 'vote', 'namespace' => 'Vote'], function () {
-
-        // Route::get('/supreme', 'SupremeController@s01');
-        // Route::post('/supreme', 'SupremeController@postS01');
-        // Route::get('/supreme/message', 'SupremeController@message');
-
-    });
-
-    Route::get('/3km', 'JustBeginController@home');
-    Route::get('/3km/signup', 'JustBeginController@signup');
-    Route::post('/3km/signup', 'JustBeginController@postSignup');
-    Route::get('/3km/checkin', 'JustBeginController@checkin');
-    Route::post('/3km/checkin', 'JustBeginController@postCheckin');
-    Route::get('/3km/recorded/{id}', 'JustBeginController@recorded');
-    Route::get('/3km/validation', 'JustBeginController@validation');
-    Route::get('/3km/search_claim', 'JustBeginController@searchClaim');
-    Route::get('/3km/admin_search_claim', 'JustBeginController@adminSearchClaim');
-    Route::get('/3km/claim', 'JustBeginController@claim');
-    Route::post('/3km/claim', 'JustBeginController@postClaim');
-
-    Route::group(['prefix' => 'bible_reading', 'namespace' => 'BibleReading'], function () {
-
-        Route::get('/', 'BibleReadingController@home');
-        Route::get('/signup', 'BibleReadingController@signup');
-        Route::get('/checkin', 'BibleReadingController@checkin');
-        Route::group(['middleware' => 'nric'], function() {
-            Route::get('/history', 'BibleReadingController@history');
-            Route::get('/history/{book}/{verse}', 'BibleReadingController@showHistory');
-            Route::get('/history/my', 'BibleReadingController@showMyHistory');
-        });
-        Route::get('/nric', 'BibleReadingController@nric');
-        Route::get('/logout', 'BibleReadingController@logout');
-
-        Route::post('/signup', 'BibleReadingController@postSignup');
-        Route::post('/checkin', 'BibleReadingController@postCheckin');
-        Route::post('/history', 'BibleReadingController@postHistory');
-        Route::post('/nric', 'BibleReadingController@postNric');
-
-        Route::get('/schedule', 'BibleReadingController@getSchedule');
-    });
 });
 
 ## SESSION
@@ -108,6 +65,10 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::get('/signup', 'RegisterController@showRegistrationForm');
     Route::post('/signup', 'RegisterController@postRegistrationForm');
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
+    Route::post('/login', 'LoginController@postLoginForm');
+    Route::get('/signup/nric', 'RegisterController@getMergeNric');
+    Route::post('/signup/nric', 'RegisterController@postMergeNric');
+
     Route::get('/merge/nric', 'LoginController@getMergeNric');
     Route::post('/merge/nric', 'LoginController@postMergeNric');
     Route::post('/logout', 'LoginController@logout')->name('logout');

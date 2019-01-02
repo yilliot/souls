@@ -41,6 +41,42 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function postMergeNric(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email|unique:users,email|max:255',
+            'password' => 'required|min:6|max:255',
+        ]);
+
+        $soul = Soul::find($request->input('soul_id'));
+
+        $user = new User;
+        $user->soul_id = $soul->id;
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->first_name = $soul->nickname;
+        $user->save();
+        \Auth::login($user, true);
+        return redirect()->intended('/');
+
+
+    }
+    public function getMergeNric(Request $request)
+    {
+        $soul = Soul::where('nric', $request->input('nric'))->first();
+
+        // if nric not found, redirect to signup
+        if (!$soul)
+            return redirect('/auth/signup');
+
+        // if already user, redirect
+        $user = User::where('soul_id', $soul->id)->first();
+        if ($user)
+            return redirect('/auth/login');
+
+        return view('auth.signup_merge_nric', compact('soul'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -59,10 +95,16 @@ class RegisterController extends Controller
     protected function postRegistrationForm(Request $request)
     {
         $this->validate($request, [
+            'email' => 'required|email|unique:users,email|max:255',
+            'password' => 'required|min:6|max:255',
+            'nric' => ['required',
+                'max:255',
+                'unique:souls,nric',
+                'regex:/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/',
+            ],
             'nric_fullname' => 'required|max:255',
-            'email' => 'required|email|unique:souls,email|max:255',
             'nickname' => 'required|max:255',
-            'contact' => 'required|between:6,12',
+            'contact' => 'required|between:10,11',
             'address1' => 'required|max:255',
             'address2' => 'required|max:255',
             'birthday' => 'required|date',
@@ -80,14 +122,15 @@ class RegisterController extends Controller
         $soul->address2 = $request->input('address2');
         $soul->postal_code = $request->input('postal_code');
         $soul->cellgroup_id = $request->input('cellgroup_id');
+        $soul->birthday = $request->input('birthday');
         $soul->save();
 
         $user = new User;
         $user->soul_id = $soul->id;
-        $user->facebook_id = $request->session()->pull('facebook_id');
+        // $user->facebook_id = $request->session()->pull('facebook_id');
         $user->email = $soul->email;
-        $user->password = '_FB_LOGIN_NO_PASSWORD_';
-        $user->first_name = $soul->nric_fullname;
+        $user->password = bcrypt($request->input('password'));
+        $user->first_name = $soul->nickname;
         $user->save();
         \Auth::login($user, true);
         return redirect()->intended('/');

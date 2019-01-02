@@ -7,7 +7,10 @@ Souls
 <h1 class="ui header">Souls</h1>
 <div class="ui segment">
   {!! Form::open(['url' => url()->current(), 'class' => 'ui form', 'method' => 'GET']) !!}
+    connect group :
     {!! Form::select('cellgroup_id', $cellgroups->pluck('name', 'id')->push(['all' => 'All']), $filter['cellgroup_id'], ['class' => 'ui dropdown']) !!}
+    status :
+    {!! Form::select('is_active', ['0' => 'Not active', '1' => 'Active', 'all' => 'All'], $filter['is_active'], ['class' => 'ui dropdown']) !!}
     <div class="clearfix field">
       <a href="{{ url()->current() }}" class="ui basic right floated right labeled icon tiny button">
         Reset <i class="undo icon"></i>
@@ -19,7 +22,7 @@ Souls
     <div class="ui hidden divider"></div>
   {!! Form::close() !!}
 </div>
-<table class="ui table">
+<table class="ui very compact table">
   <thead>
     <tr>
       <th >{!! sort_by('id', 'ID' ) !!}</th>
@@ -83,5 +86,5 @@ Souls
     @endforelse
   </tbody>
 </table>
-{{ $souls->links() }}
+{{ $souls->appends($filter)->links() }}
 @endsection
