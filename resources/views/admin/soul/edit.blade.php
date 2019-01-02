@@ -148,9 +148,6 @@ Update soul
           <a href="/admin/soul/{{$soul->id}}" class="ui teal basic button">
             View detail
           </a>
-          <button type="submit" class="ui red labeled icon right floated button">
-            Delete <i class="trash icon"></i>
-          </button>
         </th>
       </tr>
     </tfoot>

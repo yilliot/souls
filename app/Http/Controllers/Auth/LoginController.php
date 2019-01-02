@@ -40,6 +40,21 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    public function postLoginForm(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        if (\Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard');
+        }
+        return redirect()->back()->with('error', 'Error!')->with('message', trans('auth.failed'));
+    }
+
+
     public function getMergeNric()
     {
         return view('auth.merge_nric');

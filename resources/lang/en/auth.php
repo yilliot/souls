@@ -7,6 +7,8 @@ return [
         'greet' => 'Hi, there :)',
         'intro' => 'this is a robot, but let me identify you as a person.',
         'btn_fb' => 'Login with facebook',
+        'email' => 'email',
+        'password' => 'password',
     ],
 
     'merge_nric' => [
@@ -18,16 +20,18 @@ return [
 
 
     'signup' => [
-        'title' => 'New Signup ',
+        'login_info' => 'Login Info',
+        'basic_info' => 'Basic Info',
+        'title' => 'Signup ',
         'greet' => 'Ah, first time here huh?',
         'greet2' => 'We\'ll need some information from you to continue with the signup.',
-        'btn_signup' => 'Complete Signup',
+        'btn_signup' => 'Signup',
         'text_check' => 'please check your',
         'text_amend' => 'to amend',
         // soul field
-        'nickname' => 'Prefered name to call',
-        'nric' => 'IC / Passport number',
-        'nric_fullname' => 'Full name (follow IC / Passport)',
+        'nickname' => 'Nickname',
+        'nric' => 'IC number',
+        'nric_fullname' => 'Full name',
         'nric_fullname_placeholder' => 'Your full name (follow NRIC / Passport)',
         'email' => 'Email address',
         'address' => 'Address',

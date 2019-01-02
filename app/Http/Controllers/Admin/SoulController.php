@@ -18,11 +18,12 @@ class SoulController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = $request->only(['sortBy', 'order', 'cellgroup_id']);
+        $filter = $request->only(['sortBy', 'order', 'cellgroup_id', 'is_active']);
         $filter = array_default($filter, [
             'sortBy' => 'id',
             'order' => 'desc',
             'cellgroup_id' => 'all',
+            'is_active' => 'all',
         ]);
 
         $souls = Soul::with('cellgroup')
@@ -30,6 +31,9 @@ class SoulController extends Controller
 
         if ($filter['cellgroup_id'] !== 'all') {
             $souls = $souls->where('cellgroup_id', $filter['cellgroup_id']);
+        }
+        if ($filter['is_active'] !== 'all') {
+            $souls = $souls->where('is_active', $filter['is_active']);
         }
 
         $souls = $souls->paginate();

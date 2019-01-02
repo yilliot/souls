@@ -13,9 +13,9 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        Role::truncate();
-        DB::table('role_user')->truncate();
-        User::truncate();
+        // Role::truncate();
+        // DB::table('role_user')->truncate();
+        // User::truncate();
 
         $role = new Role();
         $roleRootAdmin = $role->create([
@@ -44,29 +44,6 @@ class UsersSeeder extends Seeder
             'slug' => 'pastoral',
             'description' => 'Pastoral'
         ]);
-
-        $default = [
-            'password' => bcrypt('secret'),
-            'remember_token' => str_random(10),
-            'created_at'=> \Carbon\Carbon::now(),
-        ];
-
-        DB::table('users')->insert($default + ['first_name' => 'Elliot', 'last_name' => 'Yap', 'email' => 'yilliot@gmail.com']);
-        DB::table('users')->insert($default + ['first_name' => 'Chin Pheng', 'last_name' => 'Tan', 'email' => 'tcpheng92@gmail.com']);
-        DB::table('users')->insert($default + ['first_name' => 'Woei Jye', 'last_name' => 'Lian', 'email' => 'ryanlian1992@gmail.com']);
-        DB::table('users')->insert($default + ['first_name' => 'Ruan Ching', 'last_name' => 'Yeo', 'email' => 'rcyang1006@gmail.com']);
-        DB::table('users')->insert($default + ['first_name' => 'Joshua', 'last_name' => 'Lew', 'email' => 'joshualew1.618@gmail.com']);
-
-        $default = [
-            'created_at'=> \Carbon\Carbon::now(),
-        ];
-        DB::table('role_user')->insert($default + ['role_id' => 1, 'user_id' => 1]);
-        DB::table('role_user')->insert($default + ['role_id' => 3, 'user_id' => 1]);
-        DB::table('role_user')->insert($default + ['role_id' => 2, 'user_id' => 2]);
-        DB::table('role_user')->insert($default + ['role_id' => 2, 'user_id' => 3]);
-        DB::table('role_user')->insert($default + ['role_id' => 2, 'user_id' => 4]);
-        DB::table('role_user')->insert($default + ['role_id' => 2, 'user_id' => 5]);
-
 
     }
 }

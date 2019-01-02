@@ -7,6 +7,8 @@ return [
         'greet' => '哟～我只是个机器人',
         'intro' => '能否让我更认识你',
         'btn_fb' => '使用面子书登入',
+        'email' => '电子邮箱',
+        'password' => '密码',
     ],
 
     'merge_nric' => [
@@ -17,18 +19,20 @@ return [
     ],
 
     'signup' => [
-        'title' => '申请',
-        'greet' => '啊，你是第一次来吗？',
+        'login_info' => '登入资料',
+        'basic_info' => '基本资料',
+        'title' => '注册',
+        'greet' => '你是第一次来吗？',
         'greet2' => '我需要您的一些资料来完成账户申请',
-        'btn_signup' => '完成申请',
+        'btn_signup' => '注册',
         'text_check' => '请检查您的',
         'text_amend' => '修正',
         // soul field
-        'nickname' => '平时称呼的名字',
-        'nric' => 'IC 身份证 / 护照编号',
+        'nickname' => '小名',
+        'nric' => 'IC 身份证',
         'nric_fullname_placeholder' => '你的全名 (根据 IC 身份证 / 护照)',
-        'nric_fullname' => '全名 (依据 IC 身份证 / 护照编号)',
-        'email' => 'Email 电邮信箱',
+        'nric_fullname' => '真实全名',
+        'email' => '电子邮箱',
         'address' => '住家地址',
         'address1' => '门牌，路名',
         'address2' => '花园，区域',
@@ -38,7 +42,7 @@ return [
         'cellgroup' => '小组',
     ],
 
-    'failed' => 'These credentials do not match our records.',
+    'failed' => '电子邮件或密码错误。',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
