@@ -36,7 +36,7 @@ class SoulController extends Controller
             $souls = $souls->where('is_active', $filter['is_active']);
         }
 
-        $souls = $souls->paginate();
+        $souls = $souls->paginate(150);
         $cellgroups = Cellgroup::get();
         return view('admin.soul.index', compact('souls', 'cellgroups', 'filter'));
     }

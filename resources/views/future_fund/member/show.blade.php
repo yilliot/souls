@@ -5,7 +5,8 @@ Future Fund
 @endsection
 
 @section('content')
-<h1 id="header" class="header bg-size">距离目标 <br> RM {{number_format($session_total-$session_collected, 2)}} </h1>
+<h1 id="header" class="header">{{trans('futurefund.target')}} <br> RM {{number_format($session_total-$session_collected, 2)}} </h1>
+
 <div class="bg-size bg-image bg-image-fade"></div>
 <div class="bg-size bg-image" style="width:{{$session_collected/$session_total*100}}%"></div>
 <div style="padding-top: 200px"></div>
@@ -13,11 +14,11 @@ Future Fund
 
 
 <div style="float:left">
-  <h4 class="ui header">已收 Collected Amount</h4>
+  <h4 class="ui header"> {{trans('futurefund.collected')}} </h4>
   <div>RM {{number_format($session_collected, 2)}}</div>
 </div>
 <div style="float:right; text-align: right">
-  <h4 class="ui header">总数 Total Pledge</h4>
+  <h4 class="ui header">{{trans('futurefund.total_pledge')}}</h4>
   <div>RM {{number_format($session_total, 2)}}</div>
 </div>
 <div style="clear:both"></div>
@@ -29,14 +30,14 @@ Future Fund
 </div>
 <div style="padding-top: 10px"></div>
 
-<div class="ui horizontal divider">{{$pledge->name}}'s <br> Pledge details 细明 </div>
+<div class="ui horizontal divider">{{$pledge->name}}'s <br> {{trans('futurefund.pledge_details')}} </div>
 
 <table class="ui unstackable table">
   <thead>
     <tr>
-      <th class="center aligned">总数 <br> Total Pledge</th>
-      <th class="center aligned">已收 <br> Collected</th>
-      <th class="center aligned">尚差 <br> Remain</th>
+      <th class="center aligned"> {{trans('futurefund.total_pledge')}} </th>
+      <th class="center aligned"> {{trans('futurefund.collected')}} </th>
+      <th class="center aligned"> {{trans('futurefund.balance')}} </th>
     </tr>
   </thead>
   <tr>
@@ -49,9 +50,9 @@ Future Fund
 <table class="ui unstackable compact table">
   <thead>
     <tr>
-      <th class="center aligned">Date</th>
-      <th class="center aligned">Amount</th>
-      <th class="center aligned">Status</th>
+      <th class="center aligned">{{trans('futurefund.date')}}</th>
+      <th class="center aligned">{{trans('futurefund.amount')}}</th>
+      <th class="center aligned">{{trans('futurefund.status')}}</th>
     </tr>
   </thead>
   <tbody>
@@ -86,12 +87,12 @@ Future Fund
   </tbody>
   <tfoot>
     <tr>
-      <th>Total</th>
+      <th>{{trans('futurefund.total')}}</th>
       <th colspan="2" class="right aligned"> RM {{number_format($payments->where('is_cancelled', false)->sum('amount'), 2)}} </th>
     </tr>
   </tfoot>
 </table>
-<a href="/ff/{{$ff_code}}/{{$pledge_code}}/payment" class="ui small fluid teal big button">记录缴付 Record payment</a>
+<a href="/ff/{{$ff_code}}/{{$pledge_code}}/payment" class="ui small fluid teal big button"> {{trans('futurefund.record_payment')}}</a>
 
 <div style="padding-top: 50px"></div>
 
