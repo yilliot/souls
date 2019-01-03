@@ -41,6 +41,19 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm(Request $request)
+    {
+        $soul = Soul::where('nric', $request->input('nric'))->first();
+
+        if ($soul && $soul->user)
+            return redirect('/auth/login');
+
+        if ($soul) {
+            return view('auth.signup_merge_nric', compact('soul'));
+        }
+        return view('auth.register');
+    }
+
     public function postMergeNric(Request $request)
     {
         $this->validate($request, [
@@ -60,36 +73,6 @@ class RegisterController extends Controller
         return redirect()->intended('/');
 
 
-    }
-    public function getMergeNric(Request $request)
-    {
-        $soul = Soul::where('nric', $request->input('nric'))->first();
-
-        // if nric not found, redirect to signup
-        if (!$soul)
-            return redirect('/auth/signup');
-
-        // if already user, redirect
-        $user = User::where('soul_id', $soul->id)->first();
-        if ($user)
-            return redirect('/auth/login');
-
-        return view('auth.signup_merge_nric', compact('soul'));
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
     }
 
     protected function postRegistrationForm(Request $request)
@@ -134,20 +117,5 @@ class RegisterController extends Controller
         $user->save();
         \Auth::login($user, true);
         return redirect()->intended('/');
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
     }
 }

@@ -22,5 +22,13 @@ class Soul extends Model
     {
         return $this->belongsTo(Cellgroup::class, 'cellgroup_id');
     }
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+    public function pledges()
+    {
+        return $this->hasMany(FutureFund\Pledge::class);
+    }
 
 }

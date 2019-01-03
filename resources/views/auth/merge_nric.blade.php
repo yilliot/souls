@@ -12,7 +12,7 @@
     <div class="field">
       <label for="nric">{{trans('auth.merge_nric.field_nric')}}</label>
       <div class="ui divider"></div>
-      <input name="nric" type="text" value="{{old('nric')}}" placeholder="930101-01-1234">
+      <input name="nric" type="text" value="{{old('nric', $nric)}}" placeholder="930101-01-1234">
     </div>
     <button class="ui fluid yellow button">{{trans('auth.merge_nric.btn_submit')}}</button>
   </form>

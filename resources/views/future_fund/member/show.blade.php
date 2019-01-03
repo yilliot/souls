@@ -4,10 +4,14 @@
 Future Fund
 @endsection
 
-<div id="secure" style="z-index:999; position: absolute;">
-  <a href="/auth/signup" class="ui mini button">secure your account with password</a>
-</div>
 @section('content')
+<div id="secure" style="z-index:999; position: fixed; top:0;left:0;right:0;">
+  @if ($pledge->soul && !$pledge->soul->user)
+    <a href="/auth/merge/nric?nric={{$pledge->soul->nric}}" class="ui mini red fluid button">secure your data by adding password</a>
+  @elseif(!$pledge->soul)
+    <a href="/auth/signup" class="ui mini red fluid button">secure your data with create an account</a>
+  @endif
+</div>
 <h1 id="header" class="header">{{trans('futurefund.target')}} <br> RM {{number_format($session_total-$session_collected, 2)}} </h1>
 
 <div class="bg-size bg-image bg-image-fade"></div>

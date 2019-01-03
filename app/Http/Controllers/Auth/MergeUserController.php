@@ -9,9 +9,10 @@ use App\Models\User;
 
 class MergeUserController extends Controller
 {
-    public function getMergeNric()
+    public function getMergeNric(Request $request)
     {
-        return view('auth.merge_nric');
+        $nric = $request->input('nric');
+        return view('auth.merge_nric', compact('nric'));
     }
 
     public function postMergeNric(Request $request)

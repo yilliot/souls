@@ -64,10 +64,10 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
     Route::get('/signup', 'RegisterController@showRegistrationForm');
     Route::post('/signup', 'RegisterController@postRegistrationForm');
+    Route::post('/signup/nric', 'RegisterController@postMergeNric');
+
     Route::get('/login', 'LoginController@showLoginForm')->name('login');
     Route::post('/login', 'LoginController@postLoginForm');
-    Route::get('/signup/nric', 'RegisterController@getMergeNric');
-    Route::post('/signup/nric', 'RegisterController@postMergeNric');
 
     Route::post('/logout', 'LoginController@logout')->name('logout');
 

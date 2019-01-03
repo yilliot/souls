@@ -12,8 +12,16 @@ class MemberController extends Controller
 {
     function index(Request $request, $ff_code)
     {
-
         $session = Session::where('code', $ff_code)->first();
+
+        if (\Auth::user()) {
+            $pledge = Pledge::where('ff_code_id', $session->id)
+                ->where('soul_id', \Auth::user()->soul->id)
+                ->first();
+            if ($pledge) {
+                return redirect('/ff/' . $ff_code . '/' . $pledge->code);
+             } 
+        }
 
         // SESSION TOTAL
         $pledges = Pledge::where('is_banned', false)
@@ -32,8 +40,20 @@ class MemberController extends Controller
 
     function show(Request $request, $ff_code, $pledge_code)
     {
-        $session = Session::where('code', $ff_code)->first();
         $pledge = Pledge::where('code', $pledge_code)->first();
+
+        // pledge has secured with user account, required login
+        if ($pledge->soul && $pledge->soul->user) {
+            if (\Auth::guest()) {
+                return redirect('/auth/login')->intended();
+            } else {
+                if (\Auth::user()->id !== $pledge->soul->user->id) {
+                    dd('invalid access');
+                }
+            }
+        }
+
+        $session = Session::where('code', $ff_code)->first();
 
         // SESSION TOTAL
         $pledges = Pledge::where('is_banned', false)
