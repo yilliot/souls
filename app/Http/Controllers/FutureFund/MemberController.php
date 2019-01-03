@@ -45,7 +45,7 @@ class MemberController extends Controller
         // pledge has secured with user account, required login
         if ($pledge->soul && $pledge->soul->user) {
             if (\Auth::guest()) {
-                return redirect('/auth/login')->intended('/');
+                \Auth::authenticate();
             } else {
                 if (\Auth::user()->id !== $pledge->soul->user->id) {
                     dd('invalid access');
