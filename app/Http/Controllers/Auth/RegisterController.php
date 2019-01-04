@@ -70,9 +70,10 @@ class RegisterController extends Controller
         $user->first_name = $soul->nickname;
         $user->save();
         \Auth::login($user, true);
+        if ($request->session()->has('after_login_url')) {
+            return redirect($request->session()->pull('after_login_url'));
+        }
         return redirect()->intended('/');
-
-
     }
 
     protected function postRegistrationForm(Request $request)
@@ -96,7 +97,7 @@ class RegisterController extends Controller
         ]);
 
         $soul = new Soul;
-        $soul->nric = $request->session()->pull('nric');
+        $soul->nric = $request->input('nric');
         $soul->nric_fullname = $request->input('nric_fullname');
         $soul->email = $request->input('email');
         $soul->nickname = $request->input('nickname');
@@ -110,12 +111,14 @@ class RegisterController extends Controller
 
         $user = new User;
         $user->soul_id = $soul->id;
-        // $user->facebook_id = $request->session()->pull('facebook_id');
         $user->email = $soul->email;
         $user->password = bcrypt($request->input('password'));
         $user->first_name = $soul->nickname;
         $user->save();
         \Auth::login($user, true);
+        if ($request->session()->has('after_login_url')) {
+            return redirect($request->session()->pull('after_login_url'));
+        }
         return redirect()->intended('/');
     }
 }

@@ -50,6 +50,9 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (\Auth::attempt($credentials)) {
+            if ($request->session()->has('after_login_url')) {
+                return redirect($request->session()->pull('after_login_url'));
+            }
             return redirect()->intended('/');
         }
         return redirect()->back()->with('error', 'Error!')->with('message', trans('auth.failed'))->withInput();

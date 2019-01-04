@@ -9,9 +9,10 @@ Future Fund
   @if ($pledge->soul && !$pledge->soul->user)
     <a href="/auth/merge/nric?nric={{$pledge->soul->nric}}" class="ui mini red fluid button">secure your data by adding password</a>
   @elseif(!$pledge->soul)
-    <a href="/auth/signup" class="ui mini red fluid button">secure your data with create an account</a>
+    <a href="/ff/ff2019/{{$pledge->code}}/signup" class="ui mini red fluid button">secure your data with create an account</a>
   @endif
 </div>
+
 <h1 id="header" class="header">{{trans('futurefund.target')}} <br> RM {{number_format($session_total-$session_collected, 2)}} </h1>
 
 <div class="bg-size bg-image bg-image-fade"></div>

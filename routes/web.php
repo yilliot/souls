@@ -15,6 +15,7 @@ Route::group(['prefix' => 'ff', 'namespace' => 'FutureFund'], function () {
     Route::get('/{ff_code}/{pledge_code}', 'MemberController@show');
     Route::get('/{ff_code}/{pledge_code}/payment', 'MemberController@getPaymentForm');
     Route::post('/{ff_code}/{pledge_code}/payment', 'MemberController@postPaymentForm');
+    Route::get('/{ff_code}/{pledge_code}/signup', 'MemberController@reSignup');
 });
 
 ## FORECAST

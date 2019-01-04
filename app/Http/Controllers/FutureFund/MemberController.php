@@ -10,6 +10,21 @@ use App\Models\FutureFund\Payment;
 
 class MemberController extends Controller
 {
+    function reSignup(Request $request, $ff_code, $pledge_code)
+    {
+        $url_pre = '/ff/' . $ff_code . '/' . $pledge_code;
+        $session = Session::where('code', $ff_code)->first();
+        $pledge = Pledge::where('code', $pledge_code)->first();
+        if (\Auth::user()) {
+            $pledge->soul_id = \Auth::user()->soul->id;
+            $pledge->save();
+            return redirect($url_pre);
+        } else {
+            session()->put('after_login_url', $url_pre . '/signup');
+            return redirect('/auth/merge/nric');
+        }
+    }
+
     function index(Request $request, $ff_code)
     {
         $session = Session::where('code', $ff_code)->first();
@@ -48,7 +63,7 @@ class MemberController extends Controller
                 \Auth::authenticate();
             } else {
                 if (\Auth::user()->id !== $pledge->soul->user->id) {
-                    dd('invalid access');
+                    abort(403, 'Unauthorized action.');
                 }
             }
         }

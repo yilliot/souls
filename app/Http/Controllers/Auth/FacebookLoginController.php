@@ -32,6 +32,9 @@ class FacebookLoginController extends Controller
         if($user) {
             // User exist, login
             \Auth::login($user, true);
+            if ($request->session()->has('after_login_url')) {
+                return redirect($request->session()->pull('after_login_url'));
+            }
             return redirect()->intended('/');
 
         } else {
