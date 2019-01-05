@@ -15,4 +15,7 @@ class Pledge extends Model
     public function soul() {
         return $this->belongsTo(Soul::class);
     }
+    public function session() {
+        return $this->belongsTo(Session::class);
+    }
 }

@@ -105,6 +105,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
             Route::get('/{id}', 'FutureFundController@pledgeIndex');
             Route::get('/{id}/pledge/create', 'FutureFundController@getPledgeForm');
             Route::post('/{id}/pledge/create', 'FutureFundController@postPledgeForm');
+            Route::get('/{id}/payment/pending', 'FutureFundController@paymentPendingIndex');
         });
         Route::get('service/{service}/attendance', 'AttendanceController@index');
         Route::group(['prefix' => 'attendance'], function() {

@@ -10,6 +10,15 @@ use App\Models\FutureFund\Payment;
 
 class FutureFundController extends Controller
 {
+    public function paymentPendingIndex(Request $request, $id)
+    {
+        $payments = Payment::where('is_cleared', false)
+            ->where('is_cancelled', false)
+            ->get();
+
+        return view('admin.ff.payment_pending_index', compact('payments', 'id'));
+    }
+
     public function getPledge(Request $request, $pledge_id)
     {
         $filter = $request->only(['sortBy', 'order', 'is_cleared', 'is_cancelled']);

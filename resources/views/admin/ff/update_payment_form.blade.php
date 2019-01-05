@@ -57,6 +57,9 @@ Add payment
           <a href="/admin/ff/pledge/{{$payment->pledge->id}}" class="ui cancel basic button">
             Back to pledge
           </a>
+          <a href="/admin/ff/{{$payment->pledge->session->id}}/payment/pending" class="ui orange button">
+            Back to pending's payment
+          </a>
         </th>
       </tr>
     </tfoot>

@@ -4,6 +4,7 @@ Souls
 @endsection
 @section('content')
 <a href="/admin/ff/{{$id}}/pledge/create" class="ui teal button right floated">New Pledge</a>
+<a href="/admin/ff/{{$id}}/payment/pending" class="ui orange button right floated">Pending Payments</a>
 <h1 class="ui header">Pledges</h1>
 <div class="ui segment">
     {!! Form::select('is_banned', ['0' => 'Not banned', '1' => 'Banned', 'all' => 'All'], $filter['is_banned'], ['class' => 'ui dropdown']) !!}
