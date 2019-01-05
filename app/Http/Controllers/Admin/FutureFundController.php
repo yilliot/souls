@@ -74,23 +74,38 @@ class FutureFundController extends Controller
         return view('admin.ff.pledge_index', compact('pledges', 'filter', 'id'));
     }
 
+    public function getUpdatePledgeForm(Request $request, $pledge_id)
+    {
+        $pledge = Pledge::find($pledge_id);
+        return view('admin.ff.update_pledge_form', compact('pledge'));
+    }
+    public function postUpdatePledgeForm(Request $request, $pledge_id)
+    {
+        $pledge = Pledge::find($pledge_id);
+        $pledge->name = $request->name;
+        $pledge->amount = $request->amount;
+        $pledge->is_banned = $request->is_banned;
+        $pledge->save();
+
+        return back()->with('success', 'success')->with('message', 'updated!');
+    }
     public function getPledgeForm(Request $request, $id)
     {
-        return view('admin.ff.pledge_form', compact('id'));
+        return view('admin.ff.create_pledge_form', compact('id'));
     }
     public function postPledgeForm(Request $request, $id)
     {
 
-        $service = new Pledge;
+        $pledge = new Pledge;
 
-        $service->session_id = $id;
-        $service->name = $request->name;
-        $service->amount = $request->amount;
-        $service->is_banned = 0;
-        $service->code = '-';
-        $service->save();
-        $service->code = $this->codes($service->id);
-        $service->save();
+        $pledge->session_id = $id;
+        $pledge->name = $request->name;
+        $pledge->amount = $request->amount;
+        $pledge->is_banned = 0;
+        $pledge->code = '-';
+        $pledge->save();
+        $pledge->code = $this->codes($pledge->id);
+        $pledge->save();
 
         return back()->with('success', 'success')->with('message', 'created!');
     }

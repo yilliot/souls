@@ -24,6 +24,7 @@ Souls
     <tr>
       <th >{!! sort_by('id', 'ID' ) !!}</th>
       <th  class="three wide">Name</th>
+      <th >Amount</th>
       <th >Status</th>
       <th >Created at</th>
       <th >Actions</th>
@@ -49,6 +50,10 @@ Souls
           </h5>
         </td>
         <td>
+          RM {{$pledge->payments()->sum('amount')}} /
+          RM {{$pledge->amount}}
+        </td>
+        <td>
           <div>
             @if ($pledge->is_banned)
               <div class="ui red label">banned</div>
@@ -61,7 +66,10 @@ Souls
         <td>
           <div class="ui small icon buttons">
             <a href="/admin/ff/pledge/{{$pledge->id}}" class="ui button">
-              <i class="money icon"></i>
+              <i class="green money icon"></i>
+            </a>
+            <a href="/admin/ff/pledge/update/{{$pledge->id}}" class="ui red button">
+              <i class="pencil icon"></i>
             </a>
           </div>
         </td>

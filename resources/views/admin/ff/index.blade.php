@@ -23,6 +23,7 @@ Souls
     <tr>
       <th >{!! sort_by('id', 'ID' ) !!}</th>
       <th  class="three wide">Name</th>
+      <th >Amount</th>
       <th >Status</th>
       <th >Created at</th>
       <th >Actions</th>
@@ -38,6 +39,9 @@ Souls
           <h5 class="ui header">
             {{ $ff->name }}
           </h5>
+        </td>
+        <td>
+          RM {{ $ff->pledges->sum('amount') }}
         </td>
         <td>
           <div>

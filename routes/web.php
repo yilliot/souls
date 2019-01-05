@@ -98,6 +98,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
         Route::group(['prefix' => 'ff'], function() {
             Route::get('/', 'FutureFundController@index');
             Route::get('/pledge/{pledge_id}', 'FutureFundController@getPledge');
+            Route::get('/pledge/update/{pledge_id}', 'FutureFundController@getUpdatePledgeForm');
+            Route::post('/pledge/update/{pledge_id}', 'FutureFundController@postUpdatePledgeForm');
             Route::get('/payment/create/{pledge_id}', 'FutureFundController@getCreatePaymentForm');
             Route::post('/payment/create/{pledge_id}', 'FutureFundController@postCreatePaymentForm');
             Route::get('/payment/update/{payment_id}', 'FutureFundController@getUpdatePaymentForm');
