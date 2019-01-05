@@ -23,7 +23,7 @@ class FacebookLoginController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(Request $request)
     {
         $facebookUser = Socialite::driver('facebook')->stateless()->user();
 
