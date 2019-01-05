@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('title')
-Add payment
+Update payment
 @endsection
 @section('content')
 <div class="ui text container">
-  <h1 class="ui header">Add payment for {{$payment->pledge->name}}</h1>
+  <h1 class="ui header">Update payment for {{$payment->pledge->name}}</h1>
   {!! Form::open(['url' => 'admin/ff/payment/update/' . $payment->id, 'method' => 'POST', 'class' => 'ui form']) !!}
   <table class="ui structured table">
     <tr class="field {{$errors->has('amount') ? 'error' : ''}}">
