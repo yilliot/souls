@@ -23,7 +23,7 @@ class SetupFutureFund extends Migration
 
         Schema::create('ff_pledges', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('ff_code_id')->unsigned()->index();
+            $table->integer('session_id')->unsigned()->index();
             $table->string('name');
             $table->string('code')->index();
             $table->decimal('amount', 12, 2);
@@ -33,7 +33,7 @@ class SetupFutureFund extends Migration
 
         Schema::create('ff_payments', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('ff_pledge_id')->unsigned()->index();
+            $table->integer('pledge_id')->unsigned()->index();
             $table->decimal('amount', 12, 2);
             $table->string('remarks');
             $table->boolean('is_cleared')->default(false)->index();

@@ -9,6 +9,6 @@ class Payment extends Model
     protected $table = 'ff_payments';
 
     public function pledge() {
-        return $this->hasMany(Pledge::class);
+        return $this->belongsTo(Pledge::class);
     }
 }

@@ -95,6 +95,17 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
      'middleware' => 'admin'
     ], function () {
+        Route::group(['prefix' => 'ff'], function() {
+            Route::get('/', 'FutureFundController@index');
+            Route::get('/pledge/{pledge_id}', 'FutureFundController@getPledge');
+            Route::get('/payment/create/{pledge_id}', 'FutureFundController@getCreatePaymentForm');
+            Route::post('/payment/create/{pledge_id}', 'FutureFundController@postCreatePaymentForm');
+            Route::get('/payment/update/{payment_id}', 'FutureFundController@getUpdatePaymentForm');
+            Route::post('/payment/update/{payment_id}', 'FutureFundController@postUpdatePaymentForm');
+            Route::get('/{id}', 'FutureFundController@pledgeIndex');
+            Route::get('/{id}/pledge/create', 'FutureFundController@getPledgeForm');
+            Route::post('/{id}/pledge/create', 'FutureFundController@postPledgeForm');
+        });
         Route::get('service/{service}/attendance', 'AttendanceController@index');
         Route::group(['prefix' => 'attendance'], function() {
             // forecast

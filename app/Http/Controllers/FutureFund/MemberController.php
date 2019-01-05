@@ -30,7 +30,7 @@ class MemberController extends Controller
         $session = Session::where('code', $ff_code)->first();
 
         if (\Auth::user()) {
-            $pledge = Pledge::where('ff_code_id', $session->id)
+            $pledge = Pledge::where('session_id', $session->id)
                 ->where('soul_id', \Auth::user()->soul->id)
                 ->first();
             if ($pledge) {
@@ -40,14 +40,14 @@ class MemberController extends Controller
 
         // SESSION TOTAL
         $pledges = Pledge::where('is_banned', false)
-            ->where('ff_code_id', $session->id)
+            ->where('session_id', $session->id)
             ->get();
         $session_total = $pledges->sum('amount');
         $pledgeIds = $pledges->pluck('id');
 
         // SESSION COLLECTED
         $session_collected = Payment::where('is_cleared', true)
-            ->whereIn('ff_pledge_id', $pledgeIds)
+            ->whereIn('pledge_id', $pledgeIds)
             ->sum('amount');
 
         return view('future_fund.member.index', compact('session', 'session_collected', 'session_total'));
@@ -72,14 +72,14 @@ class MemberController extends Controller
 
         // SESSION TOTAL
         $pledges = Pledge::where('is_banned', false)
-            ->where('ff_code_id', $session->id)
+            ->where('session_id', $session->id)
             ->get();
         $session_total = $pledges->sum('amount');
         $pledgeIds = $pledges->pluck('id');
 
         // SESSION COLLECTED
         $session_collected = Payment::where('is_cleared', true)
-            ->whereIn('ff_pledge_id', $pledgeIds)
+            ->whereIn('pledge_id', $pledgeIds)
             ->sum('amount');
 
         // PLEDGE TOTAL
@@ -87,10 +87,10 @@ class MemberController extends Controller
 
 
         // PLEDGE COLLECTED LIST
-        $payments = Payment::where('ff_pledge_id', $pledge->id)
+        $payments = Payment::where('pledge_id', $pledge->id)
             ->get();
 
-        $collected_payments = Payment::where('ff_pledge_id', $pledge->id)
+        $collected_payments = Payment::where('pledge_id', $pledge->id)
             ->where('is_cleared', true)
             ->get();
 
@@ -105,7 +105,7 @@ class MemberController extends Controller
         $session = Session::where('code', $ff_code)->first();
         $pledge = Pledge::where('code', $pledge_code)->first();
 
-        $collected_sum = Payment::where('ff_pledge_id', $pledge->id)
+        $collected_sum = Payment::where('pledge_id', $pledge->id)
             ->where('is_cancelled', false)
             ->sum('amount');
 
@@ -121,7 +121,7 @@ class MemberController extends Controller
         $pledge = Pledge::where('code', $pledge_code)->first();
 
         $payment = new Payment;
-        $payment->ff_pledge_id = $pledge->id;
+        $payment->pledge_id = $pledge->id;
         $payment->amount = $request->input('amount');
         $payment->remarks = $request->input('remarks');
         $payment->save();
