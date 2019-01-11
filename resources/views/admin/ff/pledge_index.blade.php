@@ -50,7 +50,8 @@ Souls
           </h5>
         </td>
         <td>
-          RM {{$pledge->payments()->sum('amount')}} /
+          [{{$pledge->cleared_payments()->count()}}]
+          RM {{$pledge->cleared_payments()->sum('amount')}} /
           RM {{$pledge->amount}}
         </td>
         <td>

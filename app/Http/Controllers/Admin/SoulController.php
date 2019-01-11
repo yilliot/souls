@@ -38,7 +38,7 @@ class SoulController extends Controller
 
         $souls = $souls->paginate(150);
         $cellgroups = Cellgroup::get();
-        return view('admin.soul.index', compact('souls', 'cellgroups', 'filter'));
+        return view('admin.soul.index', compact('souls', 'cellgroups', 'filter', 'request'));
     }
 
     /**

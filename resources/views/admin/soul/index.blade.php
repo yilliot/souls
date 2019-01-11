@@ -7,8 +7,11 @@ Souls
 <h1 class="ui header">Souls</h1>
 <div class="ui segment">
   {!! Form::open(['url' => url()->current(), 'class' => 'ui form', 'method' => 'GET']) !!}
-    connect group :
-    {!! Form::select('cellgroup_id', $cellgroups->pluck('name', 'id')->push(['all' => 'All']), $filter['cellgroup_id'], ['class' => 'ui dropdown']) !!}
+    <div class="ui tiny group buttons">
+      @foreach ($cellgroups as $cellgroup)
+        <a href="{{$request->fullUrlWithQuery(['cellgroup_id' => $cellgroup->id])}}" class="ui button"> {{$cellgroup->name}} </a>
+      @endforeach
+    </div>
     status :
     {!! Form::select('is_active', ['0' => 'Not active', '1' => 'Active', 'all' => 'All'], $filter['is_active'], ['class' => 'ui dropdown']) !!}
     <div class="clearfix field">
