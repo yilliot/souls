@@ -96,6 +96,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
      'middleware' => 'admin'
     ], function () {
         Route::group(['prefix' => 'ff'], function() {
+            Route::get('/print', 'FutureFundController@getPrint');
             Route::get('/', 'FutureFundController@index');
             Route::get('/pledge/{pledge_id}', 'FutureFundController@getPledge');
             Route::get('/pledge/update/{pledge_id}', 'FutureFundController@getUpdatePledgeForm');

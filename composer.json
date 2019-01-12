@@ -17,6 +17,7 @@
         "laravelcollective/html": "^5.3.0",
         "optimus/heimdal": "^1.2",
         "twilio/sdk": "^5.5",
+        "simplesoftwareio/simple-qrcode": "~2",
         "tymon/jwt-auth": "0.5.*"
     },
     "require-dev": {

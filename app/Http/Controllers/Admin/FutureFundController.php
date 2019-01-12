@@ -150,6 +150,11 @@ class FutureFundController extends Controller
         return back()->with('success', 'success')->with('message', 'updated!');
     }
 
+    public function getPrint(Request $request) {
+        $pledges = Pledge::whereIn('id', $request->input('ids'))->get();
+        return view('admin.ff.print', compact('pledges'));
+    }
+
     public function codes($index)
     {
         return [
