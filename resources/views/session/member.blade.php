@@ -10,7 +10,7 @@ Invitation
   {{-- <a href="/auth/redirect/nric?redirect_url=/invite/member" class="ui mini red fluid button">click here if you're a member</a> --}}
 </div>
 
-<h1 class="ui header">{{$soul}}'s calendar</h1>
+<div class="ui horizontal divider">{{$soul}}'s calendar</div>
 <table class="ui very compact unstackable table">
   <thead>
     <tr>

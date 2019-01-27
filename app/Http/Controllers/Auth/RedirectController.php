@@ -16,6 +16,11 @@ class RedirectController extends Controller
     }
     public function postNric(Request $request)
     {
+        $this->validate($request, [
+            'nric' => [
+                'exists:souls,nric',
+            ],
+        ]);
         $soul = Soul::where('nric', $request->input('nric'))->first();
         if ($soul) {
             return redirect($request->input('redirect_url').'?nric='.$soul->nric);

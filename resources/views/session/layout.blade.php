@@ -10,7 +10,10 @@
   <link href="{{ asset('css/future-fund.css') }}" rel="stylesheet">
 </head>
 <body>
-  <a href="/">Home</a>
+  <a style="text-align: center; width: 100%; display: block;" href="/">
+    <img id="logo" src="/images/OASIS_logo-01-320.jpg" alt="OASIS">
+  </a>
+
   @yield('pre-body')
   <div id="maincontent" class="ui main container">
     <div id="bible-reading-container">
