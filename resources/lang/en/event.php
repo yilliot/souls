@@ -95,7 +95,7 @@ return [
         'postal_code' => 'Postal Code',
         'contact' => 'Phone number',
         'birthday' => 'Birthday',
-        'cellgroup' => 'Cellgroup',
+        'cellgroup' => 'CG',
         'signup_already' => 'Already signup, let\'s read bible!',
         'signup_now' => 'Don\'t have account yet? Sign up now!',
         'login' => 'Log In',

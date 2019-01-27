@@ -124,7 +124,7 @@ return [
         'address1' => 'Jalan, Street',
         'address2' => 'Taman, District',
         'contact' => 'Phone number',
-        'cellgroup_id' => 'Cellgroup',
+        'cellgroup_id' => 'CG',
         'meters' => 'KM',
         'minutes' => 'Minutes',
         'screenshot_path' => 'Photo / Screenshot',

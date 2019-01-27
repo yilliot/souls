@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Soul;
-use App\Models\Cellgroup;
+use App\Models\CG;
 use App\Http\Requests\NewSoulRequest;
 use App\Http\Requests\UpdateSoulRequest;
 
@@ -37,7 +37,7 @@ class SoulController extends Controller
         }
 
         $souls = $souls->paginate(150);
-        $cellgroups = Cellgroup::get();
+        $cellgroups = CG::get();
         return view('admin.soul.index', compact('souls', 'cellgroups', 'filter', 'request'));
     }
 

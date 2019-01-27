@@ -94,8 +94,8 @@
                 Future Fund 2019
             </a>
             <div class="ui hidden divider"></div>
-            <a href="/calendar" class="ui massive fluid black button lean">
-                Public Calendar
+            <a href="/invite" class="ui massive fluid black button lean">
+                Calendar
             </a>
             
             {{-- <div class="content">

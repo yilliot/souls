@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('title')
-Services
+Sessions
 @endsection
 @section('content')
-<a href="/admin/service/create" class="ui teal button right floated">New service</a>
-<h1 class="ui header">Services</h1>
+<a href="/admin/session/add" class="ui teal button right floated">Create session</a>
+<h1 class="ui header">Sessions</h1>
 <div class="ui segment">
   {!! Form::open(['url' => url()->current(), 'class' => 'ui form', 'method' => 'GET']) !!}
     <div class="inline field">
@@ -27,15 +27,14 @@ Services
 <table class="ui table">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Time</th>
+      <th>When</th>
       <th class="three wide">Topic</th>
-      <th>Pastor</th>
+      <th>Speaker/Host</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-  @forelse ($chunk_services as $key => $services)
+  @forelse ($chunk_sessions as $key => $sessions)
     <thead>
       <tr>
         <th colspan="5" class="center aligned">
@@ -43,26 +42,31 @@ Services
         </th>
       </tr>
     </thead>
-    @foreach ($services as $service)
+    @foreach ($sessions as $session)
       <tr>
-        <td> {{$service->at->format('M d')}} </td>
-        <td>  {{$service->at->format('h:i a')}} </td>
+        <td>
+          {{$session->start_at->format('M d')}}
+          @if ($session->is_church_wide)
+            <i class="teal users icon"></i>
+          @endif
+          <br> {{$session->start_at->format('h:i a')}}
+        </td>
         <td>
           <h4 class="ui header">
-            {{$service->topic}}
+            {{$session->title}}
             <div class="sub header">
-              {{$service->type}}
+              {{$session->type}}
             </div>
           </h4>
         </td>
-        <td> {{$service->speaker}} </td>
+        <td> {{$session->speaker}} </td>
         <td>
           <div class="ui small icon buttons">
-            <a href="/admin/service/{{$service->id}}/edit" class="ui teal button">
+            <a href="/admin/session/edit/{{$session->id}}" class="ui teal button">
               <i class="edit icon"></i>
             </a>
-            <a href="/admin/service/{{$service->id}}" class="ui button">
-              <i class="eye icon"></i>
+            <a href="/admin/session/{{$session->id}}/invitations" class="ui orange button">
+              <i class="users icon"></i>
             </a>
           </div>
         </td>
@@ -70,10 +74,10 @@ Services
     @endforeach
   @empty
     <tr>
-      <td colspan="5"> No services, change filter or come back later </td>
+      <td colspan="5"> No sessions, change filter or come back later </td>
     </tr>
   @endforelse
   </tbody>
 </table>
-{{ $page_services->links() }}
+{{ $page_sessions->links() }}
 @endsection

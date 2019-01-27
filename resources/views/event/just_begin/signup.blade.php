@@ -111,7 +111,7 @@
         @endif
       </div>
       <div class="field {{$errors->has('cellgroup_id') ? 'error' : ''}}">
-        {{ Form::select('cellgroup_id', \App\Models\Cellgroup::get()->pluck('name', 'id'), null, ['class'=>'ui compact search dropdown', 'placeholder' => 'Cellgroup'] ) }}
+        {{ Form::select('cellgroup_id', \App\Models\CG::get()->pluck('name', 'id'), null, ['class'=>'ui compact search dropdown', 'placeholder' => 'CG'] ) }}
         @if ($errors->has('cellgroup_id'))
           <label > * {{ $errors->first('cellgroup_id') }}</label>
         @endif

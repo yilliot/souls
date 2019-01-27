@@ -30,7 +30,7 @@ Souls
     <tr>
       <th >{!! sort_by('id', 'ID' ) !!}</th>
       <th  class="three wide">Name</th>
-      <th >Cellgroup</th>
+      <th >CG</th>
       <th >Status</th>
       <th >Created at</th>
       <th >Actions</th>

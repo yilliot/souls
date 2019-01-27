@@ -9,6 +9,13 @@ Route::group(['prefix' => 'telegram-bot', 'namespace' => 'TelegramBot'], functio
     });
 });
 
+## Invite
+Route::group(['prefix' => 'invite', 'namespace' => 'Session'], function () {
+    Route::get('/', 'InviteController@index'); // public
+    Route::get('/member', 'InviteController@member'); // member
+    Route::post('/response', 'InviteController@postResponse'); // member
+});
+
 ## FutureFund
 Route::group(['prefix' => 'ff', 'namespace' => 'FutureFund'], function () {
     Route::get('/{ff_code}', 'MemberController@index');
@@ -63,6 +70,9 @@ Route::group(['prefix' => 'session', 'namespace' => 'Session'], function () {
 ## AUTH
 Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 
+    Route::get('/redirect/nric', 'RedirectController@getNric');
+    Route::post('/redirect/nric', 'RedirectController@postNric');
+
     Route::get('/signup', 'RegisterController@showRegistrationForm');
     Route::post('/signup', 'RegisterController@postRegistrationForm');
     Route::post('/signup/nric', 'RegisterController@postMergeNric');
@@ -95,6 +105,7 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
      'middleware' => 'admin'
     ], function () {
+        Route::get('/', 'AdminController@index');
         Route::group(['prefix' => 'ff'], function() {
             Route::get('/print', 'FutureFundController@getPrint');
             Route::get('/', 'FutureFundController@index');
@@ -110,7 +121,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
             Route::post('/{id}/pledge/create', 'FutureFundController@postPledgeForm');
             Route::get('/{id}/payment/pending', 'FutureFundController@paymentPendingIndex');
         });
-        Route::get('service/{service}/attendance', 'AttendanceController@index');
+        Route::get('session/{session}/attendance', 'AttendanceController@index');
         Route::group(['prefix' => 'attendance'], function() {
             // forecast
             Route::post('add', 'AttendanceController@postAdd');
@@ -124,7 +135,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
             Route::delete('visitor', 'AttendanceController@postDeleteVisitor');
         });
 
-        Route::resource('service', 'ServiceController');
+        Route::group(['prefix' => 'session'], function() {
+            Route::get('/', 'SessionController@index');
+            Route::get('add', 'SessionController@getCreateSessionForm');
+            Route::post('add', 'SessionController@postCreateSessionForm');
+            Route::get('edit/{id}', 'SessionController@getEditSessionForm');
+            Route::post('edit/{id}', 'SessionController@postEditSessionForm');
+            Route::get('{id}', 'SessionController@getSession');
+            Route::get('{id}/invitations', 'SessionController@getInvitations');
+            Route::post('{id}/invitations', 'SessionController@postInvitations');
+        });
+
         Route::resource('soul', 'SoulController');
 });
 

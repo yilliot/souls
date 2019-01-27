@@ -4,7 +4,7 @@ namespace App\Models\Events;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Soul;
-use App\Models\Cellgroup;
+use App\Models\CG;
 
 class JustBeginRecord extends Model
 {
@@ -27,7 +27,7 @@ class JustBeginRecord extends Model
     }
     public function cellgroup()
     {
-        return $this->belongsTo(Cellgroup::class, 'cellgroup_id');
+        return $this->belongsTo(CG::class, 'cellgroup_id');
     }
 
 }

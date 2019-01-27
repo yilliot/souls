@@ -26,9 +26,9 @@ class UsersSeeder extends Seeder
 
         $role = new Role();
         $roleCgl = $role->create([
-            'name' => 'Cellgroup Leader',
+            'name' => 'CG Leader',
             'slug' => 'cgl',
-            'description' => 'Cellgroup Leader'
+            'description' => 'CG Leader'
         ]);
 
         $role = new Role();

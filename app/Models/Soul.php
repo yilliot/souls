@@ -20,7 +20,7 @@ class Soul extends Model
     }
     public function cellgroup()
     {
-        return $this->belongsTo(Cellgroup::class, 'cellgroup_id');
+        return $this->belongsTo(CG::class, 'cellgroup_id');
     }
     public function user()
     {

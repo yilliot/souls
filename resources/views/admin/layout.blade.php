@@ -12,10 +12,11 @@
 <body>
   <div class="ui fixed inverted menu">
     <div class="ui container">
-      <a href="/admin/service" class="header item">
+      <a href="/admin" class="header item">
         OASIS
       </a>
 
+      <a class="{{Request::is('admin/session*')?'active':''}} item" href="/admin/session">Sessions</a>
       <a class="{{Request::is('admin/soul*')?'active':''}} item" href="/admin/soul">Souls</a>
       <a class="{{Request::is('admin/ff*')?'active':''}} item" href="/admin/ff">Future</a>
 
