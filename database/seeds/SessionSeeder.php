@@ -14,6 +14,7 @@ class SessionSeeder extends Seeder
         DB::table('session_types')->insert(['name' => 'Saturday Service']);
         DB::table('session_types')->insert(['name' => 'Sunday Service']);
         DB::table('session_types')->insert(['name' => 'Children Service']);
+        DB::table('session_types')->insert(['name' => 'Special Service']);
         DB::table('session_types')->insert(['name' => 'Connect Group']);
         DB::table('session_types')->insert(['name' => 'Leaders Training']);
 
