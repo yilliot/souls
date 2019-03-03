@@ -3,7 +3,7 @@
 ## Souls
 ## User
 
-## Cellgroup
+## CG
 ## Ministry
 ## MinistryGroup
 

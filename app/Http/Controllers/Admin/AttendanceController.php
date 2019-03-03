@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Soul;
-use App\Models\Cellgroup;
+use App\Models\CG;
 use App\Models\ServiceVisitor;
 use App\Models\ServiceAttendance;
 
@@ -14,7 +14,7 @@ class AttendanceController extends Controller
 {
     public function index(Request $request, $service)
     {
-        $cellgroup = Cellgroup::find($request->cellgroup);
+        $cellgroup = CG::find($request->cellgroup);
         $attendances = ServiceAttendance::with('soul', 'visitors')
             ->where('service_id', $service)
             ->where('cellgroup_id', $request->get('cellgroup'))
@@ -36,7 +36,7 @@ class AttendanceController extends Controller
         }
     }
 
-    public function doForecast(Request $request, Service $service, Cellgroup $cellgroup, $attendances, $visitors)
+    public function doForecast(Request $request, Service $service, CG $cellgroup, $attendances, $visitors)
     {
         $souls = Soul::where('cellgroup_id', $request->get('cellgroup'))
             ->orderBy('created_at', 'desc')
@@ -55,7 +55,7 @@ class AttendanceController extends Controller
         ]));
     }
 
-    public function doAttendance(Request $request, Service $service, Cellgroup $cellgroup, $attendances, $visitors)
+    public function doAttendance(Request $request, Service $service, CG $cellgroup, $attendances, $visitors)
     {
         return view('admin.service.attendance', compact([
             'service',

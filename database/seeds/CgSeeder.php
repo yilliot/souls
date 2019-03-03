@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Kodeine\Acl\Models\Eloquent\Role;
 use App\Models\Soul;
-use App\Models\Cellgroup;
+use App\Models\CG;
 
 class CgSeeder extends Seeder
 {
@@ -14,7 +14,7 @@ class CgSeeder extends Seeder
      */
     public function run()
     {
-        Cellgroup::truncate();
+        CG::truncate();
         Soul::truncate();
 
         $default = [

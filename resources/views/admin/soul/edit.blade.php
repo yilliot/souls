@@ -10,10 +10,10 @@ Update soul
   <table class="ui structured table">
     <tr class="field {{$errors->has('cellgroup') ? 'error' : ''}}">
       <td>
-        <b>Cellgroup</b>
+        <b>CG</b>
       </td>
       <td>
-        {{ Form::select('cellgroup', \App\Models\Cellgroup::all()->pluck('name', 'id'), $soul->cellgroup_id, ['class' => 'ui fluid dropdown', 'placeholder' => 'Choose a cellgroup']) }}
+        {{ Form::select('cellgroup', \App\Models\CG::all()->pluck('name', 'id'), $soul->cellgroup_id, ['class' => 'ui fluid dropdown', 'placeholder' => 'Choose a cellgroup']) }}
         @if ($errors->has('cellgroup'))
           <span class="ui red pointing label"> {{ $errors->first('cellgroup') }}</span>
         @endif

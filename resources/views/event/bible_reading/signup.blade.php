@@ -97,7 +97,7 @@ Bible Reading Sign up
       @endif
     </div>
     <div class="field {{$errors->has('cellgroup_id') ? 'error' : ''}}">
-      {{ Form::select('cellgroup_id', \App\Models\Cellgroup::get()->pluck('name', 'id'), null, ['class'=>'ui compact search dropdown', 'id'=>'cellgroup', 'placeholder' => trans('event.bible_reading.cellgroup')] ) }}
+      {{ Form::select('cellgroup_id', \App\Models\CG::get()->pluck('name', 'id'), null, ['class'=>'ui compact search dropdown', 'id'=>'cellgroup', 'placeholder' => trans('event.bible_reading.cellgroup')] ) }}
       @if ($errors->has('cellgroup_id'))
         <label > * {{ $errors->first('cellgroup_id') }}</label>
       @endif

@@ -1,28 +1,30 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Session;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\CG;
+use App\Models\Soul;
 
 class ServiceAttendance extends Model
 {
-    protected $table = 'service_attendances';
+    protected $table = 'session_attendances';
 
     public function visitors()
     {
         return $this->hasMany(ServiceVisitor::class, 'attendance_id');
     }
-    public function cellgroup()
+    public function cg()
     {
-        return $this->belongsTo(Cellgroup::class, 'cellgroup_id');
+        return $this->belongsTo(CG::class, 'cellgroup_id');
     }
     public function soul()
     {
         return $this->belongsTo(Soul::class, 'soul_id');
     }
-    public function service()
+    public function session()
     {
-        return $this->belongsTo(Service::class, 'service_id');
+        return $this->belongsTo(Session::class, 'session_id');
     }
 
 }

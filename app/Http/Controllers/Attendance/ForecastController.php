@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use App\Models\Soul;
-use App\Models\Cellgroup;
+use App\Models\CG;
 
 class ForecastController extends Controller
 {
@@ -26,7 +26,7 @@ class ForecastController extends Controller
     }
     public function getService(Request $request, $id)
     {
-        $cg = Cellgroup::find(\Auth::user()->soul->cellgroup_id);
+        $cg = CG::find(\Auth::user()->soul->cellgroup_id);
         $members = Soul::where('cellgroup_id', $cg->id)
             ->where('is_active', true)
             ->get();

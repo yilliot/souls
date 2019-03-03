@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cellgroup extends Model
+class CG extends Model
 {
     protected $table = 'cellgroups';
 
@@ -34,6 +34,11 @@ class Cellgroup extends Model
     public function members()
     {
         return $this->hasMany(Soul::class, 'cellgroup_id');
+    }
+
+    public function scopeActive()
+    {
+        return $this->where('is_active', true);
     }
 
 }

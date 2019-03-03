@@ -55,7 +55,7 @@ Service details
     <table class="ui striped unstackable compact table">
       <thead>
         <tr>
-          <th>Cellgroup</th>
+          <th>CG</th>
           <th>Forecast</th>
           <th>Attendance</th>
         </tr>

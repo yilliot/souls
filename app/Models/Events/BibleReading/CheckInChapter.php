@@ -3,7 +3,6 @@
 namespace App\Models\Events\BibleReading;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Cellgroup;
 use App\Models\Events\BibleReading\CheckIn;
 use App\Models\Events\BibleReading\Chapter;
 use App\Models\Events\BibleReading\Comment;

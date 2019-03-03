@@ -17,7 +17,7 @@
  - update soul profile
 
 
-## Cellgroup Leader ( Pastoral )
+## CG Leader ( Pastoral )
 
  - service forecast
  - service attendance
