@@ -13,10 +13,11 @@ class SetupFollower extends Migration
      */
     public function up()
     {
-        Schema::create('soul_leaders', function(Blueprint $table) {
+        Schema::create('soul_leader_followers', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('leader_id')->unsigned()->index();
-            $table->integer('soul_id')->unsigned()->index();
+            $table->integer('follower_id')->unsigned()->index();
+            $table->timestamps();
         });
         Schema::create('soul_connects', function(Blueprint $table) {
             $table->increments('id');
@@ -24,6 +25,7 @@ class SetupFollower extends Migration
             $table->datetime('start_at')->index();
             $table->boolean('is_public')->index()->default(false);
             $table->text('infomation');
+            $table->timestamps();
         });
         Schema::create('soul_connect_members', function(Blueprint $table) {
             $table->increments('id');
@@ -31,6 +33,7 @@ class SetupFollower extends Migration
             $table->integer('member_id')->unsigned()->index();
             $table->boolean('is_coming')->nullable();
             $table->boolean('is_attended')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -41,6 +44,8 @@ class SetupFollower extends Migration
      */
     public function down()
     {
-        Schema::drop('soul_leaders');
+        Schema::drop('soul_leader_followers');
+        Schema::drop('soul_connects');
+        Schema::drop('soul_connect_members');
     }
 }
