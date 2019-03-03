@@ -157,6 +157,27 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
         });
 
         Route::resource('soul', 'SoulController');
+
+        Route::group(['prefix' => 'leader'], function() {
+            Route::group(['prefix' => 'follower'], function() {
+                Route::get('/', 'FollowerController@index');
+                Route::get('add', 'FollowerController@getAddFollowerForm');
+                Route::post('add', 'FollowerController@postAddFollowerForm');
+                Route::post('remove', 'FollowerController@postRemoveFollower');
+            });
+            Route::group(['prefix' => 'connect'], function() {
+                Route::get('/', 'ConnectController@index');
+                Route::get('add', 'ConnectController@getAddConnectForm');
+                Route::post('add', 'ConnectController@postAddConnectForm');
+                Route::get('show', 'ConnectController@getShowConnect');
+                Route::get('invite', 'ConnectController@getInviteFollowerForm');
+                Route::post('invite', 'ConnectController@postInviteFollowerForm');
+                Route::get('edit/{id}', 'ConnectController@getEditConnectForm');
+                Route::post('edit/{id}', 'ConnectController@postEditConnectForm');
+                Route::post('remove', 'ConnectController@postRemoveConnect');
+            });
+        });
+
 });
 
 ## CGL
