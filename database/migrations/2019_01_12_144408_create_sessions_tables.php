@@ -41,6 +41,7 @@ class CreateSessionsTables extends Migration
             $table->datetime('end_at')->nullable()->index();
             $table->boolean('is_church_wide')->default(true)->index();
             $table->integer('cg_id')->nullable()->unsigned()->index();
+            $table->text('remarks')->nullable();
 
             $table->integer('created_by')->index();
 

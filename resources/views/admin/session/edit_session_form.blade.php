@@ -8,6 +8,12 @@ Update session
   {!! Form::open(['url' => 'admin/session/edit/'.$session->id, 'method' => 'POST', 'class' => 'ui form']) !!}
   <table class="ui structured table">
     <tr>
+      <td><b>Type</b></td>
+      <td>
+        {{ Form::select('type', \App\Models\Session\SessionType::all()->pluck('name', 'id'), $session->type_id, ['class' => 'ui fluid dropdown']) }}
+      </td>
+    </tr>
+    <tr>
       <td><b>Start Date</b></td>
       <td class="twelve wide">
         <input type="date" name="start_date" value="{{ $session->start_at->toDateString() }}">
@@ -29,12 +35,6 @@ Update session
       <td><b>End Time</b></td>
       <td>
         <input type="time" name="end_time" value="{{ $session->end_at ? $session->end_at->toTimeString() : '' }}">
-      </td>
-    </tr>
-    <tr>
-      <td><b>Type</b></td>
-      <td>
-        {{ Form::select('type', \App\Models\Session\SessionType::all()->pluck('name', 'id'), $session->type_id, ['class' => 'ui fluid dropdown']) }}
       </td>
     </tr>
     <tr>
@@ -65,6 +65,12 @@ Update session
       <td><b>Connect Group ?</b></td>
       <td>
         {{ Form::select('cg_id', \App\Models\CG::all()->pluck('name', 'id')->prepend(['0'=>'-']), $session->cg_id, ['class' => 'ui fluid dropdown']) }}
+      </td>
+    </tr>
+    <tr>
+      <td><b>Remarks</b></td>
+      <td>
+        <textarea name="remarks" rows="3">{{$session->remarks}}</textarea>
       </td>
     </tr>
     <tfoot class="full-width">

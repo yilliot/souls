@@ -9,7 +9,7 @@ Route::group(['prefix' => 'telegram-bot', 'namespace' => 'TelegramBot'], functio
     });
 });
 
-## Invite
+## Invite Service
 Route::group(['prefix' => 'invite', 'namespace' => 'Session'], function () {
     Route::get('/', 'InviteController@index'); // public
     Route::get('/member', 'InviteController@member'); // member
@@ -144,6 +144,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
             Route::get('{id}', 'SessionController@getSession');
             Route::get('{id}/invitations', 'SessionController@getInvitations');
             Route::post('{id}/invitations', 'SessionController@postInvitations');
+        });
+
+        ## Mgmt CG
+        Route::group(['prefix' => 'cg'], function() {
+            Route::get('/', 'CgController@index');
+            Route::get('add', 'CgController@getCreateCgForm');
+            Route::post('add', 'CgController@postCreateCgForm');
+            Route::get('edit/{id}', 'CgController@getEditCgForm');
+            Route::post('edit/{id}', 'CgController@postEditCgForm');
+            Route::get('{id}', 'CgController@getCg');
         });
 
         Route::resource('soul', 'SoulController');
