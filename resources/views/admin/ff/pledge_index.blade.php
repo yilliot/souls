@@ -19,20 +19,19 @@ Souls
     <div class="ui hidden divider"></div>
   {!! Form::close() !!}
 </div>
-<table class="ui very compact table">
+<table class="ui very compact unstackable table">
   <thead>
     <tr>
       <th >{!! sort_by('id', 'ID' ) !!}</th>
       <th  class="three wide">Name</th>
       <th >Amount</th>
-      <th >Status</th>
       <th >Created at</th>
       <th >Actions</th>
     </tr>
   </thead>
   <tbody>
     @forelse ($pledges as $pledge)
-      <tr>
+      <tr class="{{$pledge->is_banned ? 'negative' : ''}}">
         <td>
           <h5 class="ui header">
             {{ prefix()->wrap($pledge) }}
@@ -53,13 +52,6 @@ Souls
           [{{$pledge->cleared_payments()->count()}}]
           RM {{$pledge->cleared_payments()->sum('amount')}} /
           RM {{$pledge->amount}}
-        </td>
-        <td>
-          <div>
-            @if ($pledge->is_banned)
-              <div class="ui red label">banned</div>
-            @endif
-          </div>
         </td>
         <td>
           {{ $pledge->created_at->format('Y-m-d') }}
