@@ -74,8 +74,6 @@ class CreateCoreTables extends Migration
             // relation
             $table->increments('id');
             $table->integer('cellgroup_id')->unsigned()->nullable()->index();
-            $table->integer('baptism_id')->unsigned()->nullable()->index();
-            $table->string('baptism_serial')->nullable();
 
             // status
             $table->boolean('is_active')->default(true)->index();

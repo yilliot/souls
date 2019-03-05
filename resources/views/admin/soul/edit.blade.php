@@ -8,57 +8,18 @@ Update soul
   {!! Form::open(['url' => 'admin/soul/' . $soul->id, 'method' => 'POST', 'class' => 'ui form']) !!}
   {{ method_field('PUT') }}
   <table class="ui structured table">
-    <tr class="field {{$errors->has('cellgroup') ? 'error' : ''}}">
+    <tr class="field {{$errors->has('nickname') ? 'error' : ''}}">
       <td>
-        <b>CG</b>
+        <b>Nickname</b>
       </td>
       <td>
-        {{ Form::select('cellgroup', \App\Models\CG::all()->pluck('name', 'id'), $soul->cellgroup_id, ['class' => 'ui fluid dropdown', 'placeholder' => 'Choose a cellgroup']) }}
-        @if ($errors->has('cellgroup'))
-          <span class="ui red pointing label"> {{ $errors->first('cellgroup') }}</span>
+        {{ Form::text('nickname', $soul->nickname, ['placeholder' => trans('field.nickname')]) }}
+        @if ($errors->has('nickname'))
+          <span class="ui red pointing label"> {{ $errors->first('nickname') }}</span>
         @endif
       </td>
     </tr>
-    <tr class="field {{$errors->has('birthday') ? 'error' : ''}}">
-      <td>
-        <label for="birthday"><b>Birthday</b></label>
-      </td>
-      <td class="twelve wide">
-        <input type="date" name="birthday" value="{{old('birthday', $soul->birthday)}}">
-        @if ($errors->has('birthday'))
-          <span class="ui red pointing label"> {{ $errors->first('birthday') }}</span>
-        @endif
-      </td>
-    </tr>
-    <tr class="field {{$errors->has('baptism') ? 'error' : ''}}">
-      <td><b>Baptism</b></td>
-      <td>
-        {{ Form::select('baptism', \App\Models\Baptism::all()->pluck('name', 'id'), $soul->baptism_id, ['class' => 'ui fluid dropdown'] ) }}
-        @if ($errors->has('baptism'))
-          <span class="ui red pointing label"> {{ $errors->first('baptism') }}</span>
-        @endif
-      </td>
-    </tr>
-    <tr class="field {{$errors->has('baptism_serial') ? 'error' : ''}}">
-      <td><b>Baptism Serial</b></td>
-      <td>
-        {{ Form::text('baptism_serial', $soul->baptism_serial) }}
-        @if ($errors->has('baptism_serial'))
-          <span class="ui red pointing label"> {{ $errors->first('baptism_serial') }}</span>
-        @endif
-      </td>
-    </tr>
-    <tr class="field {{$errors->has('is_active') ? 'error' : ''}}">
-      <td>
-        <b>Is Active</b>
-      </td>
-      <td>
-        {{ Form::select('is_active', \App\Enums\Boolean::all(), $soul->is_active, ['class' => 'ui fluid dropdown']) }}
-        @if ($errors->has('is_active'))
-          <span class="ui red pointing label"> {{ $errors->first('is_active') }}</span>
-        @endif
-      </td>
-    </tr>
+
     <tr class="field {{$errors->has('nric') ? 'error' : ''}}">
       <td><b>NRIC</b></td>
       <td>
@@ -74,17 +35,6 @@ Update soul
         {{ Form::text('nric_fullname', $soul->nric_fullname, ['placeholder' => trans('field.nric_fullname')]) }}
         @if ($errors->has('nric_fullname'))
           <span class="ui red pointing label"> {{ $errors->first('nric_fullname') }}</span>
-        @endif
-      </td>
-    </tr>
-    <tr class="field {{$errors->has('nickname') ? 'error' : ''}}">
-      <td>
-        <b>Nickname</b>
-      </td>
-      <td>
-        {{ Form::text('nickname', $soul->nickname, ['placeholder' => trans('field.nickname')]) }}
-        @if ($errors->has('nickname'))
-          <span class="ui red pointing label"> {{ $errors->first('nickname') }}</span>
         @endif
       </td>
     </tr>
@@ -138,7 +88,39 @@ Update soul
         @endif
       </td>
     </tr>
-
+    <tr class="field {{$errors->has('cellgroup') ? 'error' : ''}}">
+      <td>
+        <b>CG</b>
+      </td>
+      <td>
+        {{ Form::select('cellgroup', \App\Models\CG::all()->pluck('name', 'id'), $soul->cellgroup_id, ['class' => 'ui fluid dropdown', 'placeholder' => 'Choose a cellgroup']) }}
+        @if ($errors->has('cellgroup'))
+          <span class="ui red pointing label"> {{ $errors->first('cellgroup') }}</span>
+        @endif
+      </td>
+    </tr>
+    <tr class="field {{$errors->has('birthday') ? 'error' : ''}}">
+      <td>
+        <label for="birthday"><b>Birthday</b></label>
+      </td>
+      <td class="twelve wide">
+        <input type="date" name="birthday" value="{{old('birthday', $soul->birthday)}}">
+        @if ($errors->has('birthday'))
+          <span class="ui red pointing label"> {{ $errors->first('birthday') }}</span>
+        @endif
+      </td>
+    </tr>
+    <tr class="field {{$errors->has('is_active') ? 'error' : ''}}">
+      <td>
+        <b>Is Active</b>
+      </td>
+      <td>
+        {{ Form::select('is_active', \App\Enums\Boolean::all(), $soul->is_active, ['class' => 'ui fluid dropdown']) }}
+        @if ($errors->has('is_active'))
+          <span class="ui red pointing label"> {{ $errors->first('is_active') }}</span>
+        @endif
+      </td>
+    </tr>
     <tfoot class="full-width">
       <tr>
         <th colspan="2">
