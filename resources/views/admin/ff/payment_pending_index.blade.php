@@ -4,7 +4,7 @@ Pending Payment
 @endsection
 @section('content')
 <h1 class="ui header">Pending Payment</h1>
-<table class="ui very compact table">
+<table class="ui very compact unstackable table">
   <thead>
     <tr>
       <th >{!! sort_by('id', 'ID' ) !!}</th>

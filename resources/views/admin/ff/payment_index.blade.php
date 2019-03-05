@@ -41,7 +41,7 @@ Payment
     <div class="ui hidden divider"></div>
   {!! Form::close() !!}
 </div>
-<table class="ui very compact table">
+<table class="ui very compact unstackable table">
   <thead>
     <tr>
       <th >{!! sort_by('id', 'ID' ) !!}</th>

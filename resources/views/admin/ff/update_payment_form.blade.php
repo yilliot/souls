@@ -6,7 +6,7 @@ Update payment
 <div class="ui text container">
   <h1 class="ui header">Update payment for {{$payment->pledge->name}}</h1>
   {!! Form::open(['url' => 'admin/ff/payment/update/' . $payment->id, 'method' => 'POST', 'class' => 'ui form']) !!}
-  <table class="ui structured table">
+  <table class="ui structured unstackable table">
     <tr class="field {{$errors->has('amount') ? 'error' : ''}}">
       <td><b>Amount</b></td>
       <td>

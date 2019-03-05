@@ -18,7 +18,14 @@
 
       <a class="{{Request::is('admin/session*')?'active':''}} item" href="/admin/session">Sessions</a>
       <a class="{{Request::is('admin/soul*')?'active':''}} item" href="/admin/soul">Souls</a>
-      <a class="{{Request::is('admin/ff*')?'active':''}} item" href="/admin/ff">Future</a>
+      <div class="ui dropdown item">
+        Future
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="{{Request::is('admin/ff*')?'active':''}} item" href="/admin/ff/1">Future2019</a>
+          <a class="{{Request::is('admin/ff*')?'active':''}} item" href="/admin/ff/1/payment/pending">Pending</a>
+        </div>
+      </div>
       <div class="ui dropdown item">
         Leader
         <i class="dropdown icon"></i>

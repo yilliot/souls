@@ -6,7 +6,7 @@ Add pledge
 <div class="ui text container">
   <h1 class="ui header">Add pledge</h1>
   {!! Form::open(['url' => 'admin/ff/'.$id.'/pledge/create', 'method' => 'POST', 'class' => 'ui form']) !!}
-  <table class="ui structured table">
+  <table class="ui structured unstackable table">
     <tr class="field {{$errors->has('name') ? 'error' : ''}}">
       <td>
         <b>Name</b>

@@ -6,7 +6,7 @@ Update pledge
 <div class="ui text container">
   <h1 class="ui header">Update pledge</h1>
   {!! Form::open(['url' => 'admin/ff/pledge/update/' . $pledge->id, 'method' => 'POST', 'class' => 'ui form']) !!}
-  <table class="ui structured table">
+  <table class="ui structured unstackable table">
     <tr class="field {{$errors->has('name') ? 'error' : ''}}">
       <td>
         <b>Name</b>
