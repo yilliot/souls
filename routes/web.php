@@ -158,7 +158,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
 
         Route::resource('soul', 'SoulController');
 
-        Route::group(['prefix' => 'leader'], function() {
+        Route::group(['prefix' => 'leader', 'namespace' => 'Leader'], function() {
             Route::group(['prefix' => 'follower'], function() {
                 Route::get('/', 'FollowerController@index');
                 Route::get('add', 'FollowerController@getAddFollowerForm');
