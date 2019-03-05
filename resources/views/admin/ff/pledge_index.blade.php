@@ -24,7 +24,7 @@ Souls
     <tr>
       <th >{!! sort_by('id', 'ID' ) !!}</th>
       <th  class="three wide">Name</th>
-      <th >Amount</th>
+      <th >Amount (RM)</th>
       <th >Created at</th>
       <th >Actions</th>
     </tr>
@@ -50,8 +50,8 @@ Souls
         </td>
         <td>
           [{{$pledge->cleared_payments()->count()}}]
-          RM {{$pledge->cleared_payments()->sum('amount')}} /
-          RM {{$pledge->amount}}
+           {{$pledge->cleared_payments()->sum('amount')}} /
+           {{$pledge->amount}}
         </td>
         <td>
           {{ $pledge->created_at->format('Y-m-d') }}
