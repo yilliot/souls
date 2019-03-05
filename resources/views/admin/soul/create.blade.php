@@ -7,54 +7,14 @@ Add soul
   <h1 class="ui header">Add soul</h1>
   {!! Form::open(['url' => 'admin/soul/', 'method' => 'POST', 'class' => 'ui form']) !!}
   <table class="ui structured table">
-    <tr class="field {{$errors->has('cellgroup') ? 'error' : ''}}">
+    <tr class="field {{$errors->has('nickname') ? 'error' : ''}}">
       <td>
-        <b>CG</b>
+        <b>Nickname</b>
       </td>
       <td>
-        {{ Form::select('cellgroup', \App\Models\CG::all()->pluck('name', 'id'), null, ['class' => 'ui fluid dropdown', 'placeholder' => 'Choose a cellgroup']) }}
-        @if ($errors->has('cellgroup'))
-          <span class="ui red pointing label"> {{ $errors->first('cellgroup') }}</span>
-        @endif
-      </td>
-    </tr>
-    <tr class="field {{$errors->has('birthday') ? 'error' : ''}}">
-      <td>
-        <label for="birthday"><b>Birthday</b></label>
-      </td>
-      <td class="twelve wide">
-        <input type="date" name="birthday" value="{{old('birthday')}}">
-        @if ($errors->has('birthday'))
-          <span class="ui red pointing label"> {{ $errors->first('birthday') }}</span>
-        @endif
-      </td>
-    </tr>
-    <tr class="field {{$errors->has('baptism') ? 'error' : ''}}">
-      <td><b>Baptism</b></td>
-      <td>
-        {{ Form::select('baptism', \App\Models\Baptism::all()->pluck('name', 'id'), null, ['class' => 'ui fluid dropdown'] ) }}
-        @if ($errors->has('baptism'))
-          <span class="ui red pointing label"> {{ $errors->first('baptism') }}</span>
-        @endif
-      </td>
-    </tr>
-    <tr class="field {{$errors->has('baptism_serial') ? 'error' : ''}}">
-      <td><b>Baptism Serial</b></td>
-      <td>
-        {{ Form::text('baptism_serial') }}
-        @if ($errors->has('baptism_serial'))
-          <span class="ui red pointing label"> {{ $errors->first('baptism_serial') }}</span>
-        @endif
-      </td>
-    </tr>
-    <tr class="field {{$errors->has('is_active') ? 'error' : ''}}">
-      <td>
-        <b>Is Active</b>
-      </td>
-      <td>
-        {{ Form::select('is_active', \App\Enums\Boolean::all(), null, ['class' => 'ui fluid dropdown']) }}
-        @if ($errors->has('is_active'))
-          <span class="ui red pointing label"> {{ $errors->first('is_active') }}</span>
+        {{ Form::text('nickname', null, ['placeholder' => trans('field.nickname')]) }}
+        @if ($errors->has('nickname'))
+          <span class="ui red pointing label"> {{ $errors->first('nickname') }}</span>
         @endif
       </td>
     </tr>
@@ -76,14 +36,14 @@ Add soul
         @endif
       </td>
     </tr>
-    <tr class="field {{$errors->has('nickname') ? 'error' : ''}}">
+    <tr class="field {{$errors->has('birthday') ? 'error' : ''}}">
       <td>
-        <b>Nickname</b>
+        <label for="birthday"><b>Birthday</b></label>
       </td>
-      <td>
-        {{ Form::text('nickname', null, ['placeholder' => trans('field.nickname')]) }}
-        @if ($errors->has('nickname'))
-          <span class="ui red pointing label"> {{ $errors->first('nickname') }}</span>
+      <td class="twelve wide">
+        <input type="date" name="birthday" value="{{old('birthday')}}">
+        @if ($errors->has('birthday'))
+          <span class="ui red pointing label"> {{ $errors->first('birthday') }}</span>
         @endif
       </td>
     </tr>
@@ -137,7 +97,28 @@ Add soul
         @endif
       </td>
     </tr>
-
+    <tr class="field {{$errors->has('cellgroup') ? 'error' : ''}}">
+      <td>
+        <b>CG</b>
+      </td>
+      <td>
+        {{ Form::select('cellgroup', \App\Models\CG::all()->pluck('name', 'id'), null, ['class' => 'ui fluid dropdown', 'placeholder' => 'Choose a cellgroup']) }}
+        @if ($errors->has('cellgroup'))
+          <span class="ui red pointing label"> {{ $errors->first('cellgroup') }}</span>
+        @endif
+      </td>
+    </tr>
+    <tr class="field {{$errors->has('is_active') ? 'error' : ''}}">
+      <td>
+        <b>Is Active</b>
+      </td>
+      <td>
+        {{ Form::select('is_active', \App\Enums\Boolean::all(), null, ['class' => 'ui fluid dropdown']) }}
+        @if ($errors->has('is_active'))
+          <span class="ui red pointing label"> {{ $errors->first('is_active') }}</span>
+        @endif
+      </td>
+    </tr>
     <tfoot class="full-width">
       <tr>
         <th colspan="2">
