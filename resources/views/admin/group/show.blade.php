@@ -24,7 +24,9 @@ Group details
             <div class="ui grey label">not active</div>
           @endif
           <br>
-          <i class="call icon"></i>{{$group->leader->contact}}<br/>
+          @if ($group->leader)
+            <i class="call icon"></i>{{$group->leader->contact}}<br/>
+          @endif
           @if ($group->colead1)
             <i class="call icon"></i>{{$group->colead1->contact}}<br/>
           @endif
@@ -38,7 +40,7 @@ Group details
   <div class="eleven wide column">
     <div class="ui header">members</div>
     <table class="ui very compact unstackable table">
-      @foreach ($group->souls as $soul)
+      @forelse ($group->souls as $soul)
         <tr>
           <td>{{$soul->nickname}}</td>
           <td>
@@ -47,7 +49,8 @@ Group details
             </a>
           </td>
         </tr>
-      @endforeach
+      @empty
+      @endforelse
     </table>
   </div>
 </div>
