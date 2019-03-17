@@ -93,7 +93,6 @@ class RegisterController extends Controller
             'address2' => 'required|max:255',
             'birthday' => 'required|date',
             'postal_code' => 'required|digits_between:5,8',
-            'cellgroup_id' => 'required|exists:cellgroups,id',
         ]);
 
         $soul = new Soul;
@@ -105,7 +104,6 @@ class RegisterController extends Controller
         $soul->address1 = $request->input('address1');
         $soul->address2 = $request->input('address2');
         $soul->postal_code = $request->input('postal_code');
-        $soul->cellgroup_id = $request->input('cellgroup_id');
         $soul->birthday = $request->input('birthday');
         $soul->save();
 
