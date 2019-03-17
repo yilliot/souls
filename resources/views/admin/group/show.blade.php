@@ -12,6 +12,7 @@ Group details
         <span class="large header">{{$group->name}}</span>
         <div class="meta"><span class="status">{{prefix()->wrap($group)}}</span></div><br/>
         <div class="extra content">
+          <span class="large header">Leader :</span>
           {{$group->leader}} <br/>
           {{$group->colead1}} <br/>
           {{$group->colead2}} <br/>
@@ -24,13 +25,30 @@ Group details
           @endif
           <br>
           <i class="call icon"></i>{{$group->leader->contact}}<br/>
-          <i class="call icon"></i>{{$group->colead1->contact}}<br/>
-          <i class="wait icon"></i>Join since {{$group->created_at->toFormattedDateString()}}<br/>
+          @if ($group->colead1)
+            <i class="call icon"></i>{{$group->colead1->contact}}<br/>
+          @endif
+          @if ($group->created_at)
+            <i class="wait icon"></i>since {{$group->created_at->toFormattedDateString()}}<br/>
+          @endif
         </div>
       </div>
     </div>
   </div>
   <div class="eleven wide column">
+    <div class="ui header">members</div>
+    <table class="ui very compact unstackable table">
+      @foreach ($group->souls as $soul)
+        <tr>
+          <td>{{$soul->nickname}}</td>
+          <td>
+            <a href="/admin/soul/{{$soul->id}}">
+              <i class="eye icon"></i>
+            </a>
+          </td>
+        </tr>
+      @endforeach
+    </table>
   </div>
 </div>
 @endsection

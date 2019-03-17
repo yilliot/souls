@@ -5,7 +5,21 @@ Groups
 @section('content')
 <a href="/admin/group/create" class="ui teal button right floated">New group</a>
 <h1 class="ui header">Groups</h1>
-
+<div class="ui segment">
+  {!! Form::open(['url' => url()->current(), 'class' => 'ui form', 'method' => 'GET']) !!}
+    status :
+    {!! Form::select('is_active', ['0' => 'Not active', '1' => 'Active', 'all' => 'All'], $filter['is_active'], ['class' => 'ui dropdown']) !!}
+    <div class="clearfix field">
+      <a href="{{ url()->current() }}" class="ui basic right floated right labeled icon tiny button">
+        Reset <i class="undo icon"></i>
+      </a>
+      <button class="ui teal right floated right labeled icon tiny button">
+        Filter <i class="filter icon"></i>
+      </button>
+    </div>
+    <div class="ui hidden divider"></div>
+  {!! Form::close() !!}
+</div>
 <table class="ui very compact table">
   <thead>
     <tr>

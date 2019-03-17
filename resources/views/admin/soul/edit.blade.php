@@ -115,7 +115,7 @@ Update soul
         <b>Groups</b>
       </td>
       <td>
-        <select name="groups" class="ui search select fluid dropdown" multiple="">
+        <select name="groups[]" class="ui search select fluid dropdown" multiple="">
           <option value="">Choose one</option>
           @foreach (\App\Models\Group::all() as $group)
             <option {{ in_array($group->id, $soul->groups->pluck('id')->toArray()) ? 'selected' : ''}} value="{{$group->id}}">{{$group->name}}</option>

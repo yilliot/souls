@@ -39,9 +39,9 @@ class Group extends Model
         return $this->belongsTo(Soul::class, 'colead2_id');
     }
 
-    public function members()
+    public function souls()
     {
-        return $this->hasMany(Soul::class, 'cellgroup_id');
+        return $this->belongsToMany(Soul::class, 'group_souls', 'group_id', 'soul_id');
     }
 
     public function scopeActive()

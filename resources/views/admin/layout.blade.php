@@ -16,7 +16,6 @@
         OASIS
       </a>
 
-      <a class="{{Request::is('admin/session*')?'active':''}} item" href="/admin/session">Sessions</a>
       <div class="ui dropdown item">
         Future
         <i class="dropdown icon"></i>
@@ -40,6 +39,9 @@
           <a class="{{Request::is('admin/leader*')?'active':''}} item" href="/admin/leader/follower">Follower</a>
         </div>
       </div>
+
+      <a class="{{Request::is('admin/session*')?'active':''}} item" href="/admin/session">Sessions</a>
+
 
 
       <div class="right menu">

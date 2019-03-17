@@ -11,14 +11,20 @@ class GroupController extends Controller
 {
     public function index(Request $request)
     {
-        $filter = $request->only(['sortBy', 'order']);
+        $filter = $request->only(['sortBy', 'order', 'is_active']);
         $filter = array_default($filter, [
             'sortBy' => 'id',
-            'order' => 'asc'
+            'order' => 'asc',
+            'is_active' => true,
         ]);
 
-        $groups = Group::with([])
-            ->orderBy($filter['sortBy'], $filter['order'])
+        $groups = Group::with([]);
+
+        if ($filter['is_active'] !== 'all') {
+            $groups = $groups->where('is_active', $filter['is_active']);
+        }
+
+        $groups = $groups->orderBy($filter['sortBy'], $filter['order'])
             ->paginate();
 
         return view('admin.group.index', compact('groups', 'filter'));
