@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CG extends Model
+class Group extends Model
 {
     protected $table = 'cellgroups';
 
@@ -28,7 +28,15 @@ class CG extends Model
     // REL
     public function leader()
     {
-        return $this->belongsTo(Soul::class, 'leader');
+        return $this->belongsTo(Soul::class, 'leader_id');
+    }
+    public function colead1()
+    {
+        return $this->belongsTo(Soul::class, 'colead1_id');
+    }
+    public function colead2()
+    {
+        return $this->belongsTo(Soul::class, 'colead2_id');
     }
 
     public function members()

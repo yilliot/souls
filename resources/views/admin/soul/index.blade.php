@@ -8,8 +8,8 @@ Souls
 <div class="ui segment">
   {!! Form::open(['url' => url()->current(), 'class' => 'ui form', 'method' => 'GET']) !!}
     <div class="ui tiny group buttons">
-      @foreach ($cellgroups as $cellgroup)
-        <a href="{{$request->fullUrlWithQuery(['cellgroup_id' => $cellgroup->id])}}" class="ui button"> {{$cellgroup->name}} </a>
+      @foreach ($groups as $group)
+        <a href="{{$request->fullUrlWithQuery(['group_id' => $group->id])}}" class="ui button"> {{$group->name}} </a>
       @endforeach
     </div>
     status :
@@ -30,7 +30,7 @@ Souls
     <tr>
       <th >{!! sort_by('id', 'ID' ) !!}</th>
       <th  class="three wide">Name</th>
-      <th >CG</th>
+      <th >Group</th>
       <th >Status</th>
       <th >Created at</th>
       <th >Actions</th>
@@ -49,7 +49,9 @@ Souls
           </h5>
         </td>
         <td >
-          {{ $soul->cellgroup }}
+          @foreach ($soul->groups as $group)
+            <span class="ui label">{{ $group->name }}</span>
+          @endforeach
         </td>
         <td>
           <div>

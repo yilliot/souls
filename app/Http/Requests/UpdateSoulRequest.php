@@ -32,10 +32,10 @@ class UpdateSoulRequest extends FormRequest
             'email' => 'required|email|unique:souls,email,' . $this->route('soul') . '|max:255',
             'nickname' => 'required|max:255',
             'contact' => 'required|between:6,12',
-            'address1' => 'required|max:255',
-            'address2' => 'required|max:255',
+            'address1' => 'max:255',
+            'address2' => 'max:255',
             'birthday' => 'required|date',
-            'postal_code' => 'required|digits_between:5,8',
+            'postal_code' => 'digits_between:5,8',
         ];
     }
 }

@@ -88,17 +88,6 @@ Update soul
         @endif
       </td>
     </tr>
-    <tr class="field {{$errors->has('cellgroup') ? 'error' : ''}}">
-      <td>
-        <b>CG</b>
-      </td>
-      <td>
-        {{ Form::select('cellgroup', \App\Models\CG::all()->pluck('name', 'id'), $soul->cellgroup_id, ['class' => 'ui fluid dropdown', 'placeholder' => 'Choose a cellgroup']) }}
-        @if ($errors->has('cellgroup'))
-          <span class="ui red pointing label"> {{ $errors->first('cellgroup') }}</span>
-        @endif
-      </td>
-    </tr>
     <tr class="field {{$errors->has('birthday') ? 'error' : ''}}">
       <td>
         <label for="birthday"><b>Birthday</b></label>
@@ -119,6 +108,19 @@ Update soul
         @if ($errors->has('is_active'))
           <span class="ui red pointing label"> {{ $errors->first('is_active') }}</span>
         @endif
+      </td>
+    </tr>
+    <tr class="field {{$errors->has('groups') ? 'error' : ''}}">
+      <td>
+        <b>Groups</b>
+      </td>
+      <td>
+        <select name="groups" class="ui search select fluid dropdown" multiple="">
+          <option value="">Choose one</option>
+          @foreach (\App\Models\Group::all() as $group)
+            <option {{ in_array($group->id, $soul->groups->pluck('id')->toArray()) ? 'selected' : ''}} value="{{$group->id}}">{{$group->name}}</option>
+          @endforeach
+        </select>
       </td>
     </tr>
     <tfoot class="full-width">

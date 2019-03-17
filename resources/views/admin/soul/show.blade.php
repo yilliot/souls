@@ -15,9 +15,6 @@ Member details
         @if ($soul->user && $soul->user->hasRole('admin'))
           <i class="right floated icon red asterisk"></i>
         @endif
-        @if ($soul->baptism_serial)
-          <i class="right floated icon teal water"></i>
-        @endif
         <span class="large header">{{$soul->nickname}}</span>
         <div class="meta"><span class="status">{{prefix()->wrap($soul)}}</span></div><br/>
         <div class="extra content">
@@ -25,9 +22,11 @@ Member details
           {{$soul->nric_fullname}} <br/>
           <i class="birthday icon"></i> {{$soul->birthday}} <br/>
           <i class="mail icon"></i>{{$soul->email}}  <br/>
-          <i class="home icon"></i>{{$soul->address1}} <br/>
-          <i class="icon"></i>{{$soul->address2}} <br/>
-          <i class="icon"></i>{{$soul->postal_code}} <br/>
+          @if ($soul->address1)
+            <i class="home icon"></i>{{$soul->address1}} <br/>
+            <i class="icon"></i>{{$soul->address2}} <br/>
+            <i class="icon"></i>{{$soul->postal_code}} <br/>
+          @endif
 
           <br/>
           @if ($soul->is_active)
@@ -36,11 +35,16 @@ Member details
             <div class="ui grey label">not active</div>
           @endif
           <br>
-          <i class="call icon"></i>{{$soul->contact}}<br/>
-          <i class="call icon"></i>{{$soul->contact2}}<br/>
+          @if ($soul->contact)
+            <i class="call icon"></i>{{$soul->contact}}<br/>
+          @endif
+          @if ($soul->contact2)
+            <i class="call icon"></i>{{$soul->contact2}}<br/>
+          @endif
           <i class="wait icon"></i>Join since {{$soul->created_at->toFormattedDateString()}}<br/>
         </div>
       </div>
+      <a href="/admin/soul/{{$soul->id}}/edit" class="ui fluid button">UPDATE</a>
     </div>
   </div>
   <div class="eleven wide column">

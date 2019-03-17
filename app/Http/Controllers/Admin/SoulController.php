@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Soul;
-use App\Models\CG;
+use App\Models\Group;
 use App\Http\Requests\NewSoulRequest;
 use App\Http\Requests\UpdateSoulRequest;
 
@@ -18,27 +18,29 @@ class SoulController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = $request->only(['sortBy', 'order', 'cellgroup_id', 'is_active']);
+        $filter = $request->only(['sortBy', 'order', 'group_id', 'is_active']);
         $filter = array_default($filter, [
             'sortBy' => 'id',
             'order' => 'desc',
-            'cellgroup_id' => 'all',
+            'group_id' => 'all',
             'is_active' => 'all',
         ]);
 
-        $souls = Soul::with('cellgroup')
+        $souls = Soul::with('groups')
             ->orderBy($filter['sortBy'], $filter['order']);
 
-        if ($filter['cellgroup_id'] !== 'all') {
-            $souls = $souls->where('cellgroup_id', $filter['cellgroup_id']);
+        if ($filter['group_id'] !== 'all') {
+            $souls = $souls->whereHas('groups', function($q) use ($filter) {
+                $q->where('id', $filter['group_id']);
+            });
         }
         if ($filter['is_active'] !== 'all') {
             $souls = $souls->where('is_active', $filter['is_active']);
         }
 
         $souls = $souls->paginate(150);
-        $cellgroups = CG::get();
-        return view('admin.soul.index', compact('souls', 'cellgroups', 'filter', 'request'));
+        $groups = Group::get();
+        return view('admin.soul.index', compact('souls', 'groups', 'filter', 'request'));
     }
 
     /**
@@ -60,9 +62,6 @@ class SoulController extends Controller
     public function store(NewSoulRequest $request)
     {
         $soul = new Soul;
-        $soul->cellgroup_id = $request->cellgroup;
-        $soul->baptism_id = $request->baptism;
-        $soul->baptism_serial = strtoupper($request->baptism_serial);
         $soul->is_active = $request->is_active;
         $soul->nric = strtoupper($request->nric);
         $soul->nric_fullname = strtoupper($request->nric_fullname);
@@ -76,7 +75,7 @@ class SoulController extends Controller
         $soul->postal_code = $request->postal_code;
         $soul->save();
 
-        return back()->with('success', 'success')->with('message', 'created!');
+        return redirect('/admin/soul/' . $soul->id)->with('success', 'success')->with('message', 'created!');
     }
 
     /**
@@ -115,9 +114,6 @@ class SoulController extends Controller
     public function update(UpdateSoulRequest $request, $id)
     {
         $soul = Soul::find($id);
-        $soul->cellgroup_id = $request->cellgroup;
-        $soul->baptism_id = $request->baptism;
-        $soul->baptism_serial = strtoupper($request->baptism_serial);
         $soul->is_active = $request->is_active;
         $soul->nric = strtoupper($request->nric);
         $soul->nric_fullname = strtoupper($request->nric_fullname);
@@ -130,6 +126,8 @@ class SoulController extends Controller
         $soul->address2 = $request->address2;
         $soul->postal_code = $request->postal_code;
         $soul->save();
+
+        $soul->groups()->sync($request->input('groups'));
 
         return back()->with('success', 'success')->with('message', 'updated!');
     }

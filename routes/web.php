@@ -147,13 +147,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',
         });
 
         ## Mgmt CG
-        Route::group(['prefix' => 'cg'], function() {
-            Route::get('/', 'CgController@index');
-            Route::get('add', 'CgController@getCreateCgForm');
-            Route::post('add', 'CgController@postCreateCgForm');
-            Route::get('edit/{id}', 'CgController@getEditCgForm');
-            Route::post('edit/{id}', 'CgController@postEditCgForm');
-            Route::get('{id}', 'CgController@getCg');
+        Route::group(['prefix' => 'group'], function() {
+            Route::get('/', 'GroupController@index');
+            Route::get('create', 'GroupController@getCreateGroupForm');
+            Route::post('create', 'GroupController@postCreateGroupForm');
+            Route::get('{id}/edit', 'GroupController@getEditGroupForm');
+            Route::post('{id}/edit', 'GroupController@postEditGroupForm');
+            Route::get('{id}', 'GroupController@show');
         });
 
         Route::resource('soul', 'SoulController');

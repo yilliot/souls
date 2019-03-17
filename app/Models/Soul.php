@@ -27,9 +27,9 @@ class Soul extends Model
     {
         return $this->belongsToMany(Ministry::class, 'ministry_souls', 'soul_id', 'ministry_id');
     }
-    public function cellgroup()
+    public function groups()
     {
-        return $this->belongsTo(CG::class, 'cellgroup_id');
+        return $this->belongsToMany(Group::class, 'group_souls', 'soul_id', 'group_id');
     }
     public function user()
     {
