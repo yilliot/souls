@@ -12,25 +12,27 @@ class InviteController extends Controller
 {
     function index(Request $request)
     {
-        $sessions = Session::coming()->churchWide()->get();
+        $sessions = Session::coming()->get();
         return view('session.index', compact('sessions'));
     }
     function member(Request $request)
     {
         $soul = Soul::where('nric', $request->input('nric'))->first();
-        $invitations = Invitation::where('soul_id', $soul->id)->get();
-        $sessionsPublic = Session::coming()->churchWide()->get();
-        $sessionsInvited = Session::whereIn('id', $invitations->pluck('session_id'))->get();
-        $sessions = $sessionsPublic->merge($sessionsInvited)->sortBy('start_at');
-        return view('session.member', compact('sessions', 'invitations', 'soul'));
+        $invitations = Invitation::where('soul_id', $soul->id)->coming()->get();
+        // dd($invitations->count());
+        $sessionsPublic = Session::coming()->whereNotIn('id', $invitations->pluck('session_id'))->get();
+        // dd($sessionsPublic->count());
+        $invitations = $sessionsPublic->merge($invitations)->sortBy('start_at');
+        return view('session.member', compact('invitations', 'soul'));
     }
 
     function postResponse(Request $request)
     {
         $soul = Soul::find($request->input('soul_id'));
+        $session = Session::find($request->input('session_id'));
         Invitation::updateOrCreate(
             ['session_id' => $request->input('session_id'), 'soul_id' => $request->input('soul_id')],
-            ['is_coming' => $request->input('action'), 'cg_id' => $soul->cellgroup_id]
+            ['is_coming' => $request->input('action'), 'start_at' => $session->start_at]
         );
         return back()->with('success', 'Success')->with('message', 'Responded');
     }

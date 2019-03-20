@@ -20,69 +20,97 @@ Invitation
       <th>RSVP</th>
     </tr>
   </thead>
-@forelse ($sessions as $session)
-  @php
-    $invitation = $invitations->where('session_id', $session->id)->first();
-    $color = '';
-    if ($invitation) {
-      if ($invitation->is_coming === 0) $color = 'negative';
-      elseif ($invitation->is_coming === 1) $color = 'positive';
-    }
-  @endphp
-  <tr class="{{$color}}">
-    <td>
-      <div>{{$session->start_at->format('d M')}}</div>
-      <div>{{$session->start_at->format('D')}}</div>
-    </td>
-    <td>
-      {{$session}}
-      @if ($session->type)
-        <div>({{$session->type}})</div>
-      @endif
-    </td>
-    <td>
-      <div>{{$session->start_at->format('h:i A')}}</div>
-      @if ($session->venue)
-        <div>{{$session->venue}}</div>
-      @endif
-    </td>
-    <td>
-      <form action="/invite/response" method="POST">
-      {{ csrf_field() }}
-      <input type="hidden" name="session_id" value="{{$session->id}}">
-      <input type="hidden" name="soul_id" value="{{$soul->id}}">
-      <div class="ui mini buttons">
+@forelse ($invitations as $invitation)
+@if (get_class($invitation) == 'App\Models\Session\Invitation')
+@php
+  $color = '';
+  if ($invitation) {
+    if ($invitation->is_coming === 0) $color = 'negative';
+    elseif ($invitation->is_coming === 1) $color = 'positive';
+  }
+@endphp
+<tr class="{{$color}}">
+  <td>
+    <div>{{$invitation->start_at->format('d M')}}</div>
+    <div>{{$invitation->start_at->format('D')}}</div>
+  </td>
+  <td>
+    {{$invitation->session}}
+    @if ($invitation->session->type)
+      <div>({{$invitation->session->type}})</div>
+    @endif
+  </td>
+  <td>
+    <div>{{$invitation->start_at->format('h:i A')}}</div>
+    @if ($invitation->session->venue)
+      <div>{{$invitation->session->venue}}</div>
+    @endif
+  </td>
+  <td>
+    <form action="/invite/response" method="POST">
+    {{ csrf_field() }}
+    <input type="hidden" name="session_id" value="{{$invitation->session->id}}">
+    <input type="hidden" name="soul_id" value="{{$soul->id}}">
+    <div class="ui mini buttons">
+    @if ($invitation->is_coming === 0)
+      <button type='submit' name='action' value="1" class="ui teal button">change to YES</button>
+    @elseif ($invitation->is_coming === 1)
+      <button type='submit' name='action' value="0" class="ui pink button">change to no</button>
+    @else
+      <button type='submit' name='action' value="1" class="ui teal button">YES</button>
+      <button type='submit' name='action' value="0" class="ui pink button">No</button>
+    @endif
+    </div>
+    </form>
+    <div>
       @if ($invitation)
         @if ($invitation->is_coming === 0)
-          <button type='submit' name='action' value="1" class="ui teal button">changed mind, going</button>
+          <div>not going</div>
         @elseif ($invitation->is_coming === 1)
-          <button type='submit' name='action' value="0" class="ui pink button">changed mind, not going</button>
-        @else
-          <button type='submit' name='action' value="1" class="ui teal button">Going</button>
-          <button type='submit' name='action' value="0" class="ui pink button">Not Going</button>
-        @endif
-      @else
-        <button type='submit' name='action' value="1" class="ui teal button">Going</button>
-        <button type='submit' name='action' value="0" class="ui pink button">Not Going</button>
-      @endif
-      </div>
-      </form>
-      <div>
-        @if ($invitation)
-          @if ($invitation->is_coming === 0)
-            <div>not going</div>
-          @elseif ($invitation->is_coming === 1)
-            <div>going</div>
-          @else
-            please response
-          @endif
+          <div>going</div>
         @else
           please response
         @endif
-
-      </div>
-    </td>
-  </tr>
+      @else
+        please response
+      @endif
+    </div>
+  </td>
+</tr>
+@else
+@php
+  $session = $invitation;
+@endphp
+<tr class="">
+  <td>
+    <div>{{$session->start_at->format('d M')}}</div>
+    <div>{{$session->start_at->format('D')}}</div>
+  </td>
+  <td>
+    {{$session}}
+    @if ($session->type)
+      <div>({{$session->type}})</div>
+    @endif
+  </td>
+  <td>
+    <div>{{$session->start_at->format('h:i A')}}</div>
+    @if ($session->venue)
+      <div>{{$session->venue}}</div>
+    @endif
+  </td>
+  <td>
+    <form action="/invite/response" method="POST">
+    {{ csrf_field() }}
+    <input type="hidden" name="session_id" value="{{$session->id}}">
+    <input type="hidden" name="soul_id" value="{{$soul->id}}">
+    <div class="ui mini buttons">
+      <button type='submit' name='action' value="1" class="ui teal button">YES</button>
+      <button type='submit' name='action' value="0" class="ui pink button">no</button>
+    </div>
+    </form>
+  </td>
+</tr>
+@endif
 @empty
   <tr>
     <td>

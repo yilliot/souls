@@ -56,18 +56,6 @@ Update session
       </td>
     </tr>
     <tr>
-      <td><b>Is Church Wide</b></td>
-      <td>
-        {{ Form::select('is_church_wide', \App\Enums\Boolean::all(), $session->is_church_wide, ['class' => 'ui fluid dropdown']) }}
-      </td>
-    </tr>
-    <tr>
-      <td><b>Connect Group ?</b></td>
-      <td>
-        {{ Form::select('cg_id', \App\Models\CG::all()->pluck('name', 'id')->prepend(['0'=>'-']), $session->cg_id, ['class' => 'ui fluid dropdown']) }}
-      </td>
-    </tr>
-    <tr>
       <td><b>Remarks</b></td>
       <td>
         <textarea name="remarks" rows="3">{{$session->remarks}}</textarea>

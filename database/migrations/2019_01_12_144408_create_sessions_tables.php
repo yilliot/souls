@@ -39,8 +39,6 @@ class CreateSessionsTables extends Migration
             $table->integer('type_id')->nullable()->unsigned()->index();
             $table->datetime('start_at')->index();
             $table->datetime('end_at')->nullable()->index();
-            $table->boolean('is_church_wide')->default(true)->index();
-            $table->integer('cg_id')->nullable()->unsigned()->index();
             $table->text('remarks')->nullable();
 
             $table->integer('created_by')->index();
@@ -54,13 +52,10 @@ class CreateSessionsTables extends Migration
         Schema::create('session_invitations', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('session_id')->unsigned()->index();
-            $table->integer('cg_id')->nullable()->unsigned()->index();
             $table->integer('soul_id')->nullable()->unsigned()->index();
-            $table->boolean('is_visitor')->default(false);
-            $table->string('visitor_name')->nullable();
-            $table->integer('invitor_id')->nullable()->unsigned()->index();
             $table->boolean('is_coming')->nullable();
             $table->boolean('is_attended')->nullable();
+            $table->datetime('start_at')->index();
 
             $table->timestamps();
         });

@@ -1,10 +1,10 @@
 @extends('admin.layout')
 @section('title')
-Invitation
+Forecast / Attendance
 @endsection
 @section('content')
 
-<h1 class="ui header">Session Invitation</h1>
+<h1 class="ui header">Session Forecast / Attendance</h1>
 
 <div class="ui grid">
   <div class="seven wide column">
@@ -40,46 +40,20 @@ Invitation
           <td> {{$session->venue}} </td>
         </tr>
       @endif
-      <tr>
-        <td class="right aligned"><b>Invitation</b></td>
-        <td>
-          @if ($session->forecast_size)
-            {{$session->attendance_size}} / {{$session->forecast_size}} ({{number_format($session->attendance_size / $session->forecast_size * 100)}} %) </td>
-          @else
-            -
-          @endif
-      </tr>
     </table>
   </div>
   <div class="nine wide column">
-    <form method="POST">
-        {{csrf_field()}}
-    <div class="ui horizontal divider"> Invitation Action </div>
-    @if (is_null($session->cg_id))
-    @elseif ($session->is_church_wide)
-      <div class="ui message">
-        Church Wide's session, everyone is invited to this event.
-      </div>
-    @elseif ($session->cg_id)
-      <div style="margin-bottom:5px">
-        @forelse ($cgRemainSouls = \App\Models\Soul::where('cellgroup_id', $session->cg_id)->whereNotIn('id', $invitations->pluck('soul_id'))->get() as $soul)
-          <div class="ui small basic label">{{$soul->nickname}}</div>
-          <input type="hidden" name="souls[]" value="{{$soul->id}}">
-        @empty
-          Everyone in {{$session->cg}} is invited
-        @endforelse
-      </div>
-      @if ($cgRemainSouls->count())
-        <button type="submit" name="target" value="cg.{{$session->cg_id}}" class="ui fluid button">Send invitation to members</button>
-      @endif
-    @else
-      <div class="ui horizontal divider"> CG </div>
-        @foreach (\App\Models\CG::active()->get() as $cg)
-          <button type="submit" name="target" value="cg.{{$cg->id}}" class="ui button">{{$cg->name}}</button>
-        @endforeach
-      <div class="ui horizontal divider"> Team </div>
-    @endif
-    </form>
+    <div class="ui horizontal divider"> Forecast / Attendance Info </div>
+    <table class="ui unstackable compact table">
+      <tr>
+        <td class="center aligned">forecast</td>
+        <td class="center aligned">attendance</td>
+      </tr>
+      <tr>
+        <td class="center aligned">{{$session->forecast_size}}</td>
+        <td class="center aligned">{{$session->attendance_size}}</td>
+      </tr>
+    </table>
   </div>
 </div>
 
@@ -87,6 +61,12 @@ Invitation
 <div class="ui horizontal divider">{{$session->title}}'s <br> Guest List </div>
 
 <div class="ui segment">
+  <div class="ui tiny group buttons">
+    @foreach (\App\Models\Group::all() as $group)
+      <a href="{{request()->fullUrlWithQuery(['group_id' => $group->id])}}" class="ui button"> {{$group->name}} </a>
+    @endforeach
+  </div>
+
     <div class="clearfix field">
       <a href="{{ url()->current() }}" class="ui basic right floated right labeled icon tiny button">
         Reset <i class="undo icon"></i>
@@ -101,7 +81,6 @@ Invitation
 <table class="ui very compact table">
   <thead>
     <tr>
-      <th >CG</th>
       <th class="three wide">Soul</th>
       <th >Status</th>
       <th >Created at</th>
@@ -112,19 +91,8 @@ Invitation
     @forelse ($invitations as $invitation)
       <tr class="{{ $invitation->is_coming ? 'positive' : '' }}">
         <td>
-          @if ($invitation->cg)
-            {{ $invitation->cg }}
-          @endif
-        </td>
-        <td>
           @if ($invitation->soul)
             {{ $invitation->soul }}
-          @endif
-          @if ($invitation->visitor_name)
-            {{ $invitation->visitor_name }}
-          @endif
-          @if ($invitation->invitor_id)
-            {{ $invitation->invitor }}
           @endif
         </td>
         <td >
@@ -134,8 +102,6 @@ Invitation
             <span class="ui mini red label">is not coming</span>
           @elseif ($invitation->is_coming === 1)
             <span class="ui mini green label">is coming</span>
-          @else
-            <span class="ui mini label">invited</span>
           @endif
         </td>
         <td>

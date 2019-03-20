@@ -3,7 +3,7 @@
 namespace App\Models\Session;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\CG;
+use App\Models\Group;
 
 class Session extends Model
 {
@@ -17,7 +17,9 @@ class Session extends Model
 
     public function __toString()
     {
-        return $this->title;
+        if ($this->title)
+            return $this->title;
+        return '';
     }
 
     // SET
@@ -49,18 +51,13 @@ class Session extends Model
     }
     public function cg()
     {
-        return $this->belongsTo(CG::class, 'cg_id');
+        return $this->belongsTo(Group::class, 'cg_id');
     }
 
     // SCOPE
     public function scopeComing()
     {
         return $this->where('start_at', '>=' , date("Y-m-d"));
-    }
-
-    public function scopeChurchWide()
-    {
-        return $this->where('is_church_wide', true);
     }
 
 }

@@ -10,19 +10,13 @@ Create session
     <tr>
       <td><b>Type</b></td>
       <td>
-        {{ Form::select('type', \App\Models\Session\SessionType::all()->pluck('name', 'id')->prepend(['0'=>'-']), null, ['class' => 'ui fluid dropdown', 'id' => 'input-type']) }}
-      </td>
-    </tr>
-    <tr id="input-row-cg" class="hide">
-      <td><b>Connect Group ?</b></td>
-      <td>
-        {{ Form::select('cg_id', \App\Models\CG::all()->pluck('name', 'id')->prepend(['0'=>'-']), null, ['class' => 'ui fluid dropdown']) }}
+        {{ Form::select('type', \App\Models\Session\SessionType::all()->pluck('name', 'id'), null, ['class' => 'ui fluid dropdown', 'id' => 'input-type']) }}
       </td>
     </tr>
     <tr>
       <td><b>Start Date</b></td>
       <td class="twelve wide">
-        <input type="date" name="start_date">
+        <input type="date" name="start_date" value="{{\Carbon\Carbon::parse('next saturday')->format('Y-m-d')}}">
       </td>
     </tr>
     <tr>
@@ -34,7 +28,7 @@ Create session
     <tr>
       <td><b>End Date</b></td>
       <td class="twelve wide">
-        <input type="date" name="end_date">
+        <input type="date" name="end_date" value="{{\Carbon\Carbon::parse('next saturday')->format('Y-m-d')}}">
       </td>
     </tr>
     <tr>
@@ -59,12 +53,6 @@ Create session
       <td><b>Title</b></td>
       <td>
         {{ Form::text('title') }}
-      </td>
-    </tr>
-    <tr>
-      <td><b>Is Church Wide</b></td>
-      <td>
-        {{ Form::select('is_church_wide', \App\Enums\Boolean::all(), null, ['class' => 'ui fluid dropdown', 'id' => 'input-is_church_wide']) }}
       </td>
     </tr>
     <tr>
@@ -93,21 +81,6 @@ Create session
 @section('script')
 <script>
   $(function(){
-    let input_is_church_wide = $('#input-is_church_wide').dropdown();
-    $('#input-type').change(function(obj) {
-      document.getElementById('input-row-cg').classList.add("hide");
-      if (obj.target.value == '4')
-        document.getElementById('input-row-cg').classList.remove("hide");
-
-      if (obj.target.value == '4') {
-        input_is_church_wide.set('selected', 0);
-        alert(document.getElementById('input-is_church_wide').value);
-      }
-      else {
-        input_is_church_wide.set('selected', 1);
-        alert(document.getElementById('input-is_church_wide').value);
-      }
-    });
   });
 </script>
 @endsection

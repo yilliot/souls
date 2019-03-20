@@ -86,16 +86,12 @@ class SessionController extends Controller
             $session->speaker_id = $request->speaker;
         if ($request->has('venue'))
             $session->venue_id = $request->venue;
-        if ($request->has('is_church_wide'))
-            $session->is_church_wide = $request->is_church_wide;
-        if ($request->has('cg_id'))
-            $session->cg_id = $request->cg_id;
 
         $session->forecast_size = 0;
         $session->attendance_size = 0;
         $session->save();
 
-        return back()->with('success', 'success')->with('message', 'created!');
+        return redirect('admin/session')->with('success', 'success')->with('message', 'created!');
     }
 
     public function show($id)
@@ -121,7 +117,6 @@ class SessionController extends Controller
         $session->start_at = \Carbon\Carbon::parse($request->start_date . ' ' . $request->start_time);
         $session->created_at = \Carbon\Carbon::now();
         $session->updated_at = \Carbon\Carbon::now();
-        $session->created_by = \Auth::user()->id;
 
         $session->title = $request->title;
 
@@ -133,10 +128,6 @@ class SessionController extends Controller
             $session->speaker_id = $request->speaker;
         if ($request->has('venue'))
             $session->venue_id = $request->venue;
-        if ($request->has('is_church_wide'))
-            $session->is_church_wide = $request->is_church_wide;
-        if ($request->has('cg_id'))
-            $session->cg_id = $request->cg_id;
 
         $session->save();
         return back()->with('success', 'success')->with('message', 'updated!');
