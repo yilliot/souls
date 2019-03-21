@@ -38,29 +38,14 @@ class GroupController extends Controller
     public function postCreateGroupForm(Request $request)
     {
         $group = new Group;
-        $group->updated_at = \Carbon\Carbon::now();
-        $group->created_by = \Auth::user()->id;
-
-        $group->title = $request->title;
-
-        if ($request->has('end_date'))
-            $group->end_at = \Carbon\Carbon::parse($request->end_date . ' ' . $request->end_time);
-        if ($request->has('type'))
-            $group->type_id = $request->type;
-        if ($request->has('speaker'))
-            $group->speaker_id = $request->speaker;
-        if ($request->has('venue'))
-            $group->venue_id = $request->venue;
-        if ($request->has('is_church_wide'))
-            $group->is_church_wide = $request->is_church_wide;
-        if ($request->has('group_id'))
-            $group->group_id = $request->group_id;
-
-        $group->forecast_size = 0;
-        $group->attendance_size = 0;
+        $group->name = $request->input('name');
+        $group->leader_id = $request->input('leader_id');
+        $group->colead1_id = $request->input('colead1_id');
+        $group->colead2_id = $request->input('colead2_id');
+        $group->is_active = $request->input('is_active');
         $group->save();
 
-        return back()->with('success', 'success')->with('message', 'created!');
+        return redirect('/admin/group')->with('success', 'success')->with('message', 'created!');
     }
 
     public function show($id)
@@ -78,26 +63,12 @@ class GroupController extends Controller
     public function postEditGroupForm(Request $request, $id)
     {
         $group = Group::find($id);
-        $group->start_at = \Carbon\Carbon::parse($request->start_date . ' ' . $request->start_time);
-        $group->created_at = \Carbon\Carbon::now();
+        $group->name = $request->input('name');
+        $group->leader_id = $request->input('leader_id');
+        $group->colead1_id = $request->input('colead1_id');
+        $group->colead2_id = $request->input('colead2_id');
+        $group->is_active = $request->input('is_active');
         $group->updated_at = \Carbon\Carbon::now();
-        $group->created_by = \Auth::user()->id;
-
-        $group->title = $request->title;
-
-        if ($request->has('end_date'))
-            $group->end_at = \Carbon\Carbon::parse($request->end_date . ' ' . $request->end_time);
-        if ($request->has('type'))
-            $group->type_id = $request->type;
-        if ($request->has('speaker'))
-            $group->speaker_id = $request->speaker;
-        if ($request->has('venue'))
-            $group->venue_id = $request->venue;
-        if ($request->has('is_church_wide'))
-            $group->is_church_wide = $request->is_church_wide;
-        if ($request->has('group_id'))
-            $group->group_id = $request->group_id;
-
         $group->save();
         return back()->with('success', 'success')->with('message', 'updated!');
     }

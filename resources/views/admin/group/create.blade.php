@@ -6,7 +6,6 @@ Create group
 <div class="ui text container">
   <h1 class="ui header">Create group</h1>
   {!! Form::open(['url' => 'admin/group/create', 'method' => 'POST', 'class' => 'ui form']) !!}
-  {{ method_field('PUT') }}
   <table class="ui structured table">
     <tr class="field {{$errors->has('name') ? 'error' : ''}}">
       <td>

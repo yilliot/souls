@@ -5,8 +5,7 @@ Update group
 @section('content')
 <div class="ui text container">
   <h1 class="ui header">Update group</h1>
-  {!! Form::open(['url' => 'admin/group/' . $group->id, 'method' => 'POST', 'class' => 'ui form']) !!}
-  {{ method_field('PUT') }}
+  {!! Form::open(['url' => 'admin/group/' . $group->id . '/edit', 'method' => 'POST', 'class' => 'ui form']) !!}
   <table class="ui structured table">
     <tr class="field {{$errors->has('nickname') ? 'error' : ''}}">
       <td>
@@ -24,6 +23,7 @@ Update group
       <td><b>Leader</b></td>
       <td>
         <select name="leader_id" class="ui search fluid dropdown">
+          <option value="">Choose one</option>
           @foreach (\App\Models\Soul::all() as $soul)
             <option {{$soul->id == $group->leader_id ? 'selected' : ''}} value="{{$soul->id}}">{{$soul->nickname}}</option>
           @endforeach
@@ -32,9 +32,10 @@ Update group
     </tr>
 
     <tr class="field {{$errors->has('colead1_id') ? 'error' : ''}}">
-      <td><b>Leader</b></td>
+      <td><b>Co Leader 1</b></td>
       <td>
         <select name="colead1_id" class="ui search fluid dropdown">
+          <option value="">Choose one</option>
           @foreach (\App\Models\Soul::all() as $soul)
             <option {{$soul->id == $group->colead1_id ? 'selected' : ''}} value="{{$soul->id}}">{{$soul->nickname}}</option>
           @endforeach
@@ -43,9 +44,10 @@ Update group
     </tr>
 
     <tr class="field {{$errors->has('colead2_id') ? 'error' : ''}}">
-      <td><b>Leader</b></td>
+      <td><b>Co Leader 2</b></td>
       <td>
         <select name="colead2_id" class="ui search fluid dropdown">
+          <option value="">Choose one</option>
           @foreach (\App\Models\Soul::all() as $soul)
             <option {{$soul->id == $group->colead2_id ? 'selected' : ''}} value="{{$soul->id}}">{{$soul->nickname}}</option>
           @endforeach
