@@ -1,1 +1,281 @@
-@media{.featherlight{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483647;text-align:center;white-space:nowrap;cursor:pointer;background:#333;background:transparent}.featherlight:last-of-type{background:rgba(0,0,0,.8)}.featherlight:before{content:"";display:inline-block;height:100%;vertical-align:middle}.featherlight .featherlight-content{position:relative;text-align:left;vertical-align:middle;display:inline-block;overflow:auto;padding:25px 25px 0;border-bottom:25px solid transparent;margin-left:5%;margin-right:5%;max-height:95%;background:#fff;cursor:auto;white-space:normal}.featherlight .featherlight-inner{display:block}.featherlight link.featherlight-inner,.featherlight script.featherlight-inner,.featherlight style.featherlight-inner{display:none}.featherlight .featherlight-close-icon{position:absolute;z-index:9999;top:0;right:0;line-height:25px;width:25px;cursor:pointer;text-align:center;font-family:Arial,sans-serif;background:#fff;background:hsla(0,0%,100%,.3);color:#000;border:0;padding:0}.featherlight .featherlight-close-icon::-moz-focus-inner{border:0;padding:0}.featherlight .featherlight-image{width:100%}.featherlight-iframe .featherlight-content{border-bottom:0;padding:0;-webkit-overflow-scrolling:touch;overflow-y:scroll}.featherlight iframe{border:0}.featherlight *{-webkit-box-sizing:border-box;box-sizing:border-box}}@media only screen and (max-width:1024px){.featherlight .featherlight-content{margin-left:0;margin-right:0;max-height:98%;padding:10px 10px 0;border-bottom:10px solid transparent}}body{background-color:#1f1f11;color:#fff}a{color:#bbb!important}.neon-green,.sub.header.neon-green{color:#83f52c!important}.ui.inverted.segment,.ui.primary.inverted.segment{background-color:#1f1f11}.text-centered{text-align:center!important}.ui.piled.segment:after,.ui.piled.segment:before,.ui.piled.segments:after,.ui.piled.segments:before{background-color:#83f52c!important}.glow{text-shadow:0 0 30px #21ff00}#logo{width:200px}.alert-danger{background-color:#f09;border-color:#77ffbf;color:#fff}.field.error label{color:#f09!important}.ui.positive.message{background-color:#000}.ui.positive.message .header,.ui.positive.message p{color:#83f52c!important;text-shadow:0 0 30px #21ff00}#signup-container{margin:15px auto 5px}@media only screen and (min-width:1200px){#signup-container{max-width:550px!important;margin:100px auto 20px}#signup-container .ui.form{margin:1em}}#just-begin-checkin .field .ui.dropdown .item,#just-begin-signup .field .ui.dropdown .item{font-size:1.05em!important;background-color:#333!important;color:#70fff7!important}#just-begin-checkin .field .labeled.input .ui.label,#just-begin-checkin .field i.icon,#just-begin-signup .field .labeled.input .ui.label,#just-begin-signup .field i.icon{color:#fff!important}#just-begin-checkin .field .labeled.input .ui.label,#just-begin-checkin .field .ui.dropdown.selection,#just-begin-checkin .field input[type=date],#just-begin-checkin .field input[type=email],#just-begin-checkin .field input[type=file],#just-begin-checkin .field input[type=number],#just-begin-checkin .field input[type=password],#just-begin-checkin .field input[type=text],#just-begin-signup .field .labeled.input .ui.label,#just-begin-signup .field .ui.dropdown.selection,#just-begin-signup .field input[type=date],#just-begin-signup .field input[type=email],#just-begin-signup .field input[type=file],#just-begin-signup .field input[type=number],#just-begin-signup .field input[type=password],#just-begin-signup .field input[type=text]{padding-top:20px!important;padding-bottom:20px!important;font-size:1.3em!important;background-color:#333!important;color:#70fff7!important;text-shadow:0 0 3px rgba(33,255,0,.5)}#just-begin-checkin .field .labeled.input .ui.label.active.dropdown,#just-begin-checkin .field .labeled.input .ui.label .menu,#just-begin-checkin .field .ui.dropdown.selection.active.dropdown,#just-begin-checkin .field .ui.dropdown.selection .menu,#just-begin-checkin .field input[type=date].active.dropdown,#just-begin-checkin .field input[type=date] .menu,#just-begin-checkin .field input[type=email].active.dropdown,#just-begin-checkin .field input[type=email] .menu,#just-begin-checkin .field input[type=file].active.dropdown,#just-begin-checkin .field input[type=file] .menu,#just-begin-checkin .field input[type=number].active.dropdown,#just-begin-checkin .field input[type=number] .menu,#just-begin-checkin .field input[type=password].active.dropdown,#just-begin-checkin .field input[type=password] .menu,#just-begin-checkin .field input[type=text].active.dropdown,#just-begin-checkin .field input[type=text] .menu,#just-begin-signup .field .labeled.input .ui.label.active.dropdown,#just-begin-signup .field .labeled.input .ui.label .menu,#just-begin-signup .field .ui.dropdown.selection.active.dropdown,#just-begin-signup .field .ui.dropdown.selection .menu,#just-begin-signup .field input[type=date].active.dropdown,#just-begin-signup .field input[type=date] .menu,#just-begin-signup .field input[type=email].active.dropdown,#just-begin-signup .field input[type=email] .menu,#just-begin-signup .field input[type=file].active.dropdown,#just-begin-signup .field input[type=file] .menu,#just-begin-signup .field input[type=number].active.dropdown,#just-begin-signup .field input[type=number] .menu,#just-begin-signup .field input[type=password].active.dropdown,#just-begin-signup .field input[type=password] .menu,#just-begin-signup .field input[type=text].active.dropdown,#just-begin-signup .field input[type=text] .menu{border-color:#000!important}#just-begin-checkin .field .labeled.input .ui.label.active.dropdown .item,#just-begin-checkin .field .labeled.input .ui.label .menu .item,#just-begin-checkin .field .ui.dropdown.selection.active.dropdown .item,#just-begin-checkin .field .ui.dropdown.selection .menu .item,#just-begin-checkin .field input[type=date].active.dropdown .item,#just-begin-checkin .field input[type=date] .menu .item,#just-begin-checkin .field input[type=email].active.dropdown .item,#just-begin-checkin .field input[type=email] .menu .item,#just-begin-checkin .field input[type=file].active.dropdown .item,#just-begin-checkin .field input[type=file] .menu .item,#just-begin-checkin .field input[type=number].active.dropdown .item,#just-begin-checkin .field input[type=number] .menu .item,#just-begin-checkin .field input[type=password].active.dropdown .item,#just-begin-checkin .field input[type=password] .menu .item,#just-begin-checkin .field input[type=text].active.dropdown .item,#just-begin-checkin .field input[type=text] .menu .item,#just-begin-signup .field .labeled.input .ui.label.active.dropdown .item,#just-begin-signup .field .labeled.input .ui.label .menu .item,#just-begin-signup .field .ui.dropdown.selection.active.dropdown .item,#just-begin-signup .field .ui.dropdown.selection .menu .item,#just-begin-signup .field input[type=date].active.dropdown .item,#just-begin-signup .field input[type=date] .menu .item,#just-begin-signup .field input[type=email].active.dropdown .item,#just-begin-signup .field input[type=email] .menu .item,#just-begin-signup .field input[type=file].active.dropdown .item,#just-begin-signup .field input[type=file] .menu .item,#just-begin-signup .field input[type=number].active.dropdown .item,#just-begin-signup .field input[type=number] .menu .item,#just-begin-signup .field input[type=password].active.dropdown .item,#just-begin-signup .field input[type=password] .menu .item,#just-begin-signup .field input[type=text].active.dropdown .item,#just-begin-signup .field input[type=text] .menu .item{border-top-color:#000!important}#just-begin-checkin .field .labeled.input .ui.label .dropdown.icon,#just-begin-checkin .field .ui.dropdown.selection .dropdown.icon,#just-begin-checkin .field input[type=date] .dropdown.icon,#just-begin-checkin .field input[type=email] .dropdown.icon,#just-begin-checkin .field input[type=file] .dropdown.icon,#just-begin-checkin .field input[type=number] .dropdown.icon,#just-begin-checkin .field input[type=password] .dropdown.icon,#just-begin-checkin .field input[type=text] .dropdown.icon,#just-begin-signup .field .labeled.input .ui.label .dropdown.icon,#just-begin-signup .field .ui.dropdown.selection .dropdown.icon,#just-begin-signup .field input[type=date] .dropdown.icon,#just-begin-signup .field input[type=email] .dropdown.icon,#just-begin-signup .field input[type=file] .dropdown.icon,#just-begin-signup .field input[type=number] .dropdown.icon,#just-begin-signup .field input[type=password] .dropdown.icon,#just-begin-signup .field input[type=text] .dropdown.icon{line-height:2.3em}#just-begin-checkin .field.error .ui.dropdown.selection,#just-begin-checkin .field.error .ui.dropdown .text,#just-begin-checkin .field.error input,#just-begin-signup .field.error .ui.dropdown.selection,#just-begin-signup .field.error .ui.dropdown .text,#just-begin-signup .field.error input{color:#fff!important;background-color:#f09!important}.border-inset{border:7px solid #fff;-webkit-box-sizing:border-box;box-sizing:border-box}.inline{display:inline!important}.hide{display:none}.uppercased{text-transform:uppercase}@media (min-width:768px){.mobile-only{display:none}}@media (max-width:767px){.mobile-hidden{display:none!important}}
+/**
+ * Featherlight - ultra slim jQuery lightbox
+ * Version 1.7.6 - http://noelboss.github.io/featherlight/
+ *
+ * Copyright 2017, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+@media all{.featherlight{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:2147483647;text-align:center;white-space:nowrap;cursor:pointer;background:#333;background:rgba(0,0,0,0)}.featherlight:last-of-type{background:rgba(0,0,0,.8)}.featherlight:before{content:'';display:inline-block;height:100%;vertical-align:middle}.featherlight .featherlight-content{position:relative;text-align:left;vertical-align:middle;display:inline-block;overflow:auto;padding:25px 25px 0;border-bottom:25px solid transparent;margin-left:5%;margin-right:5%;max-height:95%;background:#fff;cursor:auto;white-space:normal}.featherlight .featherlight-inner{display:block}.featherlight link.featherlight-inner,.featherlight script.featherlight-inner,.featherlight style.featherlight-inner{display:none}.featherlight .featherlight-close-icon{position:absolute;z-index:9999;top:0;right:0;line-height:25px;width:25px;cursor:pointer;text-align:center;font-family:Arial,sans-serif;background:#fff;background:rgba(255,255,255,.3);color:#000;border:0;padding:0}.featherlight .featherlight-close-icon::-moz-focus-inner{border:0;padding:0}.featherlight .featherlight-image{width:100%}.featherlight-iframe .featherlight-content{border-bottom:0;padding:0;-webkit-overflow-scrolling:touch;overflow-y:scroll}.featherlight iframe{border:0}.featherlight *{-webkit-box-sizing:border-box;box-sizing:border-box}}@media only screen and (max-width:1024px){.featherlight .featherlight-content{margin-left:0;margin-right:0;max-height:98%;padding:10px 10px 0;border-bottom:10px solid transparent}}/**
+ * VAR
+ */
+
+/**
+ * THEME RESET
+ */
+
+body {
+  background-color: #1F1F11;
+  color: white;
+}
+
+a {
+  color: #BBB !important;
+}
+
+.sub.header.neon-green,
+.neon-green {
+  color: #83f52c !important;
+}
+
+.ui.inverted.segment,
+.ui.primary.inverted.segment {
+  background-color: #1F1F11;
+}
+
+.text-centered {
+  text-align: center !important;
+}
+
+.ui.piled.segment:after,
+.ui.piled.segment:before,
+.ui.piled.segments:after,
+.ui.piled.segments:before {
+  background-color: #83f52c !important;
+}
+
+.glow {
+  text-shadow: 0px 0px 30px #21ff00;
+}
+
+#logo {
+  width: 200px;
+}
+
+/** 
+#77ffbf
+#7afff8
+#ff32e0
+#70fff7
+*/
+
+/**
+ * ERROR COLORS
+ */
+
+.alert-danger {
+  background-color: #ff0099;
+  border-color: #77ffbf;
+  color: white;
+}
+
+.field.error label {
+  color: #ff0099 !important;
+}
+
+.ui.positive.message {
+  background-color: black;
+}
+
+.ui.positive.message .header {
+  color: #83f52c !important;
+  text-shadow: 0px 0px 30px #21ff00;
+}
+
+.ui.positive.message p {
+  color: #83f52c !important;
+  text-shadow: 0px 0px 30px #21ff00;
+}
+
+/**
+ * LAYOUT
+ */
+
+#signup-container {
+  margin: 15px auto 5px auto;
+}
+
+@media only screen and (min-width: 1200px) {
+  #signup-container {
+    max-width: 550px !important;
+    margin: 100px auto 20px auto;
+  }
+
+  #signup-container .ui.form {
+    margin: 1em;
+  }
+}
+
+/**
+ * FORMS
+ */
+
+#just-begin-checkin .field .ui.dropdown .item,
+#just-begin-signup .field .ui.dropdown .item {
+  font-size: 1.05em !important;
+  background-color: #333 !important;
+  color: #70fff7 !important;
+}
+
+#just-begin-checkin .field i.icon,
+#just-begin-signup .field i.icon {
+  color: white !important;
+}
+
+#just-begin-checkin .field .labeled.input .ui.label,
+#just-begin-signup .field .labeled.input .ui.label {
+  color: white !important;
+}
+
+#just-begin-checkin .field .labeled.input .ui.label,
+#just-begin-checkin .field .ui.dropdown.selection,
+#just-begin-checkin .field input[type=file],
+#just-begin-checkin .field input[type=text],
+#just-begin-checkin .field input[type=number],
+#just-begin-checkin .field input[type=email],
+#just-begin-checkin .field input[type=date],
+#just-begin-checkin .field input[type=password],
+#just-begin-signup .field .labeled.input .ui.label,
+#just-begin-signup .field .ui.dropdown.selection,
+#just-begin-signup .field input[type=file],
+#just-begin-signup .field input[type=text],
+#just-begin-signup .field input[type=number],
+#just-begin-signup .field input[type=email],
+#just-begin-signup .field input[type=date],
+#just-begin-signup .field input[type=password] {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  font-size: 1.3em !important;
+  background-color: #333 !important;
+  color: #70fff7 !important;
+  text-shadow: 0px 0px 3px rgba(33, 255, 0, 0.5);
+}
+
+#just-begin-checkin .field .labeled.input .ui.label.active.dropdown,
+#just-begin-checkin .field .labeled.input .ui.label .menu,
+#just-begin-checkin .field .ui.dropdown.selection.active.dropdown,
+#just-begin-checkin .field .ui.dropdown.selection .menu,
+#just-begin-checkin .field input[type=file].active.dropdown,
+#just-begin-checkin .field input[type=file] .menu,
+#just-begin-checkin .field input[type=text].active.dropdown,
+#just-begin-checkin .field input[type=text] .menu,
+#just-begin-checkin .field input[type=number].active.dropdown,
+#just-begin-checkin .field input[type=number] .menu,
+#just-begin-checkin .field input[type=email].active.dropdown,
+#just-begin-checkin .field input[type=email] .menu,
+#just-begin-checkin .field input[type=date].active.dropdown,
+#just-begin-checkin .field input[type=date] .menu,
+#just-begin-checkin .field input[type=password].active.dropdown,
+#just-begin-checkin .field input[type=password] .menu,
+#just-begin-signup .field .labeled.input .ui.label.active.dropdown,
+#just-begin-signup .field .labeled.input .ui.label .menu,
+#just-begin-signup .field .ui.dropdown.selection.active.dropdown,
+#just-begin-signup .field .ui.dropdown.selection .menu,
+#just-begin-signup .field input[type=file].active.dropdown,
+#just-begin-signup .field input[type=file] .menu,
+#just-begin-signup .field input[type=text].active.dropdown,
+#just-begin-signup .field input[type=text] .menu,
+#just-begin-signup .field input[type=number].active.dropdown,
+#just-begin-signup .field input[type=number] .menu,
+#just-begin-signup .field input[type=email].active.dropdown,
+#just-begin-signup .field input[type=email] .menu,
+#just-begin-signup .field input[type=date].active.dropdown,
+#just-begin-signup .field input[type=date] .menu,
+#just-begin-signup .field input[type=password].active.dropdown,
+#just-begin-signup .field input[type=password] .menu {
+  border-color: #000 !important;
+}
+
+#just-begin-checkin .field .labeled.input .ui.label.active.dropdown .item,
+#just-begin-checkin .field .labeled.input .ui.label .menu .item,
+#just-begin-checkin .field .ui.dropdown.selection.active.dropdown .item,
+#just-begin-checkin .field .ui.dropdown.selection .menu .item,
+#just-begin-checkin .field input[type=file].active.dropdown .item,
+#just-begin-checkin .field input[type=file] .menu .item,
+#just-begin-checkin .field input[type=text].active.dropdown .item,
+#just-begin-checkin .field input[type=text] .menu .item,
+#just-begin-checkin .field input[type=number].active.dropdown .item,
+#just-begin-checkin .field input[type=number] .menu .item,
+#just-begin-checkin .field input[type=email].active.dropdown .item,
+#just-begin-checkin .field input[type=email] .menu .item,
+#just-begin-checkin .field input[type=date].active.dropdown .item,
+#just-begin-checkin .field input[type=date] .menu .item,
+#just-begin-checkin .field input[type=password].active.dropdown .item,
+#just-begin-checkin .field input[type=password] .menu .item,
+#just-begin-signup .field .labeled.input .ui.label.active.dropdown .item,
+#just-begin-signup .field .labeled.input .ui.label .menu .item,
+#just-begin-signup .field .ui.dropdown.selection.active.dropdown .item,
+#just-begin-signup .field .ui.dropdown.selection .menu .item,
+#just-begin-signup .field input[type=file].active.dropdown .item,
+#just-begin-signup .field input[type=file] .menu .item,
+#just-begin-signup .field input[type=text].active.dropdown .item,
+#just-begin-signup .field input[type=text] .menu .item,
+#just-begin-signup .field input[type=number].active.dropdown .item,
+#just-begin-signup .field input[type=number] .menu .item,
+#just-begin-signup .field input[type=email].active.dropdown .item,
+#just-begin-signup .field input[type=email] .menu .item,
+#just-begin-signup .field input[type=date].active.dropdown .item,
+#just-begin-signup .field input[type=date] .menu .item,
+#just-begin-signup .field input[type=password].active.dropdown .item,
+#just-begin-signup .field input[type=password] .menu .item {
+  border-top-color: #000 !important;
+}
+
+#just-begin-checkin .field .labeled.input .ui.label .dropdown.icon,
+#just-begin-checkin .field .ui.dropdown.selection .dropdown.icon,
+#just-begin-checkin .field input[type=file] .dropdown.icon,
+#just-begin-checkin .field input[type=text] .dropdown.icon,
+#just-begin-checkin .field input[type=number] .dropdown.icon,
+#just-begin-checkin .field input[type=email] .dropdown.icon,
+#just-begin-checkin .field input[type=date] .dropdown.icon,
+#just-begin-checkin .field input[type=password] .dropdown.icon,
+#just-begin-signup .field .labeled.input .ui.label .dropdown.icon,
+#just-begin-signup .field .ui.dropdown.selection .dropdown.icon,
+#just-begin-signup .field input[type=file] .dropdown.icon,
+#just-begin-signup .field input[type=text] .dropdown.icon,
+#just-begin-signup .field input[type=number] .dropdown.icon,
+#just-begin-signup .field input[type=email] .dropdown.icon,
+#just-begin-signup .field input[type=date] .dropdown.icon,
+#just-begin-signup .field input[type=password] .dropdown.icon {
+  line-height: 2.3em;
+}
+
+#just-begin-checkin .field.error .ui.dropdown.selection,
+#just-begin-checkin .field.error .ui.dropdown .text,
+#just-begin-checkin .field.error input,
+#just-begin-signup .field.error .ui.dropdown.selection,
+#just-begin-signup .field.error .ui.dropdown .text,
+#just-begin-signup .field.error input {
+  color: white !important;
+  background-color: #ff0099 !important;
+}
+
+.border-inset {
+  border: 7px white solid;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.inline {
+  display: inline !important;
+}
+
+.hide {
+  display: none;
+}
+
+.uppercased {
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
