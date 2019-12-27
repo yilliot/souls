@@ -15,6 +15,7 @@ return [
         'title' => 'Merge NRIC',
         'greet' => 'Welcome onboard to Oasis!',
         'field_nric' => 'let us know your NRIC/Passport ID to continue',
+        'field_contact' => 'and your contact number',
         'btn_submit' => 'Let\'s go',
     ],
 

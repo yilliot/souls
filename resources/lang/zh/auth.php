@@ -15,6 +15,7 @@ return [
         'title' => '资料整合',
         'greet' => '欢迎来到绿洲!',
         'field_nric' => '输入 IC 身份证 / 护照编号 继续',
+        'field_contact' => '输入 电话号码',
         'btn_submit' => '出发吧！',
     ],
 

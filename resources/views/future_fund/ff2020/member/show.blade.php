@@ -1,4 +1,4 @@
-@extends('future_fund.member.layout')
+@extends('future_fund.ff2020.layout')
 
 @section('title')
 Future Fund

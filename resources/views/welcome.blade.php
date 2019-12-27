@@ -90,8 +90,8 @@
               </a>
             </h1>
             <div class="ui hidden divider"></div>
-            <a href="/ff/ff2019" class="ui massive fluid black button lean">
-                Future Fund 2019
+            <a href="/ff/ff2020" class="ui massive fluid black button lean">
+                Future Fund 2020
             </a>
             <div class="ui hidden divider"></div>
             <a href="/invite" class="ui massive fluid black button lean">

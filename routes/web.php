@@ -18,10 +18,17 @@ Route::group(['prefix' => 'invite', 'namespace' => 'Session'], function () {
 
 ## FutureFund
 Route::group(['prefix' => 'ff', 'namespace' => 'FutureFund'], function () {
+    Route::post('/simple_soul', 'MemberController@postSimpleSoul');
+    Route::get('/{ff_code}/make-pledge-code/{soul}', 'MemberController@getMakePledgeCode')->name('ff.makePledgeCode');
+    Route::get('/{ff_code}/landing', 'MemberController@landing');
     Route::get('/{ff_code}', 'MemberController@index');
-    Route::get('/{ff_code}/{pledge_code}', 'MemberController@show');
+    Route::get('/{ff_code}/{pledge_code}', 'MemberController@show')->name('ff.show');
+
     Route::get('/{ff_code}/{pledge_code}/payment', 'MemberController@getPaymentForm');
     Route::post('/{ff_code}/{pledge_code}/payment', 'MemberController@postPaymentForm');
+    Route::get('/{ff_code}/{pledge_code}/amount', 'MemberController@getAmountForm');
+    Route::post('/{ff_code}/{pledge_code}/amount', 'MemberController@postAmountForm');
+
     Route::get('/{ff_code}/{pledge_code}/signup', 'MemberController@reSignup');
 });
 

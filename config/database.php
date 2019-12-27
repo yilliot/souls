@@ -51,6 +51,7 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+            'strict' => false,
         ],
 
         'pgsql' => [

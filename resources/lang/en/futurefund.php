@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'pledge_amount' => 'Pledge Amount',
+    'completed' => 'Completed',
+    'step2' => 'step 2',
+    'complete_basic_info' => 'Review / complete basic info',
+    'greet' => 'Welcome to Join The Future Fund',
     'target_personal' => 'Toward Personal Goal',
     'target' => 'Toward Goal',
     'pledge_details' => 'Pledge details',

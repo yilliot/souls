@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'pledge_amount' => '认献总数',
+    'completed' => '完成',
+    'step2' => '第二步',
+    'complete_basic_info' => '检查并完善基本资料',
+    'greet' => '欢迎参与未来基金',
     'target_personal' => '距离个人目标',
     'target' => '距离目标',
     'pledge_details' => '细明',
