@@ -45,7 +45,7 @@ class MemberController extends Controller
             ],
             'nric_fullname' => 'required|max:255',
             'nickname' => 'required|max:255',
-            'contact' => 'required|between:10,11',
+            'contact' => 'required|between:10,12',
         ]);
 
         $soul = Soul::where('nric', $request->input('nric'))->first();
