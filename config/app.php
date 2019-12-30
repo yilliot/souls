@@ -186,6 +186,8 @@ return [
         App\Providers\ThirdPartyServiceProvider::class,
         Telegram\Bot\Laravel\TelegramServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
+
     ],
 
     /*
@@ -243,6 +245,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Telegram' => Telegram\Bot\Laravel\Facades\Telegram::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
 
 
     ],

@@ -19,6 +19,11 @@ class MemberController extends Controller
         $session = Session::where('code', $ff_code)->first();
         $nric = $request->input('nric');
 
+        // auto add hyphen to IC format
+        if (preg_match('/^\d{12}$/', $nric)) {
+            $nric = substr($nric, 0, 6) . '-' . substr($nric, 6, 2) . '-' . substr($nric, 8, 4);
+        }
+
         $nric = (preg_match('/^(\d{6}-\d{2}-\d{4}|[A-PR-WY]\w{6,10})$/', $nric)) ? $nric : null;
 
         if ($nric) {
@@ -27,6 +32,8 @@ class MemberController extends Controller
             $soul = Soul::where('nric', $nric)->first();
             if ($soul && $soul->user) {
                 // login
+                $url = route('ff.makePledgeCode', ['ff_code' => $ff_code, 'soul' => $soul->id]);
+                session(['after_login_url' => $url]);
                 return redirect('/auth/login?email=' . $soul->user->email);
             }
 
@@ -89,6 +96,14 @@ class MemberController extends Controller
 
         // dd($url);
         // SMS URL to contact
+
+        $message = $url . ' #IAMAGAMECHANGER';
+
+        \Nexmo::message()->send([
+            'to'   => $soul->contact,
+            'from' => 'OASIS',
+            'text' => $message,
+        ]);
 
         return redirect()->to($url);
         

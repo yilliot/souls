@@ -15,6 +15,10 @@
       <label for="nric">{{trans('auth.merge_nric.field_nric')}}</label>
       <input name="nric" type="text" value="{{old('nric', $nric)}}" placeholder="930101-01-1234">
     </div>
+    @if ($errors->has('nric'))
+      <label > * {{ $errors->first('nric') }}</label>
+    @endif
+
     <button class="ui fluid yellow button">{{trans('auth.merge_nric.btn_submit')}}</button>
   </form>
 </div>
