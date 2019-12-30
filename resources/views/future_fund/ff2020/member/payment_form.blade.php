@@ -7,9 +7,7 @@ Future Fund
 @section('content')
 <h1 id="header" class="header">{{trans('futurefund.target_personal')}} <br> RM {{number_format($pledge->amount-$collected_sum, 2)}} </h1>
 
-<div class="bg-size bg-image bg-image-fade"></div>
-<div class="bg-size bg-image" style="width:{{$collected_sum/$pledge->amount*100}}%"></div>
-<div style="padding-top: 200px"></div>
+<div style="padding-top: 20px"></div>
 <div style="clear:both"></div>
 
 <div class="ui horizontal divider">{{$pledge->name}}'s <br> {{trans('futurefund.payment_form')}} </div>
@@ -26,6 +24,7 @@ Future Fund
 <div class="ui fluid mini input">
   <input type="text" name="remarks" placeholder=" ** remarks 备注">
 </div>
+<div style="padding-top: 20px"></div>
 <button class="ui secondary huge fluid button">{{trans('futurefund.submit')}}</button>
 </form>
 <div style="padding-top: 80px"></div>

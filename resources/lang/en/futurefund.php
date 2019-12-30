@@ -7,7 +7,7 @@ return [
     'complete_basic_info' => 'Review / complete basic info',
     'greet' => 'Welcome to Join The Future Fund',
     'target_personal' => 'Toward Personal Goal',
-    'target' => 'Toward Goal',
+    'target' => 'Goal',
     'pledge_details' => 'Pledge details',
     'total_pledge' => 'Total Pledge',
     'collected' => 'Collected',

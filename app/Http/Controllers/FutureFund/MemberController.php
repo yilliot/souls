@@ -94,9 +94,6 @@ class MemberController extends Controller
 
         $url = route('ff.show', ['ff_code' => $ff_code,'pledge_code' => $pledge->code]);
 
-        // dd($url);
-        // SMS URL to contact
-
         $message = $url . ' #IAMAGAMECHANGER';
 
         \Nexmo::message()->send([
@@ -213,7 +210,7 @@ class MemberController extends Controller
             ->where('is_cancelled', false)
             ->sum('amount');
 
-        return view('future_fund.'.$ff_code.'.member.payment_form', compact('pledge', 'amount', 'collected_sum', 'ff_code', 'pledge_code'));
+        return view('future_fund.'.$ff_code.'.member.payment_form', compact('pledge', 'collected_sum', 'ff_code', 'pledge_code'));
     }
 
     function postPaymentForm(Request $request, $ff_code, $pledge_code)

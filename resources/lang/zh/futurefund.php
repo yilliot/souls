@@ -7,7 +7,7 @@ return [
     'complete_basic_info' => '检查并完善基本资料',
     'greet' => '欢迎参与未来基金',
     'target_personal' => '距离个人目标',
-    'target' => '距离目标',
+    'target' => '目标',
     'pledge_details' => '细明',
     'total_pledge' => '认献总数',
     'collected' => '已收',
