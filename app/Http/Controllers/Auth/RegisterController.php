@@ -88,7 +88,7 @@ class RegisterController extends Controller
             ],
             'nric_fullname' => 'required|max:255',
             'nickname' => 'required|max:255',
-            'contact' => 'required|between:10,11',
+            'contact' => 'required|between:10,12',
             'address1' => 'required|max:255',
             'address2' => 'required|max:255',
             'birthday' => 'required|date',
