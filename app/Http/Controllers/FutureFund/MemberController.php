@@ -37,6 +37,11 @@ class MemberController extends Controller
                 return redirect('/auth/login?email=' . $soul->user->email);
             }
 
+            if (!$soul) {
+                $soul = new Soul;
+                $soul->nric = $nric;
+            }
+
             return view('future_fund.' . $ff_code . '.simple_soul', compact('soul','session', 'nric'));
         }
 
