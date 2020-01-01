@@ -5,11 +5,9 @@ Future Fund
 @endsection
 
 @section('content')
-<h1 id="header" class="header">{{trans('futurefund.target')}} <br> RM {{number_format($session_total-$session_collected, 2)}} </h1>
+<h1 id="header" class="header">{{trans('futurefund.target')}} <br> RM {{number_format(250000, 2)}} </h1>
 
-<div class="bg-size bg-image bg-image-fade"></div>
-<div class="bg-size bg-image" style="width:{{$session_collected/$session_total*100}}%"></div>
-<div style="padding-top: 200px"></div>
+<div style="padding-top: 20px"></div>
 <div style="clear:both"></div>
 
 <div style="float:left">
@@ -21,6 +19,7 @@ Future Fund
   <div>RM {{number_format($session_total, 2)}}</div>
 </div>
 <div style="clear:both"></div>
+@if ($session_total)
 <div class="ui indicating progress" data-percent="{{$session_collected/$session_total*100}}">
   <div class="bar">
     <div class="progress"></div>
@@ -28,6 +27,7 @@ Future Fund
   <div class="label">{{$session->name}}</div>
 </div>
 <div style="padding-top: 10px"></div>
+@endif
 
 
 @endsection
