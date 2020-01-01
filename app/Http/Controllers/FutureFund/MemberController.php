@@ -136,7 +136,8 @@ class MemberController extends Controller
                 ->first();
             if ($pledge) {
                 return redirect('/ff/' . $ff_code . '/' . $pledge->code);
-             } 
+             }
+            return redirect()->route('ff.makePledgeCode', ['ff_code' => $ff_code, 'soul' => \Auth::user()->soul_id]);
         }
 
         // SESSION TOTAL
