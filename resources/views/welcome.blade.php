@@ -94,6 +94,10 @@
                 Future Fund 2020
             </a>
             <div class="ui hidden divider"></div>
+            <a href="/ff/fs2020" class="ui massive fluid black button lean">
+                New Soul 2020
+            </a>
+            <div class="ui hidden divider"></div>
             <a href="/invite" class="ui massive fluid black button lean">
                 Calendar
             </a>
