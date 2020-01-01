@@ -42,7 +42,7 @@ class MemberController extends Controller
                 $soul->nric = $nric;
             }
 
-            return view('future_fund.' . $ff_code . '.simple_soul', compact('soul','session', 'nric'));
+            return view('future_fund.' . $ff_code . '.simple_soul', compact('soul','session'));
         }
 
         return view('future_fund.'.$ff_code.'.landing', compact('session', 'nric'));

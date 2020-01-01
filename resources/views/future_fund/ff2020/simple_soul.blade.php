@@ -14,7 +14,7 @@
 
   <div class="field {{$errors->has('nric') ? 'error' : ''}}">
     <label>{{ trans('auth.signup.nric') }}</label>
-    {{ Form::text('nric', $soul->nric, ['placeholder' => 'e.g. 900101-01-0000'])}}
+    <input type="text" name="nric" value="{{$soul->nric}}" placeholder="e.g. 900101-01-0000">
     @if ($errors->has('nric'))
       <label > * {{ $errors->first('nric') }}</label>
     @endif
